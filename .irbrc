@@ -1,4 +1,4 @@
-def help
+def help_custom
   puts "Setup:"
   puts "  gem install awesome_print"
   puts "   gem install wirble"
