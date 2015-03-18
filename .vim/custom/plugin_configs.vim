@@ -1,7 +1,7 @@
 runtime! macros/matchit.vim                           " Find matching ( ), [ ], { } and def/end
 let g:notes_suffix = '.txt'                           " Easy notes config
-let g:notes_directories= ['~/vim_notes']
-let journal_directory = '~/vim-notes'       " Journal settings
+let g:notes_directories= ['~/gh/notes/wiki']
+let g:calendar_diary='~/gh/notes/diary'               " Calendar Diary
 let NERDTreeQuitOnOpen = 1                            " NERDTree config
 let NERDTreeShowHidden = 1
 let g:indent_guides_auto_colors = 1
@@ -24,7 +24,7 @@ map <Leader>t :call RunCurrentSpecFile()<CR>
 
 vmap <Leader>a= :Tabularize /=<CR>
 vmap <Leader>ae :Tabularize /=<CR>
-vmap <Leader>a: :Tabularize /:\zs<CR>
+vmap <Leader>a: :Tabularize /:/r0c1<CR>
 vmap <Leader>a{ :Tabularize /{<CR>
 vmap <Leader>ah :Tabularize /=><CR>
 vmap <Leader>a# :Tabularize /#<CR>
