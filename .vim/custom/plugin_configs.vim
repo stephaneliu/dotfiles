@@ -25,6 +25,7 @@ map <Leader>t :call RunCurrentSpecFile()<CR>
 vmap <Leader>a= :Tabularize /=<CR>
 vmap <Leader>ae :Tabularize /=<CR>
 vmap <Leader>a: :Tabularize /:/r0c1<CR>
+vmap <Leader>a; :Tabularize /:/l1r0<CR>
 vmap <Leader>a{ :Tabularize /{<CR>
 vmap <Leader>ah :Tabularize /=><CR>
 vmap <Leader>a# :Tabularize /#<CR>
