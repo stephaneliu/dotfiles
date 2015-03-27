@@ -1,0 +1,7 @@
+selectp -t 0    # select pane 0
+splitw -h -p 65 # split pane vertically by 65%
+selectp -t 1    # select pane 1
+splitw -v -p 25 # split pane horizontally by 25%
+selectp -t 1    # select pane 1
+splitw -v -p 75 # split pane horizontally by 75%
+selectp -t 1    # select pane 4

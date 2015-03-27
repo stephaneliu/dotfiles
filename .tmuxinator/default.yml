@@ -1,0 +1,21 @@
+# ~/.tmuxinator/netops.yml
+# you can make as many tabs as you wish...
+
+name: default
+root: ~/
+windows:
+  - netops:
+      # layout: e114,229x77,0,0{84x77,0,0[84x19,0,0,84x18,0,20,84x19,0,39,84x18,0,59],143x77,85,0[143x63,85,0,143x13,85,64]}
+      layout: d480,228x77,0,0{84x77,0,0[84x19,0,0,84x18,0,20,84x19,0,39,84x18,0,59],143x77,85,0}
+      panes:
+        # - export USE_SPRING=true && export DISABLE_JRUBY_JOBS=true;
+        # - export USE_SPRING=true && export DISABLE_JRUBY_JOBS=true; spring rails c
+        # - export USE_SPRING=true && export DISABLE_JRUBY_JOBS=true; bundle exec guard
+        # - export USE_SPRING=true && export DISABLE_JRUBY_JOBS=true; spring rails s
+        # - export USE_SPRING=true && export DISABLE_JRUBY_JOBS=true; vi /home/sliu/rails-projects/netops/src/app/models/event.rb
+        - 
+        - 
+        - 
+        - 
+        - vi
+  - util:
