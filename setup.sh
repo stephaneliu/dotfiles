@@ -12,3 +12,5 @@ read github_username
 sed -i -e 's/CHANGE_NAME/'"$name"'/' \
   -e 's/CHANGE_EMAIL/'"$email"'/' \
   -e 's/CHANGE_GITHUB/'"$github_username"'/' ~/.gitconfig
+
+. ./zsh/setup.sh

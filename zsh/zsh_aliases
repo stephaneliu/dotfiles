@@ -1,0 +1,80 @@
+##################################### general applicable ####################################################
+# alias g="egrep --exclude=\*.svn\* --color=auto -r -n "
+alias gre="find . -type f|grep rb$|xargs grep --color=auto"  # only grep rb files
+alias ..="cd .."                                            # up one directory
+alias ..2="cd ../../"                                       # up two directories
+alias ..3="cd ../../../"                                    # up three directories
+alias ..4="cd ../../../../"                                 # up four directories
+alias ..5="cd ../../../../../"                              # up five directories
+alias q="exit"                                             # close bash terminal
+alias 'ps?'='ps aux | g '
+alias l='ls -alFHh'
+alias ll='ls -CFHh'
+
+alias chk_jrj="cd ~/somewhere & git pull & git log | echo 'finding jruby jars update: ' + grep skdj223 > /tmp/status"
+##################################### ruby aliases ####################################################
+alias rc="DISABLE_JRUBY_JOBS=true bundle exec rails c"
+alias sc="DISABLE_JRUBY_JOBS=true bundle exec spring rails c"
+alias rs="DISABLE_JRUBY_JOBS=true bundle exec rails server --debugger"                          # override reshape bash command
+alias ss="DISABLE_JRUBY_JOBS=true bundle exec spring rails s"
+alias bg="DISABLE_JRUBY_JOBS=true bundle exec guard"
+alias pc="pry -r ./config/environment"
+alias rg="bundle exec rails g"
+alias spec_all="rake spec:run_in_groups SPLIT=4"
+alias jrs="kill_jruby_servers.rb && jruby -Xmx1024m -S rails server"   
+alias ann="annotate -mi -p before"
+alias uni="kill_unicorn; bundle exec unicorn -p 3000"
+alias thn="nocorrect kill_thin; rails s thin"
+alias grd='kill_guard; bundle exec guard'
+
+##################################### services ####################################################
+
+alias nxgo="sudo /usr/sbin/nginx"
+alias nxst="sudo /usr/sbin/nginx -s stop"
+##################################### applications ####################################################
+alias myroot="mysql -u root"
+alias git="nc git"
+alias docker="sudo docker"
+alias which="which -a"
+##################################### my specific needs ####################################################
+alias r1="cd ~/rails-projects"                              # location of rails_project 
+alias g1="cd ~/github/vi/"
+alias g2="cd ~/rails-projects/vim_notes/"
+alias g3="cd ~/github/tmux.conf"
+alias g4="cd ~/github/git_sync"
+alias w1="cd ~/rails-projects/"
+alias w2="cd ~/rails-projects/netops/src"
+alias w2e="cd ~/rails-projects/netops/src && vi app/models/event.rb" # location of netops
+alias w3="cd ~/rails-projects/iatp; . ./.rvmrc"             # location of iatp & switch ruby enterprise
+alias w4="cd ~/rails-projects/netops-datasources"           # location of netops-datasources
+alias w5="cd ~/rails-projects/cams/src"                      # location of iatp & switch ruby enterprise
+alias w6="cd ~/rails-projects/hc"
+alias w6b="cd ~/rails-projects/hicrane"
+alias w7="cd ~/rails-projects/kc"
+alias w7e="vi ~/rails-projects/kc/app/models/invoice.rb"
+alias w8="cd ~/gh/hal_fare"                   # location of gitosis dh
+alias w9="cd ~/rails-projects/netops-proxy"                 # location of gitosis oama
+alias w99="cd ~/rails-projects/ra3"                         # location of gitosis oama
+alias sds="ssh oama"                                        # ssh to oama
+alias gemout="cp ~/bin/.gemrc_out ~/.gemrc"
+alias gemin="cp ~/bin/.gemrc_in ~/.gemrc"
+alias dnup="sudo ifdown eth2 && sudo ifup eth2"
+alias cspec="kill_zombie_autotests.rb && rake db:test:purge && rake db:test:prepare && autospec -fc"
+alias screencast='ffmpeg -f x11grab -r 25 -s 1600x1200 -i :0.0 /tmp/output.mpg'
+alias version='cat /etc/issue'
+alias gg='clear'
+alias yank='xclip -selection c'
+alias backit='~/batches/config_back.sh'
+alias ssh='TERM=xterm ssh'
+alias b='bundle'
+alias be='bundle exec'
+alias bu='bundle update'
+alias bs='bundle show'
+alias wg='while bundle exec guard; echo "Restarting Guard..."; do echo; done'
+alias mr='mysql -u root'
+# alias tmux='tmux -2'    # force support for 256 colors - tput colors
+# disable correction for...
+# alias rails='nocorrect rails'
+alias nc='nocorrect'
+alias 'q;'='exit'
+alias g='git'

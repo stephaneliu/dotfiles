@@ -1,0 +1,77 @@
+# Path to your oh-my-zsh configuration.
+ZSH=$HOME/.oh-my-zsh
+
+# Set name of the theme to load.
+# Look in ~/.oh-my-zsh/themes/
+# Optionally, if you set this to "random", it'll load a random theme each
+# time that oh-my-zsh is loaded.
+ZSH_THEME="robbyrussell"
+#ZSH_THEME="sliu"
+
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# Set to this to use case-sensitive completion
+# CASE_SENSITIVE="true"
+
+# Comment this out to disable weekly auto-update checks
+# DISABLE_AUTO_UPDATE="true"
+
+# Uncomment following line if you want to disable colors in ls
+# DISABLE_LS_COLORS="true"
+
+# Uncomment following line if you want to disable autosetting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment following line if you want red dots to be displayed while waiting for completion
+COMPLETION_WAITING_DOTS="true"
+
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git gem textmate ruby lighthouse bundler)
+# plugins=(git git-flow code-dir vi-mode command-not-found history-substring-search bundler)
+plugins=(colored-man code-dir command-not-found chucknorris docker git git-flow history-substring-search tmux tmuxinator vi-mode web-search z)
+
+source $ZSH/oh-my-zsh.sh
+
+# Force 256 color support see:
+# http://www.enigmacurry.com/2009/01/20/256-colors-on-the-linux-terminal/
+# export TERM=xterm-256color
+export TERM=screen-256color
+
+source /home/sliu/.zsh_aliases
+export PATH=/home/sliu/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:$PATH
+[[ -s "$HOME/.tmuxinator/scripts/tmuxinator" ]] && source $HOME/.tmuxinator/scripts/tmuxinator
+# [[ -s "$HOME/bin/update_shared_git_projects.sh" ]] && source $HOME/bin/update_shared_git_projects.sh
+
+# export USE_BUNDLER=force
+export EDITOR=vim
+export VISUAL=vim
+export JAVA_HOME=/home/sliu/bin/jre1.7.0_45
+
+bindkey -M viins 'jk' vi-cmd-mode
+bindkey -M viins 'kj' vi-cmd-mode
+
+
+# export SSL_CERT_FILE=/usr/local/etc/openssl/certs/cert.pem
+
+### Added by the Heroku Toolbelt
+#export PATH="/usr/local/heroku/bin:$PATH"
+
+# Removed in favor of .rvm/hooks/after_cd_bundler
+# Need to set .bundle/config file with
+# BUNDLE_BIN: ./bin
+#
+# See github.com/zimbatm/direnv
+# eval "$(direnv hook zsh)"
+
+source /usr/local/share/chruby/chruby.sh
+source /usr/local/share/chruby/auto.sh
+
+export DOCKER_HOST=tcp://localhost:4243
+
+# default ruby
+chruby ruby-2.2.0
+
+chuck_cow
