@@ -31,7 +31,8 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git gem textmate ruby lighthouse bundler)
 # plugins=(git git-flow code-dir vi-mode command-not-found history-substring-search bundler)
-plugins=(colored-man code-dir command-not-found chucknorris docker git git-flow history-substring-search tmux tmuxinator vi-mode web-search z)
+# plugins=(colored-man code-dir command-not-found chucknorris docker git git-flow history-substring-search tmux tmuxinator vi-mode web-search z)
+plugins=(colored-man code-dir command-not-found chucknorris docker git git-flow history-substring-search tmuxinator vi-mode web-search z)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -41,7 +42,7 @@ source $ZSH/oh-my-zsh.sh
 export TERM=screen-256color
 
 source /home/sliu/.zsh_aliases
-export PATH=/home/sliu/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:$PATH
+export PATH=./bin:/home/sliu/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:$PATH
 [[ -s "$HOME/.tmuxinator/scripts/tmuxinator" ]] && source $HOME/.tmuxinator/scripts/tmuxinator
 # [[ -s "$HOME/bin/update_shared_git_projects.sh" ]] && source $HOME/bin/update_shared_git_projects.sh
 
@@ -53,6 +54,25 @@ export JAVA_HOME=/home/sliu/bin/jre1.7.0_45
 bindkey -M viins 'jk' vi-cmd-mode
 bindkey -M viins 'kj' vi-cmd-mode
 
+# ANSI Colors
+# export BLACK='\033[0;30m' # doesn't work well with solarize
+export RED='\033[0;31m'
+export GREEN='\033[0;32m'
+export BROWN='\033[0;33m'
+export BLUE='\033[0;34m'
+export PURPLE='\033[0;35m'
+export CYAN='\033[0;36m'
+export LTGRAY='\033[0;37m'
+# export DKGRAY='\033[1;30m' # doesn't work well with solarize
+export LTRED='\033[1;31m'
+# export LTGREEN='\033[1;32m' # doesn't work well with solarize
+# export YELLOW='\033[1;33m' # doesn't work well with solarize
+# export LTBLUE='\033[1;34m' # doesn't work well with solarize
+export LTPURPLE='\033[1;35m'
+# export LTCYAN='\033[1;36m' # doesn't work well with solarize
+export WHITE='\033[1;37m'
+export NC='\033[0m'
+# USAGE: printf "I ${LTRED}heart ${RED}Ruby\n"
 
 # export SSL_CERT_FILE=/usr/local/etc/openssl/certs/cert.pem
 
@@ -72,6 +92,9 @@ source /usr/local/share/chruby/auto.sh
 export DOCKER_HOST=tcp://localhost:4243
 
 # default ruby
-chruby ruby-2.2.0
+chruby ruby-2.2.2
 
 chuck_cow
+
+eval "$(direnv hook zsh)"
+

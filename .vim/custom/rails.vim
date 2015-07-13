@@ -37,6 +37,16 @@ let g:rails_projections = {
   \   "test":      "spec/services/%i_spec.rb",
   \   "template":  "class %SService\n  def initialize\n  end\nend"
   \ },
+  \ "app/models/concerns/*.rb": {
+  \   "command":   "concern",
+  \   "test":      "spec/model/concerns/%i_spec.rb",
+  \   "template":  "module %S\n  extend ActiveSupport::Concern\n\n  included do\n    #something interesting\n  end\nend"
+  \ },
+  \ "app/jobs/*.rb": {
+  \   "command":   "job",
+  \   "test":      "spec/jobs/%i_spec.rb",
+  \   "template":  "class %S\n  def initialize\n  end\nend"
+  \ },
   \ "app/queries/*_query.rb": {
   \   "command":   "query",
   \   "affinity":  "collection",
@@ -69,17 +79,22 @@ let g:rails_projections = {
   \ },
   \ "spec/views/*.html.haml_spec.rb": {
   \   "command":   "sv",
-  \   "template":  "require 'rails_helper'\n\ndescribe \'%s\' do\n\nend",
+  \   "template":  "require 'rails_helper'\n\nRSpec.describe \'%s\' do\n\nend",
   \   "keywords": "before describe context"
+  \ },
+  \ "spec/features/*_spec.rb": {
+  \   "command":   "sf",
+  \   "template":  "require 'features_helper'\n\nRSpec.feature \'User intereacts\' do\n\nend",
+  \   "keywords": "background given scenario"
   \ },
   \ "spec/models/*_spec.rb": {
   \   "command":   "sm",
-  \   "template":  "require 'rails_helper'\n\ndescribe %S do\n\nend",
+  \   "template":  "require 'rails_helper'\n\nRSpec.describe %S do\n\nend",
   \   "keywords": "before describe context"
   \ },
   \ "spec/controllers/*_controller_spec.rb": {
   \   "command":  "sc",
-  \   "template": "require 'rails_helper'\n\ndescribe %SController do\n\nend",
+  \   "template": "require 'rails_helper'\n\nRSpec.describe %SController do\n\nend",
   \   "keywords": "before describe context"
   \ }
 \ }

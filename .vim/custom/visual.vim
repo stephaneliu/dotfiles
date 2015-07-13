@@ -3,7 +3,7 @@ if has('gui_running')
 endif
 
 set guifont=Droid\ Sans\ Mono
-set colorcolumn=80                " set a highlighted column at the 100th character on line
+set colorcolumn=100                " set a highlighted column at the 100th character on line
 
 " use mouse to copy without line numbers in terminal 
 set mouse=a

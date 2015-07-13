@@ -1,52 +1,51 @@
 set nocompatible
 filetype off " required!
 
-set rtp+=~/.vim/bundle/Vundle.vim/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
 " let Vundle manage Vundle
 " required!
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/Vundle.vim'
 
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'airblade/vim-gitgutter'
-Bundle 'croaky/vim-colors-github'
-Bundle 'davidoc/taskpaper.vim'
-Bundle 'ervandew/supertab'
-Bundle 'guns/xterm-color-table.vim'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'mattn/gist-vim'
-Bundle 'mattn/webapi-vim'
-Bundle 'mileszs/ack.vim'
-Bundle 'nathanaelkane/vim-indent-guides'
-Bundle 'scrooloose/nerdtree'
-Bundle 'thoughtbot/vim-rspec'
-Bundle 'tomtom/tcomment_vim'
-Bundle 'tpope/vim-bundler'
-Bundle 'tpope/vim-cucumber'
-Bundle 'tpope/vim-dispatch'
-Bundle 'tpope/vim-endwise'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-git'
-Bundle 'tpope/vim-haml'
-Bundle 'tpope/vim-markdown'
-Bundle 'xolox/vim-misc'
-Bundle 'tpope/vim-projectionist'
-Bundle 'tpope/vim-rails'
-Bundle 'tpope/vim-rake'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-unimpaired'
-Bundle 'tpope/vim-vividchalk'
-" Bundle 'tsaleh/vim-align'
-Bundle 'godlygeek/tabular.git'
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'vim-scripts/calendar.vim--Matsumoto'
-Bundle 'vim-scripts/camelcasemotion'
-Bundle 'vim-scripts/matchit.zip'
-Bundle 'vim-scripts/notes.vim'
-Bundle 'vim-scripts/scratch.vim'
-Bundle 'vim-scripts/simplefold'
-Bundle 'vim-scripts/taglist.vim'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'croaky/vim-colors-github'
+Plugin 'davidoc/taskpaper.vim'
+Plugin 'ervandew/supertab'
+Plugin 'guns/xterm-color-table.vim'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'mattn/gist-vim'
+Plugin 'mattn/webapi-vim'
+Plugin 'mileszs/ack.vim'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'scrooloose/nerdtree'
+Plugin 'thoughtbot/vim-rspec'
+Plugin 'tomtom/tcomment_vim'
+Plugin 'tpope/vim-bundler'
+Plugin 'tpope/vim-cucumber'
+Plugin 'tpope/vim-dispatch'
+Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-git'
+Plugin 'tpope/vim-haml'
+Plugin 'tpope/vim-markdown'
+Plugin 'xolox/vim-misc'
+Plugin 'tpope/vim-projectionist'
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-rake'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'tpope/vim-vividchalk'
+Plugin 'godlygeek/tabular.git'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'vim-scripts/calendar.vim--Matsumoto'
+Plugin 'vim-scripts/camelcasemotion'
+Plugin 'vim-scripts/matchit.zip'
+Plugin 'vim-scripts/notes.vim'
+Plugin 'vim-scripts/scratch.vim'
+Plugin 'vim-scripts/simplefold'
+Plugin 'vim-scripts/taglist.vim'
 
 " vim-scripts github repo
 " Bundle 'name-of-script'
@@ -55,6 +54,7 @@ Bundle 'vim-scripts/taglist.vim'
 " Bundle 'git://git.somewhere/something.git'
 
 
+call vundle#end()
 filetype plugin indent on " required
 
 "

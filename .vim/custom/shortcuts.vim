@@ -18,7 +18,7 @@ map <silent> <C-h> ^cw
 map <silent> ;q :q<CR>
 map <silent> ;Q :q!<CR>
 " Display ~/.vimrc in new tab
-nmap <silent> ;v :tabf $MYVIMRC<CR>
+nmap <silent> ;v :tabnew $MYVIMRC<CR>
 
 
 map <leader>d :execute 'NERDTreeFind'<CR>
@@ -41,6 +41,9 @@ nmap <C-H> <C-W>h
 nmap <C-K> <C-W>k
 
 " simplify tabbed navigation with shift
+" nmap <S-H> :bp<CR>
+" nmap <S-L> :bn<CR>
+" simplify tabbed navigation with shift
 nmap <S-H> gT
 nmap <S-L> gt
 
@@ -61,6 +64,7 @@ nmap <F3> :source ~/.vim_session <CR> " And load session with F3
 
 " New tmp file
 map <leader>nt :Sscratch<CR>
+map <leader>gg :GitGutterLineHighlightsToggle<CR>
 
 function! NumberToggle()
   if(&relativenumber == 1)
