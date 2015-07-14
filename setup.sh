@@ -15,3 +15,4 @@ sed -i -e 's/CHANGE_NAME/'"$name"'/' \
 
 . ./tmux/setup.sh
 . ./vim/setup.sh
+. ./utils/setup.sh

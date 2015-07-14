@@ -1,4 +1,4 @@
-echo "# Configuring tmux'
+echo "# Configuring tmux"
 
 if [ -d ~/.tmux.conf ]
 then
