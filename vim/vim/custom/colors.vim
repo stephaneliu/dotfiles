@@ -9,7 +9,8 @@ endif
 set t_Co=256
 let g:solorized_termcolors=256
 set background=dark
-colorscheme solarized
+" colorscheme solarized
+colorscheme default
 
 " Added to support visual gitgutter display
 highlight clear SignColumn
