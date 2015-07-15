@@ -13,6 +13,7 @@ sed -i -e 's/CHANGE_NAME/'"$name"'/' \
   -e 's/CHANGE_EMAIL/'"$email"'/' \
   -e 's/CHANGE_GITHUB/'"$github_username"'/' ~/.gitconfig
 
+. ./ruby/setup.sh
 . ./tmux/setup.sh
 . ./vim/setup.sh
 . ./utils/setup.sh
