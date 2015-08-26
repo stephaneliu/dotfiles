@@ -13,9 +13,11 @@ alias ll='ls -CFHh'
 
 alias chk_jrj="cd ~/somewhere & git pull & git log | echo 'finding jruby jars update: ' + grep skdj223 > /tmp/status"
 ##################################### ruby aliases ####################################################
-alias rc="DISABLE_JRUBY_JOBS=true bundle exec rails c"
+# alias rc="DISABLE_JRUBY_JOBS=true bundle exec rails c"
+alias rc="rails c"
 alias sc="DISABLE_JRUBY_JOBS=true bundle exec spring rails c"
-alias rs="DISABLE_JRUBY_JOBS=true bundle exec rails server --debugger"                          # override reshape bash command
+# alias rs="DISABLE_JRUBY_JOBS=true bundle exec rails server --debugger"                          # override reshape bash command
+alias rs="rails server --debugger"                          # override reshape bash command
 alias ss="DISABLE_JRUBY_JOBS=true bundle exec spring rails s"
 alias bg="DISABLE_JRUBY_JOBS=true bundle exec guard"
 alias pc="pry -r ./config/environment"

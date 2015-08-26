@@ -23,3 +23,11 @@ then
 fi
 echo "Linking rdebugrc"
 ln -sf $PWD/ruby/rdebugrc ~/.rdebugrc
+
+if [ ~/.inputrc ]
+then
+  echo "Renaming .inputrc to .inputrc.orig"
+  mv ~/.inputrc ~/.inputrc.orig
+fi
+echo "Linking inputrc"
+ln -sf $PWD/ruby/inputrc ~/.inputrc

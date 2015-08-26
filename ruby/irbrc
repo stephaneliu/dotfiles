@@ -26,8 +26,8 @@ end
   end
 end
 
-Wirble.init
-Wirble.colorize
+# Wirble.init
+# Wirble.colorize
 
 # irb indent options
 IRB.conf[:AUTO_INDENT]  = true
@@ -94,7 +94,7 @@ class Object
   ANSI_RESET = "\033[0m"
   ANSI_LGRAY = "\033[0;37m"
   ANSI_GRAY = "\033[1;30m"
- 
+
   # Print object's methods
   # Usage: User.first.pm
   def pm(*options)
@@ -102,7 +102,7 @@ class Object
     methods -= Object.methods unless options.include? :more
     filter = options.select {|opt| opt.kind_of? Regexp}.first
     methods = methods.select {|name| name =~ filter} if filter
- 
+
     data = methods.sort.collect do |name|
       method = self.method(name)
       if method.arity == 0

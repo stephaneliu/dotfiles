@@ -66,7 +66,6 @@ export NC='\033[0m'
 # eval "$(direnv hook zsh)"
 
 source /usr/local/share/chruby/chruby.sh
-source /usr/local/share/chruby/auto.sh
 
 export DOCKER_HOST=tcp://localhost:4243
 
