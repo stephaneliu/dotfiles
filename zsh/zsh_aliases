@@ -17,8 +17,9 @@ alias chk_jrj="cd ~/somewhere & git pull & git log | echo 'finding jruby jars up
 alias rc="rails c"
 alias sc="DISABLE_JRUBY_JOBS=true bundle exec spring rails c"
 # alias rs="DISABLE_JRUBY_JOBS=true bundle exec rails server --debugger"                          # override reshape bash command
-alias rs="rails server --debugger"                          # override reshape bash command
-alias ss="DISABLE_JRUBY_JOBS=true bundle exec spring rails s"
+alias rs="rails server"                          # override reshape bash command
+# alias ss="DISABLE_JRUBY_JOBS=true bundle exec spring rails s"
+alias ss="spring stop"
 alias bg="DISABLE_JRUBY_JOBS=true bundle exec guard"
 alias pc="pry -r ./config/environment"
 alias rg="bundle exec rails g"
@@ -85,3 +86,4 @@ alias mr='mysql -u root'
 alias nc='nocorrect'
 alias 'q;'='exit'
 alias g='git'
+alias rescov='git checkout -- coverage/* && git checkout -- coverage/.*'

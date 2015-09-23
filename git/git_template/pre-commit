@@ -6,7 +6,11 @@ filenames = `git diff --cached --name-only --diff-filter=ACM`.split("\n")
 
 filenames.each do |filename|
   if filename.end_with? '_spec.rb' 
-    results = `git diff --cached #{filename} | grep \^+\[\^+\] | grep focus`
+    file_changes = `git diff --cached #{filename}`
+    results = `#{file_changes} | grep \^+\[\^+\] | grep focus`
+    spec_hits.push filename if $? == 0 # $? - status of last external process run
+
+    results = `#{file_changes} | grep \^+\[\^+\] | grep binding.pry`
     spec_hits.push filename if $? == 0 # $? - status of last external process run
   end
 end
@@ -25,7 +29,7 @@ if spec_hits.any?
   # background - 40m - 47m
   #
   # 0m - reset 
-  puts "\e[1;37m\e[41m>>> Commit Aborted! Remove `focus` from the following specs \e[0m"
+  puts "\e[1;37m\e[41m>>> Commit Aborted! Remove `focus or binding.pry` from the following specs \e[0m"
   puts spec_hits.join("\n")
 
   exit 1

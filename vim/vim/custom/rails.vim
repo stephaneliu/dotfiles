@@ -1,10 +1,11 @@
 " Rails Projections - 
 
-" %s: original
-" %S: camelized
-" %p: pluralized
-" %i: singulairized
-" %h: humanized
+" `%s`: `{}` (Original)
+" `%S`: `{camelcase|capitalize|colons}` (Ruby class name)
+" `%S`: `{camelcase|capitalize|dot}` (JavaScript class name)
+" `%p`: `{plural}`
+" `%i`: `{singular}`
+" `%h`: `{underscore|capitalize|blank}`
 "
 " Affinity
 " affinity: "collection" - Corresponds to plural
@@ -14,6 +15,9 @@
 "
 " globals
 let g:rails_projections = {
+  \ "config/database.yml": {
+  \   "command":   "database"
+  \ },
   \ "test/factories/*.rb": {
   \   "command":   "factory",
   \   "affinity":  "collection",
@@ -50,51 +54,80 @@ let g:rails_projections = {
   \ "app/queries/*_query.rb": {
   \   "command":   "query",
   \   "affinity":  "collection",
-  \   "test":      "spec/queries/%i_spec.rb",
-  \   "template":  "class %SQuery\n def initialize \n end\nend"
+  \   "test":      "spec/queries/%s_query_spec.rb",
+  \   "template":  "class %SQuery\n  def initialize\n  end\nend"
   \ },
   \ "app/workers/*_worker.rb": {
   \   "command":   "worker",
   \   "affinity":  "collection",
   \   "test":      "spec/workers/%i_spec.rb",
-  \   "template":  "class %SWorker\n def initialize \n end\nend"
+  \   "template":  "class %SWorker\n  def initialize\n  end\nend"
   \ },
   \ "app/policies/*_policy.rb": {
   \   "command":   "policy",
   \   "affinity":  "collection",
   \   "test":      "spec/policies/%i_spec.rb",
-  \   "template":  "class %SPolicy\n def initialize \n end\nend"
+  \   "template":  "class %SPolicy\n  def initialize\n  end\nend"
   \ },
   \ "app/view_models/*_view.rb": {
   \   "command":   "view_model",
   \   "affinity":  "collection",
   \   "test":      "spec/view_models/%i_spec.rb",
-  \   "template":  "class %SView\n def initialize \n end\nend"
+  \   "template":  "class %SView\n  def initialize\n  end\nend"
   \ },
   \ "app/forms/*.rb": {
   \   "command":   "form",
   \   "affinity":  "collection",
   \   "test":      "spec/form/%i_spec.rb",
-  \   "template":  "class %SForm\n def initialize \n end\nend"
+  \   "template":  "class %SForm\n  def initialize\n  end\nend"
+  \ },
+  \ "spec/views/*.haml_spec.rb": {
+  \   "command":   "sv",
+  \   "template":  "require 'rails_helper'\nRSpec.describe \'%s\' do\n\nend",
+  \   "alternate": "app/views/%s.haml",
+  \   "keywords": "before describe context"
   \ },
   \ "spec/views/*.html.haml_spec.rb": {
   \   "command":   "sv",
-  \   "template":  "require 'rails_helper'\n\nRSpec.describe \'%s\' do\n\nend",
+  \   "template":  "require 'rails_helper'\nRSpec.describe \'%s\' do\n\nend",
+  \   "alternate": "app/views/%s.html.haml",
+  \   "keywords": "before describe context"
+  \ },
+  \ "spec/views/*.html.erb_spec.rb": {
+  \   "command":   "sv",
+  \   "template":  "require 'rails_helper'\nRSpec.describe \'%s\' do\n\nend",
+  \   "alternate": "app/views/%s.html.erb",
+  \   "keywords": "before describe context"
+  \ },
+  \ "spec/views/*.xml.builder_spec.rb": {
+  \   "command":   "sv",
+  \   "template":  "require 'rails_helper'\nRSpec.describe \'%s\' do\n\nend",
+  \   "alternate": "app/views/%s.xml.builder",
   \   "keywords": "before describe context"
   \ },
   \ "spec/features/*_spec.rb": {
   \   "command":   "sf",
-  \   "template":  "require 'features_helper'\n\nRSpec.feature \'User intereacts\' do\n\nend",
+  \   "template":  "require 'features_helper'\nRSpec.feature \'User intereacts\' do\n\nend",
   \   "keywords": "background given scenario"
   \ },
   \ "spec/models/*_spec.rb": {
   \   "command":   "sm",
-  \   "template":  "require 'rails_helper'\n\nRSpec.describe %S do\n\nend",
+  \   "template":  "require 'rails_helper'\nRSpec.describe %S do\n\nend",
   \   "keywords": "before describe context"
   \ },
   \ "spec/controllers/*_controller_spec.rb": {
   \   "command":  "sc",
-  \   "template": "require 'rails_helper'\n\nRSpec.describe %SController do\n\nend",
+  \   "template": "require 'rails_helper'\nRSpec.describe %SController do\n\nend",
+  \   "keywords": "before describe context"
+  \ },
+  \ "spec/queries/*_query_spec.rb": {
+  \   "command":  "sq",
+  \   "template": "require 'rails_helper'\nRSpec.describe %SQuery do\n\nend",
+  \   "keywords": "before describe context"
+  \ },
+  \ "spec/services/*_service_spec.rb": {
+  \   "command":  "ss",
+  \   "template": "require 'rails_helper'\nRSpec.describe %SService do\n\nend",
   \   "keywords": "before describe context"
   \ }
 \ }
