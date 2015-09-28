@@ -36,6 +36,11 @@ let g:rails_projections = {
   \   "template":  "FactoryGirl.define do\n  factory :%i do\n  end\nend",
   \   "keywords":  "factory sequence"
   \ },
+  \ "app/finders/*_finder.rb": {
+  \   "command":   "finder",
+  \   "test":      "spec/finders/%i_spec.rb",
+  \   "template":  "class %SFinder\n  def initialize\n  end\nend"
+  \ },
   \ "app/services/*.rb": {
   \   "command":   "service",
   \   "test":      "spec/services/%i_spec.rb",
@@ -83,51 +88,57 @@ let g:rails_projections = {
   \ },
   \ "spec/views/*.haml_spec.rb": {
   \   "command":   "sv",
-  \   "template":  "require 'rails_helper'\nRSpec.describe \'%s\' do\n\nend",
+  \   "template":  "require 'rails_helper'\n\nRSpec.describe \'%s\' do\n\nend",
   \   "alternate": "app/views/%s.haml",
   \   "keywords": "before describe context"
   \ },
   \ "spec/views/*.html.haml_spec.rb": {
   \   "command":   "sv",
-  \   "template":  "require 'rails_helper'\nRSpec.describe \'%s\' do\n\nend",
+  \   "template":  "require 'rails_helper'\n\nRSpec.describe \'%s\' do\n\nend",
   \   "alternate": "app/views/%s.html.haml",
   \   "keywords": "before describe context"
   \ },
   \ "spec/views/*.html.erb_spec.rb": {
   \   "command":   "sv",
-  \   "template":  "require 'rails_helper'\nRSpec.describe \'%s\' do\n\nend",
+  \   "template":  "require 'rails_helper'\n\nRSpec.describe \'%s\' do\n\nend",
   \   "alternate": "app/views/%s.html.erb",
   \   "keywords": "before describe context"
   \ },
   \ "spec/views/*.xml.builder_spec.rb": {
   \   "command":   "sv",
-  \   "template":  "require 'rails_helper'\nRSpec.describe \'%s\' do\n\nend",
+  \   "template":  "require 'rails_helper'\n\nRSpec.describe \'%s\' do\n\nend",
   \   "alternate": "app/views/%s.xml.builder",
   \   "keywords": "before describe context"
   \ },
-  \ "spec/features/*_spec.rb": {
+  \ "spec/finders/*_finder_spec.rb": {
   \   "command":   "sf",
-  \   "template":  "require 'features_helper'\nRSpec.feature \'User intereacts\' do\n\nend",
+  \   "alternate": "app/finders/%s.rb",
+  \   "template":  "require 'rails_helper'\n\nRSpec.describe %SFinder do\n\nend",
+  \   "keywords": "before describe context"
+  \ },
+  \ "spec/features/*_spec.rb": {
+  \   "command":   "sfe",
+  \   "template":  "require 'features_helper'\n\nRSpec.feature \'User intereacts\' do\n\nend",
   \   "keywords": "background given scenario"
   \ },
   \ "spec/models/*_spec.rb": {
   \   "command":   "sm",
-  \   "template":  "require 'rails_helper'\nRSpec.describe %S do\n\nend",
+  \   "template":  "require 'rails_helper'\n\nRSpec.describe %S do\n\nend",
   \   "keywords": "before describe context"
   \ },
   \ "spec/controllers/*_controller_spec.rb": {
   \   "command":  "sc",
-  \   "template": "require 'rails_helper'\nRSpec.describe %SController do\n\nend",
+  \   "template": "require 'rails_helper'\n\nRSpec.describe %SController do\n\nend",
   \   "keywords": "before describe context"
   \ },
   \ "spec/queries/*_query_spec.rb": {
   \   "command":  "sq",
-  \   "template": "require 'rails_helper'\nRSpec.describe %SQuery do\n\nend",
+  \   "template": "require 'rails_helper'\n\nRSpec.describe %SQuery do\n\nend",
   \   "keywords": "before describe context"
   \ },
   \ "spec/services/*_service_spec.rb": {
   \   "command":  "ss",
-  \   "template": "require 'rails_helper'\nRSpec.describe %SService do\n\nend",
+  \   "template": "require 'rails_helper'\n\nRSpec.describe %SService do\n\nend",
   \   "keywords": "before describe context"
   \ }
 \ }

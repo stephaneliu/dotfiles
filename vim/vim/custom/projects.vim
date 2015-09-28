@@ -10,9 +10,7 @@ nmap <leader>w8 :e ~/gh/flylow/app/models/fare.rb<CR>
 nmap <leader>w9 :e ~/rails-projects/netops-proxy/app/models/nrt_link.rb<CR>
 nmap <leader>g1 :e ~/rails-projects/gitosis-oama/project_groups/
 
-nmap <leader>t1 :tabnew note:taskpaper<CR>:split ~/Dropbox/TaskPaper/2012.taskpaper<CR>:res +15<CR>
-nmap <leader>t2 :tabnew note:taskpaper<CR>:split ~/Dropbox/TaskPaper/netops.taskpaper<CR>:res +15<CR>
-nmap <leader>t3 :tabnew note:taskpaper<CR>:split ~/Dropbox/TaskPaper/iatp.taskpaper<CR>:res +15<CR>
-nmap <leader>t5 :tabnew note:taskpaper<CR>:split ~/Dropbox/TaskPaper/cams.taskpaper<CR>:res +15<CR>
-nmap <leader>t6 :tabnew note:taskpaper<CR>:split ~/Dropbox/TaskPaper/hicrane.taskpaper<CR>:res +15<CR>
-nmap <leader>t7 :tabnew note:taskpaper<CR>:split ~/Dropbox/TaskPaper/kcr.taskpaper<CR>:res +15<CR>
+nmap <leader>t1 :tabnew note:taskpaper<CR>:split ~/gh/notes/TaskPaper/2015.taskpaper<CR>:res +15<CR>
+nmap <leader>t2 :tabnew note:taskpaper<CR>:split ~/gh/notes/TaskPaper/netops.taskpaper<CR>:res +15<CR>
+nmap <leader>t3 :tabnew note:taskpaper<CR>:split ~/gh/notes/TaskPaper/iatp.taskpaper<CR>:res +15<CR>
+nmap <leader>t8 :tabnew note:taskpaper<CR>:split ~/gh/notes/TaskPaper/flylow.taskpaper<CR>:res +15<CR>
