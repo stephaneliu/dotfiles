@@ -24,8 +24,8 @@ nmap <silent> ;v :tabnew $MYVIMRC<CR>
 map <leader>d :execute 'NERDTreeFind'<CR>
 map <leader>tl :execute 'TlistToggle'<CR>
 " relative and absolute rulers
-nmap <leader>rn :set rnu<CR>
-nmap <leader>an :set nu<CR>
+nmap <leader>rn :set rnu!<CR>
+nmap <leader>an :set rnu!<CR>
 "convert hash rockets to json style
 nmap <leader>hr :%s/:\([^ ]*\)\(\s*\)=>/\1:/g<CR>
 vmap <leader>hr :s/:\([^ ]*\)\(\s*\)=>/\1:/g<CR>
@@ -76,9 +76,8 @@ endfunc
 
 noremap <C-n> :call NumberToggle()<cr>
 
-:au FocusLost * :set number
-:au FocusGained * :set rnu!
-"
+" :au FocusLost * :set number
+" :au FocusGained * :set rnu!
 " autocmd InsertEnter * :set number
 " autocmd InsertLeave * :set rnu!
 

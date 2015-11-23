@@ -62,6 +62,18 @@ let g:rails_projections = {
   \   "test":      "spec/queries/%s_query_spec.rb",
   \   "template":  "class %SQuery\n  def initialize\n  end\nend"
   \ },
+  \ "app/nulls/null_*.rb": {
+  \   "command":   "null",
+  \   "affinity":  "resource",
+  \   "test":      "spec/nulls/null_%s_spec.rb",
+  \   "template":  "class %S\n  def initialize\n  end\nend"
+  \ },
+  \ "spec/nulls/null_*_spec.rb": {
+  \   "command":   "sn",
+  \   "template":  "require 'spec_helper'\n\nRSpec.describe \'%s\' do\n\nend",
+  \   "alternate": "app/nulls/null_%s.rb",
+  \   "keywords": "before describe context"
+  \ },
   \ "app/workers/*_worker.rb": {
   \   "command":   "worker",
   \   "affinity":  "collection",

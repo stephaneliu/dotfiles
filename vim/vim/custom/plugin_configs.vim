@@ -1,7 +1,7 @@
 runtime! macros/matchit.vim                           " Find matching ( ), [ ], { } and def/end
 let g:notes_suffix = '.txt'                           " Easy notes config
-let g:notes_directories= ['~/gh/notes/wiki']
-let g:calendar_diary='~/gh/notes/diary'               " Calendar Diary
+let g:notes_directories= ['~/code/notes/wiki']
+let g:calendar_diary='~/code/notes/diary'               " Calendar Diary
 let NERDTreeQuitOnOpen = 1                            " NERDTree config
 let NERDTreeShowHidden = 1
 let g:indent_guides_auto_colors = 1
@@ -64,3 +64,6 @@ autocmd User fugitive
 
 " gitgutter
 let g:gitgutter_highlight_lines = 0
+
+" ctrlp
+set wildignore+=*/tmp/*,*/log/*,*.swp,*.zip,*/coverage/*
