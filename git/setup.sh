@@ -3,8 +3,7 @@ then
   echo "Renaming .gitconfig to .gitconfig.orig"
   mv ~/.gitconfig ~/.gitconfig.orig
 fi
-echo "Copying gitconfig to home directory"
-cp $PWD/gitconfig ~/.gitconfig
+
 
 if [ -d ~/.git_template ]
 then
@@ -15,28 +14,30 @@ echo "Linking git_template"
 ln -sf $PWD/git_template ~/.git_template
 
 
-if [ -e ~/.gitignore ]
-then
-  echo "Renaming .gitignore to .gitirgnore.orig"
-  mv ~/.gitignore ~/.gitignore.orig
-fi
-echo "Linking gitignore"
-ln -sf $PWD/gitignore ~/.gitignore
-
-
 if [ -e ~/.gitignore_global ]
 then
   echo "Renaming .gitignore_global to .gitirgnore_global.orig"
   mv ~/.gitignore_global ~/.gitignore_global.orig
 fi
 echo "Linking gitignore_global"
-ln -sf $PWD/global_ignores/gitignore ~/.gitignore
+ln -sf $PWD/gitignore_global ~/.gitignore_global
+
+
+echo "Configuring git"
+echo "Enter your full name, followed by [ENTER]:"
+read name
+
+echo "Enter your email address, followed by [ENTER]:"
+read email
+
+echo "Enter your github username, followed by [ENTER]:"
+read github_username
 
 
 git config --global init.templatefir '~/.git_template'
-git config --global user.name 'CHANGE_NAME'
-git config --global user.email 'CHANGE_EMAIL'
-git config --global github.user 'CHANGE_GITHUB'
+git config --global user.name "$name"
+git config --global user.email "$email"
+git config --global github.user "$github_username"
 git config --global color.ui 'auto'
 git config --global color.branch.current 'yellow reverse'
 git config --global color.branch.local 'yellow'
@@ -79,22 +80,3 @@ git config --global merge.tool 'vimdiff'
 git config --global web.browser 'firefox'
 git config --global credential.helper 'cache --timeout=3600'
 git config --global push.default 'matching'
-
-echo "Configuring git"
-echo "Enter your full name, followed by [ENTER]:"
-read name
-
-echo "Enter your email address, followed by [ENTER]:"
-read email
-
-echo "Enter your github username, followed by [ENTER]:"
-read github_username
-
-sed -i -e 's/CHANGE_NAME/'"$name"'/' ~/.gitconfig
-sed -i -e 's/CHANGE_EMAIL/'"$email"'/' ~/.gitconfig
-sed -i -e 's/CHANGE_GITHUB/'"$github_username"'/' ~/.gitconfig
-
-if [ -e ~/.gitconfig-e ]
-then
-  rm ~/.gitconfig-e
-fi
