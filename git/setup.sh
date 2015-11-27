@@ -3,14 +3,14 @@ then
   echo "Renaming .git_template to .git_template.orig"
   mv ~/.git_template ~/.git_template.orig
 fi
-ln -sf $PWD/git/git_template ~/.git_template
+ln -sf $PWD/git_template ~/.git_template
 
 if [ -e ~/.gitignore ]
 then
   echo "Renaming .gitignore to .gitirgnore.orig"
   mv ~/.gitignore ~/.gitignore.orig
 fi
-ln -sf $PWD/git/global_ignores/gitignore ~/.gitignore
+ln -sf $PWD/global_ignores/gitignore ~/.gitignore
 
 git config --global init.templatefir '~/.git_template'
 git config --global user.name 'CHANGE_NAME'
