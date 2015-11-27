@@ -1,0 +1,25 @@
+*~
+.DS_Store
+
+# scm revert files
+**.orig
+
+# Mac finder artifacts
+.DS_Store
+
+# Netbeans project directory
+/nbproject/
+
+# RubyMine project files
+.idea
+
+# Textmate project files
+/*.tmproj
+
+# vim artifacts
+**.swp
+
+# Ignore application configuration
+/config/application.yml
+
+.trash

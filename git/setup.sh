@@ -1,16 +1,37 @@
+if [ -e ~/.gitconfig ]
+then
+  echo "Renaming .gitconfig to .gitconfig.orig"
+  mv ~/.gitconfig ~/.gitconfig.orig
+fi
+echo "Copying gitconfig to home directory"
+cp $PWD/gitconfig ~/.gitconfig
+
 if [ -d ~/.git_template ]
 then
   echo "Renaming .git_template to .git_template.orig"
   mv ~/.git_template ~/.git_template.orig
 fi
+echo "Linking git_template"
 ln -sf $PWD/git_template ~/.git_template
+
 
 if [ -e ~/.gitignore ]
 then
   echo "Renaming .gitignore to .gitirgnore.orig"
   mv ~/.gitignore ~/.gitignore.orig
 fi
+echo "Linking gitignore"
+ln -sf $PWD/gitignore ~/.gitignore
+
+
+if [ -e ~/.gitignore_global ]
+then
+  echo "Renaming .gitignore_global to .gitirgnore_global.orig"
+  mv ~/.gitignore_global ~/.gitignore_global.orig
+fi
+echo "Linking gitignore_global"
 ln -sf $PWD/global_ignores/gitignore ~/.gitignore
+
 
 git config --global init.templatefir '~/.git_template'
 git config --global user.name 'CHANGE_NAME'
@@ -69,7 +90,11 @@ read email
 echo "Enter your github username, followed by [ENTER]:"
 read github_username
 
-sed -i -e 's/CHANGE_NAME/'"$name"'/' \
-  -e 's/CHANGE_EMAIL/'"$email"'/' \
-  -e 's/CHANGE_GITHUB/'"$github_username"'/' ~/.gitconfig
+sed -i -e 's/CHANGE_NAME/'"$name"'/' ~/.gitconfig
+sed -i -e 's/CHANGE_EMAIL/'"$email"'/' ~/.gitconfig
+sed -i -e 's/CHANGE_GITHUB/'"$github_username"'/' ~/.gitconfig
 
+if [ -e ~/.gitconfig-e ]
+then
+  rm ~/.gitconfig-e
+fi

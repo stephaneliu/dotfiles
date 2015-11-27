@@ -1,0 +1,61 @@
+[init]
+	templatefir = ~/.git_template
+[user]
+	name = CHANGE_NAME
+	email = CHANGE_EMAIL
+[github]
+	user = CHANGE_GITHUB
+[color]
+	ui = auto
+[color "branch"]
+	current = yellow reverse
+	local = yellow
+	remote = green
+[color "diff"]
+	meta = yellow bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
+[color "status"]
+	added = yellow
+	changed = green
+	untracked = cyan
+[core]
+	whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
+	quotepath = false
+	excludesfile = ~/.gitignore
+	ff = only
+[alias]
+	a = add --patch
+	br = branch
+	st = status
+	ci = commit
+	co = checkout
+	df = diff
+	lg = log -p
+	lgg = log --oneline
+	lolauth = log --graph --decorate --pretty=short --abbrev-commit
+	lol = log --graph --decorate --pretty=oneline --abbrev-commit
+	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+	lolaauth = log --graph --decorate --pretty=short --abbrev-commit --all
+	mg = merge --no-ff
+	unstage = reset HEAD
+	up = pull --rebase
+	undo = reset --soft HEAD^
+	ignore = update-index --assume-unchanged
+	unignore = update-index --no-assume-unchanged
+	ignored = !git ls-files -v | grep \"^[[:lower:]]\"
+	tags = tag --list
+[mergetool]
+	keepBackup = false
+[rerere]
+	enabled = true
+[merge]
+	tool = vimdiff
+[web]
+	browser = firefox
+[credential]
+	helper = cache --timeout=3600
+[push]
+	default = matching

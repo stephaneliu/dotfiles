@@ -1,6 +1,6 @@
 here=$PWD
-# cd git
-# . ./setup.sh
+cd git
+. ./setup.sh
 # cd $here
 # cd ruby
 # . ./setup.sh
