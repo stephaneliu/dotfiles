@@ -10,6 +10,9 @@ cd tmux
 # cd $here
 # cd vim
 # . ./setup.sh
+cd $here
+cd zsh
+. ./setup.sh
 # cd $here
 # cd utils
 # . ./setup.sh

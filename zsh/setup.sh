@@ -1,11 +1,16 @@
-if [ -d ~/.zsh_aliases ]
+if [ -e ~/.zsh_aliases ]
 then
-  mv ~/.zsh_aliases ~/.zsh_aliases_orig
+  echo "Renaming zsh_aliases to zsh_aliases.orig"
+  mv ~/.zsh_aliases ~/.zsh_aliases.orig
 fi
-ln -sf $PWD/zsh/zsh_aliases ~/.zsh_aliases
+echo "Linking zsh_aliases"
+ln -sf $PWD/zsh_aliases ~/.zsh_aliases
 
-if [ -d ~/.zshrc ]
+
+if [ -e ~/.zshrc ]
 then
-  mv ~/.zshrc ~/.zshrc_orig
+  echo "Renaming zshrc to zshrc.orig"
+  mv ~/.zshrc ~/.zshrc.orig
 fi
-ln -sf $PWD/zsh/zshrc ~/.zshrc
+echo "Linking zshrc"
+ln -sf $PWD/zshrc ~/.zshrc
