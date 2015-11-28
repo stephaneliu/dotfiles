@@ -23,8 +23,11 @@ then
   echo "Installing zsh"
   brew install zsh
 
-  echo "Install git"
+  echo "Installing git"
   brew install git
+
+  echo "installing reattach-to-user-namespace (copy/paste in tmux to mac buffer)"
+  brew install reattach-to-user-namespace
 fi
 
 if [ "$platform" == "Linux" ]
