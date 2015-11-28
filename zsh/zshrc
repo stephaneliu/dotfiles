@@ -12,7 +12,8 @@ ZSH_THEME="robbyrussell"
 COMPLETION_WAITING_DOTS="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-plugins=(colored-man code-dir command-not-found chucknorris docker git git-flow history-substring-search tmuxinator vi-mode web-search z)
+# plugins=(colored-man code-dir command-not-found chucknorris docker git git-flow history-substring-search tmuxinator vi-mode web-search z)
+plugins=(colored-man code-dir command-not-found docker git git-flow history-substring-search tmuxinator vi-mode web-search z)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -21,20 +22,25 @@ source $ZSH/oh-my-zsh.sh
 # export TERM=xterm-256color
 export TERM=screen-256color
 
-source /home/sliu/.zsh_aliases
+source /$HOME/.zsh_aliases
 export PATH=./bin:/home/sliu/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:$PATH
 [[ -s "$HOME/.tmuxinator/scripts/tmuxinator" ]] && source $HOME/.tmuxinator/scripts/tmuxinator
 
 # export USE_BUNDLER=force
 export EDITOR=vim
 export VISUAL=vim
-export JAVA_HOME=/home/sliu/bin/jre1.7.0_45
+
+if [[ -e "$HOME/bin/jre1.7.0_45" ]]
+then
+  export JAVA_HOME=$HOME/bin/jre1.7.0_45
+fi
 
 bindkey -M viins 'jk' vi-cmd-mode
 bindkey -M viins 'kj' vi-cmd-mode
 
 # ANSI Colors
 # export BLACK='\033[0;30m' # doesn't work well with solarize
+# USAGE: printf "I ${LTRED}heart ${RED}Ruby\n"
 export RED='\033[0;31m'
 export GREEN='\033[0;32m'
 export BROWN='\033[0;33m'
@@ -51,17 +57,13 @@ export LTPURPLE='\033[1;35m'
 # export LTCYAN='\033[1;36m' # doesn't work well with solarize
 export WHITE='\033[1;37m'
 export NC='\033[0m'
-# USAGE: printf "I ${LTRED}heart ${RED}Ruby\n"
 
 # export SSL_CERT_FILE=/usr/local/etc/openssl/certs/cert.pem
 
 ### Added by the Heroku Toolbelt
 #export PATH="/usr/local/heroku/bin:$PATH"
 
-# Removed in favor of .rvm/hooks/after_cd_bundler
-# Need to set .bundle/config file with
-# BUNDLE_BIN: ./bin
-#
+# Removed in favor of envrc
 # See github.com/zimbatm/direnv
 # eval "$(direnv hook zsh)"
 
@@ -72,7 +74,7 @@ export DOCKER_HOST=tcp://localhost:4243
 # default ruby
 chruby ruby-2.2.2
 
-chuck_cow
+# chuck_cow
 
 eval "$(direnv hook zsh)"
 

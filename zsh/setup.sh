@@ -1,3 +1,21 @@
+if [ -e ~/.editrc ]
+then
+  echo "Renaming editrc to editrc.orig"
+  mv ~/.editrc ~/.edit_rc.orig
+fi
+echo "Linking editrc"
+ln -sf $PWD/editrc ~/.editrc
+
+
+if [ -e ~/.inputrc ]
+then
+  echo "Renaming .inputrc to .inputrc.orig"
+  mv ~/.inputrc ~/.inputrc.orig
+fi
+echo "Linking inputrc"
+ln -sf $PWD/inputrc ~/.inputrc
+
+
 if [ -e ~/.zsh_aliases ]
 then
   echo "Renaming zsh_aliases to zsh_aliases.orig"

@@ -34,8 +34,10 @@ IRB.conf[:AUTO_INDENT]  = true
 IRB.conf[:SAVE_HISTORY] = 1000
 IRB.conf[:EVAL_HISTORY] = 200
 
-# Method to clear rails console like bash
+# Methods to clear rails console like bash
 def clear; system 'clear'; end
+def gg; system 'clear'; end
+
 # map to awesome_print - hash format of attributes
 def p(arg); ap(arg); nil; end
 def r; reload!; end

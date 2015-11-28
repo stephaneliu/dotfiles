@@ -1,3 +1,5 @@
+echo "# Configuring tmux"
+
 platform=`uname`
 
 echo "# Configuring tmux"

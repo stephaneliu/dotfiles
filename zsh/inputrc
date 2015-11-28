@@ -1,0 +1,27 @@
+set editing-mode vi
+set keymap vi
+
+# Make sure we don't output everythin on 1 line
+set horizontal-scroll-mode Off
+
+# Enable 8bit input
+set meta-flag On
+set input-meta On
+
+# Turn off 8th bit stripping
+set convert-meta Off
+
+# Keep the 8th bith for display
+set output-meta On
+
+# none, visible or audible
+# set bell-style visible
+
+
+$if mode=vi
+  set keymap vi-command
+  "ii": vi-insertion-mode
+  set keymap vi-insert
+  "jk": vi-movement-mode
+  "kj": vi-movement-mode
+$endif

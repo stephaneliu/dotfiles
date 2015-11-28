@@ -41,10 +41,9 @@ alias docker="sudo docker"
 alias which="which -a"
 ##################################### my specific needs ####################################################
 alias r1="cd ~/code"                              # location of rails_project 
-alias g1="cd ~/github/vi/"
 alias g2="cd ~/code/vim_notes/"
-alias g3="cd ~/github/tmux.conf"
-alias g4="cd ~/github/git_sync"
+alias g3="cd ~/code/tmux.conf"
+alias g4="cd ~/code/git_sync"
 alias w1="cd ~/code/"
 alias w2="cd ~/code/netops/src"
 alias w2e="cd ~/code/netops/src && vi app/models/event.rb" # location of netops

@@ -1,3 +1,5 @@
+echo "# Configuring git"
+
 if [ -e ~/.gitconfig ]
 then
   echo "Renaming .gitconfig to .gitconfig.orig"

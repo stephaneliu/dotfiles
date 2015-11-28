@@ -1,33 +1,27 @@
 echo "# Configuring ruby"
 
-if [ ~/.gemrc ]
+if [ -e ~/.gemrc ]
 then
   echo "Renaming .gemrc to .gemrc.orig"
   mv ~/.gemrc ~/.gemrc.orig
 fi
 echo "Linking .gemrc"
-ln -sf $PWD/ruby/gemrc ~/.gemrc
+ln -sf $PWD/gemrc ~/.gemrc
 
-if [ ~/.irbrc ]
+
+if [ -e ~/.irbrc ]
 then
   echo "Renaming .irbrc to .irbrc.orig"
   mv ~/.irbrc ~/.irbrc.orig
 fi
 echo "Linking irbrc"
-ln -sf $PWD/ruby/irbrc ~/.irbrc
+ln -sf $PWD/irbrc ~/.irbrc
 
-if [ ~/.rdebugrc ]
+
+if [ -e ~/.rdebugrc ]
 then
   echo "Renaming .rdebugrc to .rdebugrc.orig"
   mv ~/.rdebugrc ~/.rdebugrc.orig
 fi
 echo "Linking rdebugrc"
-ln -sf $PWD/ruby/rdebugrc ~/.rdebugrc
-
-if [ ~/.inputrc ]
-then
-  echo "Renaming .inputrc to .inputrc.orig"
-  mv ~/.inputrc ~/.inputrc.orig
-fi
-echo "Linking inputrc"
-ln -sf $PWD/ruby/inputrc ~/.inputrc
+ln -sf $PWD/rdebugrc ~/.rdebugrc
