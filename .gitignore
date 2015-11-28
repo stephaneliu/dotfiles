@@ -1,3 +1,4 @@
-vim/vim/bundle/
+<<<<<<< HEAD
+/vim/bundle/
 .tmuxinator/*.yml
 !default.yml
