@@ -43,13 +43,17 @@ fi
 
 if [ -d $HOME/.vim/bundle/Vundle.vim ]
 then
-  echo "Updating vundle"
-  cd $HOME/.vim/bundle/Vundle.vim
-  git pull
-  cd -
+  echo "Bundle exists"
 else
   echo "Installing vundle (plugin manager for vim)"
   git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
 fi
 
 vim +PluginInstall +qall
+
+if [ -L $PWD/vim/.vim ]
+then
+  echo "Cleaning up tmp files"
+  rm -f $PWD/vim/.vim
+  rm -f $PwD/vim/vim
+fi
