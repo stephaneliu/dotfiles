@@ -1,7 +1,7 @@
-Dotfiles
+# Dotfiles
 
 For the world
 
-*Intall*
+## Install
 
 > ./setup.sh
