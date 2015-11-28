@@ -19,6 +19,12 @@ then
 
   echo "Installing the_silver_searcher"
   brew install the_silver_searcher
+
+  echo "Installing zsh"
+  brew install zsh
+
+  echo "Install git"
+  brew install git
 fi
 
 if [ "$platform" == "Linux" ]

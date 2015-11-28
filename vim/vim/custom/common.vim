@@ -10,8 +10,8 @@ set notimeout
 set ttimeout
 set timeoutlen=50
 
-set backupdir=~/tmp/vi_backup
-set directory=~/tmp/vi_swap
+set backupdir=~/tmp/vi-backup
+set directory=~/tmp/vi-swap
 
 set splitbelow
 set splitright

@@ -2,8 +2,10 @@ set term=screen-256color-bce
 let g:solorized_termcolors=256
 set t_Co=256
 set background=dark
+
+let s:uname = system("uname -s")
+
 colorscheme solarized
-" colorscheme default
 
 " Added to support visual gitgutter display
 highlight clear SignColumn
