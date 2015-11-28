@@ -2,6 +2,6 @@ Dotfiles
 
 For the world
 
-* Intall *
+*Intall*
 
 > ./setup.sh
