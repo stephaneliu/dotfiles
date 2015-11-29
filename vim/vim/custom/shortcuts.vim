@@ -76,10 +76,10 @@ endfunc
 
 noremap <C-n> :call NumberToggle()<cr>
 
-" :au FocusLost * :set number
-" :au FocusGained * :set rnu!
-" autocmd InsertEnter * :set number
-" autocmd InsertLeave * :set rnu!
+:au FocusLost * :set number
+:au FocusGained * :set rnu!
+autocmd InsertEnter * :set number
+autocmd InsertLeave * :set rnu!
 
 nnoremap <Left> :echoe "Use h"<CR>
 nnoremap <Right> :echoe "Use l"<CR>
