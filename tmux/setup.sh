@@ -13,7 +13,7 @@ fi
 echo "Linking tmux.conf"
 ln -sf $PWD/tmux.conf ~/.tmux.conf
 
-if [ "$platform" == "Darwin" ]
+if [[ "$platform" == "Darwin" ]]
 then 
   if [ -e ~/.tmux-osx.conf ]
   then
