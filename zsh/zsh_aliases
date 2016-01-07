@@ -91,3 +91,4 @@ alias netr='nmcli networking off && nmcli networking on'
 alias t='exit'
 alias code='cd ~/code'
 alias rmutant="RAILS_ENV=test bundle exec mutant -r ./config/environment --use rspec $1"
+alias inet='ifconfig | grep inet'
