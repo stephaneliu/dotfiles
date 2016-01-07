@@ -148,6 +148,25 @@ let g:rails_projections = {
   \   "template": "require 'rails_helper'\n\nRSpec.describe %SQuery do\n\nend",
   \   "keywords": "before describe context"
   \ },
+  \ "spec/routing/*_routing_spec.rb": {
+  \   "command":  "sroute",
+  \   "template": "require 'rails_helper'\n\nRSpec.describe %SRouting do\n\nend",
+  \   "keywords": "before describe context"
+  \ },
+  \ "lib/tasks/*.rake": {
+  \   "command":   "task",
+  \   "affinity":  "resource",
+  \   "alternate": "spec/lib/tasks/%s_rake_spec.rb",
+  \   "test":      "spec/lib/tasks/%s_rake_spec.rb",
+  \   "template":  "namespace :%i do\n desc '[description]'\n task something: :environment do\n end\nend",
+  \   "keywords":  "namespace desc task"
+  \ },
+  \ "spec/lib/tasks/*_rake_spec.rb": {
+  \   "command":  "stask",
+  \   "template": "require 'rails_helper'\n\nRSpec.describe '%i:[task]' do\n  include_context 'rake'\n\nend",
+  \   "alternate": "lib/tasks/%s.rake",
+  \   "keywords": "before describe context"
+  \ },
   \ "spec/services/*_service_spec.rb": {
   \   "command":  "ss",
   \   "template": "require 'rails_helper'\n\nRSpec.describe %SService do\n\nend",
