@@ -2,8 +2,6 @@ echo "# Configuring tmux"
 
 platform=`uname`
 
-echo "# Configuring tmux"
-
 if [ -e ~/.tmux.conf ]
 then
   echo "Renaming tmux.conf to tmux.conf_orig"

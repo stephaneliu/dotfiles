@@ -72,7 +72,7 @@ source /usr/local/share/chruby/chruby.sh
 export DOCKER_HOST=tcp://localhost:4243
 
 # default ruby
-chruby ruby-2.2.2
+chruby ruby-2.3.0
 
 # chuck_cow
 

@@ -78,7 +78,7 @@ alias bec='bundle exec rails c'
 alias beg='bundle exec rails g'
 alias wg='while bundle exec guard; echo "Restarting Guard..."; do echo; done'
 alias mr='mysql -u root'
-alias tmux='tmux attach'
+# alias tmux='tmux attach'
 # alias tmux='direnv exec / tmux'
 # alias tmux='tmux -2'    # force support for 256 colors - tput colors
 # disable correction for...
