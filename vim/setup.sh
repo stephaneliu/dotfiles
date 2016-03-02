@@ -6,6 +6,10 @@ then
   mv ~/.vimrc ~/.vimrc.orig
 fi
 
+echo "Creating swap and temp files"
+mkdir -p ~/tmp/vi-backup
+mkdir -p ~/tmp/vi-swap
+
 echo "Linking .vimrc"
 ln -sf $PWD/vimrc ~/.vimrc
 
