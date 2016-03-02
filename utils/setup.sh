@@ -2,18 +2,8 @@ echo "# Configuring utilities"
 
 platform=`uname`
 
-if [ "$platform" == "Darwin" ]
+if [[ "$platform" == "Darwin" ]]
 then 
-  # Install Homebrew
-  which brew
-  if [ $? == 0 ]
-  then
-    echo "brew installed"
-  else
-    echo "Installing brew"
-    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-  fi
-
   echo "Installing ctags"
   brew install ctags
 
@@ -30,11 +20,19 @@ then
   brew install reattach-to-user-namespace
 fi
 
-if [ "$platform" == "Linux" ]
+if [[ "$platform" == "Linux" ]]
 then
   echo "Installing exuberant tags"
   sudo apt-get install exuberant-ctags
 
   echo "Installing the_silver_searcher"
-  apt-get install silversearcher-ag
+  sudo apt-get install silversearcher-ag
+
+  echo "Install zsh"
+  sudo apt-get install zsh
+
+  echo "Installing git"
+  sudo apt-get install git
+
+  echo "Need to install reattach-to-user-namespace manually"
 fi
