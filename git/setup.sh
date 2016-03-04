@@ -82,3 +82,4 @@ git config --global merge.tool 'vimdiff'
 git config --global web.browser 'firefox'
 git config --global credential.helper 'cache --timeout=3600'
 git config --global push.default 'matching'
+git config --global credential.helper osxkeychain
