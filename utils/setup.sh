@@ -18,6 +18,9 @@ then
 
   echo "installing reattach-to-user-namespace (copy/paste in tmux to mac buffer)"
   brew install reattach-to-user-namespace
+
+  echo "Installing mysql"
+  brew install mysql
 fi
 
 if [[ "$platform" == "Linux" ]]
