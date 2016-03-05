@@ -58,6 +58,7 @@ export LTPURPLE='\033[1;35m'
 export WHITE='\033[1;37m'
 export NC='\033[0m'
 
+export DYLD_LIBRARY_PATH=/usr/local/lib:$DLYD_LIBRARY_PATH
 # export SSL_CERT_FILE=/usr/local/etc/openssl/certs/cert.pem
 
 ### Added by the Heroku Toolbelt
@@ -65,7 +66,7 @@ export NC='\033[0m'
 
 # Removed in favor of envrc
 # See github.com/zimbatm/direnv
-# eval "$(direnv hook zsh)"
+eval "$(direnv hook zsh)"
 
 source /usr/local/share/chruby/chruby.sh
 
@@ -76,5 +77,6 @@ chruby ruby-2.3.0
 
 # chuck_cow
 
+# added by travis gem
+[ -f /Users/sliu/.travis/travis.sh ] && source /Users/sliu/.travis/travis.sh
 eval "$(direnv hook zsh)"
-
