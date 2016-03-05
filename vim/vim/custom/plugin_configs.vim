@@ -6,6 +6,9 @@ let NERDTreeQuitOnOpen = 1                            " NERDTree config
 let NERDTreeShowHidden = 1
 let g:indent_guides_auto_colors = 1
 
+" vim-ruby: Recognoe Gemfile as ruby file
+autocmd BufNewFile,BufRead Gemfile set filetype=ruby
+
 " autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=black ctermbg=0
 " autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=black ctermbg=6
 filetype plugin on                                    " enable ctag plugin
