@@ -21,6 +21,10 @@ then
 
   echo "Installing mysql"
   brew install mysql
+
+  echo "Installing droid sans mono font"
+  brew tap caskroom/fonts # see all fonts with > brew cask search /font/
+  brew cask install font-droid-sans-mono
 fi
 
 if [[ "$platform" == "Linux" ]]
