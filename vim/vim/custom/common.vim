@@ -9,6 +9,7 @@ set smartcase!                  " respect case if capitalized for search
 set notimeout
 set ttimeout
 set timeoutlen=50
+set ff=unix                     " save new lines without CR
 
 set backupdir=~/tmp/vi-backup
 set directory=~/tmp/vi-swap
@@ -16,5 +17,6 @@ set directory=~/tmp/vi-swap
 set splitbelow
 set splitright
 set rnu
+" set fileformat=unix
 
 " autocmd! bufwritepost .vimrc source ~/.vimrc    " auto reload if .vimrc is saved

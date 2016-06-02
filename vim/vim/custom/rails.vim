@@ -41,8 +41,8 @@ let g:rails_projections = {
   \   "test":      "spec/finders/%i_spec.rb",
   \   "template":  "class %SFinder\n  def initialize\n  end\nend"
   \ },
-  \ "app/services/*.rb": {
-  \   "command":   "service",
+  \ "app/services/*_service.rb": {
+  \   "command":   "svc",
   \   "test":      "spec/services/%i_spec.rb",
   \   "template":  "class %SService\n  def initialize\n  end\nend"
   \ },
@@ -98,28 +98,22 @@ let g:rails_projections = {
   \   "test":      "spec/form/%i_spec.rb",
   \   "template":  "class %SForm\n  def initialize\n  end\nend"
   \ },
-  \ "spec/views/*.haml_spec.rb": {
-  \   "command":   "sv",
-  \   "template":  "require 'rails_helper'\n\nRSpec.describe \'%s\' do\n\nend",
-  \   "alternate": "app/views/%s.haml",
-  \   "keywords": "before describe context"
+  \ "app/presenters/*_presenter.rb": {
+  \   "command":   "presenter",
+  \   "affinity":  "collection",
+  \   "test":      "spec/presenters/%i_spec.rb",
+  \   "template":  "class %SPresenter\n  def initialize\n  end\nend"
   \ },
   \ "spec/views/*.html.haml_spec.rb": {
   \   "command":   "sv",
   \   "template":  "require 'rails_helper'\n\nRSpec.describe \'%s\' do\n\nend",
-  \   "alternate": "app/views/%s.html.haml",
+  \   "alternate": "app/views/%s.haml",
   \   "keywords": "before describe context"
   \ },
   \ "spec/views/*.html.erb_spec.rb": {
   \   "command":   "sv",
   \   "template":  "require 'rails_helper'\n\nRSpec.describe \'%s\' do\n\nend",
   \   "alternate": "app/views/%s.html.erb",
-  \   "keywords": "before describe context"
-  \ },
-  \ "spec/views/*.xml.builder_spec.rb": {
-  \   "command":   "sv",
-  \   "template":  "require 'rails_helper'\n\nRSpec.describe \'%s\' do\n\nend",
-  \   "alternate": "app/views/%s.xml.builder",
   \   "keywords": "before describe context"
   \ },
   \ "spec/finders/*_finder_spec.rb": {
@@ -153,6 +147,13 @@ let g:rails_projections = {
   \   "template": "require 'rails_helper'\n\nRSpec.describe %SRouting do\n\nend",
   \   "keywords": "before describe context"
   \ },
+  \ "spec/lib/*_spec.rb": {
+  \   "command":   "sl",
+  \   "affinity":  "resource",
+  \   "alternate": "lib/%s_spec.rb",
+  \   "template": "require 'rails_helper'\n\nRSpec.describe %S do\n\nend",
+  \   "keywords":  "before describe context"
+  \ },
   \ "lib/tasks/*.rake": {
   \   "command":   "task",
   \   "affinity":  "resource",
@@ -170,6 +171,12 @@ let g:rails_projections = {
   \ "spec/services/*_service_spec.rb": {
   \   "command":  "ss",
   \   "template": "require 'rails_helper'\n\nRSpec.describe %SService do\n\nend",
+  \   "keywords": "before describe context"
+  \ },
+  \ "spec/presenters/*_presenter_spec.rb": {
+  \   "command":  "sp",
+  \   "template": "require 'rails_helper'\n\nRSpec.describe %SPresenter do\n\nend",
+  \   "alternate": "app/presenters/%s.rb",
   \   "keywords": "before describe context"
   \ }
 \ }
