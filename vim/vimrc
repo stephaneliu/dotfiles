@@ -9,5 +9,4 @@ source $HOME/.vim/custom/shortcuts.vim
 source $HOME/.vim/custom/tmux.vim
 source $HOME/.vim/custom/visual.vim
 source $HOME/.vim/custom/projects.vim
-
-" source $HOME/.vim/custom/os_specific.vim
+source $HOME/.vim/custom/os_specific.vim
