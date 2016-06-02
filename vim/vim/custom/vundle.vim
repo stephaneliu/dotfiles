@@ -48,6 +48,7 @@ Plugin 'vim-scripts/notes.vim'
 Plugin 'vim-scripts/scratch.vim'
 Plugin 'vim-scripts/simplefold'
 Plugin 'vim-scripts/taglist.vim'
+Plugin 'wincent/command-t'
 
 " vim-scripts github repo
 " Bundle 'name-of-script'

@@ -18,49 +18,38 @@ let g:rails_projections = {
   \ "config/database.yml": {
   \   "command":   "database"
   \ },
-  \ "test/factories/*.rb": {
-  \   "command":   "factory",
-  \   "affinity":  "collection",
-  \   "alternate": "app/models/%i.rb",
-  \   "related":   "db/schema.rb#%s",
-  \   "test":      "test/models/%i_test.rb",
-  \   "template":  "FactoryGirl.define do\n  factory :%i do\n  end\nend",
-  \   "keywords":  "factory sequence"
+  \ "app/channels/*_channel.rb": {
+  \   "command":   "channel",
+  \   "affinity":  "resource",
+  \   "test":      "spec/channel/%i_spec.rb",
+  \   "template":  "# Be sure to restart your server when you modify this file. Action Cable runs in a loop that does not support auto reloading.\nclass %SChannel < ApplicationCable::Channel\n  def subscribed\n    # stream_from \"some_channel\"\n  end\n\n  def unsubscribed\n    # Perform cleanup\n  end\n\n  def speak\n  end\nend"
   \ },
-  \ "spec/factories/*.rb": {
-  \   "command":   "factory",
-  \   "affinity":  "collection",
-  \   "alternate": "app/models/%i.rb",
-  \   "related":   "db/schema.rb#%s",
-  \   "test":      "spec/models/%i_test.rb",
-  \   "template":  "FactoryGirl.define do\n  factory :%i do\n  end\nend",
-  \   "keywords":  "factory sequence"
+  \ "spec/channels/*channel_spec.rb": {
+  \   "command":   "schannel",
+  \   "template":  "require 'spec_helper'\n\nRSpec.describe \'%s\' do\n\nend",
+  \   "alternate": "app/channels/%s_channel.rb",
+  \   "keywords": "before describe context"
   \ },
   \ "app/finders/*_finder.rb": {
   \   "command":   "finder",
   \   "test":      "spec/finders/%i_spec.rb",
   \   "template":  "class %SFinder\n  def initialize\n  end\nend"
   \ },
-  \ "app/services/*.rb": {
-  \   "command":   "service",
-  \   "test":      "spec/services/%i_spec.rb",
-  \   "template":  "class %SService\n  def initialize\n  end\nend"
-  \ },
-  \ "app/models/concerns/*.rb": {
-  \   "command":   "concern",
-  \   "test":      "spec/model/concerns/%i_spec.rb",
-  \   "template":  "module %S\n  extend ActiveSupport::Concern\n\n  included do\n    #something interesting\n  end\nend"
+  \ "app/forms/*.rb": {
+  \   "command":   "form",
+  \   "affinity":  "collection",
+  \   "test":      "spec/form/%i_spec.rb",
+  \   "template":  "class %SForm\n  def initialize\n  end\nend"
   \ },
   \ "app/jobs/*.rb": {
   \   "command":   "job",
   \   "test":      "spec/jobs/%i_spec.rb",
   \   "template":  "class %S\n  def initialize\n  end\nend"
   \ },
-  \ "app/queries/*_query.rb": {
-  \   "command":   "query",
-  \   "affinity":  "collection",
-  \   "test":      "spec/queries/%s_query_spec.rb",
-  \   "template":  "class %SQuery\n  def initialize\n  end\nend"
+  \ "app/models/concerns/*.rb": {
+  \   "command":   "concern",
+  \   "test":      "spec/model/concerns/%i_spec.rb",
+  \   "template":  "module %S\n  extend ActiveSupport::Concern\n\n  included do\n    #something interesting\n  end\nend"
   \ },
   \ "app/nulls/null_*.rb": {
   \   "command":   "null",
@@ -74,17 +63,33 @@ let g:rails_projections = {
   \   "alternate": "app/nulls/null_%s.rb",
   \   "keywords": "before describe context"
   \ },
-  \ "app/workers/*_worker.rb": {
-  \   "command":   "worker",
-  \   "affinity":  "collection",
-  \   "test":      "spec/workers/%i_spec.rb",
-  \   "template":  "class %SWorker\n  def initialize\n  end\nend"
-  \ },
   \ "app/policies/*_policy.rb": {
   \   "command":   "policy",
   \   "affinity":  "collection",
-  \   "test":      "spec/policies/%i_spec.rb",
+  \   "test":      "spec/policies/%i_policy_spec.rb",
   \   "template":  "class %SPolicy\n  def initialize\n  end\nend"
+  \ },
+  \ "spec/policies/*_policy_spec.rb": {
+  \   "command":   "sp",
+  \   "affinity":  "collection",
+  \   "alternate": "app/policiies/%i_policy.rb",
+  \   "template": "require 'rails_helper'\n\nRSpec.describe %SPolicy do\n\nend",
+  \ },
+  \ "app/queries/*_query.rb": {
+  \   "command":   "query",
+  \   "affinity":  "collection",
+  \   "test":      "spec/queries/%s_query_spec.rb",
+  \   "template":  "class %SQuery\n  def initialize\n  end\nend"
+  \ },
+  \ "app/services/*.rb": {
+  \   "command":   "service",
+  \   "test":      "spec/services/%i_spec.rb",
+  \   "template":  "class %SService\n  def initialize\n  end\nend"
+  \ },
+  \ "spec/services/*_service_spec.rb": {
+  \   "command":  "ss",
+  \   "template": "require 'rails_helper'\n\nRSpec.describe %SService do\n\nend",
+  \   "keywords": "before describe context"
   \ },
   \ "app/view_models/*_view.rb": {
   \   "command":   "view_model",
@@ -92,11 +97,68 @@ let g:rails_projections = {
   \   "test":      "spec/view_models/%i_spec.rb",
   \   "template":  "class %SView\n  def initialize\n  end\nend"
   \ },
-  \ "app/forms/*.rb": {
-  \   "command":   "form",
+  \ "app/workers/*_worker.rb": {
+  \   "command":   "worker",
   \   "affinity":  "collection",
-  \   "test":      "spec/form/%i_spec.rb",
-  \   "template":  "class %SForm\n  def initialize\n  end\nend"
+  \   "test":      "spec/workers/%i_spec.rb",
+  \   "template":  "class %SWorker\n  def initialize\n  end\nend"
+  \ },
+  \ "lib/tasks/*.rake": {
+  \   "command":   "task",
+  \   "affinity":  "resource",
+  \   "alternate": "spec/lib/tasks/%s_rake_spec.rb",
+  \   "test":      "spec/lib/tasks/%s_rake_spec.rb",
+  \   "template":  "namespace :%i do\n desc '[description]'\n task something: :environment do\n end\nend",
+  \   "keywords":  "namespace desc task"
+  \ },
+  \ "spec/lib/tasks/*_rake_spec.rb": {
+  \   "command":  "stask",
+  \   "template": "require 'rails_helper'\n\nRSpec.describe '%i:[task]' do\n  include_context 'rake'\n\nend",
+  \   "alternate": "lib/tasks/%s.rake",
+  \   "keywords": "before describe context"
+  \ },
+  \
+  \
+  \
+  \ "spec/controllers/*_controller_spec.rb": {
+  \   "command":  "sc",
+  \   "template": "require 'rails_helper'\n\nRSpec.describe %SController do\n\nend",
+  \   "keywords": "before describe context"
+  \ },
+  \ "spec/factories/*.rb": {
+  \   "command":   "factory",
+  \   "affinity":  "collection",
+  \   "alternate": "app/models/%i.rb",
+  \   "related":   "db/schema.rb#%s",
+  \   "test":      "spec/models/%i_test.rb",
+  \   "template":  "FactoryGirl.define do\n  factory :%i do\n  end\nend",
+  \   "keywords":  "factory sequence"
+  \ },
+  \ "spec/features/*_spec.rb": {
+  \   "command":   "sfeature",
+  \   "template":  "require 'features_helper'\n\nRSpec.feature \'User intereacts\' do\n\nend",
+  \   "keywords": "background given scenario"
+  \ },
+  \ "spec/finders/*_finder_spec.rb": {
+  \   "command":   "sf",
+  \   "alternate": "app/finders/%s.rb",
+  \   "template":  "require 'rails_helper'\n\nRSpec.describe %SFinder do\n\nend",
+  \   "keywords": "before describe context"
+  \ },
+  \ "spec/models/*_spec.rb": {
+  \   "command":   "sm",
+  \   "template":  "require 'rails_helper'\n\nRSpec.describe %S do\n\nend",
+  \   "keywords": "before describe context"
+  \ },
+  \ "spec/queries/*_query_spec.rb": {
+  \   "command":  "sq",
+  \   "template": "require 'rails_helper'\n\nRSpec.describe %SQuery do\n\nend",
+  \   "keywords": "before describe context"
+  \ },
+  \ "spec/routing/*_routing_spec.rb": {
+  \   "command":  "sroute",
+  \   "template": "require 'rails_helper'\n\nRSpec.describe %SRouting do\n\nend",
+  \   "keywords": "before describe context"
   \ },
   \ "spec/views/*.haml_spec.rb": {
   \   "command":   "sv",
@@ -120,56 +182,6 @@ let g:rails_projections = {
   \   "command":   "sv",
   \   "template":  "require 'rails_helper'\n\nRSpec.describe \'%s\' do\n\nend",
   \   "alternate": "app/views/%s.xml.builder",
-  \   "keywords": "before describe context"
-  \ },
-  \ "spec/finders/*_finder_spec.rb": {
-  \   "command":   "sf",
-  \   "alternate": "app/finders/%s.rb",
-  \   "template":  "require 'rails_helper'\n\nRSpec.describe %SFinder do\n\nend",
-  \   "keywords": "before describe context"
-  \ },
-  \ "spec/features/*_spec.rb": {
-  \   "command":   "sfe",
-  \   "template":  "require 'features_helper'\n\nRSpec.feature \'User intereacts\' do\n\nend",
-  \   "keywords": "background given scenario"
-  \ },
-  \ "spec/models/*_spec.rb": {
-  \   "command":   "sm",
-  \   "template":  "require 'rails_helper'\n\nRSpec.describe %S do\n\nend",
-  \   "keywords": "before describe context"
-  \ },
-  \ "spec/controllers/*_controller_spec.rb": {
-  \   "command":  "sc",
-  \   "template": "require 'rails_helper'\n\nRSpec.describe %SController do\n\nend",
-  \   "keywords": "before describe context"
-  \ },
-  \ "spec/queries/*_query_spec.rb": {
-  \   "command":  "sq",
-  \   "template": "require 'rails_helper'\n\nRSpec.describe %SQuery do\n\nend",
-  \   "keywords": "before describe context"
-  \ },
-  \ "spec/routing/*_routing_spec.rb": {
-  \   "command":  "sroute",
-  \   "template": "require 'rails_helper'\n\nRSpec.describe %SRouting do\n\nend",
-  \   "keywords": "before describe context"
-  \ },
-  \ "lib/tasks/*.rake": {
-  \   "command":   "task",
-  \   "affinity":  "resource",
-  \   "alternate": "spec/lib/tasks/%s_rake_spec.rb",
-  \   "test":      "spec/lib/tasks/%s_rake_spec.rb",
-  \   "template":  "namespace :%i do\n desc '[description]'\n task something: :environment do\n end\nend",
-  \   "keywords":  "namespace desc task"
-  \ },
-  \ "spec/lib/tasks/*_rake_spec.rb": {
-  \   "command":  "stask",
-  \   "template": "require 'rails_helper'\n\nRSpec.describe '%i:[task]' do\n  include_context 'rake'\n\nend",
-  \   "alternate": "lib/tasks/%s.rake",
-  \   "keywords": "before describe context"
-  \ },
-  \ "spec/services/*_service_spec.rb": {
-  \   "command":  "ss",
-  \   "template": "require 'rails_helper'\n\nRSpec.describe %SService do\n\nend",
   \   "keywords": "before describe context"
   \ }
 \ }

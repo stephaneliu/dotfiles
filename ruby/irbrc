@@ -18,7 +18,8 @@ def help_custom
   puts "  show_regex    - show_regex('hello', /el/) - from pickaxe book"
 end
 
-%w|rubygems ap pp wirble looksee|.each do |lib|
+# %w|rubygems ap pp wirble looksee|.each do |lib|
+%w|rubygems ap pp|.each do |lib|
   begin
     require lib
   rescue LoadError => err

@@ -13,7 +13,7 @@ COMPLETION_WAITING_DOTS="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # plugins=(colored-man code-dir command-not-found chucknorris docker git git-flow history-substring-search tmuxinator vi-mode web-search z)
-plugins=(colored-man code-dir command-not-found docker git git-flow history-substring-search tmuxinator vi-mode web-search z)
+plugins=(colored-man code-dir command-not-found git history-substring-search vi-mode web-search z)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -24,7 +24,6 @@ export TERM=screen-256color
 
 source /$HOME/.zsh_aliases
 export PATH=./bin:/home/sliu/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:$PATH
-[[ -s "$HOME/.tmuxinator/scripts/tmuxinator" ]] && source $HOME/.tmuxinator/scripts/tmuxinator
 
 # export USE_BUNDLER=force
 export EDITOR=vim
@@ -64,13 +63,13 @@ export DYLD_LIBRARY_PATH=/usr/local/lib:$DLYD_LIBRARY_PATH
 ### Added by the Heroku Toolbelt
 #export PATH="/usr/local/heroku/bin:$PATH"
 
-# Removed in favor of envrc
-# See github.com/zimbatm/direnv
-eval "$(direnv hook zsh)"
-
 source /usr/local/share/chruby/chruby.sh
 
 export DOCKER_HOST=tcp://localhost:4243
+
+# Prevent tmux sessions from renaming pane title
+export DISABLE_AUTO_TITLE=true
+export AUTO_TITLE=false
 
 # default ruby
 chruby ruby-2.3.1
