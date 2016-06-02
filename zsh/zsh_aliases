@@ -14,15 +14,16 @@ alias ll='ls -CFHh'
 alias chk_jrj="cd ~/somewhere & git pull & git log | echo 'finding jruby jars update: ' + grep skdj223 > /tmp/status"
 ##################################### ruby aliases ####################################################
 # alias rc="DISABLE_JRUBY_JOBS=true bundle exec rails c"
-alias rc="rails c"
 alias sc="DISABLE_JRUBY_JOBS=true bundle exec spring rails c"
 # alias rs="DISABLE_JRUBY_JOBS=true bundle exec rails server --debugger"                          # override reshape bash command
 alias rs="rails server"                          # override reshape bash command
+alias r="rails"
+alias rg="rails g"
+alias rc="rails c"
 # alias ss="DISABLE_JRUBY_JOBS=true bundle exec spring rails s"
 alias ss="spring stop"
 alias bg="DISABLE_JRUBY_JOBS=true bundle exec guard"
 alias pc="pry -r ./config/environment"
-alias rg="bundle exec rails g"
 alias spec_all="rake spec:run_in_groups SPLIT=4"
 alias jrs="kill_jruby_servers.rb && jruby -Xmx1024m -S rails server"   
 alias ann="annotate -mi -p before"
@@ -69,13 +70,7 @@ alias yank='xclip -selection c'
 alias backit='~/batches/config_back.sh'
 alias ssh='TERM=xterm ssh'
 alias b='bundle'
-alias be='bundle exec'
-alias bu='bundle update'
-alias bs='bundle show'
-alias ber='bundle exec rake'
-alias bes='bundle exec rails s'
-alias bec='bundle exec rails c'
-alias beg='bundle exec rails g'
+alias beg='bundle exec guard'
 alias wg='while bundle exec guard; echo "Restarting Guard..."; do echo; done'
 alias mr='mysql -u root'
 # alias tmux='tmux attach'
