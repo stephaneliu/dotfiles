@@ -3,6 +3,5 @@
 :verbose: true
 :backtrace: false
 :update_sources: true
-gem: --no-ri --no-rdoc
-#:sources: 
+gem: --no-ri --no-rdoc --no-document
 :bulk_threshold: 1000
