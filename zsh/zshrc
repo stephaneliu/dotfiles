@@ -76,5 +76,15 @@ chruby ruby-2.2.2
 
 # chuck_cow
 
+# use commands:
+# enable_cac_enabled_git and disable_cac_enabled_git
+# to toggle feature
+if [[ -e "$HOME/cac-enabled-git-env.sh" ]]
+then
+  . "/$HOME/cac-enabled-git-env.sh"
+  disable_cac_aware_git
+fi
+
 eval "$(direnv hook zsh)"
+
 
