@@ -1,3 +1,4 @@
 /vim/vim/bundle/
 .tmuxinator/*.yml
 !default.yml
+vim/vim/.netrwhist
