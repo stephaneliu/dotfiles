@@ -14,6 +14,8 @@ alias ll='ls -CFHh'
 alias chk_jrj="cd ~/somewhere & git pull & git log | echo 'finding jruby jars update: ' + grep skdj223 > /tmp/status"
 ##################################### ruby aliases ####################################################
 # alias rc="DISABLE_JRUBY_JOBS=true bundle exec rails c"
+alias rc="rails c"
+alias rg="rails g"
 alias sc="DISABLE_JRUBY_JOBS=true bundle exec spring rails c"
 # alias rs="DISABLE_JRUBY_JOBS=true bundle exec rails server --debugger"                          # override reshape bash command
 alias rs="rails server"                          # override reshape bash command
@@ -37,7 +39,7 @@ alias nxgo="sudo /usr/sbin/nginx"
 alias nxst="sudo /usr/sbin/nginx -s stop"
 ##################################### applications ####################################################
 alias myroot="mysql -u root"
-alias git="nc git"
+alias g="nc git"
 alias docker="sudo docker"
 alias which="which -a"
 ##################################### my specific needs ####################################################
@@ -71,6 +73,14 @@ alias backit='~/batches/config_back.sh'
 alias ssh='TERM=xterm ssh'
 alias b='bundle'
 alias beg='bundle exec guard'
+alias be='bundle exec'
+alias bu='bundle update'
+alias bs='bundle show'
+alias ber='bundle exec rake'
+alias bes='bundle exec rails s'
+alias bec='bundle exec rails c'
+alias beg='bundle exec guard'
+alias ss='spring stop'
 alias wg='while bundle exec guard; echo "Restarting Guard..."; do echo; done'
 alias mr='mysql -u root'
 # alias tmux='tmux attach'
@@ -80,10 +90,11 @@ alias mr='mysql -u root'
 # alias rails='nocorrect rails'
 alias nc='nocorrect'
 alias 'q;'='exit'
-alias g='git'
+# alias g='git'
 alias rescov='git checkout -- coverage/* && git checkout -- coverage/.*'
 alias netr='nmcli networking off && nmcli networking on'
 alias t='exit'
 alias code='cd ~/code'
 alias rmutant="RAILS_ENV=test bundle exec mutant -r ./config/environment --use rspec $1"
 alias inet='ifconfig | grep inet'
+alias ba='bundle-audit'

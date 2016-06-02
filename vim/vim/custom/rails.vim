@@ -75,13 +75,25 @@ let g:rails_projections = {
   \   "alternate": "app/policiies/%i_policy.rb",
   \   "template": "require 'rails_helper'\n\nRSpec.describe %SPolicy do\n\nend",
   \ },
+  \ "app/presenters/*_presenter.rb": {
+  \   "command":   "presenter",
+  \   "affinity":  "collection",
+  \   "test":      "spec/presenters/%i_spec.rb",
+  \   "template":  "class %SPresenter\n  def initialize\n  end\nend"
+  \ },
+  \ "spec/presenters/*_presenter_spec.rb": {
+  \   "command":  "sp",
+  \   "template": "require 'rails_helper'\n\nRSpec.describe %SPresenter do\n\nend",
+  \   "alternate": "app/presenters/%s.rb",
+  \   "keywords": "before describe context"
+  \ },
   \ "app/queries/*_query.rb": {
   \   "command":   "query",
   \   "affinity":  "collection",
   \   "test":      "spec/queries/%s_query_spec.rb",
   \   "template":  "class %SQuery\n  def initialize\n  end\nend"
   \ },
-  \ "app/services/*.rb": {
+  \ "app/services/*_service.rb": {
   \   "command":   "service",
   \   "test":      "spec/services/%i_spec.rb",
   \   "template":  "class %SService\n  def initialize\n  end\nend"
@@ -115,7 +127,6 @@ let g:rails_projections = {
   \   "command":  "stask",
   \   "template": "require 'rails_helper'\n\nRSpec.describe '%i:[task]' do\n  include_context 'rake'\n\nend",
   \   "alternate": "lib/tasks/%s.rake",
-  \   "keywords": "before describe context"
   \ },
   \
   \
@@ -160,11 +171,12 @@ let g:rails_projections = {
   \   "template": "require 'rails_helper'\n\nRSpec.describe %SRouting do\n\nend",
   \   "keywords": "before describe context"
   \ },
-  \ "spec/views/*.haml_spec.rb": {
-  \   "command":   "sv",
-  \   "template":  "require 'rails_helper'\n\nRSpec.describe \'%s\' do\n\nend",
-  \   "alternate": "app/views/%s.haml",
-  \   "keywords": "before describe context"
+  \ "spec/lib/*_spec.rb": {
+  \   "command":   "sl",
+  \   "affinity":  "resource",
+  \   "alternate": "lib/%s_spec.rb",
+  \   "template": "require 'rails_helper'\n\nRSpec.describe %S do\n\nend",
+  \   "keywords":  "before describe context"
   \ },
   \ "spec/views/*.html.haml_spec.rb": {
   \   "command":   "sv",
@@ -172,18 +184,12 @@ let g:rails_projections = {
   \   "alternate": "app/views/%s.html.haml",
   \   "keywords": "before describe context"
   \ },
-  \ "spec/views/*.html.erb_spec.rb": {
-  \   "command":   "sv",
-  \   "template":  "require 'rails_helper'\n\nRSpec.describe \'%s\' do\n\nend",
-  \   "alternate": "app/views/%s.html.erb",
-  \   "keywords": "before describe context"
-  \ },
   \ "spec/views/*.xml.builder_spec.rb": {
   \   "command":   "sv",
   \   "template":  "require 'rails_helper'\n\nRSpec.describe \'%s\' do\n\nend",
   \   "alternate": "app/views/%s.xml.builder",
   \   "keywords": "before describe context"
-  \ }
+  \ },
 \ }
 
 " invokes based on presence of gem in Gemfile

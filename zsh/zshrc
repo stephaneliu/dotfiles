@@ -79,3 +79,12 @@ chruby ruby-2.3.1
 # added by travis gem
 [ -f /Users/sliu/.travis/travis.sh ] && source /Users/sliu/.travis/travis.sh
 eval "$(direnv hook zsh)"
+# use commands:
+# enable_cac_enabled_git and disable_cac_enabled_git to toggle feature
+if [[ -e "$HOME/cac-enabled-git-env.sh" ]]
+then
+  . "/$HOME/cac-enabled-git-env.sh"
+  disable_cac_aware_git
+fi
+
+eval "$(direnv hook zsh)"

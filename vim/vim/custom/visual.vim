@@ -21,3 +21,7 @@ set scrolloff=3                     " number of visible lines above and below cu
 set statusline=1
 set laststatus=2                    " always show statuline
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P  " show git info
+
+" http://stackoverflow.com/questions/1675688/make-vim-show-all-white-spaces-as-a-character
+" use :set list / :set nolist to toggle
+set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
