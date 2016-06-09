@@ -183,13 +183,7 @@ let g:rails_projections = {
   \   "template":  "require 'rails_helper'\n\nRSpec.describe \'%s\' do\n\nend",
   \   "alternate": "app/views/%s.html.haml",
   \   "keywords": "before describe context"
-  \ },
-  \ "spec/views/*.xml.builder_spec.rb": {
-  \   "command":   "sv",
-  \   "template":  "require 'rails_helper'\n\nRSpec.describe \'%s\' do\n\nend",
-  \   "alternate": "app/views/%s.xml.builder",
-  \   "keywords": "before describe context"
-  \ },
+  \ }
 \ }
 
 " invokes based on presence of gem in Gemfile
