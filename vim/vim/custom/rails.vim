@@ -47,7 +47,7 @@ let g:rails_projections = {
   \   "test":      "spec/form/%i_spec.rb",
   \   "template":  "class %SForm\n  def initialize\n  end\nend"
   \ },
-  \ "spec/forms/*_finder_spec.rb": {
+  \ "spec/forms/*_form_spec.rb": {
   \   "command":   "sform",
   \   "alternate": "app/forms/%s.rb",
   \   "template":  "require 'rails_helper'\n\nRSpec.describe %SForm do\n\nend",
