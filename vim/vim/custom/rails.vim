@@ -35,11 +35,23 @@ let g:rails_projections = {
   \   "test":      "spec/finders/%i_spec.rb",
   \   "template":  "class %SFinder\n  def initialize\n  end\nend"
   \ },
+  \ "spec/finders/*_finder_spec.rb": {
+  \   "command":   "sfinder",
+  \   "alternate": "app/finders/%s.rb",
+  \   "template":  "require 'rails_helper'\n\nRSpec.describe %SFinder do\n\nend",
+  \   "keywords": "before describe context"
+  \ },
   \ "app/forms/*.rb": {
   \   "command":   "form",
   \   "affinity":  "collection",
   \   "test":      "spec/form/%i_spec.rb",
   \   "template":  "class %SForm\n  def initialize\n  end\nend"
+  \ },
+  \ "spec/forms/*_finder_spec.rb": {
+  \   "command":   "sform",
+  \   "alternate": "app/forms/%s.rb",
+  \   "template":  "require 'rails_helper'\n\nRSpec.describe %SForm do\n\nend",
+  \   "keywords": "before describe context"
   \ },
   \ "app/jobs/*.rb": {
   \   "command":   "job",
@@ -58,7 +70,7 @@ let g:rails_projections = {
   \   "template":  "class %S\n  def initialize\n  end\nend"
   \ },
   \ "spec/nulls/null_*_spec.rb": {
-  \   "command":   "sn",
+  \   "command":   "snull",
   \   "template":  "require 'spec_helper'\n\nRSpec.describe \'%s\' do\n\nend",
   \   "alternate": "app/nulls/null_%s.rb",
   \   "keywords": "before describe context"
@@ -70,7 +82,7 @@ let g:rails_projections = {
   \   "template":  "class %SPolicy\n  def initialize\n  end\nend"
   \ },
   \ "spec/policies/*_policy_spec.rb": {
-  \   "command":   "sp",
+  \   "command":   "spolicy",
   \   "affinity":  "collection",
   \   "alternate": "app/policiies/%i_policy.rb",
   \   "template": "require 'rails_helper'\n\nRSpec.describe %SPolicy do\n\nend",
@@ -82,7 +94,7 @@ let g:rails_projections = {
   \   "template":  "class %SPresenter\n  def initialize\n  end\nend"
   \ },
   \ "spec/presenters/*_presenter_spec.rb": {
-  \   "command":  "sp",
+  \   "command":  "spresenter",
   \   "template": "require 'rails_helper'\n\nRSpec.describe %SPresenter do\n\nend",
   \   "alternate": "app/presenters/%s.rb",
   \   "keywords": "before describe context"
@@ -99,7 +111,7 @@ let g:rails_projections = {
   \   "template":  "class %SService\n  def initialize\n  end\nend"
   \ },
   \ "spec/services/*_service_spec.rb": {
-  \   "command":  "ss",
+  \   "command":  "sservice",
   \   "template": "require 'rails_helper'\n\nRSpec.describe %SService do\n\nend",
   \   "keywords": "before describe context"
   \ },
@@ -132,7 +144,7 @@ let g:rails_projections = {
   \
   \
   \ "spec/controllers/*_controller_spec.rb": {
-  \   "command":  "sc",
+  \   "command":  "scontroller",
   \   "template": "require 'rails_helper'\n\nRSpec.describe %SController do\n\nend",
   \   "keywords": "before describe context"
   \ },
@@ -150,14 +162,8 @@ let g:rails_projections = {
   \   "template":  "require 'features_helper'\n\nRSpec.feature \'User intereacts\' do\n\nend",
   \   "keywords": "background given scenario"
   \ },
-  \ "spec/finders/*_finder_spec.rb": {
-  \   "command":   "sf",
-  \   "alternate": "app/finders/%s.rb",
-  \   "template":  "require 'rails_helper'\n\nRSpec.describe %SFinder do\n\nend",
-  \   "keywords": "before describe context"
-  \ },
   \ "spec/models/*_spec.rb": {
-  \   "command":   "sm",
+  \   "command":   "smodel",
   \   "template":  "require 'rails_helper'\n\nRSpec.describe %S do\n\nend",
   \   "keywords": "before describe context"
   \ },
@@ -172,14 +178,14 @@ let g:rails_projections = {
   \   "keywords": "before describe context"
   \ },
   \ "spec/lib/*_spec.rb": {
-  \   "command":   "sl",
+  \   "command":   "slib",
   \   "affinity":  "resource",
   \   "alternate": "lib/%s_spec.rb",
   \   "template": "require 'rails_helper'\n\nRSpec.describe %S do\n\nend",
   \   "keywords":  "before describe context"
   \ },
   \ "spec/views/*.html.haml_spec.rb": {
-  \   "command":   "sv",
+  \   "command":   "sview",
   \   "template":  "require 'rails_helper'\n\nRSpec.describe \'%s\' do\n\nend",
   \   "alternate": "app/views/%s.html.haml",
   \   "keywords": "before describe context"
