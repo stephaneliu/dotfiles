@@ -1,11 +1,11 @@
-" Rails Projections - 
+" Rails Projections -  help rails-projections
 
 " `%s`: `{}` (Original)
 " `%S`: `{camelcase|capitalize|colons}` (Ruby class name)
 " `%S`: `{camelcase|capitalize|dot}` (JavaScript class name)
 " `%p`: `{plural}`
 " `%i`: `{singular}`
-" `%h`: `{underscore|capitalize|blank}`
+" `%h`: `{underscore|capitalize|blank}` - humanized
 "
 " Affinity
 " affinity: "collection" - Corresponds to plural
@@ -63,15 +63,16 @@ let g:rails_projections = {
   \   "test":      "spec/model/concerns/%i_spec.rb",
   \   "template":  "module %S\n  extend ActiveSupport::Concern\n\n  included do\n    #something interesting\n  end\nend"
   \ },
-  \ "app/nulls/null_*.rb": {
+  \ "app/nulls/*.rb": {
   \   "command":   "null",
   \   "affinity":  "resource",
-  \   "test":      "spec/nulls/null_%s_spec.rb",
+  \   "test":      "spec/nulls/%s_spec.rb",
   \   "template":  "class %S\n  def initialize\n  end\nend"
   \ },
-  \ "spec/nulls/null_*_spec.rb": {
+  \ "spec/nulls/*_spec.rb": {
   \   "command":   "snull",
-  \   "template":  "require 'spec_helper'\n\nRSpec.describe \'%s\' do\n\nend",
+  \   "affinity":  "resource",
+  \   "template":  "require 'spec_helper'\n\nRSpec.describe Null%S do\n\nend",
   \   "alternate": "app/nulls/null_%s.rb",
   \   "keywords": "before describe context"
   \ },
