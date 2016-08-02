@@ -72,7 +72,7 @@ let g:rails_projections = {
   \ "spec/nulls/*_spec.rb": {
   \   "command":   "snull",
   \   "affinity":  "resource",
-  \   "template":  "require 'spec_helper'\n\nRSpec.describe Null%S do\n\nend",
+  \   "template":  "require 'spec_helper'\n\nRSpec.describe %S do\n\nend",
   \   "alternate": "app/nulls/null_%s.rb",
   \   "keywords": "before describe context"
   \ },
