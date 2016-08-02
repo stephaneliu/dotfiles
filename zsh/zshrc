@@ -93,3 +93,9 @@ fi
 
 eval "$(direnv hook zsh)"
 source $HOME/bin/ruby_switcher.sh
+
+# Display result of last AV scan
+if [[ -e "/usr/local/uvscan/report.sh" ]]
+then
+  /usr/local/uvscan/report.sh
+fi
