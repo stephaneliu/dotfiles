@@ -94,6 +94,7 @@ fi
 eval "$(direnv hook zsh)"
 source $HOME/bin/ruby_switcher.sh
 
+export LD_LIBRARY_PATH=~/lib/x86_64-linux-gnu
 # Display result of last AV scan
 if [[ -e "/usr/local/uvscan/report.sh" ]]
 then
