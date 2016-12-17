@@ -9,9 +9,12 @@ vmap D y'>p
 cmap cwd lcd %:p:h
 
 " Remaps navigation respecting camelcase and underscores in words
+" 09/19/2016: Isolated mapping w to camelcase will cause 'dw' command
+" on the last word of the line to also delete the \n char
 map <silent> w <Plug>CamelCaseMotion_w
 map <silent> b <Plug>CamelCaseMotion_b
 map <silent> e <Plug>CamelCaseMotion_e
+
 " control+h to change the first word of the line
 map <silent> <C-h> ^cw
 " close window with q
@@ -19,7 +22,6 @@ map <silent> ;q :q<CR>
 map <silent> ;Q :q!<CR>
 " Display ~/.vimrc in new tab
 nmap <silent> ;v :tabnew $MYVIMRC<CR>
-
 
 map <leader>d :execute 'NERDTreeFind'<CR>
 map <leader>tl :execute 'TlistToggle'<CR>
@@ -66,6 +68,8 @@ nmap <F3> :source ~/.vim_session <CR> " And load session with F3
 map <leader>nt :Sscratch<CR>
 map <leader>gg :GitGutterLineHighlightsToggle<CR>
 
+map <leader>t :quit<CR>
+
 function! NumberToggle()
   if(&relativenumber == 1)
     set rnu!
@@ -92,3 +96,33 @@ nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 " vice sudo !!
 cmap w!! %!sudo tee > /dev/null %
 
+if has('gui_running')
+  set guioptions-=T                 " hide the toolbar - who uses it anyways?
+endif
+
+set guifont=Droid\ Sans\ Mono
+set colorcolumn=100                " set a highlighted column at the 100th character on line
+
+" use mouse to copy without line numbers in terminal 
+set mouse=a
+" set statusline=%t\ %y\ format:\ %{&ff};\ [%c,%l]
+
+set showcmd
+set expandtab
+set shiftwidth=2
+set softtabstop=2
+set tabstop=2
+set nu ruler                        " forces ruler to be visible (vice toggle)
+set autoindent
+set scrolloff=3                     " number of visible lines above and below cursor
+" set cursorline                      " highlight current line
+set statusline=1
+set laststatus=2                    " always show statuline
+set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P  " show git info
+
+" http://stackoverflow.com/questions/1675688/make-vim-show-all-white-spaces-as-a-character
+" use :set list / :set nolist to toggle
+set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
+
+" Projects
+nmap <leader>w2 :e ~/code/netops/src/app/models/event.rb<CR>

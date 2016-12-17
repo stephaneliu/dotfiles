@@ -83,3 +83,7 @@ git config --global web.browser 'firefox'
 git config --global credential.helper 'cache --timeout=3600'
 git config --global push.default 'matching'
 git config --global credential.helper osxkeychain
+# git diff: use mnemonic prefixes like index, work tree, commit, object instead of a and b notation
+git config --global diff.mnemonicprefix true
+# always show diffstat stat at the end of a merge
+git config --global merge.stat true

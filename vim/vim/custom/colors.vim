@@ -1,10 +1,10 @@
-set term=screen-256color-bce
-let g:solorized_termcolors=256
-set t_Co=256
-set background=dark
+" set term=screen-256color-bce
 
 let s:uname = system("uname -s")
 
+let g:solorized_termcolors=256
+set t_Co=256
+set background=dark
 colorscheme solarized
 
 " Added to support visual gitgutter display

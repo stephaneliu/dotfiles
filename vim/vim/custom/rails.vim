@@ -66,13 +66,13 @@ let g:rails_projections = {
   \ "app/nulls/*.rb": {
   \   "command":   "null",
   \   "affinity":  "resource",
-  \   "test":      "spec/nulls/%s_spec.rb",
-  \   "template":  "class %S\n  def initialize\n  end\nend"
+  \   "test":      "spec/nulls/null_%s_spec.rb",
+  \   "template":  "class Null%S\n  def initialize\n  end\nend"
   \ },
   \ "spec/nulls/*_spec.rb": {
   \   "command":   "snull",
   \   "affinity":  "resource",
-  \   "template":  "require 'spec_helper'\n\nRSpec.describe %S do\n\nend",
+  \   "template":  "require 'spec_helper'\n\nRSpec.describe Null%S do\n\nend",
   \   "alternate": "app/nulls/null_%s.rb",
   \   "keywords": "before describe context"
   \ },
