@@ -29,8 +29,8 @@ map <leader>tl :execute 'TlistToggle'<CR>
 nmap <leader>rn :set rnu!<CR>
 nmap <leader>an :set rnu!<CR>
 "convert hash rockets to json style
-nmap <leader>hr :%s/:\([^ ]*\)\(\s*\)=>/\1:/g<CR>
-vmap <leader>hr :s/:\([^ ]*\)\(\s*\)=>/\1:/g<CR>
+nmap <leader>hash :%s/:\([^ ]*\)\(\s*\)=>/\1:/g<CR>
+vmap <leader>hash :s/:\([^ ]*\)\(\s*\)=>/\1:/g<CR>
 " Removes ^M (carriage returns from file)
 nmap <leader>;dcr :%s/\r//g<CR>
 

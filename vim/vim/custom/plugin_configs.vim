@@ -25,6 +25,7 @@ let g:rspec_command = "!bundle exec rspec {spec}"
 " map <Leader>l :call RunLastSpec()<CR>
 " map <Leader>a :call RunAllSpecs()<CR>
 
+" tabularize
 vmap <Leader>a= :Tabularize /^[^=]*\zs=/l1<CR>
 vmap <Leader>ae :Tabularize /^[^=]*\zs=/l1<CR>
 " vmap <Leader>ae :Tabularize /^[^=]*/<CR>
@@ -38,6 +39,9 @@ vmap <Leader>a# :Tabularize /#<CR>
 vmap <Leader>a- :Tabularize /-><CR>
 vmap <Leader>as :Tabularize /-><CR>
 
+" vim-rubocop
+let g:vimrubocop_keymap = 0
+nmap <Leader>ru :RuboCop -a <CR>
 
 " The Silver Searcher
 if executable('ag')
