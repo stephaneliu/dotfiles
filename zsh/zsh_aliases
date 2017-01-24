@@ -40,6 +40,7 @@ alias nxst="sudo /usr/sbin/nginx -s stop"
 ##################################### applications ####################################################
 alias myroot="mysql -u root"
 alias g="nc git"
+alias git=hub
 alias docker="sudo docker"
 alias which="which -a"
 ##################################### my specific needs ####################################################
