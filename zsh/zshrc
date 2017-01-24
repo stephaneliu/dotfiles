@@ -33,7 +33,7 @@ export TERM=screen-256color
 
 source /$HOME/.zsh_aliases
 if is_linux; then
-  source .zsh_aliases_linux
+  source /$HOME/.zsh_aliases_linux
 fi
 
 export PATH=./bin:/home/sliu/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:$PATH
