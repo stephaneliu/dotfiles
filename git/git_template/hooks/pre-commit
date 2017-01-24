@@ -1,0 +1,37 @@
+#!/usr/bin/env ruby
+
+focus_hits   = []
+binding_hits = []
+# Find all filenames in spec directory that have been (A)dded (C)opied or (M)odified
+filenames = `git diff --cached --name-only --diff-filter=ACM`.split("\n")
+
+filenames.each do |filename|
+  if filename.end_with? '_spec.rb' 
+    `git diff --cached #{filename} | grep \^+\[\^+\] | grep focus`
+    focus_hits.push filename if $? == 0
+
+    `git diff --cached #{filename} | grep \^+\[\^+\] | grep binding.pry`
+    binding_hits.push filename if $? == 0
+  end
+end
+
+if focus_hits.any? || binding_hits.any?
+  # 31m - Red              # 32m - Green                  # 33m - Yellow
+  # 34m - Blue             # 35m - Purple                 # 36m - Cyan
+  # 37m - White            # bold - prepend 1; ie - 1;35m # underline - prepend 4;
+  # background - 40m - 47m # 0m - reset
+  
+  puts "\e[1;37m\e[41m>>> Commit Aborted! <<<\e[0m"
+  
+  if focus_hits.any?
+    puts "\e[1;31mRemove `focus` from the following specs \e[0m"
+    puts focus_hits.join("\n")
+  end
+
+  if binding_hits.any?
+    puts "\e[1;31mRemove `binding.pry` from the following specs \e[0m"
+    puts binding_hits.join("\n")
+  end
+
+  exit 1
+end
