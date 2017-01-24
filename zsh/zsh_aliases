@@ -62,16 +62,9 @@ alias w8="cd ~/code/flylow"                   # location of gitosis dh
 alias w9="cd ~/code/netops-proxy"                 # location of gitosis oama
 alias w99="cd ~/code/ra3"                         # location of gitosis oama
 alias t1="cd ~/code/taskwarrior"
-alias sds="ssh oama"                                        # ssh to oama
-alias gemout="cp ~/bin/.gemrc_out ~/.gemrc"
-alias gemin="cp ~/bin/.gemrc_in ~/.gemrc"
-alias dnup="sudo ifdown eth2 && sudo ifup eth2"
-alias cspec="kill_zombie_autotests.rb && rake db:test:purge && rake db:test:prepare && autospec -fc"
 alias screencast='ffmpeg -f x11grab -r 25 -s 1600x1200 -i :0.0 /tmp/output.mpg'
 alias version='cat /etc/issue'
 alias gg='clear'
-alias yank='xclip -selection c'
-alias backit='~/batches/config_back.sh'
 alias ssh='TERM=xterm ssh'
 alias b='bundle'
 alias beg='bundle exec guard'
@@ -85,11 +78,12 @@ alias beg='bundle exec guard'
 alias ss='spring stop'
 alias wg='while bundle exec guard; echo "Restarting Guard..."; do echo; done'
 alias mr='mysql -u root'
-# alias tmux='tmux attach'
-# alias tmux='direnv exec / tmux'
-# alias tmux='tmux -2'    # force support for 256 colors - tput colors
-# disable correction for...
-# alias rails='nocorrect rails'
+
+# Use modern regexps for grep show color when `grep` is the final command
+# but not when piping into something else because the added color codes will
+# mess up the expected input
+alias grep="egrep --color=auto"
+
 alias nc='nocorrect'
 alias 'q;'='exit'
 # alias g='git'

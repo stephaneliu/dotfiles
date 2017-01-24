@@ -24,6 +24,13 @@ fi
 echo "Linking zsh_aliases"
 ln -sf $PWD/zsh_aliases ~/.zsh_aliases
 
+if [ -e ~/.zsh_aliases ]
+then
+  echo "Renaming zsh_aliases_linux to zsh_aliases_linux.orig"
+  mv ~/.zsh_aliases_linux ~/.zsh_aliases.orig
+fi
+echo "Linking zsh_aliases"
+ln -sf $PWD/zsh_aliases_linux ~/.zsh_aliases_linux
 
 if [ -e ~/.zshrc ]
 then

@@ -16,6 +16,14 @@ COMPLETION_WAITING_DOTS="true"
 # plugins=(colored-man code-dir command-not-found chucknorris docker git git-flow history-substring-search tmuxinator vi-mode web-search z)
 plugins=(colored-man bundler code-dir command-not-found git history-substring-search vi-mode taskwarrior web-search z chucknorris)
 
+is_osx() {
+  [ "$(uname -s)" = Darwin ]
+}
+
+is_linux() {
+  [ "$(uname -s)" = Linux ]
+}
+
 source $ZSH/oh-my-zsh.sh
 
 # Force 256 color support see:
@@ -24,6 +32,10 @@ source $ZSH/oh-my-zsh.sh
 export TERM=screen-256color
 
 source /$HOME/.zsh_aliases
+if is_linux; then
+  source .zsh_aliases_linux
+fi
+
 export PATH=./bin:/home/sliu/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:$PATH
 
 # export USE_BUNDLER=force
