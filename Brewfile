@@ -2,10 +2,8 @@
 
 # Lets us do `brew services restart postgres`, etc
 tap 'homebrew/services'
-
 # Old versions of some packages
 tap 'homebrew/versions'
-
 # Qt5.5 for capybara-webkit, because Qt 5.6 doesn't work except with the most
 # recent version
 tap 'homebrew/versions'
@@ -13,38 +11,29 @@ brew 'qt55'
 # --overwrite: overwrite any Qt4 files that might be there
 # --force: required because qt55 is keg-only
 `brew link --overwrite --force qt55`
-
 # The recommended way to use Heroku
 brew 'heroku'
-
 brew 'chruby'
 brew 'ruby-install'
-
 # colorful diffs (alias diff='colordiff -u')
 brew 'colordiff'
-
 # a better ack/grep
 brew 'the_silver_searcher'
-
 # so :Rtags works
 brew 'ctags'
-
 # It's vim
 brew 'vim'
-
 # Used in Rails projects
 brew 'phantomjs'
-
 # Fast GitHub client
 brew 'hub'
-
 # Fuzzy finder
 brew 'fzf'
-
 tap 'thoughtbot/formulae'
 brew 'thoughtbot/formulae/rcm'
-
 brew 'autojump'
+brew 'reattach-to-user-namespace'
+brew 'mysql'
 
 # Install zsh 5.2+ (OS X ships with 5.0) to fix this issue:
 # https://github.com/robbyrussell/oh-my-zsh/issues/4932
@@ -66,3 +55,4 @@ cask 'firefox'
 # cask 'vlc'
 # Keyboard remapping on macOS
 cask 'karabiner-elements'
+cask 'font-droid-sans-mono'
