@@ -1,0 +1,2 @@
+# copy and past in tmux
+brew 'reattach-to-user-namespace'
