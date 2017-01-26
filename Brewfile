@@ -58,9 +58,11 @@ end
 
 # Cask: install binaries
 # cask 'alfred'
-# cask 'dropbox'
+cask 'dropbox'
+cask 'evernote'
+cask '1password'
 cask 'google-chrome'
-cask 'netnewswire'
+cask 'firefox'
 # cask 'vlc'
 # Keyboard remapping on macOS
 cask 'karabiner-elements'
