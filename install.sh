@@ -94,6 +94,9 @@ echo "Linking dotfiles into ~..."
 # backup files that slow it down significantly.
 RCRC=rcrc rcup -v -d .
 
+if [ -d $HOME/.vim/bundle/Vundle.vim ]
+  git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
+fi
 echo "Installing Vim packages..."
 vim +PlugInstall +qa
 
