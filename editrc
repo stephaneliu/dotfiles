@@ -1,0 +1,8 @@
+# Use vim for IRB, rails c and mysql
+bind -v
+# Tab complete
+bind \\t rl_complete
+# CTRL + l
+bind ^l ed-clear-screen
+# CTRL + r
+bind ^r em-inc-search-prev

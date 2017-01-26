@@ -7,10 +7,8 @@ set horizontal-scroll-mode Off
 # Enable 8bit input
 set meta-flag On
 set input-meta On
-
 # Turn off 8th bit stripping
 set convert-meta Off
-
 # Keep the 8th bith for display
 set output-meta On
 
