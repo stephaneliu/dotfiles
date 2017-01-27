@@ -32,7 +32,6 @@ brew 'fzf'
 tap 'thoughtbot/formulae'
 brew 'thoughtbot/formulae/rcm'
 brew 'autojump'
-brew 'reattach-to-user-namespace'
 brew 'mysql'
 
 # Install zsh 5.2+ (OS X ships with 5.0) to fix this issue:
