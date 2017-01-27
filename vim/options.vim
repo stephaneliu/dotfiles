@@ -16,6 +16,10 @@ set scrolloff=3                     " number of visible lines above and below cu
 set backup
 set writebackup
 set backupdir=~/.vim/backups
+
+" Presistent undo
+set undofile " Create FILE.un~ files
+set undodir=~/.vim/undodir
 " setting backupskip to allow crontab -e using vim
 " see: http://tim.theenchanter.com/2008/07/crontab-temp-file-must-be-ed
 if has('unix')

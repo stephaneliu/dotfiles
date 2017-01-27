@@ -1,4 +1,6 @@
 /vim/bundle/
+/vim/undodir/
+/vim/backups/
 .tmuxinator/*.yml
 !default.yml
 vim/vim/.netrwhist
