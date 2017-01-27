@@ -1,30 +1,3 @@
-echo "# Configuring git"
-
-if [ -e ~/.gitconfig ]
-then
-  echo "Renaming .gitconfig to .gitconfig.orig"
-  mv ~/.gitconfig ~/.gitconfig.orig
-fi
-
-
-if [ -d ~/.git_template ]
-then
-  echo "Renaming .git_template to .git_template.orig"
-  mv ~/.git_template ~/.git_template.orig
-fi
-echo "Linking git_template"
-ln -sf $PWD/git_template ~/.git_template
-
-
-if [ -e ~/.gitignore_global ]
-then
-  echo "Renaming .gitignore_global to .gitirgnore_global.orig"
-  mv ~/.gitignore_global ~/.gitignore_global.orig
-fi
-echo "Linking gitignore_global"
-ln -sf $PWD/gitignore_global ~/.gitignore_global
-
-
 echo "Configuring git"
 echo "Enter your full name, followed by [ENTER]:"
 read name
@@ -36,7 +9,7 @@ echo "Enter your github username, followed by [ENTER]:"
 read github_username
 
 
-git config --global init.templatefir '~/.git_template'
+git config --global init.templatedir '~/.git_template'
 git config --global user.name "$name"
 git config --global user.email "$email"
 git config --global github.user "$github_username"
