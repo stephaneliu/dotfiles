@@ -1,0 +1,82 @@
+[init]
+	templatedir = ~/.git_template
+[user]
+	name = Stephane Liu
+  email = sliu@sjliu.com
+[github]
+	user = stephaneliu
+[color]
+	ui = auto
+[color "branch"]
+	current = yellow reverse
+	local = yellow
+	remote = green
+[color "diff"]
+	meta = yellow bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
+[color "status"]
+	added = yellow
+	changed = green
+	untracked = cyan
+[core]
+  editor = vim
+	whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
+	quotepath = false
+	excludesfile = ~/.gitignore
+	ff = only
+[alias]
+	a = add --patch
+	br = branch
+	st = status --short --branch
+	ci = commit
+	co = checkout
+	df = diff
+  l = log --show-linear-break --decorate
+  lola = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+  lg1 = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+  lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
+  # lg = !"git lg1"
+  lg = log -p --show-linear-break
+  ln = log --name-only --show-linear-break
+	lgg = log --oneline --show-linear-break
+	lol = log --graph --decorate --pretty=oneline --abbrev-commit
+	lolauth = log --graph --decorate --pretty=short --abbrev-commit
+  # lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+	lolaauth = log --graph --decorate --pretty=short --abbrev-commit --all
+	mg = merge --no-ff
+	unstage = reset HEAD
+	up = pull --rebase
+	undo = reset --soft HEAD^
+	ignore = update-index --assume-unchanged
+	unignore = update-index --no-assume-unchanged
+	ignored = !git ls-files -v | grep \"^[[:lower:]]\"
+	tags = tag --list
+  newauthor = commit --amend --reset-author -C HEAD
+  g = grep --extended-regexp --break --heading --line-number
+[mergetool]
+	keepBackup = false
+[rerere]
+	enabled = true
+[merge]
+	tool = vimdiff
+	stat = true
+  ff = only # NEVER implicitly do a merge commit
+[web]
+	browser = firefox
+[push]
+	default = matching
+[credential]
+	helper = /usr/share/doc/git/contrib/credential/gnome-keyring/git-credential-gnome-keyring
+[diff]
+	mnemonicprefix = true
+  compactionHeuristic = true # experimental - easier diff reading
+[grep]
+  extendRegexp = true
+  lineNumber = true
+[fetch]
+  prune = true
+[rebase]
+  autosquash = true
