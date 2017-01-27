@@ -23,5 +23,5 @@ load_all_files_in before
 load_all_files_in ""
 
 if is_linux; then
-  source /$HOME/.zsh_aliases_linux
+  source $HOME/.zsh/aliases.zsh.linux
 fi
