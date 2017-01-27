@@ -106,6 +106,10 @@ if is_osx; then
   echo "If you're using Terminal.app, check out the terminal-themes directory"
 fi
 
+if is_linux; then
+  ln -sf ~/.dotfiles/system/dircolors.256dark ~/dircolors.256dark
+fi
+
 for setup in tag-*/setup; do
   . "$setup"
 done
