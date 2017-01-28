@@ -100,6 +100,11 @@ fi
 echo "Installing Vim packages..."
 vim +PlugInstall +qa
 
+if [ -d $HOME/.oh-my-zsh ]
+  echo "Installing oh-my-zsh"
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+fi
+
 if is_osx; then
   echo
   echo "If you like what you see in system/osx-settings, run ./system/osx-settings"
