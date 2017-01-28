@@ -107,7 +107,7 @@ if is_osx; then
 fi
 
 if is_linux; then
-  ln -sf ~/.dotfiles/system/dircolors.256dark ~/dircolors.256dark
+  ln -sf ~/.dotfiles/system/dircolors.256dark ~/.dircolors.256dark
 fi
 
 for setup in tag-*/setup; do
