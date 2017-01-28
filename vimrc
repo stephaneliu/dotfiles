@@ -10,11 +10,14 @@ function! s:SourceConfigFilesIn(directory)
 endfunction
 
 function! s:LoadPlugins()
-  call plug#begin('~/.vim/bundle')
-  call vundle#begin()
-  source ~/.vim/plugin.vim
+  " set the runtime path to include Vundle and initialize
+  set rtp+=~/.vim/bundle/Vundle.vim
+  call vundle#begin('~/.vim/bundle')
+  " Must rename file because Vundle complains when it is loaded later ins
+  " script call s:SourceConfigFilesIn('')
+  source ~/.vim/init_plugins
   " source `~/.vim/plugins/*`
-  " For example, `~/.vim/plugins/haskell.vim` is symlinked to `tag-haskell/vim/plugins/haskell.vim`
+  " For example, `~/.vim/plugins/ruby.vim` is symlinked to `tag-ruby/vim/plugins/ruby.vim`
   call s:SourceConfigFilesIn('plugins')
   call vundle#end()
 endfunction
@@ -22,10 +25,13 @@ endfunction
 let mapleader=","  " maps leader from \" (double quote) to ,
 
 call s:LoadPlugins()
-call s:SourceConfigFilesIn('')
-" call s:SourceConfigFilesIn('')
 
-" vundle loads all the filetype, syntax and coloscheme files, so turn them
+" vundle loads all the file-type, syntax and color scheme files, so turn them
 " on after loading plugins
 filetype plugin indent on " required
+
+call s:SourceConfigFilesIn('')
+call s:SourceConfigFilesIn('functions')
+call s:SourceConfigFilesIn('rcplugins')
+
 syntax enable
