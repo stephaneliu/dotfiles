@@ -80,7 +80,7 @@ if is_osx; then
   done
 fi
 
-if is_ubuntu; then
+if is_debian; then
   echo "Installing linux packages..."
   sudo apt-get install xclip -y
   sudo add-apt-repository ppa:pgolm/the-silver-searcher
