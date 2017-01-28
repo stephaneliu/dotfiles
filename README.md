@@ -4,4 +4,8 @@ For the world
 
 ## Install
 
-> ./setup.sh
+> ./install.sh
+
+## Running rcm manually
+
+> RCRC=~/.dotfiles/rcrc rcup -v
