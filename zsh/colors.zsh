@@ -1,4 +1,5 @@
 
+is_linux() { [ "$(uname -s)" = Linux ] }
 # ANSI Colors
 # export BLACK='\033[0;30m' # doesn't work well with solarize
 # USAGE: printf "I ${LTRED}heart ${RED}Ruby\n"
@@ -24,4 +25,6 @@ export NC='\033[0m'
 export TERM=screen-256color
 
 # add color to directories
-eval `dircolors ~/.dircolors.256dark`
+if is_linux; then
+  eval `dircolors ~/.dircolors.256dark`
+fi
