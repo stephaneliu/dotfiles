@@ -19,6 +19,7 @@ brew 'ruby-install'
 brew 'colordiff'
 # a better ack/grep
 brew 'the_silver_searcher'
+brew 'direnv'
 # so :Rtags works
 brew 'ctags'
 # It's vim
