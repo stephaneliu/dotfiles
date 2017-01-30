@@ -24,4 +24,7 @@ load_all_files_in ""
 
 if is_linux; then
   source $HOME/.zsh/aliases.zsh.linux
+  # Current work around until deprecate PC
+  . "/$HOME/cac-enabled-git-env.sh"
+  disable_cac_aware_git
 fi
