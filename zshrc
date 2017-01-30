@@ -1,5 +1,3 @@
-source ~/.zsh/oh_my.zsh
-
 is_osx()   { [ "$(uname -s)" = Darwin ] }
 is_linux() { [ "$(uname -s)" = Linux ] }
 
