@@ -14,7 +14,6 @@ function! s:LoadPlugins()
   set rtp+=~/.vim/bundle/Vundle.vim
   call vundle#begin('~/.vim/bundle')
   " Must rename file because Vundle complains when it is loaded later ins
-  " script call s:SourceConfigFilesIn('')
   source ~/.vim/init_plugins
   " source `~/.vim/plugins/*`
   " For example, `~/.vim/plugins/ruby.vim` is symlinked to `tag-ruby/vim/plugins/ruby.vim`
