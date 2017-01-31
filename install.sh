@@ -1,6 +1,6 @@
 #!/bin/sh
 
-set -e
+# set -e
 
 lowercase(){
   # echo "$1" | sed "y/ABCDEFGHIJKLMNOPQRSTUVWXYZ/abcdefghipqrstuvwxyz/"
@@ -98,7 +98,7 @@ if [ -d $HOME/.vim/bundle/Vundle.vim ]
   git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
 fi
 echo "Installing Vim packages..."
-vim +PlugInstall +qa
+vim +PluginInstall +qa
 
 if [ -d $HOME/.oh-my-zsh ]
   echo "Installing oh-my-zsh"
