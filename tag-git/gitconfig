@@ -71,7 +71,7 @@
 [push]
   default = matching
 [credential]
-  helper = cache --timeout=3600
+  helper = cache --timeout=10800 # 3 hours
 [diff]
   mnemonicprefix = true
   compactionHeuristic = true # experimental - easier diff reading
