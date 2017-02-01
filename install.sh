@@ -29,9 +29,12 @@ fi
 if is_centos; then
   echo "Installing yum packages..."
   sudo yum install xclip -y
-  sudo yum install -y pcre-devel
+  sudo yum install autojump-zsh -y
+  sudo yum install ctags
 
-  sudo yum install xz-devel
+  # dependencies for silver searcher
+  sudo yum install pcre-devel -y
+  sudo yum install xz-devel -y
   cd ~/tmp
   git clone https://github.com/ggreer/the_silver_searcher.git
   cd the_silver_searcher
