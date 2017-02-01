@@ -71,7 +71,7 @@
 [push]
   default = matching
 [credential]
-  helper = /usr/share/doc/git/contrib/credential/gnome-keyring/git-credential-gnome-keyring
+  helper = cache --timeout=3600
 [diff]
   mnemonicprefix = true
   compactionHeuristic = true # experimental - easier diff reading
