@@ -26,3 +26,5 @@ if is_linux; then
   . "/$HOME/cac-enabled-git-env.sh"
   disable_cac_aware_git
 fi
+
+compdef g=git
