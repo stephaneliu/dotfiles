@@ -11,11 +11,11 @@ alias 'ps?'='ps aux | g '
 alias l='ls -alFHh'
 alias ll='ls -CFHh'
 
-alias code="cd ~/code"
-alias d1="cd ~/.dotfiles"
-alias w2="cd ~/code/netops/src"
-alias w3="cd ~/code/iatp"
-alias w4="cd ~/code/netops-datasources"           # location of netops-datasources
+alias code="echo use 'j'"
+alias d1="echo use 'j'"
+alias w2="echo use 'j'"
+alias w3="echo use 'j'"
+alias w4="echo use 'j'"
 alias screencast='ffmpeg -f x11grab -r 25 -s 1600x1200 -i :0.0 /tmp/output.mpg'
 alias version='cat /etc/issue'
 alias gg='clear'
