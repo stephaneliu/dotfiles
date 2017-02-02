@@ -1,2 +1,9 @@
 require 'irb'
 load '~/.irbrc'
+
+begin
+  # Make it awesome and don't crash if gem not installed
+  require 'awesome_print'
+  AwesomePrint.irb!
+rescue LoadError
+end
