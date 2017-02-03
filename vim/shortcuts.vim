@@ -60,10 +60,3 @@ nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 
 " vice sudo !!
 cmap w!! %!sudo tee > /dev/null %
-
-" http://stackoverflow.com/questions/1675688/make-vim-show-all-white-spaces-as-a-character
-" use :set list / :set nolist to toggle
-set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
-
-" Projects
-nmap <leader>w2 :e ~/code/netops/src/app/models/event.rb<CR>
