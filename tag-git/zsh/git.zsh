@@ -9,6 +9,6 @@ function g {
 
 alias ga='git add'
 alias gc='git checkout'
-alias gcm='git commit'
+alias gci='git commit'
 alias gg='git g'
 alias gp='git pull'
