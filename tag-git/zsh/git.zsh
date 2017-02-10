@@ -8,7 +8,7 @@ function g {
 }
 
 alias ga='git add'
-alias gc='git checkout'
+alias gco='git checkout'
 alias gci='git commit'
 alias gg='git g'
 alias gp='git pull'
