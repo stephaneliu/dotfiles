@@ -6,3 +6,8 @@ function g {
     hub st
   fi
 }
+
+alias gp='git pull'
+alias gc='git checkout'
+alias gcm='git commit'
+alias gg='git g'
