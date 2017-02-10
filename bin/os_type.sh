@@ -28,8 +28,6 @@ else
 
     OS=`lowercase $OS`
     DistroBasedOn=`lowercase $DistroBasedOn`
-    readonly DistroBasedOn # Redhat
-    readonly MACH          # x86_64
   fi
 fi
 
