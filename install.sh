@@ -22,8 +22,6 @@ if is_debian; then
   sudo add-apt-repository ppa:pgolm/the-silver-searcher
   sudo apt-get update
   sudo apt-get install the-silver-searcher
-
-  ln -sf ~/.dotfiles/system/dircolors.256dark ~/.dircolors.256dark
 fi
 
 if is_centos; then
