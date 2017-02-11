@@ -30,5 +30,12 @@ fi
 # Previously in tag-git/zsh/git.sh but zsh complaining command not found
 # Complete g like git
 compdef g=git
-compdef _git gc=git-checkout
 compdef _git ga=git-add
+compdef _git gc=git-checkout
+compdef _git gbr=git-branch
+compdef _git gcl=git-clone
+compdef _git gci=git-commit
+compdef _git gdf=git-diff
+compdef _git ggg=git-grep
+compdef _git gpl=git-pull
+compdef _git gps=git-push

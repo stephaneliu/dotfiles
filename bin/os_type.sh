@@ -17,24 +17,23 @@ else
   OS=`uname`
   if [ "${OS}" = "Linux" ] ; then
     if [ -f /etc/redhat-release ] ; then
-      DistroBasedOn='RedHat'
+      DistroBasedOn='redhat'
     elif [ -f /etc/SuSE-release ] ; then
-      DistroBasedOn='SuSe'
+      DistroBasedOn='suse'
     elif [ -f /etc/mandrake-release ] ; then
-      DistroBasedOn='Mandrake'
+      DistroBasedOn='mandrake'
     elif [ -f /etc/debian_version ] ; then
-      DistroBasedOn='Debian'
+      DistroBasedOn='debian'
     fi
 
     OS=`lowercase $OS`
-    DistroBasedOn=`lowercase $DistroBasedOn`
   fi
 fi
 
 is_osx(){ [ OS = Darwin ] }
 
-is_redhat() { [ DistroBasedOn = Redhat ] }
-is_centos() { [ DistroBasedOn = Redhat ] }
+is_redhat() { [ $DistroBasedOn = "redhat" ] }
+is_centos() { [ $DistroBasedOn = "redhat" ] }
 
-is_ubuntu() { [ DistroBasedOn = Debian ] }
-is_debian() { [ DistroBasedOn = Debian ] }
+is_ubuntu() { [ $DistroBasedOn = "debian" ] }
+is_debian() { [ $DistroBasedOn = "debian" ] }
