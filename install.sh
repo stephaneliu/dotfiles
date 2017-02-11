@@ -24,7 +24,7 @@ if is_debian; then
   sudo apt-get install the-silver-searcher
 fi
 
-if is_centos; then
+if is_redhat; then
   echo "Installing yum packages..."
   sudo yum install xclip -y
   sudo yum install autojump-zsh -y
