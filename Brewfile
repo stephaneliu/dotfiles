@@ -6,7 +6,6 @@ tap 'homebrew/services'
 tap 'homebrew/versions'
 # Qt5.5 for capybara-webkit, because Qt 5.6 doesn't work except with the most
 # recent version
-tap 'homebrew/versions'
 brew 'qt55'
 # --overwrite: overwrite any Qt4 files that might be there
 # --force: required because qt55 is keg-only
