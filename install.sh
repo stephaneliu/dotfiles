@@ -4,7 +4,7 @@
 # set -e # disabled until script is stabilized
 
 
-. ~/.dotfiles/utils/os_type.sh
+. ~/.dotfiles/bin/os_type.sh
 
 if is_osx; then
   echo "Installing Homebrew packages..."
