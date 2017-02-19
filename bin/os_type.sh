@@ -8,6 +8,7 @@ lowercase(){
 OS=`lowercase \`uname\``  # i.e. - linux
 KERNEL=`uname -r`
 MACH=`uname -m`
+DistroBasedOn='null'
 
 if [ "{$OS}" = "windowsnt" ]; then
   OS=windows
@@ -30,10 +31,10 @@ else
   fi
 fi
 
-is_osx(){ [ OS = Darwin ] }
+is_osx() { [ $OS = Darwin ] }
 
-is_redhat() { [ $DistroBasedOn = "redhat" ] }
-is_centos() { [ $DistroBasedOn = "redhat" ] }
+is_redhat() { [ $DistroBasedOn = redhat ] }
+is_centos() { [ $DistroBasedOn = redhat ] }
 
-is_ubuntu() { [ $DistroBasedOn = "debian" ] }
-is_debian() { [ $DistroBasedOn = "debian" ] }
+is_ubuntu() { [ $DistroBasedOn = debian ] }
+is_debian() { [ $DistroBasedOn = debian ] }
