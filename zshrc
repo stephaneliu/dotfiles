@@ -39,3 +39,4 @@ compdef _git gdf=git-diff
 compdef _git ggg=git-grep
 compdef _git gpl=git-pull
 compdef _git gps=git-push
+compdef _git gst=git-stash
