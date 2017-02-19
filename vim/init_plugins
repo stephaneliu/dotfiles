@@ -17,6 +17,7 @@ Plugin 'tpope/vim-markdown'
 
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'ervandew/regex'
 Plugin 'garbas/vim-snipmate'
 Plugin 'godlygeek/tabular.git'
 Plugin 'guns/xterm-color-table.vim'
