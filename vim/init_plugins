@@ -5,6 +5,8 @@ filetype off " required!
 Plugin 'gmarik/Vundle.vim'
 
 " Web development
+Plugin 'avdgaag/vim-phoenix'
+Plugin 'elixir-lang/vim-elixir'
 Plugin 'kchmck/vim-coffee-script'
 
 " Colorcheme
