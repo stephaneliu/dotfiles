@@ -20,6 +20,7 @@ alias gg='clear'
 # mess up the expected input
 alias grep="egrep --color=auto"
 alias h='heroku'
+alias hr='heroku run'
 alias mr='mysql -u root'
 alias nc='nocorrect'
 alias q='exit'
