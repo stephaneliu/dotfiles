@@ -37,5 +37,6 @@ compdef _git gcl=git-clone
 compdef _git gci=git-commit
 compdef _git gdf=git-diff
 compdef _git ggg=git-grep
+compdef _git glg=git-log
 compdef _git gpl=git-pull
 compdef _git gps=git-push
