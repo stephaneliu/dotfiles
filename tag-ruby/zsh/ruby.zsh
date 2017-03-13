@@ -19,3 +19,5 @@ alias ss="spring stop"
 
 source /usr/local/share/chruby/chruby.sh
 chruby ruby-2.4.0
+
+source $HOME/bin/ruby_switcher.sh
