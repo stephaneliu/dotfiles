@@ -40,3 +40,5 @@ compdef _git ggg=git-grep
 compdef _git glg=git-log
 compdef _git gpl=git-pull
 compdef _git gps=git-push
+compdef _git grm=git-rm
+compdef _git grf=git-rm
