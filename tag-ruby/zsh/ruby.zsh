@@ -18,6 +18,6 @@ alias ss="spring stop"
 [ -f /Users/sliu/.travis/travis.sh ] && source /Users/sliu/.travis/travis.sh
 
 source /usr/local/share/chruby/chruby.sh
-chruby ruby-2.4.0
+chruby ruby-2.4.1
 
 source $HOME/bin/ruby_switcher.sh
