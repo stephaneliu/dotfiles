@@ -1,4 +1,4 @@
-alias ann="annotate -mi -p before"
+alias ann="be annotate -mi -p before"
 alias b='bundle'
 alias be='bundle exec'
 alias bec='bundle exec rails c'

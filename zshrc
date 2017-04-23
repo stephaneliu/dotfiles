@@ -42,3 +42,4 @@ compdef _git gpl=git-pull
 compdef _git gps=git-push
 compdef _git grm=git-rm
 compdef _git grf=git-rm
+compdef _git gst=git-stash
