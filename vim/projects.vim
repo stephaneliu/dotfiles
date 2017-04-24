@@ -1,5 +1,5 @@
 nmap <leader>w1 :e ~/code/mcg/app/models/user.rb<CR>
-nmap <leader>w2 :e ~/code/netops/src/app/models/event.rb<CR>
+nmap <leader>w2 :e ~/code/netops/app/models/event.rb<CR>
 nmap <leader>w3 :e ~/code/iatp/app/models/user.rb<CR>
 nmap <leader>w4 :e ~/code/netops-datasources/lib/enms_alert_parser.rb<CR>
 nmap <leader>w5 :e ~/code/dots/src/app/models/asset.rb<CR>
