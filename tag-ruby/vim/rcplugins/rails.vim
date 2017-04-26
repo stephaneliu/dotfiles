@@ -53,6 +53,12 @@ let g:rails_projections = {
   \   "template":  "require 'rails_helper'\n\nRSpec.describe %SForm do\n\nend",
   \   "keywords": "before describe context"
   \ },
+  \ "spec/helpers/*_helper_spec.rb": {
+  \   "command":   "shelp",
+  \   "alternate": "app/helpers/%s.rb",
+  \   "template":  "require 'rails_helper'\n\nRSpec.describe %SHelper do\n\nend",
+  \   "keywords": "before describe context"
+  \ },
   \ "app/jobs/*.rb": {
   \   "command":   "job",
   \   "test":      "spec/jobs/%i_spec.rb",
