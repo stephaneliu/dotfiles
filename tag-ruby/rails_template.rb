@@ -1,3 +1,36 @@
+gem 'haml-rails'
+gem 'bootstrap', '~> 4.0.0.alpha3.1'
+gem 'devise'
+
+group :development, :test do
+  gem 'byebug', platform: :mri
+  gem 'factory_girl_rails'
+  gem 'faker'
+  gem 'rspec-rails'
+  gem 'rubocop'
+end
+gem_group :development, :test do
+  gem 'better_errors'
+  gem 'pry-rails'
+  gem 'factory_girl_rails'
+  gem 'rspec-rails'
+  gem 'rubocop'
+  gem 'factory_girl_rails'
+end
+
+gem_group :development do
+  gem 'better_errors'
+  gem 'guard'
+  gem 'guard-rspec'
+  gem 'guard-rubocop'
+  gem 'html2haml'
+  gem 'listen'
+  gem 'rb-fsevent', require: false
+  gem 'rb-fchange', require: false
+  gem 'rb-inotify', require: false
+  gem 'rails_layout'
+end
+
 envrc = <<-EOL
   RED='\\033[0;31m'
   NC='\\033[0m'
@@ -23,3 +56,11 @@ create_file ".envrc", envrc
 current_ruby = ask("Which ruby version? (Default: #{RUBY_VERSION})")
 current_ruby = current_ruby.blank? ?  RUBY_VERSION : current_ruby
 create_file ".ruby-version", "ruby-#{current_ruby}"
+
+run 'bundle install'
+# initialize guards
+run 'bundle exec guard init'
+run 'bundle exec guard init rspec'
+run 'bundle exec guard init rubocop'
+# TODO: add default rubocop settings
+#
