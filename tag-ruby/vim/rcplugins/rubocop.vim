@@ -1,2 +1,2 @@
 let g:vimrubocop_keymap = 0
-nmap <Leader>ru :RuboCop -a <CR>
+nmap <Leader>rubo :RuboCop -a <CR>
