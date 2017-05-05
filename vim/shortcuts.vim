@@ -13,7 +13,7 @@ map <silent> ;q :q<CR>
 map <silent> ;Q :q!<CR>
 
 " Display ~/.vimrc in new tab
-nmap <silent> ;v :tabnew ~/.vim/shortcuts.vim<CR>
+nmap <silent> ;v :tabnew ~/.dotfiles/vim/shorcuts.vim<CR>
 
 " relative and absolute rulers
 nmap <leader>rn :set rnu!<CR>
