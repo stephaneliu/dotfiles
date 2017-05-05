@@ -112,6 +112,11 @@ let g:rails_projections = {
   \   "test":      "spec/queries/%s_query_spec.rb",
   \   "template":  "class %SQuery\n  def initialize\n  end\nend"
   \ },
+  \ "spec/queries/*_query_spec.rb": {
+  \   "command":  "squery",
+  \   "template": "require 'rails_helper'\n\nRSpec.describe %SQuery do\n\nend",
+  \   "keywords": "before describe context"
+  \ },
   \ "app/services/*_service.rb": {
   \   "command":   "service",
   \   "test":      "spec/services/%i_spec.rb",
@@ -172,11 +177,6 @@ let g:rails_projections = {
   \ "spec/models/*_spec.rb": {
   \   "command":   "smodel",
   \   "template":  "require 'rails_helper'\n\nRSpec.describe %S do\n\nend",
-  \   "keywords": "before describe context"
-  \ },
-  \ "spec/queries/*_query_spec.rb": {
-  \   "command":  "sq",
-  \   "template": "require 'rails_helper'\n\nRSpec.describe %SQuery do\n\nend",
   \   "keywords": "before describe context"
   \ },
   \ "spec/routing/*_routing_spec.rb": {
