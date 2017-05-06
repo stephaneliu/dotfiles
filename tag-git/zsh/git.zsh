@@ -21,3 +21,5 @@ alias gps='hub push'
 alias grf='hub rm -rf'
 alias gst='hub stash'
 alias gus='hub unstage'
+
+unset SSH_ASKPASS
