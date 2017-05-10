@@ -2,20 +2,14 @@ gem 'haml-rails'
 gem 'bootstrap', '~> 4.0.0.alpha3.1'
 gem 'devise'
 
-group :development, :test do
+gem_group :development, :test do
+  gem 'better_errors'
   gem 'byebug', platform: :mri
   gem 'factory_girl_rails'
   gem 'faker'
-  gem 'rspec-rails'
-  gem 'rubocop'
-end
-gem_group :development, :test do
-  gem 'better_errors'
   gem 'pry-rails'
-  gem 'factory_girl_rails'
   gem 'rspec-rails'
   gem 'rubocop'
-  gem 'factory_girl_rails'
 end
 
 gem_group :development do
@@ -29,6 +23,10 @@ gem_group :development do
   gem 'rb-fchange', require: false
   gem 'rb-inotify', require: false
   gem 'rails_layout'
+end
+
+gem_group :test do
+  gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
 end
 
 envrc = <<-EOL
@@ -52,6 +50,18 @@ envrc = <<-EOL
 EOL
 
 create_file ".envrc", envrc
+
+# Setup shoulda matchers
+shoulda_matchers = <<-EOL
+  Shoulda::Matchers.configure do |config|
+    config.integrate do |with|
+      with.test_framework :rspec
+      with.library :rails
+    end
+  end
+EOL
+
+create_file "spec/support/should_matchers.rb", shoulda_matchers
 
 current_ruby = ask("Which ruby version? (Default: #{RUBY_VERSION})")
 current_ruby = current_ruby.blank? ?  RUBY_VERSION : current_ruby

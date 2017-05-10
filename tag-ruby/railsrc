@@ -1,3 +1,4 @@
 --database=mysql
 --skip-test-unit
 --skip-bundle
+--template=~/.rails_template.rb
