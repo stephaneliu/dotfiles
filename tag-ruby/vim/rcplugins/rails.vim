@@ -152,9 +152,6 @@ let g:rails_projections = {
   \   "template": "require 'rails_helper'\n\nRSpec.describe '%i:[task]' do\n  include_context 'rake'\n\nend",
   \   "alternate": "lib/tasks/%s.rake",
   \ },
-  \
-  \
-  \
   \ "spec/controllers/*_controller_spec.rb": {
   \   "command":  "scontroller",
   \   "template": "require 'rails_helper'\n\nRSpec.describe %SController do\n\nend",
@@ -195,6 +192,11 @@ let g:rails_projections = {
   \   "command":   "sview",
   \   "template":  "require 'rails_helper'\n\nRSpec.describe \'%s\' do\n\nend",
   \   "alternate": "app/views/%s.html.haml",
+  \   "keywords": "before describe context"
+  \ },
+  \ "spec/requests/*_spec.rb": {
+  \   "command":   "srequest",
+  \   "template":  "require 'rails_helper'\n\nRSpec.describe \'%s\' do\n\nend",
   \   "keywords": "before describe context"
   \ }
 \ }
