@@ -27,6 +27,10 @@ if is_ubuntu; then
   disable_cac_aware_git
 fi
 
+if is_osx; then
+  source $HOME/.zsh/aliases.zsh.osx
+fi
+
 # Previously in tag-git/zsh/git.sh but zsh complaining command not found
 # Complete g like git
 compdef g=git
