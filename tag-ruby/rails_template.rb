@@ -20,10 +20,12 @@ gem_group :development do
   gem 'html2haml'
   gem 'hub'
   gem 'listen'
+  gem 'meta_request' # rails log in Chrome
   gem 'rb-fsevent', require: false
   gem 'rb-fchange', require: false
   gem 'rb-inotify', require: false
   gem 'rails_layout'
+  gem 'terminal-notifier-guard'
 end
 
 gem_group :test do

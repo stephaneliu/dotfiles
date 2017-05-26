@@ -4,35 +4,31 @@
 tap 'homebrew/services'
 # Old versions of some packages
 tap 'homebrew/versions'
+# Thoughtbot formulas
+tap 'thoughtbot/formulae'
+
 # Qt5.5 for capybara-webkit, because Qt 5.6 doesn't work except with the most
 # recent version
 brew 'qt55'
 # --overwrite: overwrite any Qt4 files that might be there
 # --force: required because qt55 is keg-only
 `brew link --overwrite --force qt55`
-# The recommended way to use Heroku
-brew 'heroku'
-brew 'chruby'
-brew 'ruby-install'
-# colorful diffs (alias diff='colordiff -u')
-brew 'colordiff'
-# a better ack/grep
-brew 'the_silver_searcher'
-brew 'direnv'
-# so :Rtags works
-brew 'ctags'
-# It's vim
-brew 'vim'
-# Used in Rails projects
-brew 'phantomjs'
-# Fast GitHub client
-brew 'hub'
-# Fuzzy finder
-brew 'fzf'
-tap 'thoughtbot/formulae'
-brew 'thoughtbot/formulae/rcm'
+
 brew 'autojump'
+brew 'chruby'
+brew 'colordiff' # colorful diffs (alias diff='colordiff -u')
+brew 'ctags' # so :Rtags works
+brew 'direnv'
+brew 'fzf' # Fuzzy finder
+brew 'heroku' # The recommended way to use Heroku
+brew 'hub' # Fast GitHub client
 brew 'mysql'
+brew 'phantomjs' # Used in Rails projects
+brew 'ruby-install'
+brew 'terminal-notifier' # programatically send messages to notifications
+brew 'the_silver_searcher' # a better ack/grep
+brew 'thoughtbot/formulae/rcm'
+brew 'vim' # It's vim
 
 # Install zsh 5.2+ (OS X ships with 5.0) to fix this issue:
 # https://github.com/robbyrussell/oh-my-zsh/issues/4932
