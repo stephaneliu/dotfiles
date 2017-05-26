@@ -18,6 +18,9 @@ let g:rails_projections = {
   \ "config/database.yml": {
   \   "command":   "database"
   \ },
+  \ "Guardfile": {
+  \   "command":   "guard"
+  \ },
   \ "app/channels/*_channel.rb": {
   \   "command":   "channel",
   \   "affinity":  "resource",
