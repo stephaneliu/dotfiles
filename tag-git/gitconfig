@@ -84,3 +84,7 @@
   autosquash = true
 [path]
 	include = /Users/sliu/.gitconfig.private
+[http]
+  sslverify = false
+	sslcert = "LIU.STEPHANE.1241980045:PIV ID Certificate"
+	sslcertpasswordprotected = true

@@ -22,4 +22,5 @@ alias grf='hub rm -rf'
 alias gst='hub stash'
 alias gus='hub unstage'
 
+# Disable popup dialog for password on CENTOS
 unset SSH_ASKPASS

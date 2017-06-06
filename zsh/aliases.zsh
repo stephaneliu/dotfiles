@@ -18,7 +18,10 @@ alias gg='clear'
 # Use modern regexps for grep show color when `grep` is the final command
 # but not when piping into something else because the added color codes will
 # mess up the expected input
-alias grep="egrep --color=auto"
+# -A lines before match
+# -B lines after match
+# -n line numbers
+alias gr="grep -A 3 -B 3 -n --color=auto"
 alias h='heroku'
 alias hr='heroku run'
 alias mr='mysql -u root'
