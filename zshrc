@@ -20,11 +20,23 @@ load_all_files_in() {
 load_all_files_in before
 load_all_files_in ""
 
+source $ZSH/oh-my-zsh.sh
+
+ZSH=$HOME/.oh-my-zsh
+ZSH_THEME="robbyrussell"
+
+COMPLETION_WAITING_DOTS="true"
+
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+plugins=(colored-man code-dir command-not-found history-substring-search vi-mode web-search z autojump)
+
 if is_ubuntu; then
   source $HOME/.zsh/aliases.zsh.linux
   # Current work around until deprecate PC
   . "/$HOME/cac-enabled-git-env.sh"
   disable_cac_aware_git
+  plugins+=chucknorris
+  chuck_cow
 fi
 
 if is_osx; then
@@ -51,3 +63,4 @@ compdef _git gst=git-stash
 compdef _git gus=git-reset
 
 chruby ruby
+  
