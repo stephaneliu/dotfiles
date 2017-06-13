@@ -20,7 +20,6 @@ load_all_files_in() {
 load_all_files_in before
 load_all_files_in ""
 
-source $ZSH/oh-my-zsh.sh
 
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="robbyrussell"
@@ -43,6 +42,8 @@ if is_osx; then
   source $HOME/.zsh/aliases.zsh.osx
 fi
 
+source $ZSH/oh-my-zsh.sh
+
 # Previously in tag-git/zsh/git.sh but zsh complaining command not found
 # Complete g like git
 compdef g=git
@@ -63,4 +64,3 @@ compdef _git gst=git-stash
 compdef _git gus=git-reset
 
 chruby ruby
-  
