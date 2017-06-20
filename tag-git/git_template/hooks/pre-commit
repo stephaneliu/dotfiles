@@ -9,10 +9,10 @@ filenames.each do |filename|
   if filename.end_with? '_spec.rb' 
     `git diff --cached #{filename} | grep \^+\[\^+\] | grep focus`
     focus_hits.push filename if $? == 0
-
-    `git diff --cached #{filename} | grep \^+\[\^+\] | grep binding.pry`
-    binding_hits.push filename if $? == 0
   end
+
+  `git diff --cached #{filename} | grep \^+\[\^+\] | grep binding.pry`
+  binding_hits.push filename if $? == 0
 end
 
 if focus_hits.any? || binding_hits.any?
@@ -29,7 +29,7 @@ if focus_hits.any? || binding_hits.any?
   end
 
   if binding_hits.any?
-    puts "\e[1;31mRemove `binding.pry` from the following specs \e[0m"
+    puts "\e[1;31mRemove `binding.pry` from the following files \e[0m"
     puts binding_hits.join("\n")
   end
 
