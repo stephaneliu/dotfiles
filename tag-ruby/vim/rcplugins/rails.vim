@@ -130,6 +130,10 @@ let g:rails_projections = {
   \   "template": "require 'rails_helper'\n\nRSpec.describe %SService do\n\nend",
   \   "keywords": "before describe context"
   \ },
+  \ "spec/support/*.rb": {
+  \   "command":  "ssupport",
+  \   "template": "RSpec.configure do |config|\nend"
+  \ },
   \ "app/view_models/*_view.rb": {
   \   "command":   "view_model",
   \   "affinity":  "collection",
