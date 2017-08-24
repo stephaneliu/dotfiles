@@ -10,11 +10,6 @@ rescue LoadError
 end
 IRB.conf[:AUTO_INDENT] = true
 
-def p(obj)
-  options = { indent: 2 }
-  ap(obj, options)
-end
-
 def t; exit; end
 def gg; system 'clear'; end
 
