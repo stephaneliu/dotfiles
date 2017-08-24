@@ -15,13 +15,14 @@ Plugin 'croaky/vim-colors-github'
 
 "Syntax specific
 Plugin 'evanmiller/nginx-vim-syntax'
-Plugin 'tpope/vim-markdown'
 
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'ervandew/regex'
 Plugin 'garbas/vim-snipmate'
 Plugin 'godlygeek/tabular.git'
+" must be after tabular
+Plugin 'plasticboy/vim-markdown'
 Plugin 'guns/xterm-color-table.vim'
 Plugin 'honza/vim-snippets'
 Plugin 'mattn/calendar-vim'
