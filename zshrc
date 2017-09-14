@@ -25,6 +25,7 @@ ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="robbyrussell"
 
 COMPLETION_WAITING_DOTS="true"
+EDIPI="1241980045"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 plugins=(colored-man code-dir command-not-found history-substring-search vi-mode web-search z autojump)
@@ -56,10 +57,11 @@ compdef _git gdf=git-diff
 compdef _git ggg=git-grep
 compdef _git glg=git-log
 compdef _git gmg=git-merge
+compdef _git gmv=git-mv
 compdef _git gpl=git-pull
 compdef _git gps=git-push
 compdef _git grm=git-rm
-compdef _git grf=git-rm
+compdef _git grb=git-rebase
 compdef _git gst=git-stash
 compdef _git gus=git-reset
 

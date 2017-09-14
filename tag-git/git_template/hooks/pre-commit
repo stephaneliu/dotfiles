@@ -7,7 +7,7 @@ filenames = `git diff --cached --name-only --diff-filter=ACM`.split("\n")
 
 filenames.each do |filename|
   if filename.end_with? '_spec.rb' 
-    `git diff --cached #{filename} | grep \^+\[\^+\] | grep focus`
+    `git diff --cached #{filename} | grep \^+\[\^+\] | grep -E 'focus|fit\s|fspecify|fcontext|fdescribe'`
     focus_hits.push filename if $? == 0
   end
 

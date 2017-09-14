@@ -15,6 +15,9 @@
 "
 " globals
 let g:rails_projections = {
+  \ "config/*": {
+  \   "command":   "config"
+  \ },
   \ "config/database.yml": {
   \   "command":   "database"
   \ },
