@@ -1,8 +1,8 @@
 [init]
   templateDir = ~/.git_template
 [user]
-  name = Stephane Liu
-  email = sliu@sjliu.com
+	name = Stephane Liu
+	email = sliu@sjliu.com
 [github]
   user = stephaneliu
 [color]
@@ -71,7 +71,7 @@
 [push]
   default = matching
 [credential]
-  helper = cache --timeout=10800 # 3 hours
+	helper = osxkeychain
 [diff]
   mnemonicprefix = true
   compactionHeuristic = true # experimental - easier diff reading
@@ -85,6 +85,11 @@
 [path]
 	include = /Users/sliu/.gitconfig.private
 [http]
-  sslverify = false
-	sslcert = "LIU.STEPHANE.1241980045:PIV ID Certificate"
-	sslcertpasswordprotected = true
+  # sslverify = false
+  # sslcert = "LIU.STEPHANE.1241980045:PIV ID Certificate"
+  # sslcertpasswordprotected = true
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
