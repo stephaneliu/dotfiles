@@ -1,1 +1,2 @@
-export DOCKER_HOST=tcp://localhost:4243
+alias doc='docker'
+alias docc='docker-compose'

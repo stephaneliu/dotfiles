@@ -38,6 +38,3 @@ alias which="which -a"
 
 alias netr='nmcli networking off && nmcli networking on && sleep 10 && ifconfig | grep inet'
 alias inet='ifconfig | grep inet'
-
-alias doc='docker'
-alias docc='docker-compose'
