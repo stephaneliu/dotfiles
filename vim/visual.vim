@@ -23,7 +23,7 @@ set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P  " show
 " use :set list / :set nolist to toggle
 set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 
-set rnu
+" set rnu
 function! NumberToggle()
   if(&relativenumber == 1)
     set rnu!
