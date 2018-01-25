@@ -7,7 +7,7 @@ alias ..3="cd ../../../"                                    # up three directori
 alias ..4="cd ../../../../"                                 # up four directories
 alias ..5="cd ../../../../../"                              # up five directories
 alias :q="exit"                                             # close bash terminal
-alias 'ps?'='ps aux | g '
+alias 'ps?'='ps aux | gr '
 alias l='ls -alFHh'
 alias ll='ls -CFHh'
 

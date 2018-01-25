@@ -33,7 +33,7 @@ function! NumberToggle()
 endfunc
 noremap <C-n> :call NumberToggle()<cr>
 :au FocusLost * :set number
-:au FocusGained * :set rnu!
+" :au FocusGained * :set rnu!
 autocmd InsertEnter * :set number
 autocmd InsertLeave * :set rnu!
 set numberwidth=3

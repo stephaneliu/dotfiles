@@ -7,12 +7,13 @@ tap 'homebrew/versions'
 # Thoughtbot formulas
 tap 'thoughtbot/formulae'
 
+# Qt is not registered in DADMS at the moment. Install as needed or use Docker containers
 # Qt5.5 for capybara-webkit, because Qt 5.6 doesn't work except with the most
 # recent version
-brew 'qt55'
+# brew 'qt55'
 # --overwrite: overwrite any Qt4 files that might be there
 # --force: required because qt55 is keg-only
-`brew link --overwrite --force qt55`
+# `brew link --overwrite --force qt55`
 
 brew 'autojump'
 brew 'chruby'
