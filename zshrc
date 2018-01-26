@@ -2,6 +2,7 @@ source $HOME/bin/os_type.sh
 
 BASE="$HOME/.zsh"
 
+
 load_all_files_in() {
   if [ -d "$BASE/$1" ]; then
     for file in "$BASE/$1"/*.zsh; do
@@ -27,7 +28,7 @@ ZSH_THEME="robbyrussell"
 COMPLETION_WAITING_DOTS="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-plugins=(colored-man code-dir command-not-found history-substring-search vi-mode web-search z autojump)
+plugins=(colored-man code-dir command-not-found docker history-substring-search vi-mode web-search z autojump)
 
 if is_ubuntu; then
   source $HOME/.zsh/aliases.zsh.linux
