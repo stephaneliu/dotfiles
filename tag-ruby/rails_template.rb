@@ -1,14 +1,21 @@
 gem 'haml-rails'
-gem 'bootstrap', '~> 4.0.0.alpha3.1'
-gem 'devise', github: 'plataformatec/devise' # look for release > 4.2.1 for rails 5.1 compat
+gem 'bootstrap', '~>4.0.0'
+gem 'devise'
 
 gem_group :development, :test do
   gem 'better_errors'
-  gem 'factory_girl_rails'
+  gem 'factory_bot_rails'
   gem 'faker'
   gem 'pry-rails'
   gem 'rspec-rails'
   gem 'rubocop'
+  gem 'pronto'
+  gem 'pronto-rubocop', require: false
+  gem 'pronto-flay', require: false
+  gem 'pronto-simplecov', require: false
+  gem 'pronto-brakeman', require: false
+  gem 'pronto-haml', require: false
+  gem 'pronto-rails_best_practices', require: false
 end
 
 gem_group :development do
@@ -21,9 +28,8 @@ gem_group :development do
   gem 'hub'
   gem 'listen'
   gem 'meta_request' # rails log in Chrome
-  gem 'rb-fsevent', require: false
-  gem 'rb-fchange', require: false
-  gem 'rb-inotify', require: false
+  gem 'rb-fsevent', require: false  # mac
+  gem 'rb-inotify', require: false  # linux
   gem 'rails_layout'
   gem 'terminal-notifier-guard'
 end
@@ -79,8 +85,12 @@ create_file ".ruby-version", "ruby-#{current_ruby}"
 
 # initialize guards
 run 'bundle exec guard init'
-run 'bundle exec guard init rspec'
-run 'bundle exec guard init rubocop'
 # TODO: add default rubocop settings
+
+
+inject_into_file '.gitignore', after: "byebug_history\n" do <<-EOL
+ coverage
+EOL
+end
 
 run "git add . && git ci -m 'initial commit'"
