@@ -28,8 +28,6 @@ gem_group :development do
   gem 'hub'
   gem 'listen'
   gem 'meta_request' # rails log in Chrome
-  gem 'rb-fsevent', require: false  # mac
-  gem 'rb-inotify', require: false  # linux
   gem 'rails_layout'
   gem 'terminal-notifier-guard'
 end
