@@ -29,6 +29,7 @@ gem_group :development do
   gem 'listen'
   gem 'meta_request' # rails log in Chrome
   gem 'rails_layout'
+  gem 'spring-commands-rspec'
   gem 'terminal-notifier-guard'
 end
 
@@ -83,12 +84,22 @@ create_file ".ruby-version", "ruby-#{current_ruby}"
 
 # initialize guards
 run 'bundle exec guard init'
+run 'bundle exec spring binstub --all'
+
+rails_command 'db:create'
 # TODO: add default rubocop settings
 
+create_file 'README'
 
 inject_into_file '.gitignore', after: "byebug_history\n" do <<-EOL
  coverage
 EOL
 end
 
-run "git add . && git ci -m 'initial commit'"
+after_bundle do
+  git :init
+  git add: '.'
+  git commit: '-m "Initial commit."'
+end
+
+run 'direnv allow'
