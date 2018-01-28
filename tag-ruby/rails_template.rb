@@ -21,7 +21,9 @@ gem_group :development do
   gem 'annotate'
   gem 'better_errors'
   gem 'guard'
+  gem 'guard-brakeman'
   gem 'guard-rspec'
+  gem 'guard-reek'
   gem 'guard-rubocop'
   gem 'html2haml'
   gem 'hub'
@@ -43,7 +45,7 @@ generate 'rspec:install'
 generate 'devise:install'
 generate 'annotate:install'
 
-simplecov_setup = <<-EOL
+simplecov_config = <<-EOL
 require 'simplecov'
 
 if ENV['COVERAGE'] == 'true'
@@ -59,7 +61,30 @@ end
 
 EOL
 
-prepend_to_file 'spec/spec_helper.rb', simplecov_setup
+prepend_to_file 'spec/spec_helper.rb', simplecov_config
+
+reek_config = <<-EOL
+"app/controllers":
+  IrresponsibleModule:
+    enabled: false
+  NestedIterators:
+    max_allowed_nesting: 2
+  UnusedPrivateMethod:
+    enabled: false
+  InstanceVariableAssumption:
+    enabled: false
+"app/helpers":
+  IrresponsibleModule:
+    enabled: false
+  UtilityFunction:
+    enabled: false
+"app/mailers":
+  InstanceVariableAssumption:
+    enabled: false
+EOL
+
+create_file ".reek", reek_config
+
 
 envrc = <<-EOL
 RED='\\033[0;31m'
@@ -167,6 +192,18 @@ group :red_green_refactor, halt_on_fail: true do
   guard :rubocop, rubocop_options do
     watch(%r{.+\.rb$})
     watch(%r{(?:.+/)?\.rubocop(?:_todo)?\.yml$}) { |m| File.dirname(m[0]) }
+  end
+
+  brakeman_options = {
+    run_on_start: true,
+    quiet: true
+  }
+
+  guard 'brakeman', brakeman_options do
+    watch(%r{^app/.+\.(erb|haml|rhtml|rb)$})
+    watch(%r{^config/.+\.rb$})
+    watch(%r{^lib/.+\.rb$})
+    watch('Gemfile')
   end
 end
 EOL
