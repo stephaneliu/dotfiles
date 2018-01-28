@@ -15,7 +15,6 @@ gem_group :development, :test do
   gem 'pronto-simplecov', require: false
   gem 'pronto-brakeman', require: false
   gem 'pronto-haml', require: false
-  gem 'pronto-rails_best_practices', require: false
 end
 
 gem_group :development do
