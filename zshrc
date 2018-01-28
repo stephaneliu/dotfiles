@@ -65,5 +65,3 @@ compdef _git grm=git-rm
 compdef _git grb=git-rebase
 compdef _git gst=git-stash
 compdef _git gus=git-reset
-
-chruby ruby

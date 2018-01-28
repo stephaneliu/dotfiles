@@ -21,6 +21,6 @@ alias ts="be thin -C config/thin.yml stop"
 [ -f /Users/sliu/.travis/travis.sh ] && source /Users/sliu/.travis/travis.sh
 
 source /usr/local/share/chruby/chruby.sh
-chruby ruby-2.4.2
+chruby ruby
 
 source $HOME/bin/ruby_switcher.sh

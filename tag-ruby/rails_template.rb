@@ -87,16 +87,54 @@ run 'bundle exec guard init'
 run 'bundle exec spring binstub --all'
 
 rails_command 'db:create'
-# TODO: add default rubocop settings
+
+rubocop_config = <<-EOL
+Metrics/BlockLength:
+  Exclude:
+    - 'Guardfile'
+
+Style/Documentation:
+  Exclude:
+    - 'spec/**/*'
+    - 'test/**/*'
+    - 'app/controllers/application_controller.rb'
+    - 'app/helpers/application_helper.rb'
+    - 'app/mailers/application_mailer.rb'
+    - 'app/models/application_record.rb'
+    - 'config/application.rb'
+
+Metrics/LineLength:
+  Exclude:
+    - 'Gemfile'
+  Max: 100
+
+Style/MixinUsage:
+  Exclude:
+    - 'bin/setup'
+    - 'bin/update'
+
+Style/PercentLiteralDelimiters:
+  Exclude:
+    - 'Guardfile'
+
+Style/RegexpLiteral:
+  Exclude:
+    - 'Guardfile'
+
+Style/StringLiterals:
+  Exclude:
+    - 'Guardfile'
+EOL
+create_file ".rubocop.yml", rubocop_config
 
 create_file 'README'
 
-inject_into_file '.gitignore', after: "byebug_history\n" do <<-EOL
- coverage
-EOL
-end
-
 after_bundle do
+  inject_into_file '.gitignore', after: "byebug_history\n" do <<-EOL
+   coverage
+  EOL
+  end
+
   git :init
   git add: '.'
   git commit: '-m "Initial commit."'
