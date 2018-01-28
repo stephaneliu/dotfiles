@@ -50,6 +50,10 @@ if ENV['COVERAGE'] == 'true'
   SimpleCov.start 'rails' do
     minimum_coverage 90
     maximum_coverage_drop 5
+
+    add_filter do |source|
+      source.lines.count < 7
+    end
   end
 end
 
