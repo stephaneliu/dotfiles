@@ -46,9 +46,12 @@ generate 'annotate:install'
 
 simplecov_setup = <<-EOL
 require 'simplecov'
-SimpleCov.start 'rails' do
-  minimum_coverage 90
-  maximum_coverage_drop 5
+
+if ENV['COVERAGE'] == 'true'
+  SimpleCov.start 'rails' do
+    minimum_coverage 90
+    maximum_coverage_drop 5
+  end
 end
 
 EOL
