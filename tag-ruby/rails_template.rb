@@ -46,7 +46,10 @@ generate 'annotate:install'
 
 simplecov_setup = <<-EOL
 require 'simplecov'
-SimpleCov.start 'rails' if ENV['COVERAGE'] == 'true'
+SimpleCov.start 'rails' do
+  minimum_coverage 90
+  maximum_coverage_drop 5
+end
 
 EOL
 
@@ -97,11 +100,9 @@ guard_setup = <<-EOL
 
 group :red_green_refactor, halt_on_fail: true do
   rspec_options = {
-    cmd: 'bin/rspec',
-    cmd_additional_args: '-f doc',
+    cmd: 'bin/rspec -f doc',
     run_all: {
-      cmd: 'COVERAGE=true bundle exec rspec',
-      cmd_additional_args: '-f doc'
+      cmd: 'COVERAGE=true bundle exec rspec -f doc'
     },
     all_after_pass: true
   }
@@ -110,16 +111,16 @@ group :red_green_refactor, halt_on_fail: true do
     require "guard/rspec/dsl"
     dsl = Guard::RSpec::Dsl.new(self)
 
-    # Feel free to open issues for suggestions and improvements
-
     # RSpec files
     rspec = dsl.rspec
-    watch(rspec.spec_helper) { rspec.spec_dir }
+
+    watch(rspec.spec_helper)  { rspec.spec_dir }
     watch(rspec.spec_support) { rspec.spec_dir }
     watch(rspec.spec_files)
 
     # Ruby files
     ruby = dsl.ruby
+
     dsl.watch_spec_files_for(ruby.lib_files)
 
     # Rails files
@@ -136,13 +137,13 @@ group :red_green_refactor, halt_on_fail: true do
     end
 
     # Rails config changes
-    watch(rails.spec_helper)     { rspec.spec_dir }
-    watch(rails.routes)          { "\#{rspec.spec_dir}/routing" }
-    watch(rails.app_controller)  { "\#{rspec.spec_dir}/controllers" }
+    watch(rails.spec_helper)    { rspec.spec_dir }
+    watch(rails.routes)         { "\#{rspec.spec_dir}/routing" }
+    watch(rails.app_controller) { "\#{rspec.spec_dir}/controllers" }
 
     # Capybara features specs
-    watch(rails.view_dirs)     { |m| rspec.spec.call("features/\#{m[1]}") }
-    watch(rails.layouts)       { |m| rspec.spec.call("features/\#{m[1]}") }
+    watch(rails.view_dirs) { |m| rspec.spec.call("features/\#{m[1]}") }
+    watch(rails.layouts)   { |m| rspec.spec.call("features/\#{m[1]}") }
 
     # Turnip features and steps
     watch(%r{^spec/acceptance/(.+)\.feature$})
@@ -150,17 +151,17 @@ group :red_green_refactor, halt_on_fail: true do
       Dir[File.join("**/\#{m[1]}.feature")][0] || "spec/acceptance"
     end
   end
-end
 
-rubocop_options = {
-  all_on_start: false,
-  cli: '--rails --parallel',
-  # keep_failed: true,
-}
+  rubocop_options = {
+    all_on_start: false,
+    cli: '--rails --parallel',
+    # keep_failed: true,
+  }
 
-guard :rubocop, rubocop_options do
-  watch(%r{.+\.rb$})
-  watch(%r{(?:.+/)?\.rubocop(?:_todo)?\.yml$}) { |m| File.dirname(m[0]) }
+  guard :rubocop, rubocop_options do
+    watch(%r{.+\.rb$})
+    watch(%r{(?:.+/)?\.rubocop(?:_todo)?\.yml$}) { |m| File.dirname(m[0]) }
+  end
 end
 EOL
 
@@ -192,8 +193,7 @@ Metrics/BlockLength:
 
 Metrics/LineLength:
   Exclude:
-    - 'Gemfile'
-    - 'config/initializers/devise.rb'
+    - 'Gemfile' - 'config/initializers/devise.rb'
   Max: 100
 
 Style/MixinUsage:
