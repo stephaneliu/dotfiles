@@ -37,12 +37,20 @@ gem_group :test do
   gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
 end
 
-run 'bundle install --binstub'
+run 'bundle install'
 
 # setup rspec
 generate 'rspec:install'
 generate 'devise:install'
 generate 'annotate:install'
+
+simplecov_setup = <<-EOL
+require 'simplecov'
+SimpleCov.start 'rails' if ENV['COVERAGE'] == 'true'
+
+EOL
+
+prepend_to_file 'spec/spec_helper.rb', simplecov_setup
 
 envrc = <<-EOL
 RED='\\033[0;31m'
@@ -79,11 +87,85 @@ EOL
 create_file "spec/support/shoulda_matchers.rb", shoulda_matchers
 
 current_ruby = ask("Which ruby version? [#{RUBY_VERSION}]")
-current_ruby = current_ruby.blank? ?  RUBY_VERSION : current_ruby
+current_ruby = current_ruby.blank? ?  RUBY_VERSION : current_ruby.chomp
 create_file ".ruby-version", "ruby-#{current_ruby}"
 
 # initialize guards
-run 'bundle exec guard init'
+# run 'bundle exec guard init'
+guard_setup = <<-EOL
+# frozen_string_literal: true
+
+group :red_green_refactor, halt_on_fail: true do
+  rspec_options = {
+    cmd: 'bin/rspec',
+    cmd_additional_args: '-f doc',
+    run_all: {
+      cmd: 'COVERAGE=true bundle exec rspec',
+      cmd_additional_args: '-f doc'
+    },
+    all_after_pass: true
+  }
+
+  guard :rspec, rspec_options do
+    require "guard/rspec/dsl"
+    dsl = Guard::RSpec::Dsl.new(self)
+
+    # Feel free to open issues for suggestions and improvements
+
+    # RSpec files
+    rspec = dsl.rspec
+    watch(rspec.spec_helper) { rspec.spec_dir }
+    watch(rspec.spec_support) { rspec.spec_dir }
+    watch(rspec.spec_files)
+
+    # Ruby files
+    ruby = dsl.ruby
+    dsl.watch_spec_files_for(ruby.lib_files)
+
+    # Rails files
+    rails = dsl.rails(view_extensions: %w(erb haml slim))
+    dsl.watch_spec_files_for(rails.app_files)
+    dsl.watch_spec_files_for(rails.views)
+
+    watch(rails.controllers) do |m|
+      [
+        rspec.spec.call("routing/\#{m[1]}_routing"),
+        rspec.spec.call("controllers/\#{m[1]}_controller"),
+        rspec.spec.call("acceptance/\#{m[1]}")
+      ]
+    end
+
+    # Rails config changes
+    watch(rails.spec_helper)     { rspec.spec_dir }
+    watch(rails.routes)          { "\#{rspec.spec_dir}/routing" }
+    watch(rails.app_controller)  { "\#{rspec.spec_dir}/controllers" }
+
+    # Capybara features specs
+    watch(rails.view_dirs)     { |m| rspec.spec.call("features/\#{m[1]}") }
+    watch(rails.layouts)       { |m| rspec.spec.call("features/\#{m[1]}") }
+
+    # Turnip features and steps
+    watch(%r{^spec/acceptance/(.+)\.feature$})
+    watch(%r{^spec/acceptance/steps/(.+)_steps\.rb$}) do |m|
+      Dir[File.join("**/\#{m[1]}.feature")][0] || "spec/acceptance"
+    end
+  end
+end
+
+rubocop_options = {
+  all_on_start: false,
+  cli: '--rails --parallel',
+  # keep_failed: true,
+}
+
+guard :rubocop, rubocop_options do
+  watch(%r{.+\.rb$})
+  watch(%r{(?:.+/)?\.rubocop(?:_todo)?\.yml$}) { |m| File.dirname(m[0]) }
+end
+EOL
+
+create_file 'Guardfile', guard_setup
+
 run 'bundle exec spring binstub --all'
 
 rails_command 'db:create'
@@ -103,9 +185,15 @@ Style/Documentation:
     - 'app/models/application_record.rb'
     - 'config/application.rb'
 
+Metrics/BlockLength:
+  Exclude:
+    - 'Guardfile'
+    - 'lib/tasks/auto_annotate_models.rake'
+
 Metrics/LineLength:
   Exclude:
     - 'Gemfile'
+    - 'config/initializers/devise.rb'
   Max: 100
 
 Style/MixinUsage:
@@ -130,10 +218,15 @@ create_file ".rubocop.yml", rubocop_config
 create_file 'README'
 
 after_bundle do
-  inject_into_file '.gitignore', after: "byebug_history\n" do <<-EOL
-   coverage
-  EOL
+  inject_into_file '.gitignore', after: "byebug_history\n" do
+<<-EOL
+coverage
+EOL
   end
+
+  run 'bundle exec rubocop --auto-correct'
+
+  run 'rm -rf test'
 
   git :init
   git add: '.'
