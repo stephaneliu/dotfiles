@@ -37,7 +37,7 @@ gem_group :test do
   gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
 end
 
-run 'bundle install'
+run 'bundle install --binstub'
 
 # setup rspec
 generate 'rspec:install'
