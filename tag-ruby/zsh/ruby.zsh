@@ -24,3 +24,10 @@ source /usr/local/share/chruby/chruby.sh
 chruby ruby
 
 source $HOME/bin/ruby_switcher.sh
+
+LUNCHY_DIR=$(dirname `gem which lunchy`)/../extras
+if [ -f $LUNCHY_DIR/lunchy-completion.zsh ]; then
+  . $LUNCHY_DIR/lunchy-completion.zsh
+else
+  echo 'Lunchy not installed - gem install lunchy'
+fi
