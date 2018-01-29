@@ -45,6 +45,12 @@ generate 'rspec:install'
 generate 'devise:install'
 generate 'annotate:install'
 
+pronto_config = <<-EOL
+verbose: false
+EOL
+
+create_file ".pronto.yml"
+
 simplecov_config = <<-EOL
 require 'simplecov'
 
@@ -54,7 +60,7 @@ if ENV['COVERAGE'] == 'true'
     maximum_coverage_drop 5
 
     add_filter do |source|
-      source.lines.count < 7
+      source.lines.count < 8
     end
   end
 end
