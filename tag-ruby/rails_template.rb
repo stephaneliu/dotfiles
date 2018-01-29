@@ -221,6 +221,9 @@ run 'bundle exec spring binstub --all'
 rails_command 'db:create'
 
 rubocop_config = <<-EOL
+AllCops:
+  Exclude:
+    - 'db/schema.rb'
 Metrics/BlockLength:
   Exclude:
     - 'Guardfile'
