@@ -1,4 +1,4 @@
 --database=postgresql
 --skip-test
 --skip-bundle
---template=~/.rails_template.rb
+--template=https://raw.githubusercontent.com/stephaneliu/rails-template/master/template.rb
