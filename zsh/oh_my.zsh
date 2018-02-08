@@ -6,12 +6,8 @@ ZSH_THEME="robbyrussell"
 COMPLETION_WAITING_DOTS="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-plugins=(colored-man code-dir command-not-found history-substring-search vi-mode web-search z autojump)
+plugins=(colored-man-pages chucknorris command-not-found history-substring-search vi-mode web-search z autojump)
 
-if is_ubuntu; then
-  plugins+=chucknorris
-fi
-  
 source $ZSH/oh-my-zsh.sh
 
 if is_ubuntu; then

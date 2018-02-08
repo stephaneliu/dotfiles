@@ -21,7 +21,6 @@ load_all_files_in() {
 load_all_files_in before
 load_all_files_in ""
 
-
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="robbyrussell"
 
@@ -65,3 +64,5 @@ compdef _git grm=git-rm
 compdef _git grb=git-rebase
 compdef _git gst=git-stash
 compdef _git gus=git-reset
+
+chuck_cow
