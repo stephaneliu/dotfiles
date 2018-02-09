@@ -10,6 +10,7 @@ alias :q="exit"                                             # close bash termina
 alias 'ps?'='ps aux | gr '
 alias l='ls -alFHh'
 alias ll='ls -CFHh'
+alias terminal-notifier='reattach-to-user-namespace terminal-notifier'
 
 alias 'q;'='exit'
 alias code="echo use 'j'-jump"

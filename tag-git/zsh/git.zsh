@@ -27,5 +27,21 @@ alias grm='hub rm'
 alias gst='hub stash'
 alias gus='hub unstage'
 
-# Disable popup dialog for password on CENTOS
-unset SSH_ASKPASS
+# Complete g like git
+compdef g=git
+compdef _git gad=git-add
+compdef _git gco=git-checkout
+compdef _git gbr=git-branch
+compdef _git gcl=git-clone
+compdef _git gci=git-commit
+compdef _git gdf=git-diff
+compdef _git ggg=git-grep
+compdef _git glg=git-log
+compdef _git gmg=git-merge
+compdef _git gmv=git-mv
+compdef _git gpl=git-pull
+compdef _git gps=git-push
+compdef _git grm=git-rm
+compdef _git grb=git-rebase
+compdef _git gst=git-stash
+compdef _git gus=git-reset

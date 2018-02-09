@@ -5,4 +5,3 @@ bindkey -M viins 'kj' vi-cmd-mode
 # Type a letter/word, jk (escape), j or k (search)
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
-
