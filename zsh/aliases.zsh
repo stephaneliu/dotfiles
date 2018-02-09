@@ -1,6 +1,7 @@
 ##################################### general applicable ####################################################
 # alias g="egrep --exclude=\*.svn\* --color=auto -r -n "
 alias gre="find . -type f|grep rb$|xargs grep --color=auto"  # only grep rb files
+alias .="cd "
 alias ..="cd .."                                            # up one directory
 alias ..2="cd ../../"                                       # up two directories
 alias ..3="cd ../../../"                                    # up three directories
