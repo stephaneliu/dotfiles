@@ -3,6 +3,7 @@
 --exclude=bower_components
 --exclude=node_modules
 --exclude=vendor
+--exclude=doc
 --languages=-javascript
 --langdef=js
 --langmap=js:.js

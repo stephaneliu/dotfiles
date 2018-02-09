@@ -2,7 +2,7 @@
   templateDir = ~/.git_template
 [user]
 	name = Stephane Liu
-	email = sliu@sjliu.com
+	email = stephane.liu@navy.mil
 [github]
   user = stephaneliu
 [color]
@@ -58,6 +58,9 @@
   g = grep --extended-regexp --break --heading --line-number
   work = config user.email \"stephaneliu@navy.mil\"
   home = config user.email \"sliu@sjliu.com\"
+	ctags = !.git/hooks/ctags
+  cac = !sh -c 'git config --replace-all http.sslcert \"LIU.STEPHANE.1241980045\" && git config --replace-all http.sslcapath \"/Users/sliu/etc/pki/ca-trust\"'
+  nocac = config --remove-section http
 [mergetool]
   keepBackup = false
 [rerere]
@@ -84,10 +87,6 @@
   autosquash = true
 [path]
 	include = /Users/sliu/.gitconfig.private
-[http]
-  # sslverify = false
-  # sslcert = "LIU.STEPHANE.1241980045:PIV ID Certificate"
-  # sslcertpasswordprotected = true
 [filter "lfs"]
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
