@@ -13,9 +13,6 @@ Plugin 'kchmck/vim-coffee-script'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'croaky/vim-colors-github'
 
-"Syntax specific
-Plugin 'evanmiller/nginx-vim-syntax'
-
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'ervandew/regex'
@@ -41,6 +38,7 @@ Plugin 'vim-scripts/notes.vim'
 Plugin 'vim-scripts/scratch.vim'
 Plugin 'vim-scripts/simplefold'
 Plugin 'vim-scripts/taglist.vim'
+Plugin 'vim-syntastic/syntastic'
 Plugin 'xolox/vim-misc'
 
 " Brief help
