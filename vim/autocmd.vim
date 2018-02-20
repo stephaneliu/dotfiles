@@ -31,7 +31,6 @@ if has("autocmd")
   " hide comments in ruby files 
   " Remove comment on end to auto fold on file load
   " see travisjeffery.com/b/2012/01/automaticallly-fold-comments-in-vim for
-  autocmd FileType ruby,eruby set foldmethod=expr | set foldexpr=getline(v:lnum)=~'^\\s*#'
-
+  " autocmd FileType ruby,eruby set foldmethod=expr | set foldexpr=getline(v:lnum)=~'^\\s*#'
 endif
 
