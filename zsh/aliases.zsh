@@ -41,5 +41,8 @@ alias which="which -a"
 alias netr='nmcli networking off && nmcli networking on && sleep 10 && ifconfig | grep inet'
 alias inet='ifconfig | grep inet'
 
-alias doc='docker'
-alias docc='docker-compose'
+alias d='docker'
+alias dc='docker-compose'
+alias dca='docker-compose up -d && docker attach --detach-keys="ctrl-q" netops_rails_1'
+alias dcba='docker-compose run rails bash'
+alias dcbu='docker-compose build --build-arg dotfile_user=sliu $1'
