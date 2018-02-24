@@ -20,9 +20,10 @@ alias gg='clear'
 # Use modern regexps for grep show color when `grep` is the final command
 # but not when piping into something else because the added color codes will
 # mess up the expected input
-# -A lines before match
-# -B lines after match
-# -n line numbers
+#               --- lines before match
+#               |    ---lines after match
+#               |    |    ---line numbers
+#               |    |    |
 alias gr="grep -A 3 -B 3 -n --color=auto"
 alias h='heroku'
 alias hr='heroku run'
@@ -45,4 +46,4 @@ alias d='docker'
 alias dc='docker-compose'
 alias dca='docker-compose up -d && docker attach --detach-keys="ctrl-q" netops_rails_1'
 alias dcba='docker-compose run rails bash'
-alias dcbu='docker-compose build --build-arg dotfile_user=sliu $1'
+alias dcbu='docker-compose build --build-arg dotfile_user=sliu '
