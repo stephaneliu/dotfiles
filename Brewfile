@@ -25,6 +25,7 @@ brew 'heroku' # The recommended way to use Heroku
 brew 'hub' # Fast GitHub client
 brew 'mysql'
 brew 'phantomjs' # Used in Rails projects
+brew 'ripgrep' # Faster grep written in Rust
 brew 'ruby-install'
 brew 'terminal-notifier' # programatically send messages to notifications
 brew 'the_silver_searcher' # a better ack/grep

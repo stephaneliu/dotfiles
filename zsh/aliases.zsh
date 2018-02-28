@@ -1,6 +1,5 @@
 ##################################### general applicable ####################################################
 # alias g="egrep --exclude=\*.svn\* --color=auto -r -n "
-alias gre="find . -type f|grep rb$|xargs grep --color=auto"  # only grep rb files
 alias .="cd "
 alias ..="cd .."                                            # up one directory
 alias ..2="cd ../../"                                       # up two directories
@@ -24,7 +23,7 @@ alias gg='clear'
 #               |    ---lines after match
 #               |    |    ---line numbers
 #               |    |    |
-alias gr="grep -A 3 -B 3 -n --color=auto"
+alias gr="/usr/local/bin/rg -A 2 -B 2 -n --color=auto"
 alias h='heroku'
 alias hr='heroku run'
 alias mr='mysql -u root'
