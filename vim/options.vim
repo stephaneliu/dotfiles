@@ -20,9 +20,9 @@ set backupdir=~/.vim/backups
 " Presistent undo
 set undofile " Create FILE.un~ files
 set undodir=~/.vim/undodir
-" setting backupskip to allow crontab -e using vim
-" see: http://tim.theenchanter.com/2008/07/crontab-temp-file-must-be-ed
-if has('unix')
+
+" setting backupskip to allow crontab -e to use vim
+if has('unix') " see: http://tim.theenchanter.com/2008/07/crontab-temp-file-must-be-ed
   set backupskip=/tmp/*,/private/tmp/*
 endif
 
