@@ -65,7 +65,7 @@
 [rerere]
 	enabled = true
 [merge]
-  tool = vimdiff
+	tool = vimdiff
   stat = true
   ff = only # NEVER implicitly do a merge commit
 [web]
