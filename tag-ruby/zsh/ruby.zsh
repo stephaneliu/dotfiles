@@ -14,7 +14,8 @@ alias ss="spring stop"
 
 dev_run() {
   if dockered; then
-    docker-compose run rails $1
+    rails_docker_name=$RAILS_DOCKER || 'app'
+    docker-compose run $rails_docker_name $1
   else
     eval $1
   fi
