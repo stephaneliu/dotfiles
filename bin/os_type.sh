@@ -1,7 +1,6 @@
 #!/bin/bash
 
-lowercase(){
-  # echo "$1" | sed "y/ABCDEFGHIJKLMNOPQRSTUVWXYZ/abcdefghipqrstuvwxyz/"
+lowercase() {
   echo "$1" | awk '{print tolower($0)}'
 }
 
@@ -16,14 +15,14 @@ elif [ "{$OS}" = "darwin" ]; then
   OS=mac
 else
   OS=`uname`
-  if [ "${OS}" = "Linux" ] ; then
-    if [ -f /etc/redhat-release ] ; then
+  if [ "${OS}" = "Linux" ]; then
+    if [ -f /etc/redhat-release ]; then
       DistroBasedOn='redhat'
-    elif [ -f /etc/SuSE-release ] ; then
+    elif [ -f /etc/SuSE-release ]; then
       DistroBasedOn='suse'
-    elif [ -f /etc/mandrake-release ] ; then
+    elif [ -f /etc/mandrake-release ]; then
       DistroBasedOn='mandrake'
-    elif [ -f /etc/debian_version ] ; then
+    elif [ -f /etc/debian_version ]; then
       DistroBasedOn='debian'
     fi
 
@@ -31,10 +30,22 @@ else
   fi
 fi
 
-is_osx() { [ $OS = Darwin ] }
+is_osx(){
+  [ $OS = Darwin ]
+}
 
-is_redhat() { [ $DistroBasedOn = redhat ] }
-is_centos() { [ $DistroBasedOn = redhat ] }
+is_redhat() {
+  [ $DistroBasedOn = redhat ]
+}
 
-is_ubuntu() { [ $DistroBasedOn = debian ] }
-is_debian() { [ $DistroBasedOn = debian ] }
+is_centos() {
+  [ $DistroBasedOn = redhat ]
+}
+
+is_ubuntu() {
+  [ $DistroBasedOn = debian ]
+}
+
+is_debian() {
+  [ $DistroBasedOn = debian ]
+}

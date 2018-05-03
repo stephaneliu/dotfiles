@@ -2,12 +2,13 @@
 
 # Exits immediately on error
 # set -e # disabled until script is stabilized
+install_dir=$PWD
+unset GIT_SSL_CERT 
 
-
-. ~/.dotfiles/bin/os_type.sh
+source $HOME/.dotfiles/bin/os_type.sh
 
 if is_osx; then
-  echo "Installing Homebrew packages..."
+  echo "Installing Homebrew packages"
   brew update
   brew tap homebrew/bundle
   brew bundle
@@ -17,46 +18,66 @@ if is_osx; then
 fi
 
 if is_debian; then
-  echo "Installing linux packages..."
-  sudo apt-get install xclip -y
+  echo "Installing linux packages"
   sudo add-apt-repository ppa:pgolm/the-silver-searcher
   sudo apt-get update
-  sudo apt-get install the-silver-searcher
+  sudo apt-get install xclip -y
+  sudo apt-get install the-silver-searcher -y
 fi
 
-if is_redhat; then
-  echo "Installing yum packages..."
-  sudo yum install xclip -y
-  sudo yum install autojump-zsh -y
-  sudo yum install ctags
+if is_redhat || is_centos; then
+  echo "Installing yum packages"
+  sudo yum -q -y install xclip
+  sudo yum -q -y install autojump-zsh
+  sudo yum -q -y install ctags
+  sudo yum -q -y install zsh 
 
   # dependencies for silver searcher
-  sudo yum install pcre-devel -y
-  sudo yum install xz-devel -y
-  cd ~/tmp
-  git clone https://github.com/ggreer/the_silver_searcher.git
-  cd the_silver_searcher
-  ./build.sh
-  make
-  sudo make install
-  which ag
+  sudo yum -q -y install pcre-devel
+  sudo yum -q -y install xz-devel
+  if [ ! `command -v ag` ]; then
+    cd /tmp
+    git clone https://github.com/ggreer/the_silver_searcher.git silver_searcher
+    cd silver_searcher
+    ./build.sh
+    make
+    sudo make install
+  else
+    echo "The Silver Search is already installed...skipping"
+  fi
 fi
 
-echo "Linking dotfiles into ~..."
 # Before `rcup` runs, there is no ~/.rcrc, so we must tell `rcup` where to look.
 # We need the rcrc because it tells `rcup` to ignore thousands of useless Vim
 # backup files that slow it down significantly.
-RCRC=rcrc rcup -v -d .
+# Pass -v flag to run with verbose
+cd $HOME
 
-if [ -d $HOME/.vim/bundle/Vundle.vim ]
-  git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
-fi
-echo "Installing Vim packages..."
+echo "Linking dotfiles into $HOME"
+RCRC=$HOME/.dotfiles/rcrc rcup
+
+echo "Installing Vim packages"
 vim +PluginInstall +qa
 
-if [ -d $HOME/.oh-my-zsh ]
+cd $HOME
+
+if [ -d $HOME/.oh-my-zsh ]; then
+  echo "Oh-my-zsh already installed"
+else
   echo "Installing oh-my-zsh"
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+  echo "If changing shell (chsh) to zsh failed, sudo bash then 'chsh -s /bin/zsh {user}'"
+fi
+
+cd ${install_dir}
+
+for setup in tag-*/setup; do
+  . "$setup"
+done
+
+if [ ! -d $HOME/tmp ]; then
+  echo "Creating a tmp folder in $HOME"
+  mkdir $HOME/tmp
 fi
 
 if is_osx; then
@@ -65,6 +86,4 @@ if is_osx; then
   echo "If you're using Terminal.app, check out the terminal-themes directory"
 fi
 
-for setup in tag-*/setup; do
-  . "$setup"
-done
+echo "Done!"
