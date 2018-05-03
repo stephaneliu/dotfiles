@@ -2,7 +2,7 @@
   templateDir = ~/.git_template
 [user]
 	name = Stephane Liu
-	signingkey = 807C764DBFB16266
+  signingkey = 807C764DBFB16266
 	email = sliu@sjliu.com
 [github]
   user = stephaneliu
@@ -92,7 +92,4 @@
 	required = true
 	clean = git-lfs clean -- %f
 [commit]
-	gpgsign = true
-[http]
-	sslcert = LIU.STEPHANE.1241980045
-	sslcapath = /Users/sliu/etc/pki/ca-trust
+  # gpgsign = true

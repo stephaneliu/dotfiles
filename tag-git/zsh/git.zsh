@@ -46,3 +46,7 @@ compdef _git grm=git-rm
 compdef _git grb=git-rebase
 compdef _git gst=git-stash
 compdef _git gus=git-reset
+
+# Prevent git from using CAC by default - defer to project or use git cac to reinstate, uncac to
+# remove
+unset GIT_SSL_CERT 
