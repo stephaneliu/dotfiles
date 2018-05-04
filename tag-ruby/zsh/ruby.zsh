@@ -2,7 +2,7 @@ alias ann="be annotate -mi -p before"
 alias b='bundle'
 alias be='bundle exec'
 alias bec='bundle exec rails c'
-alias beg="dev_run 'spring stop && bundle exec guard --clear'"
+alias beg="dev_run 'spring stop && bundle exec guard --clear --force-polling'"
 alias bo='bundle open'
 alias bs='bundle show'
 alias bu='bundle update'
@@ -37,11 +37,11 @@ if [ -f /usr/local/share/chruby/chruby.sh ]; then
   chruby ruby
 fi
 
-LUNCHY_DIR=$(dirname `gem which lunchy`)/../extras
-if [ -f $LUNCHY_DIR/lunchy-completion.zsh ]; then
-  . $LUNCHY_DIR/lunchy-completion.zsh
-else
-  echo 'Lunchy not installed - gem install lunchy'
-fi
+# LUNCHY_DIR=$(dirname `gem which lunchy`)/../extras
+# if [ -f $LUNCHY_DIR/lunchy-completion.zsh ]; then
+#   . $LUNCHY_DIR/lunchy-completion.zsh
+# else
+#   echo 'Lunchy not installed - gem install lunchy'
+# fi
 
-source $HOME/bin/ruby_switcher.sh
+# source $HOME/bin/ruby_switcher.sh

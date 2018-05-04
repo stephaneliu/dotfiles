@@ -48,3 +48,6 @@ alias da='docker attach --detach-keys="ctrl-q" netops_rails_1'
 alias dcbu='docker-compose build --build-arg dotfile_user=sliu '
 alias dcst='docker-compose stop'
 alias dcr='docker-compose run '
+
+alias pg-start="pg_ctl -D /usr/local/var/postgresql@9.6 start"
+alias pg-stop="pg_ctl -D /usr/local/var/postgresql@9.6 stop"
