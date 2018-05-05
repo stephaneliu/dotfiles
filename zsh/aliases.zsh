@@ -1,6 +1,5 @@
 ##################################### general applicable ####################################################
 # alias g="egrep --exclude=\*.svn\* --color=auto -r -n "
-alias .="cd "
 alias ..="cd .."                                            # up one directory
 alias ..2="cd ../../"                                       # up two directories
 alias ..3="cd ../../../"                                    # up three directories
@@ -11,8 +10,8 @@ alias 'ps?'='ps aux | gr '
 alias l='ls -alFHh'
 alias ll='ls -CFHh'
 alias terminal-notifier='reattach-to-user-namespace terminal-notifier'
+alias tmux='TERM=xterm-256color tmux'
 
-alias 'q;'='exit'
 alias code="echo use 'j'-jump"
 alias d1="echo use 'j'-jump"
 alias gg='clear'

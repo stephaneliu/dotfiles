@@ -31,35 +31,37 @@
 [alias]
   a = add --patch
   br = branch
-  st = status --short --branch
+
+  cac = !sh -c 'git config --global --replace-all http.sslcert \"LIU.STEPHANE.1241980045\" && git config --global --replace-all http.sslcapath \"/Users/sliu/etc/pki/ca-trust\"'
+  nocac = config --global --remove-section http
+
   ci = commit
   co = checkout
+	ctags = !.git/hooks/ctags
   df = diff
+  g = grep --extended-regexp --break --heading --line-number
+  ignore = update-index --assume-unchanged
+  unignore = update-index --no-assume-unchanged
+  ignored = !git ls-files -v | grep \"^[[:lower:]]\"
+
   l = log --show-linear-break --decorate --show-signature
   lola = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
-  lg1 = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
-  lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
   lg = log -p --show-linear-break --show-signature
   ln = log --name-only --show-linear-break --show-signature
   lgg = log --oneline --show-linear-break --show-signature
   lol = log --graph --decorate --pretty=oneline --abbrev-commit
   lolauth = log --graph --decorate --pretty=short --abbrev-commit
   lolaauth = log --graph --decorate --pretty=short --abbrev-commit --all
+
   mg = merge --no-ff
-  unstage = reset HEAD
-  up = pull --rebase
-  undo = reset --soft HEAD^
-  ignore = update-index --assume-unchanged
-  unignore = update-index --no-assume-unchanged
-  ignored = !git ls-files -v | grep \"^[[:lower:]]\"
-  tags = tag --list
   newauthor = commit --amend --reset-author -C HEAD
-  g = grep --extended-regexp --break --heading --line-number
+  st = status --short --branch
+  tags = tag --list
   work = config user.email \"stephaneliu@navy.mil\"
   home = config user.email \"sliu@sjliu.com\"
-	ctags = !.git/hooks/ctags
-  cac = !sh -c 'git config --global --replace-all http.sslcert \"LIU.STEPHANE.1241980045\" && git config --global --replace-all http.sslcapath \"/Users/sliu/etc/pki/ca-trust\"'
-  nocac = config --global --remove-section http
+  undo = reset --soft HEAD^
+  unstage = reset HEAD
+  up = pull --rebase
 [mergetool]
   keepBackup = false
 [rerere]
@@ -92,4 +94,4 @@
 	required = true
 	clean = git-lfs clean -- %f
 [commit]
-  gpgsign = true
+  # gpgsign = true
