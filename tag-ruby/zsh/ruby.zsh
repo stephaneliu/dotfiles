@@ -13,7 +13,7 @@ alias rs="rails server"
 alias ss="spring stop"
 
 dev_run() {
-  if dockered; then
+  if dockered && ! in_docker; then
     rails_docker_name=$RAILS_DOCKER || 'app'
     docker-compose run $rails_docker_name $1
   else
@@ -22,11 +22,11 @@ dev_run() {
 }
 
 dockered() {
-  if [ -f ${PWD}/Dockerfile ]; then
-    return 0
-  else
-    return 1
-  fi
+  [ -f ${PWD}/Dockerfile ]
+}
+
+in_docker() {
+  [ -f /.dockerenv ]
 }
 
 # added by travis gem
