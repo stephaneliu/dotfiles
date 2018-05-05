@@ -11,4 +11,8 @@ load_all_files_in() {
 load_all_files_in before
 load_all_files_in ""
 
+if [ -e $HOME/.zsh.docker ]; then
+  source $HOME/.zsh.docker
+fi
+
 # chuck_cow
