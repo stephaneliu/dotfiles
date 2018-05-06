@@ -11,6 +11,7 @@ alias rc="dev_run 'rails c'"
 alias rg="dev_run 'rails g'"
 alias rs="rails server"
 alias ss="spring stop"
+alias vig="vi Gemfile"
 
 dev_run() {
   if dockered && ! in_docker; then
