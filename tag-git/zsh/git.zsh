@@ -1,3 +1,5 @@
+source $HOME/bin/os_type.sh
+
 # g without arguments will run `git status`
 function g {
   if [[ $# > 0 ]]; then
@@ -47,6 +49,8 @@ compdef _git grb=git-rebase
 compdef _git gst=git-stash
 compdef _git gus=git-reset
 
-# Prevent git from using CAC by default - defer to project or use git cac to reinstate, uncac to
-# remove
-unset GIT_SSL_CERT 
+if is_osx; then
+  git config --global --replace-all credential.helper 'osxkeychain'
+elif is_centos || is_redhat; then
+  git config --global --replace-all credential.helper 'cache --timeout=3600'
+fi

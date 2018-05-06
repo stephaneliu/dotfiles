@@ -75,7 +75,6 @@
 [push]
   default = matching
 [credential]
-	helper = osxkeychain
 [diff]
   mnemonicprefix = true
   compactionHeuristic = true # experimental - easier diff reading
@@ -95,3 +94,5 @@
 	clean = git-lfs clean -- %f
 [commit]
   # gpgsign = true
+[credential]
+	helper = osxkeychain
