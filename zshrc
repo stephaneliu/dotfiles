@@ -18,3 +18,4 @@ if [ -e $HOME/.zsh.docker ]; then
 fi
 
 # chuck_cow
+export USEPG=true
