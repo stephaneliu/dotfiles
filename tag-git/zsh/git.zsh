@@ -50,7 +50,12 @@ compdef _git gst=git-stash
 compdef _git gus=git-reset
 
 if is_osx; then
-  sudo git config --system --replace-all credential.helper 'osxkeychain'
+  if [ "$(git config --get credential.helper)" != "osxkeychain" ]; then
+    echo "Configuring Git system scope credential helper to osxkeychain" 
+    sudo git config --system --replace-all credential.helper 'osxkeychain'
+  fi
 elif is_centos || is_redhat; then
-  sudo git config --system --replace-all credential.helper 'cache --timeout=3600'
+  if [ "$(git config --get credential.helper)" != "cache --timeout=3600" ]; then
+    sudo git config --system --replace-all credential.helper 'cache --timeout=3600'
+  fi
 fi
