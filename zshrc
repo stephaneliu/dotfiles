@@ -14,7 +14,7 @@ load_all_files_in ""
 if [ -e $HOME/.zsh.docker ]; then
   source $HOME/.zsh.docker
   # Prevent git from using CAC by default - defer to project or use git cac to reinstate, uncac to
-  unset GIT_SSL_CERT 
+  # unset GIT_SSL_CERT 
 fi
 
 # chuck_cow

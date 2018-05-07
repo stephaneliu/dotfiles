@@ -94,5 +94,3 @@
 	clean = git-lfs clean -- %f
 [commit]
   # gpgsign = true
-[credential]
-	helper = osxkeychain
