@@ -55,7 +55,7 @@ if is_osx; then
     sudo git config --system --replace-all credential.helper 'osxkeychain'
   fi
 elif is_centos || is_redhat; then
-  if [ "$(git config --get credential.helper)" != "cache --timeout=3600" ]; then
-    sudo git config --system --replace-all credential.helper 'cache --timeout=3600'
+  if [ "$(git config --get credential.helper)" != "cache --timeout=86400" ]; then
+    sudo git config --system --replace-all credential.helper 'cache --timeout=86400'
   fi
 fi
