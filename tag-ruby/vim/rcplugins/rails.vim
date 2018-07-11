@@ -70,6 +70,12 @@ let g:rails_projections = {
   \   "test":      "spec/jobs/{singular}_spec.rb",
   \   "template":  "class {camelcase|capitalize|colons}\n  def initialize\n  end\nend"
   \ },
+  \ "app/reports/*.rb": {
+  \   "command":   "report",
+  \   "affinity":  "collection",
+  \   "test":      "spec/reports/{singular}_spec.rb",
+  \   "template":  "class {camelcase|capitalize|colons}Report\n  def initialize\n  end\nend"
+  \ },
   \ "app/models/concerns/*.rb": {
   \   "command":   "concern",
   \   "test":      "spec/model/concerns/{singular}_spec.rb",

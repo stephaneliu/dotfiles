@@ -1,3 +1,4 @@
+let g:rspec_command = "!./bin/rspec {spec}"
 map <Leader>sc :call RunCurrentSpecFile()<CR>
 map <Leader>sf :call RunCurrentSpecFile()<CR>
 map <Leader>sn :call RunNearestSpec()<CR>
