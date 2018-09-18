@@ -19,3 +19,10 @@ fi
 
 # chuck_cow
 export USEPG=true
+
+# For elastic beanstalk (eb) CLI 
+export PATH=~/Library/Python/3.6/bin:$PATH
+
+if [ -e $HOME/.private_keys ]; then
+  source $HOME/.private_keys
+fi
