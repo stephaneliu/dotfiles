@@ -24,6 +24,17 @@ let g:rails_projections = {
   \ "Guardfile": {
   \   "command":   "guard"
   \ },
+  \ "app/adapters/*_adapter.rb": {
+  \   "command":   "adapter",
+  \   "test":      "spec/adapters/{singular}_spec.rb",
+  \   "template":  "class {camelcase|capitalize|colons}Adapter\n  def initialize\n  end\nend"
+  \ },
+  \ "spec/adapters/*_adapter_spec.rb": {
+  \   "command":   "sadapter",
+  \   "alternate": "app/adapters/%s.rb",
+  \   "template":  "require 'spec_helper'\n\nRSpec.describe {camelcase|capitalize|colons}Adapter do\n\nend",
+  \   "keywords": "before describe context"
+  \ },
   \ "app/channels/*_channel.rb": {
   \   "command":   "channel",
   \   "affinity":  "resource",
