@@ -49,14 +49,14 @@ if is_redhat || is_centos; then
 
   if [ ! `command -v rcup` ]; then
     cd /tmp
-    curl -LO https://thoughtbot.github.io/rcm/dist/rcm-1.3.1.tar.gz && \
-      sha=$(sha256 rcm-1.3.1.tar.gz | cut -f1 -d' ') && \
-      [ "$sha" = "9c8f92dba63ab9cb8a6b3d0ccf7ed8edf3f0fb388b044584d74778145fae7f8f" ] && \ 
-      tar -xvf rcm-1.3.1.tar.gz && \
-      cd rcm-1.3.1 && \ 
-      /configure && \
-      make && \
-     sudo make install
+    curl -LO https://thoughtbot.github.io/rcm/dist/rcm-1.3.3.tar.gz &&
+    sha=$(sha256sum rcm-1.3.3.tar.gz | cut -f1 -d' ') &&
+    [ "$sha" = "935524456f2291afa36ef815e68f1ab4a37a4ed6f0f144b7de7fb270733e13af" ] &&
+    tar -xvf rcm-1.3.3.tar.gz &&
+    cd rcm-1.3.3 &&
+    ./configure &&
+    make &&
+    sudo make install
   fi
 fi
 
@@ -104,3 +104,4 @@ if is_osx; then
 fi
 
 echo "Done!"
+
