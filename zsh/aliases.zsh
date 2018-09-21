@@ -50,3 +50,5 @@ alias dcr='docker-compose run '
 
 alias pg-start="pg_ctl -D /usr/local/var/postgresql@9.6 start"
 alias pg-stop="pg_ctl -D /usr/local/var/postgresql@9.6 stop"
+
+alias j='z'
