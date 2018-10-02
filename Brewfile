@@ -21,6 +21,7 @@ brew 'git'
 brew 'heroku/brew/heroku' # The recommended way to use Heroku
 brew 'hub' # Fast GitHub client
 brew 'mysql'
+brew 'opensc' # smart card support
 brew 'postgresql'
 brew 'phantomjs' # Used in Rails projects
 brew 'ripgrep' # Faster grep written in Rust
@@ -28,6 +29,9 @@ brew 'ruby-install'
 brew 'terminal-notifier' # programatically send messages to notifications
 brew 'the_silver_searcher' # a better ack/grep
 brew 'thoughtbot/formulae/rcm'
+;q
+
+
 brew 'vim' # It's vim
 
 # Install zsh 5.2+ (OS X ships with 5.0) to fix this issue:
