@@ -7,13 +7,20 @@ unset GIT_SSL_CERT
 
 source $HOME/.dotfiles/bin/os_type.sh
 
+if [ ! `command -v $HOME/homebrew/bin/brew` ]; then
+  echo "Installing Homebrew in $HOME/homebrew"
+  cd $HOME
+  mkdir homebrew && curl -L https://github.com/Homebrew/brew/tarball/master | \
+    tar xz --strip 1 -C homebrew
+fi
+
 if is_osx; then
   echo "Installing Homebrew packages"
-  brew update
-  brew tap homebrew/bundle
-  brew bundle
+  $HOME/hombrew/bin/brew update
+  $HOME/hombrew/bin/brew tap homebrew/bundle
+  $HOME/hombrew/bin/brew bundle
   for brewfile in */Brewfile; do
-    brew bundle --file="$brewfile"
+    $HOME/hombrew/bin/brew bundle --file="$brewfile"
   done
 fi
 

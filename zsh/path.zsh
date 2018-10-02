@@ -1,4 +1,2 @@
 # Homebrew
-PATH="/usr/local/bin:$PATH"
-
-PATH=$HOME/bin:$PATH
+PATH=$HOME/bin:$HOME/homebrew/bin:$PATH
