@@ -16,7 +16,6 @@ brew 'autojump'
 brew 'chruby'
 brew 'colordiff' # colorful diffs (alias diff='colordiff -u')
 brew 'ctags' # so :Rtags works
-brew 'direnv'
 brew 'fzf' # Fuzzy finder
 brew 'git'
 brew 'heroku/brew/heroku' # The recommended way to use Heroku
