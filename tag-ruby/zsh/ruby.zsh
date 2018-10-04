@@ -6,10 +6,10 @@ alias beg="dev_run 'spring stop && bundle exec guard --clear'"
 alias bo='bundle open'
 alias bs='bundle show'
 alias bu='bundle update'
-alias r="rails"
-alias rc='rails c'
-alias rg='rails g'
-alias rs="rails server"
+alias r="bin/rails"
+alias rc='bin/rails c'
+alias rg='bin/rails g'
+alias rs="bin/rails server"
 alias ss="spring stop"
 alias vig="vi Gemfile"
 
