@@ -52,7 +52,7 @@ cask 'google-chrome'
 # cask 'vlc'
 # Keyboard remapping on macOS
 cask 'karabiner-elements'
-cask 'font-droid-sans-mono'
+cask 'font-droidsansmono-nerd-font-mono'
 cask 'macvim'
 cask 'divvy'
 cask 'superduper'
