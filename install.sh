@@ -16,13 +16,15 @@ fi
 
 if is_osx; then
   echo "Installing Homebrew packages"
-  $HOME/hombrew/bin/brew update
-  $HOME/hombrew/bin/brew tap homebrew/bundle
-  $HOME/hombrew/bin/brew bundle
+  $HOME/homebrew/bin/brew update
+  $HOME/homebrew/bin/brew tap homebrew/bundle
+  $HOME/homebrew/bin/brew bundle
   for brewfile in */Brewfile; do
     $HOME/hombrew/bin/brew bundle --file="$brewfile"
   done
 fi
+
+export PATH=$HOME/homebrew/bin:$PATH
 
 if is_debian; then
   echo "Installing linux packages"
@@ -74,7 +76,7 @@ fi
 cd $HOME
 
 echo "Linking dotfiles into $HOME"
-RCRC=$HOME/.dotfiles/rcrc rcup
+RCRC=$HOME/.dotfiles/rcrc rcup -f
 
 if [ ! -d $HOME/.vim/bundle/Vundle.vim ]; then
   git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
