@@ -4,6 +4,9 @@
 tap 'homebrew/services'
 # Thoughtbot formulas
 tap 'thoughtbot/formulae'
+tap 'heroku/brew'
+tap 'homebrew/cask'
+tap 'caskroom/fonts'
 
 # Qt is not registered in DADMS at the moment. Install as needed or use Docker containers
 # Qt5.5 for capybara-webkit, because Qt 5.6 doesn't work except with the most recent version
@@ -29,13 +32,8 @@ brew 'ruby-install'
 brew 'terminal-notifier' # programatically send messages to notifications
 brew 'the_silver_searcher' # a better ack/grep
 brew 'thoughtbot/formulae/rcm'
-;q
-
-
+brew 'tmux'
 brew 'vim' # It's vim
-
-# Install zsh 5.2+ (OS X ships with 5.0) to fix this issue:
-# https://github.com/robbyrussell/oh-my-zsh/issues/4932
 brew 'zsh'
 brew 'zsh-completions'
 
@@ -46,11 +44,10 @@ if ENV.fetch("SHELL", "") != "/$HOME/homebrew/bin/zsh"
 end
 
 # Cask: install binaries
-# cask 'alfred'
 # cask 'dropbox'
 # cask 'evernote'
-# cask '1password'
-# cask 'google-chrome'
+cask '1password'
+cask 'google-chrome'
 # cask 'firefox'
 # cask 'vlc'
 # Keyboard remapping on macOS
