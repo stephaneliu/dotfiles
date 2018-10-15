@@ -44,10 +44,6 @@ nmap <C-=> <ESC>:res +1
 noremap <silent> <F4> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>:retab<CR>
 noremap <F5> :buffers<CR>:buffer<Space>
 
-" map global search replace
-nmap S :%s//g<LEFT><LEFT>
-vmap S :s//g<LEFT><LEFT>
-
 map <leader>t :quit<CR>
 
 nnoremap <Left> :echoe "Use h"<CR>
