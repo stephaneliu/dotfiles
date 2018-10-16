@@ -10,8 +10,18 @@ rescue LoadError
 end
 IRB.conf[:AUTO_INDENT] = true
 
-def t; exit; end
-def gg; system 'clear'; end
+def t
+  exit
+end
+
+def gg
+  system 'clear'
+end
+
+def r
+  gg
+  reload!
+end
 
 # From Pickaxe
 def show_regex(text, matcher)
