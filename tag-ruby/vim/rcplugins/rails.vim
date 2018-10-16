@@ -140,14 +140,14 @@ let g:rails_projections = {
   \   "template": "require 'rails_helper'\n\nRSpec.describe {camelcase|capitalize|colons}Query do\n\nend",
   \   "keywords": "before describe context"
   \ },
-  \ "app/services/*_service.rb": {
+  \ "app/services/*.rb": {
   \   "command":   "service",
   \   "test":      "spec/services/{singular}_spec.rb",
-  \   "template":  "class {camelcase|capitalize|colons}Service\n  def initialize\n  end\nend"
+  \   "template":  "class {camelcase|capitalize|colons}\n  def initialize\n  end\nend"
   \ },
-  \ "spec/services/*_service_spec.rb": {
+  \ "spec/services/*_spec.rb": {
   \   "command":  "sservice",
-  \   "template": "require 'rails_helper'\n\nRSpec.describe {camelcase|capitalize|colons}Service do\n\nend",
+  \   "template": "require 'rails_helper'\n\nRSpec.describe {camelcase|capitalize|colons} do\n\nend",
   \   "keywords": "before describe context"
   \ },
   \ "spec/support/*.rb": {
