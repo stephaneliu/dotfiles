@@ -2,7 +2,6 @@
 
 # Lets us do `brew services restart postgres`, etc
 tap 'homebrew/services'
-# Thoughtbot formulas
 tap 'thoughtbot/formulae'
 tap 'heroku/brew'
 tap 'homebrew/cask'
@@ -23,11 +22,9 @@ brew 'fzf' # Fuzzy finder
 brew 'git'
 brew 'heroku/brew/heroku' # The recommended way to use Heroku
 brew 'hub' # Fast GitHub client
-brew 'mysql'
 brew 'opensc' # smart card support
 brew 'postgresql'
-brew 'phantomjs' # Used in Rails projects
-brew 'ripgrep' # Faster grep written in Rust
+# brew 'ripgrep' # Faster grep written in Rust
 brew 'ruby-install'
 brew 'terminal-notifier' # programatically send messages to notifications
 brew 'the_silver_searcher' # a better ack/grep
@@ -54,5 +51,6 @@ cask 'google-chrome'
 cask 'karabiner-elements'
 cask 'font-droidsansmono-nerd-font-mono'
 cask 'macvim'
+cask 'phantomjs'
 cask 'divvy'
 cask 'superduper'
