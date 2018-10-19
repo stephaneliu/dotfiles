@@ -35,6 +35,7 @@ in_docker() {
 
 if [ -f $HOME/homebrew/share/chruby/chruby.sh ]; then
   source $HOME/homebrew/share/chruby/chruby.sh
+  source $HOME/homebrew/share/chruby/auto.sh
   chruby ruby
 fi
 
