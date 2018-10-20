@@ -1,6 +1,0 @@
-if [ ! -d $HOME/.tmux/plugins/tpm ]; then
-  git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
-  . ~/.tmux/plugins/tpm/scripts/install_plugins.sh
-
-  echo "Remember to <leader> + I to install tmux plugins"
-fi
