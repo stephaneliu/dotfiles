@@ -7,14 +7,14 @@ unset GIT_SSL_CERT
 
 source $HOME/.dotfiles/bin/os_type.sh
 
-if [ ! `command -v $HOME/homebrew/bin/brew` ]; then
-  echo "Installing Homebrew in $HOME/homebrew"
-  cd $HOME
-  mkdir homebrew && curl -L https://github.com/Homebrew/brew/tarball/master | \
-    tar xz --strip 1 -C homebrew
-fi
-
 if is_osx; then
+  if [ ! `command -v $HOME/homebrew/bin/brew` ]; then
+    echo "Installing Homebrew in $HOME/homebrew"
+    cd $HOME
+    mkdir homebrew && curl -L https://github.com/Homebrew/brew/tarball/master | \
+      tar xz --strip 1 -C homebrew
+  fi
+
   echo "Installing Homebrew packages"
   $HOME/homebrew/bin/brew update
   $HOME/homebrew/bin/brew tap homebrew/bundle
