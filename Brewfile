@@ -25,6 +25,7 @@ brew 'heroku/brew/heroku' # The recommended way to use Heroku
 brew 'hub' # Fast GitHub client
 brew 'opensc' # smart card support
 brew 'postgresql'
+brew 'reattach-to-user-namespace'
 # brew 'ripgrep' # Faster grep written in Rust
 brew 'ruby-install'
 brew 'terminal-notifier' # programatically send messages to notifications
