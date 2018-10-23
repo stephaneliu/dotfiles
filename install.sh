@@ -22,9 +22,10 @@ if is_osx; then
   for brewfile in */Brewfile; do
     $HOME/hombrew/bin/brew bundle --file="$brewfile"
   done
+
+  export PATH=$HOME/homebrew/bin:$PATH
 fi
 
-export PATH=$HOME/homebrew/bin:$PATH
 
 if is_debian; then
   echo "Installing linux packages"
@@ -34,41 +35,17 @@ if is_debian; then
   sudo apt-get install the-silver-searcher -y
 fi
 
-if is_redhat || is_centos; then
+if is_redhat; then
   echo "Installing yum packages"
-  sudo yum -q -y install xclip
   sudo yum -q -y install autojump-zsh
   sudo yum -q -y install ctags
+  sudo yum -q -y install the_silver_searcher
+  sudo yum -q -y install xclip
   sudo yum -q -y install zsh 
 
-  # dependencies for silver searcher
-  sudo yum -q -y install pcre-devel
-  sudo yum -q -y install xz-devel
-
-  if [ ! `command -v ag` ]; then
-    cd /tmp
-    git clone https://github.com/ggreer/the_silver_searcher.git silver_searcher
-    cd silver_searcher
-    ./build.sh
-    make
-    sudo make install
-  else
-    echo "The Silver Search is already installed...skipping"
-  fi
-
-  umask 022
-
-cd /tmp
-curl -LO https://thoughtbot.github.io/rcm/dist/rcm-1.3.3.tar.gz && \
-sha=$(sha256sum rcm-1.3.3.tar.gz | cut -f1 -d' ') && \
-[ "$sha" = "935524456f2291afa36ef815e68f1ab4a37a4ed6f0f144b7de7fb270733e13af" ] && \
-tar -xvf rcm-1.3.3.tar.gz && \
-cd rcm-1.3.3 && \
-./configure && \
-make && \
-sudo make install
-
   if [ ! `command -v rcup` ]; then
+    # Masking not properly handled within rcm. Provide a default
+    umask 022
     cd /tmp
     curl -LO https://thoughtbot.github.io/rcm/dist/rcm-1.3.3.tar.gz && \
     sha=$(sha256sum rcm-1.3.3.tar.gz | cut -f1 -d' ') && \

@@ -37,13 +37,8 @@ if [ -f $HOME/homebrew/share/chruby/chruby.sh ]; then
   source $HOME/homebrew/share/chruby/chruby.sh
   source $HOME/homebrew/share/chruby/auto.sh
   chruby ruby
+elif [ -f /usr/local/share/chruby/chruby.sh ]; then
+  source /usr/local/share/chruby/chruby.sh
+  source /usr/local/share/chruby/auto.sh
+  chruby ruby
 fi
-
-# LUNCHY_DIR=$(dirname `gem which lunchy`)/../extras
-# if [ -f $LUNCHY_DIR/lunchy-completion.zsh ]; then
-#   . $LUNCHY_DIR/lunchy-completion.zsh
-# else
-#   echo 'Lunchy not installed - gem install lunchy'
-# fi
-
-# source $HOME/bin/ruby_switcher.sh
