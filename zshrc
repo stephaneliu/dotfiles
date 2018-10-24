@@ -13,15 +13,7 @@ load_all_files_in ""
 
 if [ -e $HOME/.zsh.docker ]; then
   source $HOME/.zsh.docker
-  # Prevent git from using CAC by default - defer to project or use git cac to reinstate, uncac to
-  # unset GIT_SSL_CERT 
 fi
-
-# chuck_cow
-export USEPG=true
-
-# For elastic beanstalk (eb) CLI 
-# export PATH=~/Library/Python/3.6/bin:$PATH
 
 if [ -e $HOME/.private_keys ]; then
   source $HOME/.private_keys
