@@ -18,6 +18,9 @@ brew 'autojump'
 brew 'chruby'
 brew 'colordiff' # colorful diffs (alias diff='colordiff -u')
 brew 'ctags' # so :Rtags works
+brew 'docker'
+brew 'docker-compose'
+brew 'docker-machine'
 brew 'fzf' # Fuzzy finder
 brew 'git'
 brew 'gpg'
