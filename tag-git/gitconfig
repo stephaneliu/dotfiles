@@ -1,5 +1,5 @@
 [init]
-  templateDir = ~/.git_template
+  templateDir = ~/.git-template
 [user]
 	name = Stephane Liu
   signingkey = 807C764DBFB16266
@@ -93,4 +93,5 @@
 	required = true
 	clean = git-lfs clean -- %f
 [commit]
+	template = /Users/sliu/.git-template/commit_template.txt
   # gpgsign = true
