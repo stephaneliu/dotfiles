@@ -1,0 +1,21 @@
+# <TYPE>: <Title> (less than 50 characters)
+# !<------------ Max 50 characters ------------->|
+# !<-- Empty line is a separator betwen title and description -->|
+
+# Description: Explain why change was needed and what was changed
+# !<--------------- Fit description in 72 characters ----------------->|
+# You can use checklist and markdown
+#   - Something done
+
+# Include links to related resources, task descriptions
+#   - task (github, trello, email)
+#   - blog articles (documentation links
+
+# <TYPE> Type of commit. Allowed types:
+#   - Feat      (new functionality)
+#   - Fix       (bug fix)
+#   - Refactor  (refactoring of production code)
+#   - Style     (code style improvements, like changing ':a => :b' to 'a: :b', without behavior changes
+#   - Docs      (documentation changes)
+#   - Test      (test coverage improvements)
+#   - Chore     (changes that do not affect app behavior, like: .gitignore, file clean up, etc)
