@@ -93,5 +93,5 @@
 	required = true
 	clean = git-lfs clean -- %f
 [commit]
-	template = /Users/sliu/.git-template/commit_template.txt
+	template = ~/.git-template/commit_template.txt
   # gpgsign = true
