@@ -23,6 +23,17 @@ if is_osx; then
     $HOME/hombrew/bin/brew bundle --file="$brewfile"
   done
 
+  # Work around for gitsh that fails to install from brew
+  echo "Install gitsh"
+  mkdir -p ~/tmp
+  cd ~/tmp
+  curl -LO https://github.com/thoughtbot/gitsh/releases/download/v0.12/gitsh-0.12.tar.gz
+  tar -zxvf gitsh-0.12.tar.gz
+  cd gitsh-0.12
+  ./configure
+  make
+  sudo make install
+
   export PATH=$HOME/homebrew/bin:$PATH
 fi
 
@@ -67,7 +78,7 @@ if is_redhat; then
     cd gitsh-0.12
     ./configure
     make
-    sudoe make install
+    sudo make install
   fi
 fi
 
