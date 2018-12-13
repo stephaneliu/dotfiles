@@ -56,6 +56,19 @@ if is_redhat; then
     make && \
     sudo make install
   fi
+
+  if [ ! `comand -v gitsh` ]; then
+    echo "Installing gitsh"
+
+    umask 022
+    cd /tmp
+    curl -LO https://github.com/thoughtbot/gitsh/releases/download/v0.12/gitsh-0.12.tar.gz
+    tar -zxvf gitsh-0.12.tar.gz
+    cd gitsh-0.12
+    ./configure
+    make
+    sudoe make install
+  fi
 fi
 
 # Before `rcup` runs, there is no ~/.rcrc, so we must tell `rcup` where to look.
