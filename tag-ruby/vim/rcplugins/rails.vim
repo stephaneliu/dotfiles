@@ -33,7 +33,7 @@ let g:rails_projections = {
   \   "command":   "sadapter",
   \   "alternate": "app/adapters/%s.rb",
   \   "template":  "require 'spec_helper'\n\nRSpec.describe {camelcase|capitalize|colons}Adapter do\n\nend",
-  \   "keywords": "before describe context"
+  \   "keywords": "before describe context fdescribe fcontext fit"
   \ },
   \ "app/channels/*_channel.rb": {
   \   "command":   "channel",
@@ -45,7 +45,7 @@ let g:rails_projections = {
   \   "command":   "schannel",
   \   "template":  "require 'spec_helper'\n\nRSpec.describe \'%s\' do\n\nend",
   \   "alternate": "app/channels/%s_channel.rb",
-  \   "keywords": "before describe context"
+  \   "keywords": "before describe context fdescribe fcontext fit"
   \ },
   \ "app/finders/*_finder.rb": {
   \   "command":   "finder",
@@ -56,7 +56,7 @@ let g:rails_projections = {
   \   "command":   "sfinder",
   \   "alternate": "app/finders/%s.rb",
   \   "template":  "require 'rails_helper'\n\nRSpec.describe {camelcase|capitalize|colons}Finder do\n\nend",
-  \   "keywords": "before describe context"
+  \   "keywords": "before describe context fdescribe fcontext fit"
   \ },
   \ "app/forms/*.rb": {
   \   "command":   "form",
@@ -68,13 +68,13 @@ let g:rails_projections = {
   \   "command":   "sform",
   \   "alternate": "app/forms/%s.rb",
   \   "template":  "require 'rails_helper'\n\nRSpec.describe {camelcase|capitalize|colons}Form do\n\nend",
-  \   "keywords": "before describe context"
+  \   "keywords": "before describe context fdescribe fcontext fit"
   \ },
   \ "spec/helpers/*_helper_spec.rb": {
   \   "command":   "shelp",
   \   "alternate": "app/helpers/%s.rb",
   \   "template":  "require 'rails_helper'\n\nRSpec.describe {camelcase|capitalize|colons}Helper do\n\nend",
-  \   "keywords": "before describe context"
+  \   "keywords": "before describe context fdescribe fcontext fit"
   \ },
   \ "app/jobs/*.rb": {
   \   "command":   "job",
@@ -103,7 +103,7 @@ let g:rails_projections = {
   \   "affinity":  "resource",
   \   "template":  "require 'spec_helper'\n\nRSpec.describe Null{camelcase|capitalize|colons} do\n\nend",
   \   "alternate": "app/nulls/null_%s.rb",
-  \   "keywords": "before describe context"
+  \   "keywords": "before describe context fdescribe fcontext fit"
   \ },
   \ "app/policies/*_policy.rb": {
   \   "command":   "policy",
@@ -127,7 +127,7 @@ let g:rails_projections = {
   \   "command":  "spresenter",
   \   "template": "require 'rails_helper'\n\nRSpec.describe {camelcase|capitalize|colons}Presenter do\n\nend",
   \   "alternate": "app/presenters/%s.rb",
-  \   "keywords": "before describe context"
+  \   "keywords": "before describe context fdescribe fcontext fit"
   \ },
   \ "app/queries/*_query.rb": {
   \   "command":   "query",
@@ -138,7 +138,7 @@ let g:rails_projections = {
   \ "spec/queries/*_query_spec.rb": {
   \   "command":  "squery",
   \   "template": "require 'rails_helper'\n\nRSpec.describe {camelcase|capitalize|colons}Query do\n\nend",
-  \   "keywords": "before describe context"
+  \   "keywords": "before describe context fdescribe fcontext fit"
   \ },
   \ "app/services/*.rb": {
   \   "command":   "service",
@@ -148,7 +148,7 @@ let g:rails_projections = {
   \ "spec/services/*_spec.rb": {
   \   "command":  "sservice",
   \   "template": "require 'rails_helper'\n\nRSpec.describe {camelcase|capitalize|colons} do\n\nend",
-  \   "keywords": "before describe context"
+  \   "keywords": "before describe context fdescribe fcontext fit"
   \ },
   \ "spec/support/*.rb": {
   \   "command":  "ssupport",
@@ -182,7 +182,7 @@ let g:rails_projections = {
   \ "spec/controllers/*_controller_spec.rb": {
   \   "command":  "scontroller",
   \   "template": "require 'rails_helper'\n\nRSpec.describe {camelcase|capitalize|colons}Controller do\n\nend",
-  \   "keywords": "before describe context"
+  \   "keywords": "before describe context fdescribe fcontext fit"
   \ },
   \ "spec/factories/*.rb": {
   \   "command":   "factory",
@@ -201,30 +201,30 @@ let g:rails_projections = {
   \ "spec/models/*_spec.rb": {
   \   "command":   "smodel",
   \   "template":  "require 'rails_helper'\n\nRSpec.describe {camelcase|capitalize|colons} do\n\nend",
-  \   "keywords": "before describe context"
+  \   "keywords": "before describe context fdescribe fcontext fit"
   \ },
   \ "spec/routing/*_routing_spec.rb": {
   \   "command":  "sroute",
   \   "template": "require 'rails_helper'\n\nRSpec.describe {camelcase|capitalize|colons}Routing do\n\nend",
-  \   "keywords": "before describe context"
+  \   "keywords": "before describe context fdescribe fcontext fit"
   \ },
   \ "spec/lib/*_spec.rb": {
   \   "command":   "slib",
   \   "affinity":  "resource",
   \   "alternate": "lib/%s_spec.rb",
   \   "template": "require 'rails_helper'\n\nRSpec.describe {camelcase|capitalize|colons} do\n\nend",
-  \   "keywords":  "before describe context"
+  \   "keywords": "before describe context fdescribe fcontext fit"
   \ },
   \ "spec/views/*.html.haml_spec.rb": {
   \   "command":   "sview",
   \   "template":  "require 'rails_helper'\n\nRSpec.describe \'%s\' do\n\nend",
   \   "alternate": "app/views/%s.html.haml",
-  \   "keywords": "before describe context"
+  \   "keywords": "before describe context fdescribe fcontext fit"
   \ },
   \ "spec/requests/*_spec.rb": {
   \   "command":   "srequest",
   \   "template":  "require 'rails_helper'\n\nRSpec.describe \'%s\' do\n\nend",
-  \   "keywords": "before describe context"
+  \   "keywords": "before describe context fdescribe fcontext fit"
   \ }
 \ }
 
