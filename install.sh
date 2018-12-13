@@ -82,6 +82,9 @@ else
   echo "Installing oh-my-zsh"
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
   echo "If changing shell (chsh) to zsh failed, sudo bash then 'chsh -s /bin/zsh {user}'"
+
+  echo "Installing Powerlevel9k thems for Oh-my-zsh"
+  git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
 fi
 
 cd ${install_dir}

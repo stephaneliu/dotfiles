@@ -52,6 +52,7 @@ cask 'google-chrome'
 # Keyboard remapping on macOS
 cask 'karabiner-elements'
 cask 'font-droidsansmono-nerd-font-mono'
+cask 'font-hack-nerd-font'
 cask 'macvim'
 cask 'phantomjs'
 cask 'divvy'
