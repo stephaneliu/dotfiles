@@ -95,3 +95,5 @@
 [commit]
 	template = ~/.git-template/commit_template.txt
   # gpgsign = true
+[gitsh]
+  defaultCommand = status --short --branch
