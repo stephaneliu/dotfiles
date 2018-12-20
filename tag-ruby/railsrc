@@ -1,4 +1,5 @@
---database=postgresql
+--database=mysql
 --skip-test
 --skip-bundle
 --template=https://raw.githubusercontent.com/stephaneliu/rails-template/master/template.rb
+# --template=~/code/rails-template/template.rb
