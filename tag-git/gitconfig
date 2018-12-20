@@ -30,6 +30,7 @@
   ff = only
 [alias]
   a = add --patch
+  ad = add
   br = branch
 
   cac = !sh -c 'git config --global --replace-all http.sslcert \"LIU.STEPHANE.1241980045\" && git config --global --replace-all http.sslcapath \"/Users/sliu/etc/pki/ca-trust\"'
@@ -39,7 +40,7 @@
   co = checkout
 	ctags = !.git/hooks/ctags
   df = diff
-  g = grep --extended-regexp --break --heading --line-number
+  gr = grep --extended-regexp --break --heading --line-number
   ignore = update-index --assume-unchanged
   unignore = update-index --no-assume-unchanged
   ignored = !git ls-files -v | grep \"^[[:lower:]]\"
@@ -62,6 +63,8 @@
   undo = reset --soft HEAD^
   unstage = reset HEAD
   up = pull --rebase
+  pl = pull
+  ps = push
 [mergetool]
   keepBackup = false
 [rerere]
