@@ -58,7 +58,7 @@ let g:rails_projections = {
   \   "template":  "require 'rails_helper'\n\nRSpec.describe {camelcase|capitalize|colons}Finder do\n\nend",
   \   "keywords": "before describe context fdescribe fcontext fit"
   \ },
-  \ "app/forms/*.rb": {
+  \ "app/forms/*_form.rb": {
   \   "command":   "form",
   \   "affinity":  "collection",
   \   "test":      "spec/form/{singular}_spec.rb",
