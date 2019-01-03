@@ -40,6 +40,7 @@
   co = checkout
 	ctags = !.git/hooks/ctags
   df = diff
+  dfs = diff --cached
   gr = grep --extended-regexp --break --heading --line-number
   ignore = update-index --assume-unchanged
   unignore = update-index --no-assume-unchanged
