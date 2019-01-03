@@ -87,6 +87,12 @@ let g:rails_projections = {
   \   "test":      "spec/reports/{singular}_spec.rb",
   \   "template":  "class {camelcase|capitalize|colons}Report\n  def initialize\n  end\nend"
   \ },
+  \ "spec/reports/*report_spec.rb": {
+  \   "command":   "sreport",
+  \   "alternate": "app/reports/{singular}.rb",
+  \   "template":  "require 'rails_helper'\n\nRSpec.describe {camelcase|capitalize|colons}Report do\n\nend",
+  \   "keywords":  "before describe context fdescribe fcontext fit"
+  \ },
   \ "app/models/concerns/*.rb": {
   \   "command":   "concern",
   \   "test":      "spec/model/concerns/{singular}_spec.rb",
