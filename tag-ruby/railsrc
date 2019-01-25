@@ -1,4 +1,5 @@
---database=mysql
+--database=postgresql
+--webpack
 --skip-test
 --skip-bundle
 --template=https://raw.githubusercontent.com/stephaneliu/rails-template/master/template.rb
