@@ -3,7 +3,6 @@ BASE="$HOME/.zsh"
 load_all_files_in() {
   if [ -d "$BASE/$1" ]; then
     for file in "$BASE/$1"/*.zsh; do
-      echo "Loading $file"
       source "$file"
     done 
   fi
