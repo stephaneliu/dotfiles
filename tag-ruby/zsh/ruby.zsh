@@ -1,17 +1,11 @@
 alias ann="be annotate -mi -p before"
 alias b='bundle'
+alias r='bin/rails'
 alias be='bundle exec'
-alias bec='bundle exec rails c'
-alias beg="dev_run 'spring stop && bundle exec guard'" 
-alias bo='bundle open'
+alias beg='spring stop && bundle exec guard'
 alias bs='bundle show'
 alias bu='bundle update'
-alias r="bin/rails"
-alias rc='bin/rails c'
-alias rg='bin/rails g'
-alias rs="bin/rails server"
 alias rubo="bundle exec rubocop --auto-correct --format simple"
-alias ss="spring stop"
 alias vig="vi Gemfile"
 
 dev_run() {
