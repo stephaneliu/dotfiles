@@ -7,6 +7,7 @@ alias bs='bundle show'
 alias bu='bundle update'
 alias rubo="bundle exec rubocop --auto-correct --format simple"
 alias vig="vi Gemfile"
+alias dnup="r db:drop && r db:create && r db:migrate && r db:seed"
 
 dev_run() {
   if dockered && ! in_docker; then
