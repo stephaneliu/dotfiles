@@ -15,8 +15,8 @@ filenames.each do |filename|
   `git diff --cached #{filename} | grep \^+\[\^+\] | grep binding.pry`
   binding_hits.push filename if $? == 0
 
-  `git diff --cached #{filename} | grep \^+\[\^+\] | grep TODO`
-  todo_hits.push filename if $? == 0
+  # `git diff --cached #{filename} | grep \^+\[\^+\] | grep TODO`
+  # todo_hits.push filename if $? == 0
 end
 
 if focus_hits.any? || binding_hits.any? || todo_hits.any?
