@@ -1,4 +1,4 @@
-EXCLUDES="system README.md Brewfile install.sh setup LICENSE-MIT.txt utils"
+EXCLUDES="system README.md Brewfile install setup LICENSE-MIT.txt utils"
 SYMLINK_DIRS="bundle backups undodir"
 UNDOTTED='bin'
 TAGS="git ruby tmux"

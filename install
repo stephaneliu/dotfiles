@@ -48,11 +48,28 @@ fi
 
 if is_redhat; then
   echo "Installing yum packages"
-  sudo yum -q -y install autojump-zsh
-  sudo yum -q -y install ctags
-  sudo yum -q -y install the_silver_searcher
-  sudo yum -q -y install xclip
-  sudo yum -q -y install zsh 
+  
+  # Query if pack is installed
+  # Use rpm - local package manager - therefore faster
+  if [ ! `rpm -q autojump-zsh` ]; then
+    sudo yum -q -y install autojump-zsh
+  fi
+
+  if [ ! `rpm -q ctags` ]; then
+    sudo yum -q -y install ctags
+  fi
+
+  if [ ! `rpm -q the_silver_searcher` ]; then
+    sudo yum -q -y install the_silver_searcher
+  fi
+
+  if [ ! `rpm -q xclip` ]; then
+    sudo yum -q -y install xclip
+  fi
+
+  if [ ! `rpm -q zsh` ]; then
+    sudo yum -q -y install zsh 
+  fi
 
   if [ ! `command -v rcup` ]; then
     # Masking not properly handled within rcm. Provide a default
@@ -68,7 +85,7 @@ if is_redhat; then
     sudo make install
   fi
 
-  if [ ! `comand -v gitsh` ]; then
+  if [ ! `command -v gitsh` ]; then
     echo "Installing gitsh"
 
     umask 022

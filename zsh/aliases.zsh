@@ -10,6 +10,7 @@ alias 'ps?'='ps aux | gr '
 alias l='ls -alFHh'
 alias ll='ls -CFHh'
 alias terminal-notifier='reattach-to-user-namespace terminal-notifier'
+# For use with solarized (https://github.com/seebi/dircolors-solarized)
 alias tmux='TERM=xterm-256color tmux'
 
 alias code="echo use 'j'-jump"
