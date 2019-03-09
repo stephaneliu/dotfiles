@@ -1,4 +1,4 @@
 EXCLUDES="system README.md install setup LICENSE-MIT.txt utils"
 SYMLINK_DIRS="bundle backups undodir"
-UNDOTTED='bin'
+UNDOTTED='bin Brewfile'
 TAGS="git ruby tmux"

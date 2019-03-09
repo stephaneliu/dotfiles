@@ -1,61 +1,66 @@
 # vim: syntax=ruby filetype=ruby
 
-# Lets us do `brew services restart postgres`, etc
-tap 'homebrew/services'
-tap 'thoughtbot/formulae'
-tap 'heroku/brew'
-tap 'homebrew/cask'
-tap 'caskroom/fonts'
+# Usage:
+#   list:
+#     * defaults --brews
+#     * --all
+#     * --mas
+#       Mac apps
+#     * --casks
+#     * --taps
+# Versioning is not a feature of brew bundle. Only the latest version is installed
 
-# Qt is not registered in DADMS at the moment. Install as needed or use Docker containers
-# Qt5.5 for capybara-webkit, because Qt 5.6 doesn't work except with the most recent version
-# brew 'qt55'
-# --overwrite: overwrite any Qt4 files that might be there
-#                          |--force: required because qt55 is keg-only
-# `brew link --overwrite --force qt55`
+tap "heroku/brew"
+tap "homebrew/cask"
+tap "homebrew/cask-fonts"
+tap "homebrew/core"
+tap "homebrew/services"                      # `brew services restart postgres`, etc
+tap "thoughtbot/formulae"
+tap "caskroom/fonts"
 
-brew 'autojump'
-brew 'chruby'
-brew 'colordiff' # colorful diffs (alias diff='colordiff -u')
-brew 'ctags' # so :Rtags works
-brew 'fzf' # Fuzzy finder
-brew 'git'
-brew 'gpg'
-brew 'heroku/brew/heroku' # The recommended way to use Heroku
-brew 'hub' # Fast GitHub client
-brew 'opensc' # smart card support
-brew 'postgresql'
-brew 'reattach-to-user-namespace'
-# brew 'ripgrep' # Faster grep written in Rust
-brew 'ruby-install'
-brew 'terminal-notifier' # programatically send messages to notifications
-brew 'the_silver_searcher' # a better ack/grep
-brew 'thoughtbot/formulae/rcm'
-brew 'tmux'
-brew 'vim' # It's vim
-brew 'zsh'
-brew 'zsh-completions'
+brew "autojump"
+brew "chruby"
+brew "colordiff"                             # colorful diffs (alias diff='colordiff -u')
+brew "ctags"                                 # so :Rtags works
+brew "fzf"                                   # Fuzzy finder
+brew "git"
+brew "gpg"
+brew "heroku/brew/heroku"                    # The recommended way to use Heroku
+brew "hub"                                   # Fast GitHub client
+brew "mas"                                   # Mac appstore cli
+brew "macvim"
+brew "mysql", restart_service: true
+brew "opensc"                                # smart card support
+brew "postgresql", restart_service: :changed
+brew "reattach-to-user-namespace"
+brew "ruby-install"
+brew "terminal-notifier"                     # programatically send messages to notifications
+brew "the_silver_searcher"                   # a better ack/grep
+brew "thoughtbot/formulae/rcm"
+brew "tmux"
+brew "yarn"
+brew "zsh"
+brew "zsh-completions"
 
-if ENV.fetch("SHELL", "") != "/$HOME/homebrew/bin/zsh"
+unless /zsh$/.match?(ENV.fetch("SHELL", ""))
   puts "To use the Homebrew-installed ZSH:"
   puts "  sudo echo $HOME/homebrew/bin/zsh >> /etc/shells"
   puts "  chsh -s $HOME/homebrew/bin/zsh"
 end
 
-# Cask: install binaries
 # cask 'dropbox'
 # cask 'evernote'
-cask '1password'
-cask 'google-chrome'
+# cask "1password"
+# cask "google-chrome"
 # cask 'firefox'
 # cask 'vlc'
-# Keyboard remapping on macOS
-cask 'karabiner-elements'
-cask 'font-droidsansmono-nerd-font-mono'
-cask 'font-hack-nerd-font'
-cask 'macvim'
-cask 'phantomjs'
-cask 'divvy'
-cask 'docker'
-cask 'nightowl'
-cask 'superduper'
+# cask "superduper", args: {appdir: "~/Applications"}
+
+casK "chromium", args: {appdir: "~/Applications"}
+cask "divvy", args: {appdir: "~/Applications"}
+cask "docker", args: {appdir: "~/Applications"}
+cask "font-droidsansmono-nerd-font-mono"
+cask "font-hack-nerd-font"
+cask "karabiner-elements"
+# cask "macvim", args: {appdir: "~/Applications"}
+# cask "nightowl", args: {appdir: "~/Applications"}
