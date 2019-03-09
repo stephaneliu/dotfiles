@@ -78,7 +78,6 @@
   browser = firefox
 [push]
   default = matching
-[credential]
 [diff]
   mnemonicprefix = true
   compactionHeuristic = true # experimental - easier diff reading

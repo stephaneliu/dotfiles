@@ -27,7 +27,6 @@ alias gps='hub push'
 alias grb='hub rebase'
 alias grf='hub rm -rf'
 alias grm='hub rm'
-alias gst='hub stash'
 alias gus='hub unstage'
 
 # Complete g like git
@@ -51,9 +50,16 @@ compdef _git gus=git-reset
 
 
 if is_osx; then
-  if [ "$(git config --get credential.helper)" != "osxkeychain" ]; then
+  # This conditional does not work during zsh load
+  if [ "$(git config --get --system credential.helper)" != "osxkeychain" ]; then
     echo "Configuring Git system scope credential helper to osxkeychain" 
-    sudo git config --system --replace-all credential.helper 'osxkeychain'
+    # This config set does not work during zsh load - "perfmission denied"
+    # Doesn't matter with or without sudo
+    #   * without sudo
+    #     * cannot lock
+    #   * with sudo
+    #     * password challenge then silently succeeds without setting
+    git config --system --replace-all credential.helper 'osxkeychain'
   fi
 elif is_centos || is_redhat; then
   # insure read permissions set correctly in order to git config --get
