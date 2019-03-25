@@ -15,6 +15,7 @@ Plugin 'croaky/vim-colors-github'
 
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'davidoc/taskpaper.vim'
 Plugin 'ervandew/regex'
 Plugin 'garbas/vim-snipmate'
 Plugin 'godlygeek/tabular.git'
