@@ -28,7 +28,7 @@ brew "gpg"
 brew "heroku/brew/heroku"                    # The recommended way to use Heroku
 brew "hub"                                   # Fast GitHub client
 brew "mas"                                   # Mac appstore cli
-brew "macvim"
+# brew "macvim"
 brew "mysql", restart_service: true
 brew "opensc"                                # smart card support
 brew "postgresql", restart_service: :changed
@@ -38,6 +38,7 @@ brew "terminal-notifier"                     # programatically send messages to 
 brew "the_silver_searcher"                   # a better ack/grep
 brew "thoughtbot/formulae/rcm"
 brew "tmux"
+brew "vim"
 brew "yarn"
 brew "zsh"
 brew "zsh-completions"
@@ -63,4 +64,4 @@ cask "font-droidsansmono-nerd-font-mono"
 cask "font-hack-nerd-font"
 cask "karabiner-elements"
 # cask "macvim", args: {appdir: "~/Applications"}
-# cask "nightowl", args: {appdir: "~/Applications"}
+cask "nightowl", args: {appdir: "~/Applications"}
