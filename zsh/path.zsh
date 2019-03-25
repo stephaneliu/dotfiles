@@ -11,11 +11,4 @@ if is_centos; then
 fi
 
 export PATH=$HOME/bin:$PATH
-
-export PATH=$HOME/homebrew/opt/icu4c/bin:$PATH
-export PATH=$HOME/homebrew/opt/icu4c/sbin:$PATH
-export LDFLAGS="-L$HOME/homebrew/opt/icu4c/lib"
-export CPPFLAGS="-I$HOME/homebrew/opt/icu4c/include"
-
-export PATH=$HOME/homebrew/opt/bison/bin:$PATH
-export LDFLAGS="-L~/homebrew/opt/bison/lib"
+unset LDFLAGS
