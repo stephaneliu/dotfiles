@@ -23,16 +23,24 @@ if is_osx; then
     $HOME/hombrew/bin/brew bundle --file="$brewfile"
   done
 
-  # Work around for gitsh that fails to install from brew
-  echo "Install gitsh"
-  mkdir -p ~/tmp
-  cd ~/tmp
-  curl -LO https://github.com/thoughtbot/gitsh/releases/download/v0.12/gitsh-0.12.tar.gz
-  tar -zxvf gitsh-0.12.tar.gz
-  cd gitsh-0.12
-  ./configure
-  make
-  sudo make install
+  if [ ! `command -v gitsh` ]; then
+    # Work around for gitsh that fails to install from brew
+
+    # gitsh does not install with default ruby from mac. However, there is a dependency
+    # issue here because ruby is not installed until chruby is installed
+    # TODO: Defer installation of gitsh until ruby is installed from ruby-install
+    local ruby_path=/$HOME/.rubies/ruby-2.6.1/bin/ruby
+
+    echo "Install gitsh"
+    mkdir -p ~/tmp
+    cd ~/tmp
+    curl -LO https://thoughtbot.github.io/gitsh/gitsh-0.14.tar.gz
+    tar -zxvf gitsh-0.14.tar.gz
+    cd gitsh-0.14
+    RUBY=$ruby_path ./configure
+    make
+    sudo make install
+  fi
 
   export PATH=$HOME/homebrew/bin:$PATH
 fi
