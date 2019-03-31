@@ -16,19 +16,21 @@ tap "homebrew/cask-fonts"
 tap "homebrew/core"
 tap "homebrew/services"                      # `brew services restart postgres`, etc
 tap "thoughtbot/formulae"
-tap "caskroom/fonts"
+# don't tap both cask-fonts and caskroom/fonts
+# tap "caskroom/fonts"
 
 brew "autojump"
+brew "bat"                                   # cat with wings = bat (cat with syntax color)
 brew "chruby"
 brew "colordiff"                             # colorful diffs (alias diff='colordiff -u')
 brew "ctags"                                 # so :Rtags works
 brew "fzf"                                   # Fuzzy finder
 brew "git"
+brew "gitsh"
 brew "gpg"
 brew "heroku/brew/heroku"                    # The recommended way to use Heroku
 brew "hub"                                   # Fast GitHub client
 brew "mas"                                   # Mac appstore cli
-# brew "macvim"
 brew "mysql", restart_service: true
 brew "opensc"                                # smart card support
 brew "postgresql", restart_service: :changed
@@ -57,11 +59,15 @@ end
 # cask 'vlc'
 # cask "superduper", args: {appdir: "~/Applications"}
 
-casK "chromium", args: {appdir: "~/Applications"}
+cask "chromium", args: {appdir: "~/Applications"}
 cask "divvy", args: {appdir: "~/Applications"}
 cask "docker", args: {appdir: "~/Applications"}
 cask "font-droidsansmono-nerd-font-mono"
 cask "font-hack-nerd-font"
+cask "iterm2"
 cask "karabiner-elements"
 # cask "macvim", args: {appdir: "~/Applications"}
 cask "nightowl", args: {appdir: "~/Applications"}
+
+mas "Spark", id: 1176895641
+mas "DayOne", id: 1055511498
