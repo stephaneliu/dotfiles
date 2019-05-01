@@ -33,7 +33,7 @@ brew "hub"                                   # Fast GitHub client
 brew "mas"                                   # Mac appstore cli
 brew "mysql", restart_service: true
 brew "opensc"                                # smart card support
-brew "postgresql", restart_service: :changed
+brew "postgresql@10", restart_service: :changed
 brew "reattach-to-user-namespace"
 brew "ruby-install"
 brew "terminal-notifier"                     # programatically send messages to notifications
@@ -69,5 +69,6 @@ cask "karabiner-elements"
 # cask "macvim", args: {appdir: "~/Applications"}
 cask "nightowl", args: {appdir: "~/Applications"}
 
+mas "Agenda", id: 1287445660
 mas "Spark", id: 1176895641
 mas "DayOne", id: 1055511498
