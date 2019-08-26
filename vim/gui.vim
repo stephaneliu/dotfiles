@@ -3,7 +3,6 @@ if has('gui_running')
 endif
 
 set guifont=Droid\ Sans\ Mono
-set colorcolumn=150                " set a highlighted column at the 100th character on line
 
 set statusline=1
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P " show git info
