@@ -69,6 +69,11 @@ if is_redhat; then
 
   if [ ! `rpm -q the_silver_searcher` ]; then
     sudo yum -q -y install the_silver_searcher
+    cd /tmp
+    git clone https://github.com/ggreer/the_silver_searcher && \
+      cd the_silver_searcher && \
+      ./build.sh && \
+      sudo make install
   fi
 
   if [ ! `rpm -q xclip` ]; then
