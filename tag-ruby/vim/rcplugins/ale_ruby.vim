@@ -1,3 +1,7 @@
-let g:ale_linters = {'ruby': ['standardrb']}
-let g:ale_fixers = {'ruby': ['standardrb']}
+let g:ale_linters = {
+      \ 'ruby': ['prettier']
+      \}
+let g:ale_fixers = {
+      \ '*': ['remove_trailing_lines', 'trim_whitespace'],
+      \ 'ruby': ['prettier']}
 let g:ale_fix_on_save = 1

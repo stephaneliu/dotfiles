@@ -14,3 +14,10 @@ git clone https://github.com/stephaneliu/dotfiles.git ~/.dofiles
 > RCRC=~/.dotfiles/rcrc rcup -v
 
 [1]:https://github.com/thoughtbot/rcm
+
+## Plugins installation
+
+Prettier
+```
+yarn add --dev prettier @prettier/plugin-ruby
+```
