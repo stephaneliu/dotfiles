@@ -4,7 +4,7 @@ load_all_files_in() {
   if [ -d "$BASE/$1" ]; then
     for file in "$BASE/$1"/*.zsh; do
       source "$file"
-    done 
+    done
   fi
 }
 
