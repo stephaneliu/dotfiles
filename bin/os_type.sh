@@ -9,13 +9,13 @@ KERNEL=`uname -r`
 MACH=`uname -m`
 DistroBasedOn='null'
 
-if [ "{$OS}" = "windowsnt" ]; then
+if [ $OS = "windowsnt" ]; then
   OS=windows
-elif [ "{$OS}" = "darwin" ]; then
+elif [ $OS = "darwin" ]; then
   OS=mac
 else
   OS=`uname`
-  if [ "${OS}" = "Linux" ]; then
+  if [ $OS = "Linux" ]; then
     if [ -f /etc/redhat-release ]; then
       DistroBasedOn='redhat'
     elif [ -f /etc/SuSE-release ]; then
