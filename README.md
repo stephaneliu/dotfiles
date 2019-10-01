@@ -19,5 +19,9 @@ git clone https://github.com/stephaneliu/dotfiles.git ~/.dofiles
 
 Prettier
 ```
+# Ruby
 yarn add --dev prettier @prettier/plugin-ruby
+
+# JS
+yarn add prettier --dev --extract
 ```
