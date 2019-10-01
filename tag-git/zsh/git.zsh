@@ -14,7 +14,7 @@ alias gbr='hub branch'
 alias gcl='hub clone'
 alias gco='hub checkout'
 alias gci='hub commit'
-alias gdf='hub diff'
+alias gdf='hub df'
 alias ggg='hub g'
 alias glg='hub l'
 alias glgg='hub lg'
@@ -52,7 +52,7 @@ compdef _git gus=git-reset
 if is_osx; then
   # This conditional does not work during zsh load
   if [ "$(git config --get --system credential.helper)" != "osxkeychain" ]; then
-    echo "Configuring Git system scope credential helper to osxkeychain" 
+    echo "Configuring Git system scope credential helper to osxkeychain"
     sudo git config --system --replace-all credential.helper 'osxkeychain'
   fi
 elif is_centos || is_redhat; then
