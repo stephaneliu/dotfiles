@@ -30,6 +30,9 @@ in_docker() {
 [ -f ${HOME}/.travis/travis.sh ] && source ${HOME}/.travis/travis.sh
 
 if [ -f $HOME/homebrew/share/chruby/chruby.sh ]; then
+  RUBIES+=(
+    "$HOME/.rubies"
+  )
   source $HOME/homebrew/share/chruby/chruby.sh
   source $HOME/homebrew/share/chruby/auto.sh
   chruby ruby
