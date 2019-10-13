@@ -2,7 +2,7 @@ source $HOME/.dotfiles/bin/os_type.sh
 
 # Homebrew
 if [ -d $HOME/homebrew ]; then
-  export PATH=$HOME/bin:$HOME/homebrew/bin:$PATH
+  export PATH=$HOME/bin:$HOME/homebrew/bin:$HOME/homebrew/sbin:$PATH
 fi
 
 if is_centos; then
