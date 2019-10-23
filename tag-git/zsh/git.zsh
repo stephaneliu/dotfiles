@@ -3,8 +3,10 @@ source $HOME/bin/os_type.sh
 # g without arguments will run `git status`
 function g {
   if [[ $# > 0 ]]; then
+    echo "has arg"
     hub $@
   else
+    echo "no arg"
     hub st
   fi
 }
@@ -16,7 +18,6 @@ alias gco='hub checkout'
 alias gci='hub commit'
 alias gdf='hub df'
 alias ggg='hub g'
-alias gl='hub l'
 alias glg='hub lg'
 alias gll='hub lola'
 alias gmg='hub mg'
@@ -28,6 +29,10 @@ alias grb='hub rebase'
 alias grf='hub rm -rf'
 alias grm='hub rm'
 alias gus='hub unstage'
+alias gl='hub l'
+
+alias nocac='export _GIT_SSL_CERT=$GIT_SSL_CERT && unset GIT_SSL_CERT'
+alias yescac='export GIT_SSL_CERT=$_GIT_SSL_CERT && unset _GIT_SSL_CERT'
 
 # Complete g like git
 compdef g=git
