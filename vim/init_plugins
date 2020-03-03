@@ -14,6 +14,7 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'croaky/vim-colors-github'
 
 Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'alvan/vim-closetag'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'davidoc/taskpaper.vim'
 Plugin 'ervandew/regex'
