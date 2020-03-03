@@ -13,8 +13,6 @@ alias terminal-notifier='reattach-to-user-namespace terminal-notifier'
 # For use with solarized (https://github.com/seebi/dircolors-solarized)
 alias tmux='TERM=xterm-256color tmux'
 
-alias code="echo use 'j'-jump"
-alias d1="echo use 'j'-jump"
 alias gg='clear'
 # Use modern regexps for grep show color when `grep` is the final command
 # but not when piping into something else because the added color codes will
