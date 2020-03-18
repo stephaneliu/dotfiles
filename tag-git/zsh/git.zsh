@@ -3,31 +3,31 @@ source $HOME/bin/os_type.sh
 # g without arguments will run `git status`
 function g {
   if [[ $# > 0 ]]; then
-    hub $@
+    git $@
   else
-    hub st
+    git st
   fi
 }
 
-alias gad='hub add'
-alias gbr='hub branch'
-alias gcl='hub clone'
-alias gco='hub checkout'
-alias gci='hub commit'
-alias gdf='hub df'
-alias ggg='hub g'
-alias glg='hub lg'
-alias gll='hub lola'
-alias gmg='hub mg'
-alias gmt='hub mergetool'
-alias gmv='hub mv'
-alias gpl='hub pull'
-alias gps='hub push'
-alias grb='hub rebase'
-alias grf='hub rm -rf'
-alias grm='hub rm'
-alias gus='hub unstage'
-alias gl='hub l'
+alias gad='git add'
+alias gbr='git branch'
+alias gcl='git clone'
+alias gco='git checkout'
+alias gci='git commit'
+alias gdf='git df'
+alias ggg='git g'
+alias glg='git lg'
+alias gll='git lola'
+alias gmg='git mg'
+alias gmt='git mergetool'
+alias gmv='git mv'
+alias gpl='git pull'
+alias gps='git push'
+alias grb='git rebase'
+alias grf='git rm -rf'
+alias grm='git rm'
+alias gus='git unstage'
+alias gl='git l'
 
 alias nocac='export _GIT_SSL_CERT=$GIT_SSL_CERT && unset GIT_SSL_CERT'
 alias yescac='export GIT_SSL_CERT=$_GIT_SSL_CERT && unset _GIT_SSL_CERT'
