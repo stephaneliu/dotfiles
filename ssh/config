@@ -1,1 +1,6 @@
-PKCS11Provider /usr/lib64/libcoolkeypk11.so
+# PKCS11Provider /usr/lib64/libcoolkeypk11.so
+
+Host hicrane
+  HostName 173.255.254.99
+  Port 8383
+  User deployer

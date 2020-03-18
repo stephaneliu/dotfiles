@@ -2,7 +2,7 @@ if has('gui_running')
   set guioptions-=T                 " hide the toolbar - who uses it anyways?
 endif
 
-" use mouse to copy without line numbers in terminal 
+" use mouse to copy without line numbers in terminal
 set mouse=a
 " set statusline=%t\ %y\ format:\ %{&ff};\ [%c,%l]
 
@@ -42,7 +42,6 @@ if has('gui_running')
   set guioptions-=T                 " hide the toolbar - who uses it anyways?
 endif
 
-set guifont=Droid\ Sans\ Mono
 set colorcolumn=100                 " set a highlighted column at the 100th character on line
 set textwidth=100                   " word wrap at 100 characters
 set wrapmargin=2                    " command to actually wrap on the display
