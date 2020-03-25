@@ -64,8 +64,10 @@ cask "divvy", args: {appdir: "~/Applications"}
 cask "docker", args: {appdir: "~/Applications"}
 cask "font-droidsansmono-nerd-font-mono"
 cask "font-hack-nerd-font"
+cask "hocus-focus" # utility auto close unfocused applications - http://hocusfoc.us
 cask "iterm2"
 cask "karabiner-elements"
+cask "vanilla" # utility to collapse the icons in menubar
 # cask "macvim", args: {appdir: "~/Applications"}
 cask "nightowl", args: {appdir: "~/Applications"}
 
