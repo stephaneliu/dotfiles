@@ -64,6 +64,7 @@ cask "divvy", args: {appdir: "~/Applications"}
 cask "docker", args: {appdir: "~/Applications"}
 cask "font-droidsansmono-nerd-font-mono"
 cask "font-hack-nerd-font"
+cask "hand-mirror" # utility to see what camera is seeing prior to jumping on video call
 cask "hocus-focus" # utility auto close unfocused applications - http://hocusfoc.us
 cask "iterm2"
 cask "karabiner-elements"
@@ -71,6 +72,10 @@ cask "vanilla" # utility to collapse the icons in menubar
 # cask "macvim", args: {appdir: "~/Applications"}
 cask "nightowl", args: {appdir: "~/Applications"}
 
+# CLI: mas search [app]
+# Returns app name and app id
+# mas install [app_id]
 mas "Agenda", id: 1287445660
-mas "Spark", id: 1176895641
+mas "Amphetamine", id: 93798704  # keeps mac awake
 mas "DayOne", id: 1055511498
+mas "Spark", id: 1176895641
