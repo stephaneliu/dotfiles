@@ -1,2 +1,14 @@
 #!/bin/sh
 .git/hooks/ctags >/dev/null 2>&1 &
+
+
+
+
+
+
+
+
+
+### lolcommits hook (begin) ###
+LANG="en_US.UTF-8" && PATH="$PATH:/Users/sliu/.rubies/ruby-2.6.2/bin:/Users/sliu/homebrew/bin" && if [ ! -d "$GIT_DIR/rebase-merge" ] && [ "$LOLCOMMITS_CAPTURE_DISABLED" != "true" ]; then lolcommits --capture --fork --delay 2; fi
+###  lolcommits hook (end)  ###
