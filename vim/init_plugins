@@ -48,6 +48,10 @@ Plugin 'vim-syntastic/syntastic'
 Plugin 'w0rp/ale'
 Plugin 'xolox/vim-misc'
 
+Plugin 'vimwiki/vimwiki'
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
+Plugin 'michal-h21/vim-zettel'
 " Brief help
 " :BundleList          - list configured bundles
 " :BundleInstall(!)    - install(update) bundles

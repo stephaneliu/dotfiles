@@ -38,10 +38,6 @@ noremap <C-n> :call NumberToggle()<cr>
 " autocmd InsertLeave * :set rnu!
 set numberwidth=3
 
-if has('gui_running')
-  set guioptions-=T                 " hide the toolbar - who uses it anyways?
-endif
-
 set colorcolumn=100                 " set a highlighted column at the 100th character on line
 set textwidth=100                   " word wrap at 100 characters
 set wrapmargin=2                    " command to actually wrap on the display

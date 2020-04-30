@@ -6,12 +6,14 @@ let s:uname = system("uname -s")
 if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
   syntax enable
   set hlsearch
+  set background=dark
+  colorscheme solarized
 endif
 
 set t_Co=256
-set background=dark
-colorscheme solarized
+colorscheme default
+" set background=dark
+" colorscheme solarized
 
 " Added to support visual gitgutter display
 highlight clear SignColumn
-
