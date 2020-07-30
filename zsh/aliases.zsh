@@ -49,4 +49,4 @@ alias dcr='docker-compose run '
 
 alias j='z'
 
-alias vpnip='ifconfig | grep inet | grep 128 | grep netmask | cut -d " " -f 2'
+alias vpnip='ifconfig | grep inet | grep "128\|198" | grep netmask | cut -d " " -f 2'

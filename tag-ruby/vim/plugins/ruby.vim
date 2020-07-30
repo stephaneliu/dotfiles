@@ -1,6 +1,5 @@
 Plugin 'ecomba/vim-ruby-refactoring'
 Plugin 'ngmy/vim-rubocop'
-Plugin 'prettier/vim-prettier'
 Plugin 'thoughtbot/vim-rspec'
 Plugin 'tpope/vim-bundler'
 Plugin 'tpope/vim-dispatch'

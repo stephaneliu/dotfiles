@@ -34,3 +34,8 @@ call s:SourceConfigFilesIn('functions')
 call s:SourceConfigFilesIn('rcplugins')
 
 syntax enable
+
+" check off a todo item and time stamp it
+map tc ^rx: <Esc>:r! date +" [\%I:\%M \%p]"<ENTER>kJA<Esc>$
+" create a new todo item
+map tn o_

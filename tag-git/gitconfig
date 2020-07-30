@@ -99,3 +99,5 @@
   # gpgsign = true
 [gitsh]
   defaultCommand = status --short --branch
+[credential]
+	helper = osxkeychain
