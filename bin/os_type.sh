@@ -31,7 +31,7 @@ else
 fi
 
 is_osx(){
-  [ $OS = Darwin ]
+  [ $OS = mac ]
 }
 
 is_redhat() {
