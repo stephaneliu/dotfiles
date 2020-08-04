@@ -1,6 +1,8 @@
 alias ann="be annotate -mi -p before"
 alias b='bundle'
 alias r='bin/rails'
+alias rc='bin/rails c'
+alias rs='bin/rails s'
 alias be='bundle exec'
 alias beg='spring stop && bundle exec guard'
 alias bs='bundle show'
