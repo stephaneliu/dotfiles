@@ -12,8 +12,8 @@ endif
 
 set t_Co=256
 colorscheme default
-" set background=dark
-" colorscheme solarized
+set background=dark
+colorscheme solarized
 
 " Added to support visual gitgutter display
 highlight clear SignColumn
