@@ -24,7 +24,6 @@ alias gg='clear'
 alias gr="rg -A 2 -B 2 -n --color=auto"
 alias h='heroku'
 alias hr='heroku run'
-alias mr='mysql -u root'
 alias nc='nocorrect'
 alias q='exit'
 alias screencast='ffmpeg -f x11grab -r 25 -s 1600x1200 -i :0.0 /tmp/output.mpg'
@@ -46,6 +45,7 @@ alias da='docker attach --detach-keys="ctrl-q" netops_rails_1'
 alias dcbu='docker-compose build --build-arg dotfile_user=sliu '
 alias dcst='docker-compose stop'
 alias dcr='docker-compose run '
+alias docdev='bin/docker_build dev'
 
 alias j='z'
 
