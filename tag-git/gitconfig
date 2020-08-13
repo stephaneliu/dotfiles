@@ -60,7 +60,7 @@
   newauthor = commit --amend --reset-author -C HEAD
   st = status --short --branch
   tags = tag --list
-  work = config user.email \"stephaneliu@navy.mil\"
+  work = config user.email \"stephane.liu@navy.mil\"
   home = config user.email \"sliu@sjliu.com\"
   undo = reset --soft HEAD^
   unstage = reset HEAD
