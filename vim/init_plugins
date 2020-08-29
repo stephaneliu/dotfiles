@@ -33,7 +33,7 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'posva/vim-vue.git'               " # vue syntax highlighting
 Plugin 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plugin 'Raimondi/delimitMate'
-Plugin 'rainerborene/vim-reek'
+" Plugin 'rainerborene/vim-reek'
 Plugin 'rking/ag.vim'
 Plugin 'rizzatti/dash.vim'
 Plugin 'scrooloose/nerdtree'
@@ -48,7 +48,7 @@ Plugin 'vim-scripts/notes.vim'
 Plugin 'vim-scripts/scratch.vim'
 Plugin 'vim-scripts/simplefold'
 Plugin 'vim-scripts/taglist.vim'
-Plugin 'vim-syntastic/syntastic'
+" Plugin 'vim-syntastic/syntastic'
 Plugin 'w0rp/ale'
 Plugin 'xolox/vim-misc'
 
