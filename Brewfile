@@ -29,7 +29,7 @@ brew "git"
 brew "gitsh"
 brew "gpg"
 brew "heroku/brew/heroku"                    # The recommended way to use Heroku
-brew "hub"                                   # Fast GitHub client
+brew "github/gh/gh"                          # Fast GitHub client released in 2020
 brew "mas"                                   # Mac appstore cli
 brew "mysql", restart_service: true
 brew "opensc"                                # smart card support
