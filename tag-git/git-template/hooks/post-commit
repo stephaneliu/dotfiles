@@ -1,14 +1,14 @@
 #!/bin/sh
 .git/hooks/ctags >/dev/null 2>&1 &
 
-
-
-
-
-
-
-
-
 ### lolcommits hook (begin) ###
-LANG="en_US.UTF-8" && PATH="$PATH:/Users/sliu/.rubies/ruby-2.6.2/bin:/Users/sliu/homebrew/bin" && if [ ! -d "$GIT_DIR/rebase-merge" ] && [ "$LOLCOMMITS_CAPTURE_DISABLED" != "true" ]; then lolcommits --capture --delay 2; fi
+# laptop_screen_state - No = Open, Yes = Closed
+laptop_screen_state=$(ioreg -r -k "AppleClamshellState" -d 4 | grep "AppleClamshellState" | head -1)
+if echo $laptop_screen_state | grep -q "No"; then
+  LANG="en_US.UTF-8" && \
+    PATH="$PATH:/Users/sliu/.rubies/ruby-2.6.2/bin:/Users/sliu/homebrew/bin" && \
+    if [ ! -d "$GIT_DIR/rebase-merge" ] && $laptop_screen_open &&
+      [ "$LOLCOMMITS_CAPTURE_DISABLED" != "true" ]; then lolcommits --capture --delay 2; fi
+fi
+
 ###  lolcommits hook (end)  ###
