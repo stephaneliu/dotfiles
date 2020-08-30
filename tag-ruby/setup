@@ -1,1 +1,5 @@
+echo "Setup bundler options for jobs and retry see ~/.bundle/confg"
+bundle config set --global jobs 4
+bundle config set --global retry 3
+
 echo "Ruby setup completed"
