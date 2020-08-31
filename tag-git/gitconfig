@@ -56,6 +56,8 @@
   lolauth = log --graph --decorate --pretty=short --abbrev-commit
   lolaauth = log --graph --decorate --pretty=short --abbrev-commit --all
 
+  follow = log --follow -p --
+
   mg = merge --no-ff
   newauthor = commit --amend --reset-author -C HEAD
   st = status --short --branch
