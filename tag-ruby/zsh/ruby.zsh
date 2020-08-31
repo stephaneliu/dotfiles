@@ -8,6 +8,7 @@ alias beg='spring stop && bundle exec guard'
 alias bs='bundle show'
 alias bu='bundle update'
 alias rubo="bundle exec rubocop --auto-correct --format simple"
+alias pspec="bin/pspec"
 alias vig="vi Gemfile"
 alias dnup="r db:drop && r db:create && r db:migrate && r db:seed"
 
