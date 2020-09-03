@@ -5,3 +5,5 @@
 !default.yml
 vim/vim/.netrwhist
 !*.keep
+Brewfile.lock.json
+tags

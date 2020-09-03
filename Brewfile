@@ -16,6 +16,7 @@ tap "homebrew/cask-fonts"
 tap "homebrew/core"
 tap "homebrew/services"                      # `brew services restart postgres`, etc
 tap "thoughtbot/formulae"
+tap "universal-ctags/universal-ctags", "https://github.com/universal-ctags/universal-ctags"
 # don't tap both cask-fonts and caskroom/fonts
 # tap "caskroom/fonts"
 
@@ -23,7 +24,6 @@ brew "autojump"
 brew "bat"                                   # cat with wings = bat (cat with syntax color)
 brew "chruby"
 brew "colordiff"                             # colorful diffs (alias diff='colordiff -u')
-brew "ctags"                                 # so :Rtags works
 brew "fzf"                                   # Fuzzy finder
 brew "git"
 brew "gitsh"
@@ -40,6 +40,7 @@ brew "terminal-notifier"                     # programatically send messages to 
 brew "the_silver_searcher"                   # a better ack/grep
 brew "thoughtbot/formulae/rcm"
 brew "tmux"
+brew "universal-ctags"                                 # so :Rtags works
 brew "vim"
 brew "yarn"
 brew "zsh"
