@@ -31,7 +31,6 @@ brew "gpg"
 brew "heroku/brew/heroku"                    # The recommended way to use Heroku
 brew "github/gh/gh"                          # Fast GitHub client released in 2020
 brew "mas"                                   # Mac appstore cli
-brew "mysql", restart_service: true
 brew "opensc"                                # smart card support
 brew "postgresql@10", restart_service: :changed
 brew "reattach-to-user-namespace"
@@ -48,8 +47,8 @@ brew "zsh-completions"
 
 unless /zsh$/.match?(ENV.fetch("SHELL", ""))
   puts "To use the Homebrew-installed ZSH:"
-  puts "  sudo echo $HOME/homebrew/bin/zsh >> /etc/shells"
-  puts "  chsh -s $HOME/homebrew/bin/zsh"
+  puts "  sudo echo $(brew --prefix)/bin/zsh >> /etc/shells"
+  puts "  chsh -s $(brew --prefix)/bin/zsh"
 end
 
 # cask 'dropbox'
@@ -69,6 +68,7 @@ cask "hand-mirror" # utility to see what camera is seeing prior to jumping on vi
 cask "hocus-focus" # utility auto close unfocused applications - http://hocusfoc.us
 cask "iterm2"
 cask "karabiner-elements"
+cask "numi"
 cask "vanilla" # utility to collapse the icons in menubar
 # cask "macvim", args: {appdir: "~/Applications"}
 cask "nightowl", args: {appdir: "~/Applications"}
