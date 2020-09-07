@@ -3,14 +3,15 @@ alias b='bundle'
 alias r='bin/rails'
 alias rc='bin/rails c'
 alias rs='bin/rails s'
+alias rg='bin/rails generate'
 alias be='bundle exec'
 alias beg='spring stop && bundle exec guard'
-alias bs='bundle show'
+alias bi='bundle info'
 alias bu='bundle update'
 alias rubo="bundle exec rubocop --auto-correct --format simple"
 alias pspec="bin/pspec"
 alias vig="vi Gemfile"
-alias dnup="r db:drop && r db:create && r db:migrate && r db:seed"
+alias dnup="bin/rails db:drop && bin/rails db:create && bin/rails prepare"
 
 dev_run() {
   if dockered && ! in_docker; then
