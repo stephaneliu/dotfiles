@@ -68,6 +68,7 @@ cask "hand-mirror" # utility to see what camera is seeing prior to jumping on vi
 cask "hocus-focus" # utility auto close unfocused applications - http://hocusfoc.us
 cask "iterm2"
 cask "karabiner-elements"
+cask "keycastr" # dispaly keystrokes for screencasts
 cask "numi"
 cask "vanilla" # utility to collapse the icons in menubar
 # cask "macvim", args: {appdir: "~/Applications"}

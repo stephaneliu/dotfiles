@@ -37,6 +37,7 @@
   nocac = config --global --remove-section http
 
   ci = commit
+  cia = commit --amend
   co = checkout
 	ctags = !.git/hooks/ctags
   df = diff
