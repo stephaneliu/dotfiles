@@ -1,4 +1,5 @@
 alias ann="be annotate -mi -p before"
+alias ang="be annotate_gem --website-only --inline"
 alias b='bundle'
 alias r='bin/rails'
 alias rc='bin/rails c'

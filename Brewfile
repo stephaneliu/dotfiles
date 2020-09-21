@@ -65,6 +65,7 @@ cask "divvy", args: {appdir: "~/Applications"}
 cask "docker", args: {appdir: "~/Applications"}
 cask "font-droidsansmono-nerd-font-mono"
 cask "font-hack-nerd-font"
+cask "font-jetbrains-mono-nerd-font"
 cask "hand-mirror" # utility to see what camera is seeing prior to jumping on video call
 cask "hocus-focus" # utility auto close unfocused applications - http://hocusfoc.us
 cask "iterm2"
