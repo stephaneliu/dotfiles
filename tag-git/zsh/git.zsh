@@ -9,6 +9,7 @@ function g {
   fi
 }
 
+alias 'g-'='git co -'
 alias gad='git add'
 alias gbr='git branch'
 alias gcl='git clone'
