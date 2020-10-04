@@ -8,7 +8,7 @@ if echo $laptop_screen_state | grep -q "No"; then
   LANG="en_US.UTF-8" && \
     PATH="$PATH:/Users/sliu/.rubies/ruby-2.6.2/bin:/Users/sliu/homebrew/bin" && \
     if [ ! -d "$GIT_DIR/rebase-merge" ] && $laptop_screen_open &&
-      [ "$LOLCOMMITS_CAPTURE_DISABLED" != "true" ]; then lolcommits --capture --delay 2; fi
+      [ "$LOLCOMMITS_CAPTURE_DISABLED" != "true" ]; then lolcommits -c --fork --stealth --device "Live Streamer CAM 313"; fi
 fi
 
 ###  lolcommits hook (end)  ###
