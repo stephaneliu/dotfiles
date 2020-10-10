@@ -17,9 +17,8 @@ Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'alvan/vim-closetag'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'davidoc/taskpaper.vim'
-Plugin 'digitaltoad/vim-pug.git'         " # pug syntax highlighting
 Plugin 'ervandew/regex'
-Plugin 'garbas/vim-snipmate'
+Plugin 'iamcco/coc-tailwindcss'
 Plugin 'godlygeek/tabular.git'
 " must be after tabular
 Plugin 'plasticboy/vim-markdown'
@@ -29,6 +28,7 @@ Plugin 'lifepillar/vim-solarized8'
 Plugin 'mattn/calendar-vim'
 Plugin 'mileszs/ack.vim'
 Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'neoclide/coc.nvim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'posva/vim-vue.git'               " # vue syntax highlighting
 Plugin 'prettier/vim-prettier', { 'do': 'yarn install' }
