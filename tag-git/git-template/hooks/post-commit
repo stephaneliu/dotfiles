@@ -3,12 +3,21 @@
 
 ### lolcommits hook (begin) ###
 # laptop_screen_state - No = Open, Yes = Closed
-laptop_screen_state=$(ioreg -r -k "AppleClamshellState" -d 4 | grep "AppleClamshellState" | head -1)
-if echo $laptop_screen_state | grep -q "No"; then
-  LANG="en_US.UTF-8" && \
-    PATH="$PATH:/Users/sliu/.rubies/ruby-2.6.2/bin:/Users/sliu/homebrew/bin" && \
-    if [ ! -d "$GIT_DIR/rebase-merge" ] && $laptop_screen_open &&
-      [ "$LOLCOMMITS_CAPTURE_DISABLED" != "true" ]; then lolcommits -c --fork --stealth --device "Live Streamer CAM 313"; fi
-fi
+# laptop_screen_state=$(ioreg -r -k "AppleClamshellState" -d 4 | grep "AppleClamshellState" | head -1)
+# if echo $laptop_screen_state | grep -q "No"; then
+#   LANG="en_US.UTF-8" && \
+#     PATH="$PATH:/Users/sliu/.rubies/ruby-2.6.2/bin:/Users/sliu/homebrew/bin" && \
+#     if [ ! -d "$GIT_DIR/rebase-merge" ] && $laptop_screen_open &&
+#       [ "$LOLCOMMITS_CAPTURE_DISABLED" != "true" ]; then lolcommits -c --fork --stealth --device "Live Streamer CAM 313"; fi
+#
+# fi
+#
 
-###  lolcommits hook (end)  ###
+LANG="en_US.UTF-8" && \
+  webcam=$EXT_WEBCAM || "Live Streamer CAM 313"
+
+  PATH="$PATH:/Users/sliu/.rubies/ruby-2.6.2/bin:/Users/sliu/homebrew/bin" && \
+  if [ ! -d "$GIT_DIR/rebase-merge" ] && [ "$LOLCOMMITS_CAPTURE_DISABLED" != "true" ]; then
+    RUBYOPT="-W:no-deprecated" lolcommits -c --fork --device "$webcam";
+  fi
+##  lolcommits hook (end)  ###
