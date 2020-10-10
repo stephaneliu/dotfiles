@@ -81,13 +81,18 @@ let g:rails_projections = {
   \   "test":      "spec/jobs/{singular}_spec.rb",
   \   "template":  "# frozen_string_literal: true\n\nclass {camelcase|capitalize|colons}\n  def initialize\n  end\nend"
   \ },
+  \ "spec/jobs/*_job_spec.rb": {
+  \   "command":   "sjob",
+  \   "alternate": "app/jobs/{singular}.rb",
+  \   "template":  "# frozen_string_literal: true\n\nclass {camelcase|capitalize|colons}\n  def initialize\n  end\nend"
+  \ },
   \ "app/reports/*.rb": {
   \   "command":   "report",
   \   "affinity":  "collection",
   \   "test":      "spec/reports/{singular}_spec.rb",
   \   "template":  "# frozen_string_literal: true\n\nclass {camelcase|capitalize|colons}Report\n  def initialize\n  end\nend"
   \ },
-  \ "spec/reports/*report_spec.rb": {
+  \ "spec/reports/*_report_spec.rb": {
   \   "command":   "sreport",
   \   "alternate": "app/reports/{singular}.rb",
   \   "template":  "# frozen_string_literal: true\n\nrequire 'rails_helper'\n\nRSpec.describe {camelcase|capitalize|colons}Report do\n\nend",
