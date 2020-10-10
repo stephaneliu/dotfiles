@@ -21,7 +21,7 @@ alias gg='clear'
 #               |    ---lines after match
 #               |    |    ---line numbers
 #               |    |    |
-alias gr="rg -A 2 -B 2 -n --color=auto"
+alias rg="rg -A 2 -B 2 -n --color=auto"
 alias h='heroku'
 alias hr='heroku run'
 alias nc='nocorrect'
