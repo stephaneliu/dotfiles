@@ -126,7 +126,10 @@ if [ ! -d $HOME/.vim/bundle/Vundle.vim ]; then
 fi
 
 echo "Installing Vim packages"
-vim +PluginInstall +qa
+vi +PluginInstall +qa
+
+echo "Installing coc language servers"
+vi +"CocInstall coc-tailwindcss coc-sh coc-solargraph coc-json coc-html coc-css coc-json" +qa
 
 cd $HOME
 
