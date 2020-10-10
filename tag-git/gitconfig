@@ -46,6 +46,8 @@
   ignore = update-index --assume-unchanged
   unignore = update-index --no-assume-unchanged
   ignored = !git ls-files -v | grep \"^[[:lower:]]\"
+  recommit = commit --amend
+  commend = commit --amend --no-edit
 
   l = log --show-linear-break --decorate --show-signature --stat
   # l = log --show-linear-break --decorate --show-signature --name-only
