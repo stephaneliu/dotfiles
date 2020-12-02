@@ -14,10 +14,8 @@
 #
 
 LANG="en_US.UTF-8" && \
-  webcam=$EXT_WEBCAM || "FactTime HD Camera"
-
-  PATH="$PATH:/Users/sliu/.rubies/ruby-2.6.2/bin:/Users/sliu/homebrew/bin" && \
+  # PATH="$PATH:/Users/sliu/.rubies/ruby-2.6.2/bin:/Users/sliu/homebrew/bin" && \
   if [ ! -d "$GIT_DIR/rebase-merge" ] && [ "$LOLCOMMITS_CAPTURE_DISABLED" != "true" ]; then
-    RUBYOPT="-W:no-deprecated" lolcommits -c --fork --device "$webcam";
+    RUBYOPT="-W:no-deprecated" lolcommits -c --fork --device "$WEBCAM";
   fi
 ##  lolcommits hook (end)  ###
