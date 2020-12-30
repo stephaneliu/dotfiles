@@ -16,6 +16,6 @@
 LANG="en_US.UTF-8" && \
   # PATH="$PATH:/Users/sliu/.rubies/ruby-2.6.2/bin:/Users/sliu/homebrew/bin" && \
   if [ ! -d "$GIT_DIR/rebase-merge" ] && [ "$LOLCOMMITS_CAPTURE_DISABLED" != "true" ]; then
-    lolcommits -c --fork --device "$WEBCAM";
+    lolcommits -c --delay "$LOL_DELAY" --fork --device "$WEBCAM";
   fi
 ##  lolcommits hook (end)  ###
