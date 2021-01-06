@@ -182,7 +182,7 @@ let g:rails_projections = {
   \   "affinity":  "resource",
   \   "alternate": "spec/lib/tasks/%s_rake_spec.rb",
   \   "test":      "spec/lib/tasks/%s_rake_spec.rb",
-  \   "template":  "# frozen_string_literal: true\n\nnamespace :{singular} do\n desc '[description]'\n task something: :environment do\n end\nend",
+  \   "template":  "# frozen_string_literal: true\n\nnamespace :{} do\n  desc '[description]'\n  task something: :environment do\n  end\nend",
   \   "keywords":  "namespace desc task"
   \ },
   \ "spec/lib/tasks/*_rake_spec.rb": {
