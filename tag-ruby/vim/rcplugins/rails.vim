@@ -43,7 +43,7 @@ let g:rails_projections = {
   \ },
   \ "spec/channels/*channel_spec.rb": {
   \   "command":   "schannel",
-  \   "template":  "# frozen_string_literal: true\n\nrequire \"spec_helper"\n\nRSpec.describe \'%s\' do\n\nend",
+  \   "template":  "# frozen_string_literal: true\n\nrequire \"spec_helper\"\n\nRSpec.describe \'%s\' do\n\nend",
   \   "alternate": "app/channels/%s_channel.rb",
   \   "keywords": "before describe context fdescribe fcontext fit"
   \ },
@@ -55,7 +55,7 @@ let g:rails_projections = {
   \ "spec/finders/*_finder_spec.rb": {
   \   "command":   "sfinder",
   \   "alternate": "app/finders/%s.rb",
-  \   "template":  "# frozen_string_literal: true\n\nrequire \"rails_helper"\n\nRSpec.describe {camelcase|capitalize|colons}Finder do\n\nend",
+  \   "template":  "# frozen_string_literal: true\n\nrequire \"rails_helper\"\n\nRSpec.describe {camelcase|capitalize|colons}Finder do\n\nend",
   \   "keywords": "before describe context fdescribe fcontext fit"
   \ },
   \ "app/forms/*_form.rb": {
@@ -182,7 +182,7 @@ let g:rails_projections = {
   \   "affinity":  "resource",
   \   "alternate": "spec/lib/tasks/%s_rake_spec.rb",
   \   "test":      "spec/lib/tasks/%s_rake_spec.rb",
-  \   "template":  "# frozen_string_literal: true\n\nnamespace :{} do\n  desc '[description]'\n  task something: :environment do\n  end\nend",
+  \   "template":  "# frozen_string_literal: true\n\nnamespace :{} do\n  desc \"[description]\"\n  task something: :environment do\n  end\nend",
   \   "keywords":  "namespace desc task"
   \ },
   \ "spec/lib/tasks/*_rake_spec.rb": {
