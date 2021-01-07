@@ -180,15 +180,15 @@ let g:rails_projections = {
   \ "lib/tasks/*.rake": {
   \   "command":   "task",
   \   "affinity":  "resource",
-  \   "alternate": "spec/lib/tasks/%s_rake_spec.rb",
-  \   "test":      "spec/lib/tasks/%s_rake_spec.rb",
+  \   "alternate": "spec/lib/tasks/{}_rake_spec.rb",
+  \   "test":      "spec/lib/tasks/{}_rake_spec.rb",
   \   "template":  "# frozen_string_literal: true\n\nnamespace :{} do\n  desc \"[description]\"\n  task something: :environment do\n  end\nend",
   \   "keywords":  "namespace desc task"
   \ },
   \ "spec/lib/tasks/*_rake_spec.rb": {
   \   "command":  "stask",
-  \   "template": "# frozen_string_literal: true\n\nrequire \"rails_helper\"\n\nRSpec.describe '{singular}:[task]' do\n  include_context 'rake'\n\nend",
-  \   "alternate": "lib/tasks/%s.rake",
+  \   "template": "# frozen_string_literal: true\n\nrequire \"rails_helper\"\nrequire \"rake\"\n\nRSpec.describe \"{}:[task]\" do\n  include_context 'rake'\n\nend",
+  \   "alternate": "lib/tasks/{}.rake",
   \ },
   \ "spec/controllers/*_controller_spec.rb": {
   \   "command":  "scontroller",
