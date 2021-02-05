@@ -116,6 +116,19 @@ let g:rails_projections = {
   \   "alternate": "app/nulls/null_%s.rb",
   \   "keywords": "before describe context fdescribe fcontext fit"
   \ },
+  \ "app/pages/*_page.rb": {
+  \   "command":   "page",
+  \   "affinity":  "resource",
+  \   "test":      "spec/pages/{}_page_spec.rb",
+  \   "template":  "# frozen_string_literal: true\n\nclass {camelcase|capitalize|colons}Page\n  def initialize\n  end\nend"
+  \ },
+  \ "spec/pages/*_spec.rb": {
+  \   "command":   "spage",
+  \   "affinity":  "resource",
+  \   "template":  "# frozen_string_literal: true\n\nrequire \"spec_helper\"\n\nRSpec.describe {camelcase|capitalize|colons}Page do\n\nend",
+  \   "alternate": "app/nulls/null_%s.rb",
+  \   "keywords": "before describe context fdescribe fcontext fit"
+  \ },
   \ "app/policies/*_policy.rb": {
   \   "command":   "policy",
   \   "affinity":  "collection",
@@ -164,6 +177,11 @@ let g:rails_projections = {
   \ "spec/support/*.rb": {
   \   "command":  "ssupport",
   \   "template": "# frozen_string_literal: true\n\nRSpec.configure do |config|\nend"
+  \ },
+  \ "spec/system/*_spec.rb": {
+  \   "command":  "ssystem",
+  \   "template": "# frozen_string_literal: true\n\nrequire \"features_helper\"\n\nRSpec.describe \"{capitalize}\" do\n\nend",
+  \   "keywords": "before describe context fdescribe fcontext fit"
   \ },
   \ "app/view_models/*_view.rb": {
   \   "command":   "view_model",
