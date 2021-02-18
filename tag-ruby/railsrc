@@ -1,3 +1,3 @@
 --database=postgresql
 --skip-test
---template=~/code/rails-template/template.rb
+--skip-javascript

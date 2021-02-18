@@ -49,7 +49,7 @@ Plugin 'vim-scripts/scratch.vim'
 " Plugin 'vim-scripts/simplefold'  # <leader>f conflicts with coc intellisense
 Plugin 'vim-scripts/taglist.vim'
 " Plugin 'vim-syntastic/syntastic'
-" Plugin 'dense-analysis/ale'
+Plugin 'dense-analysis/ale'
 Plugin 'xolox/vim-misc'
 
 Plugin 'junegunn/fzf'
