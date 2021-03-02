@@ -1,10 +1,22 @@
+" Disable Language Server Protocol as it is being implemented by CoC
+let g:ale_disable_lsp = 1
+
 let g:ale_linters = {
-      \ 'ruby': ['prettier', '--check', 'rubocop'],
+      \ 'ruby': [
+      \   'rubocop',
+      \   'prettier', '--check',
+      \   'brakeman'
+      \ ],
       \ 'haml': ['haml-lint'],
       \}
 let g:ale_fixers = {
-      \ '*': ['remove_trailing_lines', 'trim_whitespace'],
-      \ 'ruby': ['prettier'],
+      \ '*': [
+      \   'remove_trailing_lines',
+      \   'trim_whitespace'
+      \ ],
+      \ 'ruby': [
+      \   'prettier'
+      \ ],
       \}
 let g:ale_fix_on_save = 1
 
