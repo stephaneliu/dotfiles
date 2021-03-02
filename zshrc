@@ -3,7 +3,9 @@ BASE="$HOME/.zsh"
 load_all_files_in() {
   if [ -d "$BASE/$1" ]; then
     for file in "$BASE/$1"/*.zsh; do
+      SECONDS=0
       source "$file"
+      # echo "$file load time: $SECONDS"
     done
   fi
 }
