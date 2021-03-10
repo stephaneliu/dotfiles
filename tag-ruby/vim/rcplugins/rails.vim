@@ -246,7 +246,7 @@ let g:rails_projections = {
   \ },
   \ "spec/views/*.html.haml_spec.rb": {
   \   "command":   "sview",
-  \   "template":  "# frozen_string_literal: true\n\nrequire \"rails_helper\"\n\nRSpec.describe \'{}\' do\n\nend",
+  \   "template":  "# frozen_string_literal: true\n\nrequire \"rails_helper\"\n\nRSpec.describe \"{}.html.haml\", type: :view do\n\nend",
   \   "alternate": "app/views/%s.html.haml",
   \   "keywords": "before describe context fdescribe fcontext fit"
   \ },
