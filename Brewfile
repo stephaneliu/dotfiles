@@ -30,7 +30,9 @@ brew "gitsh"
 brew "gpg"
 brew "heroku/brew/heroku"                       # The recommended way to use Heroku
 brew "gh"                                       # Fast GitHub client released in 2020
+brew "imagemagick"
 brew "mas"                                      # Mac appstore cli
+brew "neovim"
 brew "opensc"                                   # smart card support
 brew "postgresql@10", restart_service: :changed
 brew "reattach-to-user-namespace"
