@@ -1,3 +1,4 @@
+echo "Starting"
 " Stolen wholesale from christoomey, whose dotfiles you really should check out:
 " https://github.com/christoomey/dotfiles
 function! s:SourceConfigFilesIn(directory)
@@ -27,15 +28,10 @@ call s:LoadPlugins()
 
 " vundle loads all the file-type, syntax and color scheme files, so turn them
 " on after loading plugins
+
 filetype plugin indent on " required
 
 call s:SourceConfigFilesIn('')
 call s:SourceConfigFilesIn('functions')
+syntax enable " Must be before configuring plugins which configures syntax highlighting color
 call s:SourceConfigFilesIn('rcplugins')
-
-syntax enable
-
-" check off a todo item and time stamp it
-map tc ^rx: <Esc>:r! date +" [\%I:\%M \%p]"<ENTER>kJA<Esc>$
-" create a new todo item
-map tn o_
