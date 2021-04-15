@@ -1,4 +1,3 @@
-echo "Starting"
 " Stolen wholesale from christoomey, whose dotfiles you really should check out:
 " https://github.com/christoomey/dotfiles
 function! s:SourceConfigFilesIn(directory)
