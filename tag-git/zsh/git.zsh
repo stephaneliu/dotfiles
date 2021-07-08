@@ -11,12 +11,13 @@ function g {
 
 alias 'g-'='git co -'
 alias gad='git add'
-alias gbr='git branch'
+alias gap='git add --patch'
+alias gbr='git br'
 alias gcl='git clone'
 alias gco='git checkout'
 alias gci='git commit'
+alias gdc='git diff --cached'
 alias gdf='git df'
-alias ggg='git g'
 alias glg='git lg'
 alias gll='git lola'
 alias gmg='git mg'
@@ -25,8 +26,9 @@ alias gmv='git mv'
 alias gpl='git pull'
 alias gps='git push'
 alias grb='git rebase'
-alias grf='git rm -rf'
-alias grm='git rm'
+alias grbi='OVERCOMMIT_DISABLE=1 git rebase -i'
+alias grbc='git rebase --continue'
+alias grm='git rm -rf'
 alias gus='git unstage'
 alias gl='git l'
 
@@ -36,6 +38,7 @@ alias yescac='export GIT_SSL_CERT=$_GIT_SSL_CERT && unset _GIT_SSL_CERT'
 # Complete g like git
 compdef g=git
 compdef _git gad=git-add
+compdef _git gap=git-add
 compdef _git gco=git-checkout
 compdef _git gbr=git-branch
 compdef _git gcl=git-clone
