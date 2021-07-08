@@ -42,6 +42,7 @@ brew "the_silver_searcher"                      # a better ack/grep
 brew "thoughtbot/formulae/rcm"
 brew "tmux"
 brew "universal-ctags"                          # so :Rtags works
+brew "shared-mime-info"
 brew "unused"                                   # Find dead code using ctags
 brew "vim"
 brew "yarn"
