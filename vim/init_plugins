@@ -28,7 +28,7 @@ Plugin 'lifepillar/vim-solarized8'
 Plugin 'mattn/calendar-vim'
 Plugin 'mileszs/ack.vim'
 Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'neoclide/coc.nvim'
+Plugin 'neoclide/coc.nvim', { 'branch': 'release'}
 Plugin 'pangloss/vim-javascript'
 Plugin 'posva/vim-vue.git'               " # vue syntax highlighting
 Plugin 'prettier/vim-prettier', { 'do': 'yarn install' }

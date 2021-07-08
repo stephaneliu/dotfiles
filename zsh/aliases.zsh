@@ -52,4 +52,5 @@ alias j='z'
 alias lol='lolcommits --capture --delay "$LOL_DELAY" --fork --device "$WEBCAM"'
 alias loll='lolcommits --last'
 
+alias vim='nvim'
 alias vpnip='ifconfig | grep inet | grep "128\|198" | grep netmask | cut -d " " -f 2'

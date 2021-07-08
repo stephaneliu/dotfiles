@@ -38,7 +38,7 @@ noremap <C-n> :call NumberToggle()<cr>
 " autocmd InsertLeave * :set rnu!
 set numberwidth=3
 
-set colorcolumn=100                 " set a highlighted column at the 100th character on line
+set colorcolumn=120                 " set a highlighted column at the 120th character on line
 set textwidth=100                   " word wrap at 100 characters
 set wrapmargin=2                    " command to actually wrap on the display
 
