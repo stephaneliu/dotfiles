@@ -4,9 +4,12 @@ load '~/.irbrc'
 begin
   # Make it awesome and don't crash if gem not installed
   require 'awesome_print'
+  require 'pry-byebug'
   AwesomePrint.irb!
 rescue LoadError
 end
+
+Pry.config.editor = 'vi'
 
 if defined?(PryRails::RAILS_PROMPT)
   Pry.config.prompt = PryRails::RAILS_PROMPT

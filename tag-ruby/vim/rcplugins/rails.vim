@@ -15,6 +15,12 @@
 "
 " globals
 let g:rails_projections = {
+  \ "app/javascript/stylesheets/*": {
+  \   "command":   "jstyle"
+  \ },
+  \ "app/javascript/controllers/*.js": {
+  \   "command":   "jcontrollers"
+  \ },
   \ "config/*": {
   \   "command":   "config"
   \ },
