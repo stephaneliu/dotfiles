@@ -28,6 +28,7 @@
   quotepath = false
   excludesfile = ~/.gitignore
   ff = only
+  attributesfile = ~/.gitattributes # https://tekin.co.uk/2020/10/better-git-diff-output-for-ruby-python-elixir-and-more
 [alias]
   a = add --patch
   ad = add
@@ -85,6 +86,8 @@
 [diff]
   mnemonicprefix = true
   compactionHeuristic = true # experimental - easier diff reading
+[diff "rspec"]
+  xfuncname = "^[ \t]*((RSpec|describe|context|it|before|after|around|feature|scenario)[ \t].*)$"
 [grep]
   extendRegexp = true
   lineNumber = true
