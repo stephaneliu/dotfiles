@@ -13,9 +13,25 @@
 # fi
 #
 
-LANG="en_US.UTF-8" && \
-  # PATH="$PATH:/Users/sliu/.rubies/ruby-2.6.2/bin:/Users/sliu/homebrew/bin" && \
-  if [ ! -d "$GIT_DIR/rebase-merge" ] && [ "$LOLCOMMITS_CAPTURE_DISABLED" != "true" ]; then
-    lolcommits -c --delay "$LOL_DELAY" --fork --device "$WEBCAM";
-  fi
-##  lolcommits hook (end)  ###
+green='\x1B\033[0;32m'
+orange='\x1B\033[0;33m'
+blue='\x1B\033[0;34m'
+cyan='\x1B\033[0;36m'
+reset_color='\x1B\033[0m'
+lolcommits_dir="$HOME/.lolcommits"
+repo_dir="${PWD##*/}"
+custom_lol_config="$HOME/.lolcommits"
+
+repo_lolcommits_dir="$lolcommits_dir/`echo $repo_dir`"
+
+if [ ! -d $repo_lolcommits_dir ]; then
+  echo "${orange}Initializing lolcommits for $repo_dir${reset_color}"
+  mkdir -p $lolcommits_dir/$repo_dir
+  cp -v $lolcommits_dir/config.yml $repo_lolcommits_dir
+fi
+
+LANG="en_US.UTF-8"
+git_merging="$GIT_DIR/rebase-merge"
+if [ ! -d $git_merging ] && [ "$LOLCOMMITS_CAPTURE_DISABLED" != "true" ]; then
+  lolcommits -c --delay "$LOL_DELAY" --fork --device "$WEBCAM";
+fi
