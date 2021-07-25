@@ -2,6 +2,7 @@
 inoremap jk <ESC>
 inoremap kj <ESC>
 inoremap jj <ESC>
+inoremap kk <ESC>
 
 " Visual mode select then shift + d to paste selected text
 vmap D y'>p
