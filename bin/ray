@@ -16,16 +16,16 @@
 
 # Customization:
 
-hour_of_day=`date +"%H"`
+hour_of_day=$(date +"%H")
 phase_of_day=0
 
 declare -i hour_of_day
 
 if [ $hour_of_day -lt 10 ]; then
   phase_of_day=1
-elif [ $hour_of_day -gte 10 ] && [ $hour_of_day -lt 5 ]; then
+elif [ $hour_of_day -gt 9 ] && [ $hour_of_day -lt 17 ]; then
   phase_of_day=2
-elif [ $hour_of_day -gte 5 ] && [ $hour_of_day -lt 8 ]; then
+elif [ $hour_of_day -gt 16 ] && [ $hour_of_day -lt 20 ]; then
   phase_of_day=3
 else
   phase_of_day=4
