@@ -18,16 +18,16 @@ orange='\x1B\033[0;33m'
 blue='\x1B\033[0;34m'
 cyan='\x1B\033[0;36m'
 reset_color='\x1B\033[0m'
-lolcommits_dir="$HOME/.lolcommits"
+lolcommits_dir="$HOME/Documents/lolcommits"
 repo_dir="${PWD##*/}"
-custom_lol_config="$HOME/.lolcommits"
+custom_lol_config="$lolcommits_dir/config.yml"
 
 repo_lolcommits_dir="$lolcommits_dir/`echo $repo_dir`"
 
 if [ ! -d $repo_lolcommits_dir ]; then
   echo "${orange}Initializing lolcommits for $repo_dir${reset_color}"
   mkdir -p $lolcommits_dir/$repo_dir
-  cp -v $lolcommits_dir/config.yml $repo_lolcommits_dir
+  cp -v $custom_lol_config $repo_lolcommits_dir
 fi
 
 LANG="en_US.UTF-8"
