@@ -3,9 +3,9 @@ BASE="$HOME/.zsh"
 load_all_files_in() {
   if [ -d "$BASE/$1" ]; then
     for file in "$BASE/$1"/*.zsh; do
-      SECONDS=0
+      # SECONDS=0
       source "$file"
-      echo "$file load time: $SECONDS"
+      # echo "$file load time: $SECONDS"
     done
   fi
 }
@@ -21,5 +21,3 @@ fi
 if [ -e $HOME/.private_keys ]; then
   source $HOME/.private_keys
 fi
-
-chruby ruby
