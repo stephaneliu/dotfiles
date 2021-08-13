@@ -5,7 +5,7 @@ load_all_files_in() {
     for file in "$BASE/$1"/*.zsh; do
       SECONDS=0
       source "$file"
-      echo "$file load time: $SECONDS"
+      # echo "$file load time: $SECONDS"
     done
   fi
 }
