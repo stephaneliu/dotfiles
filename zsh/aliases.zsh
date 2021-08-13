@@ -50,7 +50,7 @@ alias docdev='bin/docker_build dev'
 alias j='z'
 
 alias lol='LOLCOMMITS_DIR=/Users/sliu/Documents/lolcommits lolcommits --capture --delay "$LOL_DELAY" --fork --device "$WEBCAM"'
-alias loll='lolcommits --last'
+alias loll='LOLCOMMITS_DIR=/Users/sliu/Documents/lolcommits lolcommits --last'
 
 alias matrix='cmatrix'
 
