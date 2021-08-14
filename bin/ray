@@ -1,52 +1,47 @@
 #!/bin/bash
 
-# Required parameters:
-# @raycast.schemaVersion 1
-# @raycast.title Create Image from Code
+# required parameters:
+# @raycast.schemaversion 1
+# @raycast.title create image from code
 # @raycast.mode silent
 
-# Optional parameters:
+# optional parameters:
 # @raycast.icon ./images/ray-so.png
-# @raycast.argument1 { "type": "text", "placeholder": "Title", "optional": true }
+# @raycast.argument1 { "type": "text", "placeholder": "title", "optional": true }
 
-# Documentation:
-# @raycast.description Create beautiful images of your code with https://ray.so
-# @raycast.author Thomas Paul Mann
-# @raycast.authorURL https://github.com/thomaspaulmann
+# documentation:
+# @raycast.description create beautiful images of your code with https://ray.so
+# @raycast.author thomas paul mann
+# @raycast.authorurl https://github.com/thomaspaulmann
 
-# Customization:
+# customization:
 
-hour_of_day=$(date +"%H")
-phase_of_day=0
+hour_of_day=$(date +"%h")
+# hour_of_day="00"
+# hour_of_day="05"
+# hour_of_day="10"
+# hour_of_day="17"
+# hour_of_day="21"
 
-declare -i hour_of_day
-
-if [ $hour_of_day -lt 10 ]; then
-  phase_of_day=1
-elif [ $hour_of_day -gt 9 ] && [ $hour_of_day -lt 17 ]; then
-  phase_of_day=2
-elif [ $hour_of_day -gt 16 ] && [ $hour_of_day -lt 20 ]; then
-  phase_of_day=3
-else
-  phase_of_day=4
-fi
-# echo "phase: $phase_of_day"
-
-# Set colors. Available options: candy, breeze, midnight or sunset
-# phase_of_day 1 - breeze
-# phase_of_day 2 - candy
-# phase_of_day 3 - sunset
-# phase_of_day 4 - midnight
-if [[ phase_of_day -eq 1 ]]; then
-  COLORS="breeze"
-elif [[ phase_of_day -eq 2 ]]; then
-  COLORS="candy"
-elif [[ phase_of_day -eq 3 ]]; then
-  COLORS="sunset"
-else
-  COLORS="midnight"
-fi
-# echo "colors: $COLORS"
+# echo "Hour is: $hour_of_day"
+case $hour_of_day in
+  00 | 01 | 02 | 03 | 04)
+    COLORS="midnight"
+    ;;
+  05 | 06 | 07 | 08 | 09)
+    COLORS="breeze"
+    ;;
+  10 | 11 | 12 | 13 | 14 | 15 | 16)
+    COLORS="candy"
+    ;;
+  17 | 18 | 19 | 20)
+    COLORS="sunset"
+    ;;
+  21 | 22 | 23 | 24)
+    COLORS="midnight"
+    ;;
+esac
+# echo "Color of hour is: $COLORS"
 
 # Toggle dark mode. Available options: true or false
 DARK_MODE="true"
