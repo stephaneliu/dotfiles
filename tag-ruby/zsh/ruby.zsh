@@ -34,15 +34,17 @@ in_docker() {
 # added by travis gem
 [ -f ${HOME}/.travis/travis.sh ] && source ${HOME}/.travis/travis.sh
 
-if [ -f $HOME/homebrew/share/chruby/chruby.sh ]; then
-  RUBIES+=(
-    "$HOME/.rubies"
-  )
-  source $HOME/homebrew/share/chruby/chruby.sh
-  source $HOME/homebrew/share/chruby/auto.sh
-  chruby ruby
-elif [ -f /usr/local/share/chruby/chruby.sh ]; then
-  source /usr/local/share/chruby/chruby.sh
-  source /usr/local/share/chruby/auto.sh
-  chruby ruby
-fi
+eval "$(frum init)"
+
+# if [ -f $HOME/homebrew/share/chruby/chruby.sh ]; then
+#   RUBIES+=(
+#     "$HOME/.rubies"
+#   )
+#   source $HOME/homebrew/share/chruby/chruby.sh
+#   source $HOME/homebrew/share/chruby/auto.sh
+#   chruby ruby
+# elif [ -f /usr/local/share/chruby/chruby.sh ]; then
+#   source /usr/local/share/chruby/chruby.sh
+#   source /usr/local/share/chruby/auto.sh
+#   chruby ruby
+# fi
