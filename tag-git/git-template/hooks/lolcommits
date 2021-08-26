@@ -1,0 +1,56 @@
+#!/bin/sh
+
+morning_color="#9b35be"
+afternoon_color="#b89cf5"
+sunset_color="#faab57"
+night_color="#3b9095"
+
+hour_of_day=`date +"%H"`
+
+# echo "Hour is: $hour_of_day"
+case $hour_of_day in
+  00 | 01 | 02 | 03 | 04)
+    hour_color=$night_color
+    ;;
+  05 | 06 | 07 | 08 | 09)
+    hour_color=$morning_color
+    ;;
+  10 | 11 | 12 | 13 | 14 | 15 | 16)
+    hour_color=$afternoon_color
+    ;;
+  17 | 18 | 19 | 20)
+    hour_color=$sunset_color
+    ;;
+  21 | 22 | 23 | 24)
+    hour_color=$night_color
+    ;;
+esac
+# echo "Color of hour is: $hour_color"
+
+green='\x1B\033[0;32m'
+orange='\x1B\033[0;33m'
+blue='\x1B\033[0;34m'
+cyan='\x1B\033[0;36m'
+reset_color='\x1B\033[0m'
+lolcommits_dir="$HOME/Documents/lolcommits"
+repo_dir="${PWD##*/}"
+custom_lol_config="$lolcommits_dir/config.yml"
+repo_lolcommits_dir="$lolcommits_dir/`echo $repo_dir`"
+
+# replace overlay color depending on the hour of the day
+sed -i '' "s/:overlay_colors:.*/:overlay_colors:\ \"$hour_color\"/" $custom_lol_config
+
+if [ ! -d $repo_lolcommits_dir ]; then
+  echo "${orange}Initializing lolcommits for $repo_dir${reset_color}"
+  mkdir -p $lolcommits_dir/$repo_dir
+  cp -v $custom_lol_config $repo_lolcommits_dir
+elif ! diff --brief "$custom_lol_config" "$repo_lolcommits_dir/config.yml" > /dev/null; then
+  echo "${orange}Updating lolcommits configuration${reset_color}"
+  cp -v "$custom_lol_config" "$repo_lolcommits_dir"
+fi
+
+LANG="en_US.UTF-8"
+git_merging="$GIT_DIR/rebase-merge"
+if [ ! -d $git_merging ] && [ "$LOLCOMMITS_CAPTURE_DISABLED" != "true" ]; then
+  LOLCOMMITS_DIR=$lolcommits_dir lolcommits --capture --delay "$LOL_DELAY" --fork --device "$WEBCAM";
+fi
