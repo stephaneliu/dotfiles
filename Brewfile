@@ -13,6 +13,7 @@
 tap "heroku/brew"
 tap "homebrew/cask"
 tap "homebrew/cask-fonts"
+tap "homebrew/command-not-found"
 tap "homebrew/core"
 tap "homebrew/services"                      # `brew services restart postgres`, etc
 tap "thoughtbot/formulae"
