@@ -34,7 +34,7 @@ alias which="which -a"
 #               |    ---lines after match
 #               |    |    ---line numbers
 #               |    |    |
-alias rg="rg -A 2 -B 2 -n --color=auto"
+alias -g rg="rg -A 2 -B 2 -n --color=auto"
 
 # docker
 alias d='docker'
