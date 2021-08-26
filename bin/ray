@@ -62,7 +62,7 @@ if [[ -z "$1" ]]
 then
   TITLE="Untitled-1"
 else
-  TITLE=$(php -r "echo urlencode(\"$1\");")
+  TITLE=$(ruby -rcgi -e "puts CGI.escape ARGV[0]" "$1")
 fi
 
 CODE=$(pbpaste | base64)
