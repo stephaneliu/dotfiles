@@ -1,6 +1,4 @@
 alias 'ps?'='ps aux | gr '
-alias ..2="cd ../../"
-alias ..3="cd ../../../"
 alias ..="cd .."
 alias :q="exit"
 alias cat='bat'
@@ -15,15 +13,25 @@ alias lol='LOLCOMMITS_DIR=/Users/sliu/Documents/lolcommits lolcommits --capture 
 alias loll='LOLCOMMITS_DIR=/Users/sliu/Documents/lolcommits lolcommits --last'
 alias matrix='cmatrix'
 alias nc='nocorrect'
-alias netr='nmcli networking off && nmcli networking on && sleep 10 && ifconfig | grep inet'
 alias q='exit'
-alias screencast='ffmpeg -f x11grab -r 25 -s 1600x1200 -i :0.0 /tmp/output.mpg'
+alias rcup='rcup -v'
+alias screencast='ffmpeg -f x11grab -r 25 -s 1600x1200 -i :0.0 ~/tmp/output.mpg'
 alias ssh='TERM=xterm ssh'
-alias t='exit'
 alias terminal-notifier='reattach-to-user-namespace terminal-notifier'
-alias tmux='TERM=xterm-256color tmux'
+alias tmux="echo \"Use 't' instead\";tmux -2"
+t() {
+  # session with name $1 or focus
+  session_name=${1:-focus}
+
+  if tmux list-sessions | grep -q ${session_name}; then
+    tmux -2 attach-session -t $session_name
+  else
+    tmux -2 new -t $session_name
+  fi
+}
 alias version='bat /etc/issue'
-alias vim='nvim'
+alias vim="echo \"Use v\""
+alias v='nvim'
 alias vpnip='ifconfig | grep inet | grep "128\|198" | grep netmask | cut -d " " -f 2'
 alias which="which -a"
 
@@ -35,13 +43,3 @@ alias which="which -a"
 #               |    |    ---line numbers
 #               |    |    |
 alias -g rg="rg -A 2 -B 2 -n --color=auto"
-
-# docker
-alias d='docker'
-alias dc='docker-compose'
-alias dca='docker-compose up -d && docker attach --detach-keys="ctrl-q" netops_rails_1'
-alias da='docker attach --detach-keys="ctrl-q" netops_rails_1'
-alias dcbu='docker-compose build --build-arg dotfile_user=sliu '
-alias dcst='docker-compose stop'
-alias dcr='docker-compose run '
-alias docdev='bin/docker_build dev'

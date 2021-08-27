@@ -27,9 +27,12 @@ alias gpl='git pull'
 alias gps='git push'
 alias grb='git rebase'
 alias grbi='OVERCOMMIT_DISABLE=1 git rebase -i'
-alias grbc='git rebase --continue'
+alias grbc='OVERCOMMIT_DISABLE=1 git rebase --continue'
+alias grs='git reset'
+alias grsh='git reset --hard'
 alias grm='git rm -rf'
 alias gus='git unstage'
+alias gwip="git add . && OVERCOMMIT_DISABLE=1 git commit -m \"***** Chore: WIP WIP WIP *****\""
 alias gl='git l'
 
 alias nocac='export _GIT_SSL_CERT=$GIT_SSL_CERT && unset GIT_SSL_CERT'
