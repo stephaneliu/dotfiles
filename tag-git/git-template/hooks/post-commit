@@ -1,7 +1,4 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-rebasing = (Dir.exist? ".git/rebase-merge" || false)
-disable_lol = ENV.fetch("LOLCOMMITS_CAPTURE_DISABLED", "false") == "true"
-
-system ".git/hooks/lolcommits" unless rebasing || disable_lol
+system ".git/hooks/lolcommits"
