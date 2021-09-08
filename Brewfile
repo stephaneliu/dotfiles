@@ -66,9 +66,9 @@ end
 # cask 'vlc'
 # cask "superduper", args: {appdir: "~/Applications"}
 
-cask "chromium", args: {appdir: "~/Applications"}
-cask "divvy", args: {appdir: "~/Applications"}
-cask "docker", args: {appdir: "~/Applications"}
+cask "chromium"
+cask "divvy"
+cask "docker"
 cask "font-droidsansmono-nerd-font-mono"
 cask "font-hack-nerd-font"
 cask "font-jetbrains-mono-nerd-font"
