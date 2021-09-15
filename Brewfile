@@ -66,9 +66,10 @@ end
 # cask 'vlc'
 # cask "superduper", args: {appdir: "~/Applications"}
 
-cask "chromium", args: {appdir: "~/Applications"}
-cask "divvy", args: {appdir: "~/Applications"}
-cask "docker", args: {appdir: "~/Applications"}
+cask "chromium"
+cask "divvy"
+cask "docker"
+cask "graphiql"
 cask "font-droidsansmono-nerd-font-mono"
 cask "font-hack-nerd-font"
 cask "font-jetbrains-mono-nerd-font"
@@ -80,7 +81,7 @@ cask "keycastr" # dispaly keystrokes for screencasts
 cask "numi"
 cask "vanilla" # utility to collapse the icons in menubar
 # cask "macvim", args: {appdir: "~/Applications"}
-cask "nightowl", args: {appdir: "~/Applications"}
+# cask "nightowl", args: {appdir: "~/Applications"}
 
 # CLI: mas search [app]
 # Returns app name and app id
