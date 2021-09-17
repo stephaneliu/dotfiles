@@ -18,8 +18,9 @@ let g:rails_projections = {
   \ "app/javascript/stylesheets/*": {
   \   "command":   "jstyle"
   \ },
-  \ "app/javascript/controllers/*.js": {
-  \   "command":   "jcontrollers"
+  \ "app/javascript/controllers/*_controller.js": {
+  \   "command":   "jcontrollers",
+  \   "template":  "import {open} Controller {close} from \"@hotwired/stimulus\"\n\nexport default class extends Controller {open}\n  connect() {open}\n    this.element.textContext = \"Wassup World!\"\n  {close}\n{close}"
   \ },
   \ "config/*": {
   \   "command":   "config"
