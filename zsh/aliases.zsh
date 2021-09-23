@@ -18,7 +18,6 @@ alias rcup='rcup -v'
 alias screencast='ffmpeg -f x11grab -r 25 -s 1600x1200 -i :0.0 ~/tmp/output.mpg'
 alias ssh='TERM=xterm ssh'
 alias terminal-notifier='reattach-to-user-namespace terminal-notifier'
-alias tmux="echo \"Use 't' instead\";tmux -2"
 t() {
   # session with name $1 or focus
   session_name=${1:-focus}
