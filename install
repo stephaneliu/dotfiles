@@ -3,114 +3,19 @@
 # Exits immediately on error
 # set -e # disabled until script is stabilized
 install_dir=$PWD
-unset GIT_SSL_CERT 
+unset GIT_SSL_CERT
 
 source $HOME/.dotfiles/bin/os_type.sh
 
-if is_osx; then
-  if [ ! `command -v $HOME/homebrew/bin/brew` ]; then
-    echo "Installing Homebrew in $HOME/homebrew"
-    cd $HOME
-    mkdir homebrew && curl -L https://github.com/Homebrew/brew/tarball/master | \
-      tar xz --strip 1 -C homebrew
-  fi
+echo "Installing Homebrew packages"
+brew update
+brew tap homebrew/bundle
+brew bundle
+for brewfile in */Brewfile; do
+  brew bundle --file="$brewfile"
+done
 
-  echo "Installing Homebrew packages"
-  $HOME/homebrew/bin/brew update
-  $HOME/homebrew/bin/brew tap homebrew/bundle
-  $HOME/homebrew/bin/brew bundle
-  for brewfile in */Brewfile; do
-    $HOME/hombrew/bin/brew bundle --file="$brewfile"
-  done
-
-  if [ ! `command -v gitsh` ]; then
-    # Work around for gitsh that fails to install from brew
-
-    # gitsh does not install with default ruby from mac. However, there is a dependency
-    # issue here because ruby is not installed until chruby is installed
-    # TODO: Defer installation of gitsh until ruby is installed from ruby-install
-    local ruby_path=/$HOME/.rubies/ruby-2.6.1/bin/ruby
-
-    echo "Install gitsh"
-    mkdir -p ~/tmp
-    cd ~/tmp
-    curl -LO https://thoughtbot.github.io/gitsh/gitsh-0.14.tar.gz
-    tar -zxvf gitsh-0.14.tar.gz
-    cd gitsh-0.14
-    RUBY=$ruby_path ./configure
-    make
-    sudo make install
-  fi
-
-  export PATH=$HOME/homebrew/bin:$PATH
-fi
-
-
-if is_debian; then
-  echo "Installing linux packages"
-  sudo add-apt-repository ppa:pgolm/the-silver-searcher
-  sudo apt-get update
-  sudo apt-get install xclip -y
-  sudo apt-get install the-silver-searcher -y
-fi
-
-if is_redhat; then
-  echo "Installing yum packages"
-  
-  # Query if pack is installed
-  # Use rpm - local package manager - therefore faster
-  if [ ! `rpm -q autojump-zsh` ]; then
-    sudo yum -q -y install autojump-zsh
-  fi
-
-  if [ ! `rpm -q ctags` ]; then
-    sudo yum -q -y install ctags
-  fi
-
-  if [ ! `rpm -q the_silver_searcher` ]; then
-    sudo yum -q -y install the_silver_searcher
-    cd /tmp
-    git clone https://github.com/ggreer/the_silver_searcher && \
-      cd the_silver_searcher && \
-      ./build.sh && \
-      sudo make install
-  fi
-
-  if [ ! `rpm -q xclip` ]; then
-    sudo yum -q -y install xclip
-  fi
-
-  if [ ! `rpm -q zsh` ]; then
-    sudo yum -q -y install zsh 
-  fi
-
-  if [ ! `command -v rcup` ]; then
-    # Masking not properly handled within rcm. Provide a default
-    umask 022
-    cd /tmp
-    curl -LO https://thoughtbot.github.io/rcm/dist/rcm-1.3.3.tar.gz && \
-    sha=$(sha256sum rcm-1.3.3.tar.gz | cut -f1 -d' ') && \
-    [ "$sha" = "935524456f2291afa36ef815e68f1ab4a37a4ed6f0f144b7de7fb270733e13af" ] && \
-    tar -xvf rcm-1.3.3.tar.gz && \
-    cd rcm-1.3.3 && \
-    ./configure && \
-    make && \
-    sudo make install
-  fi
-
-  if [ ! `command -v gitsh` ]; then
-    echo "Installing gitsh"
-
-    umask 022
-    cd /tmp
-    curl -LO https://github.com/thoughtbot/gitsh/releases/download/v0.12/gitsh-0.12.tar.gz
-    tar -zxvf gitsh-0.12.tar.gz
-    cd gitsh-0.12
-    ./configure
-    make
-    sudo make install
-  fi
-fi
+export PATH=$opt/homebrew/bin:$PATH
 
 # Before `rcup` runs, there is no ~/.rcrc, so we must tell `rcup` where to look.
 # We need the rcrc because it tells `rcup` to ignore thousands of useless Vim
@@ -138,7 +43,7 @@ if [ -d $HOME/.oh-my-zsh ]; then
 else
   echo "Installing oh-my-zsh"
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-  echo "If changing shell (chsh) to zsh failed, sudo bash then 'chsh -s /bin/zsh {user}'"
+  echo "If changing shell (chsh) to zsh failed, sudo bash then 'chsh -s /$HOMEBREW_PREFIX/bin/zsh {user}'"
 
   echo "Installing Powerlevel9k thems for Oh-my-zsh"
   git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
@@ -155,11 +60,7 @@ if [ ! -d $HOME/tmp ]; then
   mkdir $HOME/tmp
 fi
 
-if is_osx; then
-  echo
-  echo "If you like what you see in system/osx-settings, run ./system/osx-settings"
-  echo "If you're using Terminal.app, check out the terminal-themes directory"
-fi
+echo "Setting defaults for OSX"
+. ./system/osx-settings
 
 echo "Done!"
-

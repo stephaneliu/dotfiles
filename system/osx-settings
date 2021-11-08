@@ -12,37 +12,24 @@ defaults write com.apple.LaunchServices LSQuarantine -bool false
 echo "Interaction: Disable the warning when changing a file extension"
 defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 
-echo "Interaction: Use current directory as default search scope in Finder"
-defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
-
 echo "Interaction: Expand print panel by default"
 defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
 
 echo "Interatcion: Expand save panel by default"
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
 
-echo "Interaction: Save screenshots to ~/Desktop/screenshots"
-defaults write com.apple.screencapture location ~/Desktop/screenshots
-
 echo "Interaction: Add a context menu item for showing the Web Inspector in web views"
 defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
-
-echo "Interaction: Disable the Ping sidebar in iTunes"
-defaults write com.apple.iTunes disablePingSidebar -bool true
 
 echo "Interaction: Make ⌘ + F focus the search input in iTunes"
 defaults write com.apple.iTunes NSUserKeyEquivalents -dict-add "Target Search Field" "@F"
 
-echo "Ineraction: Disable the “reopen windows when logging back in” option"
-# This works, although the checkbox will still appear to be checked.
-defaults write com.apple.loginwindow TALLogoutSavesState -bool false
-defaults write com.apple.loginwindow LoginwindowLaunchesRelaunchApps -bool false
-
-echo "Interaction: Disable all the other Ping stuff in iTunes"
-defaults write com.apple.iTunes disablePing -bool true
+echo "Interaction: Use current directory as default search scope in Finder"
+defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
 
 echo "Visual: Automatically illuminate built-in MacBook keyboard in low light"
 defaults write com.apple.BezelServices kDim -bool true
+
 echo "Turn off keyboard illumination when computer is not used for 5 minutes"
 defaults write com.apple.BezelServices kDimTime -int 300
 
@@ -74,9 +61,6 @@ defaults write com.apple.screencapture disable-shadow -bool true
 echo "Visual: Enable highlight hover effect for the grid view of a stack (Dock)"
 defaults write com.apple.dock mouse-over-hilte-stack -bool true
 
-echo "Visual: Enable spring loading for all Dock items"
-defaults write enable-spring-load-actions-on-all-items -bool true
-
 echo "Visual: Show indicator lights for open applications in the Dock"
 defaults write com.apple.dock show-process-indicators -bool true
 
@@ -86,8 +70,33 @@ chflags nohidden ~/Library
 echo "Visual: Display full POSIX path as Finder window title"
 defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
 
-echo "Visual: Show item info below desktop icons"
-/usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:showItemInfo true" ~/Library/Preferences/com.apple.finder.plist
+#####  App specific #####
+
+echo "Disable press-and-hold for keys in favor of key repeat in Obsidian"
+defaults write md.obsidian ApplePressAndHoldEnabled -bool false
+
+
+#####  Not enabled  #####
+
+# echo "Interaction: Save screenshots to ~/Desktop/screenshots"
+# defaults write com.apple.screencapture location ~/Desktop/screenshots
+
+# echo "Interaction: Disable the Ping sidebar in iTunes"
+# defaults write com.apple.iTunes disablePingSidebar -bool true
+
+# echo "Ineraction: Disable the “reopen windows when logging back in” option"
+# # This works, although the checkbox will still appear to be checked.
+# defaults write com.apple.loginwindow TALLogoutSavesState -bool false
+# defaults write com.apple.loginwindow LoginwindowLaunchesRelaunchApps -bool false
+
+# echo "Interaction: Disable all the other Ping stuff in iTunes"
+# defaults write com.apple.iTunes disablePing -bool true
+
+# echo "Visual: Show item info below desktop icons"
+# /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:showItemInfo true" ~/Library/Preferences/com.apple.finder.plist
+
+# echo "Visual: Enable spring loading for all Dock items"
+# defaults write enable-spring-load-actions-on-all-items -bool true
 
 # echo "Interaction: Enable Dashboard dev mode (allows keeping widgets on the desktop)"
 # defaults write com.apple.dashboard devmode -bool true
@@ -118,4 +127,3 @@ echo "Visual: Show item info below desktop icons"
 
 # echo "Interaction: Make Safari’s search banners default to Contains instead of Starts With"
 # defaults write com.apple.Safari FindOnPageMatchesWordStartsOnly -bool false
-
