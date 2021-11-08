@@ -17,5 +17,3 @@ colorscheme solarized
 
 " Added to support visual gitgutter display
 highlight clear SignColumn
-
-map <silent> <leader>bg :let &background = ( &background == "dark"? "light" : "dark" )<CR>

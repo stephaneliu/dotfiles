@@ -58,3 +58,5 @@ nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 
 " vice sudo !!
 cmap w!! %!sudo tee > /dev/null %
+
+map <silent> <leader>bg :let &background = ( &background == "dark"? "light" : "dark" )<CR>
