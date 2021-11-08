@@ -1,13 +1,10 @@
 source $HOME/.dotfiles/bin/os_type.sh
 
 # Homebrew
-if [ -d $HOME/homebrew ]; then
-  export PATH=$HOME/bin:$HOME/homebrew/bin:$HOME/homebrew/sbin:$PATH
-fi
-
-if is_centos; then
-  export NODEJS_HOME=/usr/local/lib/nodejs/node-v10.14.2/bin
-  export PATH=$NODEJS_HOME:$PATH
+if [ -d /opt/homebrew/bin ]; then
+  export PATH=/opt/homebrew/bin:/opt/homebrew/sbin:$PATH
+elif [ -d $HOME/brew/bin/ ]; then
+  export PATH=$HOME/homebrew/bin:$HOME/homebrew/sbin:$PATH
 fi
 
 export PATH=$HOME/bin:$PATH
