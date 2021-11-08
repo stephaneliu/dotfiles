@@ -22,6 +22,7 @@ tap 'universal-ctags/universal-ctags',
 # don't tap both cask-fonts and caskroom/fonts
 # tap "caskroom/fonts"
 
+brew 'asdf'
 brew 'autojump'
 brew 'bat' # cat with wings = bat (cat with syntax color)
 brew 'chruby'
@@ -69,8 +70,7 @@ end
 
 # cask "chromium"
 cask 'divvy'
-cask 'docker'
-cask 'graphiql'
+cask 'graphql'
 cask 'font-droidsansmono-nerd-font-mono'
 cask 'font-hack-nerd-font'
 cask 'font-jetbrains-mono-nerd-font'
