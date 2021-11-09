@@ -2,8 +2,8 @@
   templateDir = ~/.git-template
 [user]
 	name = Stephane Liu
-  signingkey = 807C764DBFB16266
-	email = sliu@sjliu.com
+  signingkey = D58C7B33EE01D6B0
+	email = 64043+stephaneliu@users.noreply.github.com
 [github]
   user = stephaneliu
 [color]

@@ -17,8 +17,6 @@ tap 'homebrew/command-not-found'
 tap 'homebrew/core'
 tap 'homebrew/services' # `brew services restart postgres`, etc
 tap 'thoughtbot/formulae'
-tap 'universal-ctags/universal-ctags',
-    'https://github.com/universal-ctags/universal-ctags'
 # don't tap both cask-fonts and caskroom/fonts
 # tap "caskroom/fonts"
 
@@ -47,7 +45,6 @@ brew 'thoughtbot/formulae/rcm'
 brew 'tmux'
 brew 'universal-ctags' # so :Rtags works
 brew 'shared-mime-info'
-brew 'unused' # Find dead code using ctags
 brew 'vim'
 brew 'wget'
 brew 'yarn'
@@ -71,9 +68,9 @@ end
 # cask "chromium"
 cask 'divvy'
 # cask 'graphiql'
-cask 'font-droidsansmono-nerd-font-mono'
 cask 'font-hack-nerd-font'
 cask 'font-jetbrains-mono-nerd-font'
+cask 'gpg-suite-no-mail'
 cask 'hammerspoon'
 cask 'hand-mirror' # utility to see what camera is seeing prior to jumping on video call
 # cask 'hocus-focus' # utility auto close unfocused applications - http://hocusfoc.us
@@ -90,6 +87,5 @@ cask 'obsidian'
 # Returns app name and app id
 # mas install [app_id]
 mas 'Agenda', id: 1_287_445_660
-mas 'Amphetamine', id: 93_798_704 # keeps mac awake
 # mas "DayOne", id: 1055511498
 mas 'Spark', id: 1_176_895_641
