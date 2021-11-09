@@ -28,7 +28,6 @@ brew 'bat' # cat with wings = bat (cat with syntax color)
 brew 'chruby'
 brew 'cmatrix'
 brew 'colordiff' # colorful diffs (alias diff='colordiff -u')
-brew 'frum'
 brew 'fzf' # Fuzzy finder
 brew 'git'
 brew 'gitsh'

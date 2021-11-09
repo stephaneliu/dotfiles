@@ -34,8 +34,6 @@ in_docker() {
 # added by travis gem
 [ -f ${HOME}/.travis/travis.sh ] && source ${HOME}/.travis/travis.sh
 
-eval "$(frum init)"
-
 # if [ -f $HOME/homebrew/share/chruby/chruby.sh ]; then
 #   RUBIES+=(
 #     "$HOME/.rubies"
