@@ -75,4 +75,6 @@ fi
 echo "Setting defaults for OSX"
 . ./system/osx-settings
 
+echo "###### TODO ######"
+echo "Update .zsh/npm.zsh token from 1Password"
 echo "Done!"
