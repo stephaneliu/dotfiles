@@ -13,6 +13,6 @@ fi
 COMPLETION_WAITING_DOTS="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-plugins=(colored-man-pages command-not-found docker docker-compose heroku history-substring-search vi-mode z)
+plugins=(asdf colored-man-pages command-not-found docker docker-compose heroku history-substring-search vi-mode z)
 
 source $ZSH/oh-my-zsh.sh
