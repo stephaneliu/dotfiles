@@ -50,6 +50,7 @@ brew 'universal-ctags' # so :Rtags works
 brew 'shared-mime-info'
 brew 'unused' # Find dead code using ctags
 brew 'vim'
+brew 'wget'
 brew 'yarn'
 brew 'zsh'
 brew 'zsh-completions'
@@ -70,12 +71,13 @@ end
 
 # cask "chromium"
 cask 'divvy'
-cask 'graphql'
+# cask 'graphiql'
 cask 'font-droidsansmono-nerd-font-mono'
 cask 'font-hack-nerd-font'
 cask 'font-jetbrains-mono-nerd-font'
+cask 'hammerspoon'
 cask 'hand-mirror' # utility to see what camera is seeing prior to jumping on video call
-cask 'hocus-focus' # utility auto close unfocused applications - http://hocusfoc.us
+# cask 'hocus-focus' # utility auto close unfocused applications - http://hocusfoc.us
 cask 'iterm2'
 cask 'karabiner-elements'
 cask 'keycastr' # dispaly keystrokes for screencasts
