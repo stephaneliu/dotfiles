@@ -1,9 +1,9 @@
 [init]
   templateDir = ~/.git-template
 [user]
-	name = Stephane Liu
+  name = Stephane Liu
   signingkey = D58C7B33EE01D6B0
-	email = 64043+stephaneliu@users.noreply.github.com
+	email = sliu@sjliu.com
 [github]
   user = stephaneliu
 [color]
