@@ -19,7 +19,7 @@ vim
 
 -- If you want the screen to dim (a la Flux) when you enter normal mode
 -- flip this to true.
-vim:shouldDimScreenInNormalMode(true)
+vim:shouldDimScreenInNormalMode(false)
 
 -- If you want to show an on-screen alert when you enter normal mode, set
 -- this to true
