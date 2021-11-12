@@ -33,10 +33,11 @@ brew 'gpg'
 brew 'heroku/brew/heroku' # The recommended way to use Heroku
 brew 'gh' # Fast GitHub client released in 2020
 brew 'imagemagick'
+brew 'libpq'
 brew 'mas' # Mac appstore cli
 brew 'neovim'
 brew 'opensc' # smart card support
-brew 'postgresql@10', restart_service: :changed
+# brew 'postgresql@10', restart_service: :changed
 brew 'reattach-to-user-namespace'
 brew 'ruby-install'
 brew 'terminal-notifier' # programatically send messages to notifications
@@ -57,35 +58,23 @@ unless /zsh$/.match?(ENV.fetch('SHELL', ''))
   puts '  chsh -s $(brew --prefix)/bin/zsh'
 end
 
-# cask 'dropbox'
-# cask 'evernote'
-# cask "1password"
-# cask "google-chrome"
-# cask 'firefox'
-# cask 'vlc'
-# cask "superduper", args: {appdir: "~/Applications"}
-
-# cask "chromium"
-cask 'divvy'
+cask 'alfred' unless system 'ls /Applications/Alfred*'
 # cask 'graphiql'
 cask 'font-hack-nerd-font'
 cask 'font-jetbrains-mono-nerd-font'
 cask 'gpg-suite-no-mail'
 cask 'hammerspoon'
-cask 'hand-mirror' # utility to see what camera is seeing prior to jumping on video call
 # cask 'hocus-focus' # utility auto close unfocused applications - http://hocusfoc.us
 cask 'iterm2'
 cask 'karabiner-elements'
 cask 'keycastr' # dispaly keystrokes for screencasts
 cask 'numi'
-cask 'obsidian'
-# cask "vanilla" # utility to collapse the icons in menubar
-# cask "macvim", args: {appdir: "~/Applications"}
-# cask "nightowl", args: {appdir: "~/Applications"}
+cask 'obsidian' unless system 'ls /Applications/Obsidian.app'
+cask 'pushplaylabs-sidekick' unless system 'ls /Applications/Sidekick.app'
 
 # CLI: mas search [app]
 # Returns app name and app id
 # mas install [app_id]
 mas 'Agenda', id: 1_287_445_660
-# mas "DayOne", id: 1055511498
 mas 'Spark', id: 1_176_895_641
+mas 'Hand Mirror', id: 1_502_839_586
