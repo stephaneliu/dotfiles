@@ -15,7 +15,9 @@ for brewfile in */Brewfile; do
   brew bundle --file="$brewfile"
 done
 
-export PATH=$opt/homebrew/bin:$PATH
+export PATH=$(brew --prefix)/bin:$PATH
+
+# Link libpq to /usr/local/bin
 
 # Before `rcup` runs, there is no ~/.rcrc, so we must tell `rcup` where to look.
 # We need the rcrc because it tells `rcup` to ignore thousands of useless Vim
@@ -43,7 +45,7 @@ if [ -d $HOME/.oh-my-zsh ]; then
 else
   echo "Installing oh-my-zsh"
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-  echo "If changing shell (chsh) to zsh failed, sudo bash then 'chsh -s /$HOMEBREW_PREFIX/bin/zsh {user}'"
+  echo "If changing shell (chsh) to zsh failed, sudo bash then 'chsh -s $(brew --prefix)/bin/zsh {user}'"
 
   echo "Installing Powerlevel9k thems for Oh-my-zsh"
   git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
