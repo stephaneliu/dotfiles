@@ -39,6 +39,7 @@ brew 'neovim'
 brew 'opensc' # smart card support
 # brew 'postgresql@10', restart_service: :changed
 brew 'reattach-to-user-namespace'
+brew 'ripgrep'
 brew 'ruby-install'
 brew 'terminal-notifier' # programatically send messages to notifications
 brew 'the_silver_searcher' # a better ack/grep
