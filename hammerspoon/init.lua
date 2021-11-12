@@ -16,6 +16,7 @@ vim
   :disableForApp('iTerm2')
   :disableForApp('Terminal')
   :disableForApp('Obsidian')
+  :disableForApp('Google Chrome')
 
 -- If you want the screen to dim (a la Flux) when you enter normal mode
 -- flip this to true.
