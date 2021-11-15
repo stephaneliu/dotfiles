@@ -53,5 +53,5 @@ LANG="en_US.UTF-8"
 git_merging=".git/rebase-merge"
 
 if [ ! -d $git_merging ] && [ "$LOLCOMMITS_CAPTURE_DISABLED" != "true" ]; then
-  LOLCOMMITS_DIR=$lolcommits_dir lolcommits --capture --delay "$LOL_DELAY" --device "$WEBCAM";
+  LOLCOMMITS_DIR=$lolcommits_dir lolcommits --capture --fork --delay "$LOL_DELAY" --device "$WEBCAM";
 fi
