@@ -5,9 +5,9 @@ iabbrev fsl # frozen_string_literal: true
 
 " debugging
 iabbrev bpa binding.pry
-iabbrev bput binding.pry unless Rails.env.test?
+iabbrev bpid binding.pry if Rails.env.development?
 iabbrev brp binding.remote_pry
-iabbrev brput binding.remote_pry unless Rails.env.test?
+iabbrev brpid binding.remote_pry if Rails.env.development?
 
 " RSpec
 iabbrev af :aggregate_failures
