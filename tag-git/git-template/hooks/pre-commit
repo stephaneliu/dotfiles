@@ -1,50 +1,53 @@
 #!/usr/bin/env ruby
 
-return 0 if ENV['SAFE_COMMIT'] == 1
+run_check = ENV['SAFE_COMMIT'].nil?
 
-focus_hits = []
-binding_hits = []
-todo_hits = []
-# Find all filenames in spec directory that have been (A)dded (C)opied or (M)odified
-filenames = `git diff --cached --name-only --diff-filter=ACM`.split("\n")
+if run_check
+  focus_hits = []
+  binding_hits = []
+  todo_hits = []
 
-filenames.each do |filename|
-  if filename.end_with? '_spec.rb'
-    `git diff --cached #{filename} | grep \^+\[\^+\] | grep -E 'focus|fit\s|fspecify|fcontext|fdescribe'`
-    focus_hits.push filename if $? == 0
+  # Find all filenames in spec directory that have been (A)dded (C)opied or (M)odified
+  filenames = `git diff --cached --name-only --diff-filter=ACM`.split("\n")
+
+  filenames.each do |filename|
+    if filename.end_with? '_spec.rb'
+      `git diff --cached #{filename} | grep \^+\[\^+\] | grep -E 'focus|fit\s|fspecify|fcontext|fdescribe'`
+      focus_hits.push filename if $? == 0
+    end
+
+    `git diff --cached #{filename} | grep \^+\[\^+\] | grep binding.pry`
+    binding_hits.push filename if $? == 0
+
+    # `git diff --cached #{filename} | grep \^+\[\^+\] | grep TODO`
+    # todo_hits.push filename if $? == 0
   end
 
-  `git diff --cached #{filename} | grep \^+\[\^+\] | grep binding.pry`
-  binding_hits.push filename if $? == 0
+  if focus_hits.any? || binding_hits.any? || todo_hits.any?
+    # 31m - Red              # 32m - Green                  # 33m - Yellow
+    # 34m - Blue             # 35m - Purple                 # 36m - Cyan
+    # 37m - White            # bold - prepend 1; ie - 1;35m # underline - prepend 4;
+    # background - 40m - 47m # 0m - reset
 
-  # `git diff --cached #{filename} | grep \^+\[\^+\] | grep TODO`
-  # todo_hits.push filename if $? == 0
-end
+    puts "\e[1;37m\e[41m>>> Commit Aborted! <<<\e[0m"
 
-if focus_hits.any? || binding_hits.any? || todo_hits.any?
-  # 31m - Red              # 32m - Green                  # 33m - Yellow
-  # 34m - Blue             # 35m - Purple                 # 36m - Cyan
-  # 37m - White            # bold - prepend 1; ie - 1;35m # underline - prepend 4;
-  # background - 40m - 47m # 0m - reset
+    if focus_hits.any?
+      puts "\e[1;31mRemove `focus` from the following specs \e[0m"
+      puts focus_hits.join("\n")
+    end
 
-  puts "\e[1;37m\e[41m>>> Commit Aborted! <<<\e[0m"
+    if binding_hits.any?
+      puts "\e[1;31mRemove `binding.pry` from the following files \e[0m"
+      puts binding_hits.join("\n")
+    end
 
-  if focus_hits.any?
-    puts "\e[1;31mRemove `focus` from the following specs \e[0m"
-    puts focus_hits.join("\n")
+    if todo_hits.any?
+      puts "\e[1;31mRemove `TODO` from the following files \e[0m"
+      puts todo_hits.join("\n")
+    end
+
+    puts 'SAFE_COMMIT=1 if you want to bypass this.'
+
+    exit 1
   end
-
-  if binding_hits.any?
-    puts "\e[1;31mRemove `binding.pry` from the following files \e[0m"
-    puts binding_hits.join("\n")
-  end
-
-  if todo_hits.any?
-    puts "\e[1;31mRemove `TODO` from the following files \e[0m"
-    puts todo_hits.join("\n")
-  end
-
-  puts 'SAFE_COMMIT=1 if you want to bypass this.'
-
-  exit 1
 end
