@@ -1,3 +1,5 @@
 bundler
 pry
 solargraph
+tty-prompt
+tty-command
