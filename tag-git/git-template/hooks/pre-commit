@@ -2,13 +2,23 @@
 
 run_check = ENV['SAFE_COMMIT'].nil?
 
+do_not_commit_files = []
+
+# Comment why file added to do not commit list
+# do_not_commit_files << 'some-file
+
 if run_check
+  do_not_commit_files_hit = []
   focus_hits = []
   binding_hits = []
   todo_hits = []
 
   # Find all filenames in spec directory that have been (A)dded (C)opied or (M)odified
   filenames = `git diff --cached --name-only --diff-filter=ACM`.split("\n")
+
+  do_not_commit_files_hit = do_not_commit_files if (
+    filenames & do_not_commit_files
+  ).any?
 
   filenames.each do |filename|
     if filename.end_with? '_spec.rb'
@@ -23,13 +33,19 @@ if run_check
     # todo_hits.push filename if $? == 0
   end
 
-  if focus_hits.any? || binding_hits.any? || todo_hits.any?
+  if do_not_commit_files_hit.any? || focus_hits.any? || binding_hits.any? ||
+       todo_hits.any?
     # 31m - Red              # 32m - Green                  # 33m - Yellow
     # 34m - Blue             # 35m - Purple                 # 36m - Cyan
     # 37m - White            # bold - prepend 1; ie - 1;35m # underline - prepend 4;
     # background - 40m - 47m # 0m - reset
 
     puts "\e[1;37m\e[41m>>> Commit Aborted! <<<\e[0m"
+
+    if do_not_commit_files_hit.any?
+      puts "\e[1;31mUnstaged the following file(s) that should not be committed \e[0m"
+      puts do_not_commit_files_hit.join("\n")
+    end
 
     if focus_hits.any?
       puts "\e[1;31mRemove `focus` from the following specs \e[0m"
@@ -46,7 +62,8 @@ if run_check
       puts todo_hits.join("\n")
     end
 
-    puts 'SAFE_COMMIT=1 if you want to bypass this.'
+    puts ''
+    puts 'SAFE_COMMIT=1 if you REALLY want to bypass this.'
 
     exit 1
   end
