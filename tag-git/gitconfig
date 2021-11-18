@@ -39,6 +39,7 @@
 
   ci = commit
   cia = commit --amend
+  amend = commit --amend
   co = checkout
 	ctags = !.git/hooks/ctags
   df = diff
@@ -49,6 +50,7 @@
   ignored = !git ls-files -v | grep \"^[[:lower:]]\"
   recommit = commit --amend
   commend = commit --amend --no-edit
+  cic = commit --amend --no-edit
 
   l = log --show-linear-break --decorate --show-signature --stat
   # l = log --show-linear-break --decorate --show-signature --name-only
