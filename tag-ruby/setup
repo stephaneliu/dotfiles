@@ -2,4 +2,13 @@ echo "Setup bundler options for jobs and retry see ~/.bundle/confg"
 bundle config set --global jobs 4
 bundle config set --global retry 3
 
+echo "Installing latest Ruby"
+asdf plugin add ruby https://github.com/asdf-vm/asdf-ruby.git
+asdf install ruby latest
+
+echo "Setting up coc-solargraph for vim"
+gem install solargraph
+nvim +CocInstall\ coc-solargraph +qa
+echo "coc-solargraph configured. More info: https://github.com/neoclide/coc-solargraph"
+
 echo "Ruby setup completed"
