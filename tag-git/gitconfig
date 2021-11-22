@@ -1,9 +1,9 @@
 [init]
   templateDir = ~/.git-template
 [user]
+	email = 64043+stephaneliu@users.noreply.github.com
   name = Stephane Liu
   signingkey = D58C7B33EE01D6B0
-	email = 64043+stephaneliu@users.noreply.github.com
 [github]
   user = stephaneliu
 [color]
@@ -13,22 +13,22 @@
   local = yellow
   remote = green
 [color "diff"]
-  meta = yellow bold
   frag = magenta bold
-  old = red bold
+  meta = yellow bold
   new = green bold
+  old = red bold
   whitespace = red reverse
 [color "status"]
   added = yellow
   changed = green
   untracked = cyan
 [core]
+  attributesfile = ~/.gitattributes # https://tekin.co.uk/2020/10/better-git-diff-output-for-ruby-python-elixir-and-more
   editor = nvim
-  whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
-  quotepath = false
   excludesfile = ~/.gitignore
   ff = only
-  attributesfile = ~/.gitattributes # https://tekin.co.uk/2020/10/better-git-diff-output-for-ruby-python-elixir-and-more
+  quotepath = false
+  whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
 [alias]
   a = add --patch
   ad = add
@@ -37,20 +37,20 @@
   cac = !sh -c 'git config --global --replace-all http.sslcert \"LIU.STEPHANE.1241980045\" && git config --global --replace-all http.sslcapath \"/Users/sliu/etc/pki/ca-trust\"'
   nocac = config --global --remove-section http
 
+	ctags = !.git/hooks/ctags
+  amend = commit --amend
   ci = commit
   cia = commit --amend
-  amend = commit --amend
+  cic = commit --amend --no-edit
   co = checkout
-	ctags = !.git/hooks/ctags
+  commend = commit --amend --no-edit
   df = diff
   dfs = diff --cached
   gr = grep --extended-regexp --break --heading --line-number
   ignore = update-index --assume-unchanged
-  unignore = update-index --no-assume-unchanged
   ignored = !git ls-files -v | grep \"^[[:lower:]]\"
   recommit = commit --amend
-  commend = commit --amend --no-edit
-  cic = commit --amend --no-edit
+  unignore = update-index --no-assume-unchanged
 
   l = log --show-linear-break --decorate --show-signature --stat
   # l = log --show-linear-break --decorate --show-signature --name-only
@@ -64,17 +64,16 @@
 
   follow = log --follow -p --
 
+  home = config user.email \"sliu@sjliu.com\"
   mg = merge
   newauthor = commit --amend --reset-author -C HEAD
+  pl = pull
+  ps = push
   st = status --short --branch
   tags = tag --list
-  work = config user.email \"stephane.liu@navy.mil\"
-  home = config user.email \"sliu@sjliu.com\"
   undo = reset --soft HEAD^
   unstage = reset HEAD
   up = pull --rebase
-  pl = pull
-  ps = push
 [mergetool]
   keepBackup = false
 [rerere]
