@@ -17,6 +17,7 @@ tap 'homebrew/command-not-found'
 tap 'homebrew/core'
 tap 'homebrew/services' # `brew services restart postgres`, etc
 tap 'thoughtbot/formulae'
+tap 'cooklang/tap'
 # don't tap both cask-fonts and caskroom/fonts
 # tap "caskroom/fonts"
 
@@ -26,6 +27,7 @@ brew 'bat' # cat with wings = bat (cat with syntax color)
 brew 'chruby'
 brew 'cmatrix'
 brew 'colordiff' # colorful diffs (alias diff='colordiff -u')
+brew 'cooklang/tap/cook'
 brew 'ctop' # Top-like interface for container metrics
 brew 'fzf' # Fuzzy finder
 brew 'git'
