@@ -1,1 +1,0 @@
-export NPM_TOKEN='[NPM_TOKEN_HERE]'
