@@ -1,0 +1,49 @@
+#!/bin/sh
+
+CLUSTER_ID=$1
+cc_auth_log="/tmp/cc_auth.log"
+auth_ok="false"
+auth_retry=0
+
+login () {
+  cc-auth | tee $cc_auth_log
+}
+
+until [[ $auth_ok = "true" || $auth_retry -gt 3 ]]; do
+  let auth_retry++
+
+  if [ -f $cc_auth_log ]; then
+    EXPIRATION=$(cat $cc_auth_log | grep Expiration | cut -d ':' -f2-5)
+    EXPIRED=$(ruby -rtime -e "puts Time.now > Time.parse(ARGV[0])" "$EXPIRATION")
+
+    if [ "$EXPIRED" = "true" ]; then
+      echo "AWS-Google authentication - ❌"
+      login
+    else
+      echo "AWS-Google authentication - ✅"
+      auth_ok="true"
+    fi
+  else
+    login
+    auth_ok="true"
+  fi
+done
+
+if [[ $auth_ok = "false" && $auth_retry -gt 3 ]]; then
+  echo "AWS-Google authentication is not working. Try runing `cc-auth`"
+  rm $cc_auth_log
+  exit 1
+fi
+
+if [ -z $CLUSTER_ID ]; then
+  echo "USAGE: cc-aws [qa-pr]"
+  exit 0
+fi
+
+if [[ $1 = "master" ]]; then
+  CLUSTER_ID="qa-v2"
+  TASK_ARN=$AWS_TASK_ARN
+else
+  TASK_ARN=$(aws ecs list-tasks --cluster $CLUSTER_ID --region us-east-1 | jq -r .taskArns[0])
+fi
+aws ecs execute-command --cluster $CLUSTER_ID --task $TASK_ARN --region us-east-1 --command /bin/bash --interactive

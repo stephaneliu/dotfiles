@@ -77,6 +77,29 @@ fi
 echo "Setting defaults for OSX"
 . ./system/osx-settings
 
+count=0
+
+until [ -f "$HOME/.env.private" ]; do
+  if [ $count -eq 0 ]; then
+    let count++
+    echo "Copy .private.env from 1Password to $HOME <ENTER|(q)uit>"
+    read response
+
+    if [ "$response" = "q" ]; then
+      echo "Quitting..."
+      exit 0
+    fi
+  elif [ ! -f "$HOME/.env.private" ]; then
+    echo "$HOME/.private.env could not be found. <ENTER|(q)uit>"
+    read response
+
+    if [ "$response" = "q" ]; then
+      echo "Quitting..."
+      exit 0
+    fi
+  fi
+done
+
 echo "###### TODO ######"
 echo "Update .zsh/npm.zsh token from 1Password"
 echo "Done!"
