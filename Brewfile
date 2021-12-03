@@ -35,6 +35,7 @@ brew 'gitsh'
 brew 'gpg'
 brew 'heroku/brew/heroku' # The recommended way to use Heroku
 brew 'gh' # Fast GitHub client released in 2020
+brew 'jq' # Lightweight and flexible command-line JSON processor
 brew 'imagemagick' # Dependency for Lolcommits
 brew 'libpq'
 brew 'mas' # Mac appstore cli
