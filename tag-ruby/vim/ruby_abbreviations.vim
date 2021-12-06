@@ -4,7 +4,7 @@
 iabbrev fsl # frozen_string_literal: true
 
 " debugging
-iabbrev bpa binding.pry
+iabbrev bpry binding.pry
 iabbrev bpid binding.pry if Rails.env.development?
 iabbrev brp binding.remote_pry
 iabbrev brpid binding.remote_pry if Rails.env.development?
