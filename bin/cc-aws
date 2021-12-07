@@ -1,6 +1,6 @@
 #!/bin/sh
 
-CLUSTER_ID=$1
+cluster_id=$1
 cc_auth_log="/tmp/cc_auth.log"
 auth_ok="false"
 auth_retry=0
@@ -13,10 +13,10 @@ until [[ $auth_ok = "true" || $auth_retry -gt 3 ]]; do
   let auth_retry++
 
   if [ -f $cc_auth_log ]; then
-    EXPIRATION=$(cat $cc_auth_log | grep Expiration | cut -d ':' -f2-5)
-    EXPIRED=$(ruby -rtime -e "puts Time.now > Time.parse(ARGV[0])" "$EXPIRATION")
+    expiration=$(cat $cc_auth_log | grep Expiration | cut -d ':' -f2-5)
+    expired=$(ruby -rtime -e "puts Time.now > Time.parse(ARGV[0])" "$expiration")
 
-    if [ "$EXPIRED" = "true" ]; then
+    if [ "$expired" = "true" ]; then
       echo "AWS-Google authentication - ❌"
       login
     else
@@ -35,15 +35,15 @@ if [[ $auth_ok = "false" && $auth_retry -gt 3 ]]; then
   exit 1
 fi
 
-if [ -z $CLUSTER_ID ]; then
+if [ -z $cluster_id ]; then
   echo "USAGE: cc-aws [qa-pr]"
   exit 0
 fi
 
 if [[ $1 = "master" ]]; then
-  CLUSTER_ID="qa-v2"
-  TASK_ARN=$AWS_TASK_ARN
+  cluster_id="qa-v2"
+  task_arn=$AWS_TASK_ARN
 else
-  TASK_ARN=$(aws ecs list-tasks --cluster $CLUSTER_ID --region us-east-1 | jq -r .taskArns[0])
+  task_arn=$(aws ecs list-tasks --cluster $cluster_id --region us-east-1 | jq -r .taskArns[0])
 fi
-aws ecs execute-command --cluster $CLUSTER_ID --task $TASK_ARN --region us-east-1 --command /bin/bash --interactive
+aws ecs execute-command --cluster $cluster_id --task $task_arn --region us-east-1 --command /bin/bash --interactive
