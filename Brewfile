@@ -63,8 +63,9 @@ unless /zsh$/.match?(ENV.fetch('SHELL', ''))
   puts '  chsh -s $(brew --prefix)/bin/zsh'
 end
 
-cask '1password'
+cask '1password' unless system 'ls /Applications/1Password*'
 cask 'alfred' unless system 'ls /Applications/Alfred*'
+cask 'app-cleaner'
 # cask 'graphiql'
 cask 'font-hack-nerd-font'
 cask 'font-jetbrains-mono-nerd-font'
