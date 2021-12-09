@@ -1,7 +1,7 @@
 alias 'ps?'='ps aux | gr '
 alias ..="cd .."
 alias :q="exit"
-alias cat='bat'
+alias cat="bat --theme='Solarized (dark)'"
 alias gg='clear'
 alias h='heroku'
 alias hr='heroku run'

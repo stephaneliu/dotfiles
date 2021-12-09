@@ -31,6 +31,7 @@ brew 'cooklang/tap/cook'
 brew 'ctop' # Top-like interface for container metrics
 brew 'fzf' # Fuzzy finder
 brew 'git'
+brew 'git-delta' # Syntax highlighter for git, diff, & grep - https://github.com/dandavison/delta
 brew 'gitsh'
 brew 'gpg'
 brew 'heroku/brew/heroku' # The recommended way to use Heroku

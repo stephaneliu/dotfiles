@@ -2,7 +2,7 @@
 
 run_check = ENV['SAFE_COMMIT'].nil?
 
-do_not_commit_files = []
+do_not_commit_files = %w(.editrc .inputrc .tool-versions)
 
 # Comment why file added to do not commit list
 # do_not_commit_files << 'some-file
