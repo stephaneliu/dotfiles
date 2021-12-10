@@ -47,8 +47,8 @@ else
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
   echo "If changing shell (chsh) to zsh failed, sudo bash then 'chsh -s $(brew --prefix)/bin/zsh {user}'"
 
-  echo "Installing Powerlevel9k thems for Oh-my-zsh"
-  git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
+  echo "Installing Powerlevel10k thems for Oh-my-zsh"
+  git clone https://github.com/romkatv/ppowerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 fi
 
 if [! -d $HOME/.hammerspoon/Spoons/VimMode.spoon ]; then
