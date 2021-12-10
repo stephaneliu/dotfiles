@@ -1,8 +1,0 @@
-alias d='docker'
-alias dc='docker-compose'
-alias dca='docker-compose up -d && docker attach --detach-keys="ctrl-q" netops_rails_1'
-alias da='docker attach --detach-keys="ctrl-q" netops_rails_1'
-alias dcbu='docker-compose build --build-arg dotfile_user=sliu '
-alias dcst='docker-compose stop'
-alias dcr='docker-compose run '
-alias docdev='bin/docker_build dev'

@@ -1,0 +1,152 @@
+# Must be called before loading oh-my-zsh
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+
+  autoload -Uz compinit
+  compinit
+fi
+
+ZSH=$HOME/.oh-my-zsh
+ZSH_THEME="powerlevel9k/powerlevel9k"
+COMPLETION_WAITING_DOTS="true"
+
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+plugins=(asdf colored-man-pages command-not-found docker docker-compose heroku history-substring-search vi-mode z)
+
+source $ZSH/oh-my-zsh.sh
+
+# Aliases
+alias 'ps?'='ps aux | gr '
+alias ..="cd .."
+alias :q="exit"
+alias cat="bat --theme='Solarized (dark)'"
+alias gg='clear'
+alias h='heroku'
+alias hr='heroku run'
+alias inet='ifconfig | grep inet'
+alias j='z'
+alias l='ls -alFHh'
+alias ll='ls -CFHh'
+alias lol='LOLCOMMITS_DIR=$HOME/Documents/lolcommits lolcommits --capture --fork --delay "$LOL_DELAY" --device "$WEBCAM"'
+alias loll='LOLCOMMITS_DIR=$HOME/Documents/lolcommits lolcommits --last'
+alias matrix='cmatrix'
+alias nc='nocorrect'
+alias q='exit'
+alias rcup='rcup -v'
+alias screencast='ffmpeg -f x11grab -r 25 -s 1600x1200 -i :0.0 ~/tmp/output.mpg'
+alias ssh='TERM=xterm ssh'
+alias terminal-notifier='reattach-to-user-namespace terminal-notifier'
+alias tmux="tmux -2"
+t() {
+  # session with name $1 or focus
+  session_name=${1:-focus}
+
+  if tmux list-sessions | grep -q ${session_name}; then
+    tmux -2 attach-session -t $session_name
+  else
+    tmux -2 new -t $session_name
+  fi
+}
+alias version='bat /etc/issue'
+alias v='nvim'
+alias vim="echo \"Use v\""
+alias vi="$VISUAL"
+alias vpnip='ifconfig | grep inet | grep "128\|198" | grep netmask | cut -d " " -f 2'
+alias which="which -a"
+
+# Use modern regexps for grep show color when `grep` is the final command
+# but not when piping into something else because the added color codes will
+# mess up the expected input
+#               --- lines before match
+#               |    ---lines after match
+#               |    |    ---line numbers
+#               |    |    |
+alias -g rg="rg -A 2 -B 2 -n --color=auto"
+
+## Aliases - Docker
+alias d='docker'
+alias dc='docker-compose'
+alias dca='docker-compose up -d && docker attach --detach-keys="ctrl-q" netops_rails_1'
+alias da='docker attach --detach-keys="ctrl-q" netops_rails_1'
+alias dcbu='docker-compose build --build-arg dotfile_user=sliu '
+alias dcst='docker-compose stop'
+alias dcr='docker-compose run '
+alias docdev='bin/docker_build dev'
+
+# ENV
+export EDITOR=nvim
+export HOMEBREW_NO_AUTO_UPDATE=1
+export VISUAL=nvim
+export GPG_TTY=$(tty) # fixes gpg failed to sign data error
+export PATH=$HOME/bin:$(brew --prefix)/opt/libpq/bin:$(brew --prefix)/bin:$(brew --prefix)/sbin:$PATH
+
+# Libraries Configuration
+## Command not found - brew#plugins(command-not-found)
+if [ -x brew ];
+then
+  HB_CNF_HANDLER="$(brew --repository)/Library/Taps/homebrew/homebrew-command-not-found/handler.sh"
+
+  if [ -f "$HB_CNF_HANDLER" ]; then
+    source "$HB_CNF_HANDLER";
+  fi
+fi
+
+## Powerlevel9k
+POWERLEVEL9K_MODE='nerdfont-complete'
+source $HOME/.dotfiles/bin/os_type.sh
+
+ruby_version() {
+  local ruby_version=$(ruby -v | cut -d ' ' -f2 | cut -d 'p' -f1)
+  echo -n "\ue21e $ruby_version"
+}
+
+node_version() {
+  local node_version=$(node -v | cut -d 'v' -f2)
+  echo -n "\u2B21 $node_version"
+}
+
+POWERLEVEL9K_CUSTOM_RUBY_VERSION="ruby_version"
+POWERLEVEL9K_CUSTOM_RUBY_VERSION_FOREGROUND="black"
+POWERLEVEL9K_CUSTOM_RUBY_VERSION_BACKGROUND="red"
+
+POWERLEVEL9K_CUSTOM_NODE_VERSION="node_version"
+POWERLEVEL9K_CUSTOM_NODE_VERSION_FOREGROUND="black"
+POWERLEVEL9K_CUSTOM_NODE_VERSION_BACKGROUND="green"
+
+if is_osx; then
+  POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(custom_ruby_version vi_mode vcs newline dir status)
+else
+  POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(custom_ruby_version vi_mode vcs newline dir status)
+fi
+
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(time custom_node_version)
+POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
+
+## zsh vim-mode key mappings
+## use jk/kj for command-mode
+bindkey -M viins 'jk' vi-cmd-mode
+bindkey -M viins 'kj' vi-cmd-mode
+## bind k and j for VI mode to history search
+## Type a letter/word, jk (escape), j or k (search)
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
+
+## Find Webcam
+## webcam=$(system_profiler SPCameraDataType | grep Live\ Streamer | sed 's/://' | sed 's/    //')
+webcam=$(system_profiler SPCameraDataType | grep Logitech\ Webcam\ C930e | sed 's/://' | sed 's/    //')
+
+delay=1
+
+if [ -z "$webcam" ]; then
+  webcam="FaceTime HD Camera (Built-in)"
+fi
+export WEBCAM=$webcam
+export LOL_DELAY=$delay
+export LOLCOMMITS_DEVICE=$webcam
+
+## Fixes this (bug)[https://github.com/asdf-vm/asdf/issues/1103] in asdf ohmyzsh plugin when upgrading asdf
+## from 0.8.1 to 0.9.1 - Safely remove when [PR](https://github.com/ohmyzsh/ohmyzsh/pull/10481) is merged
+export ASDF_DIR="$(brew --prefix asdf)/libexec"
+
+# Unsets
+unset LDFLAGS
