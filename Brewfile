@@ -24,7 +24,7 @@ tap 'cooklang/tap'
 brew 'asdf'
 brew 'autojump'
 brew 'bat' # cat with wings = bat (cat with syntax color)
-brew 'chruby'
+brew 'chezmoi' # dotfiles manager - https://github.com/twpayne/chezmoi
 brew 'cmatrix'
 brew 'colordiff' # colorful diffs (alias diff='colordiff -u')
 brew 'cooklang/tap/cook'
