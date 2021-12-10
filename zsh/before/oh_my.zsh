@@ -5,7 +5,7 @@ ZSH=$HOME/.oh-my-zsh
 POWERLEVEL9K_MODE='nerdfont-complete'
 
 if is_osx; then
-  ZSH_THEME="powerlevel9k/powerlevel9k"
+  ZSH_THEME="powerlevel10k/powerlevel10k"
 else
   ZSH_THEME="robbyrussell"
 fi
