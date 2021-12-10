@@ -1,79 +1,82 @@
 #!/usr/bin/env sh
 
+echo "Setting defaults for OSX"
 # This is script with useful tips taken from:
 # https://github.com/mathiasbynens/dotfiles/blob/master/.osx
 
-echo "Interation: Enable full keyboard access for all controls (e.g. enable Tab in modal dialogs)"
+# "Interation: Enable full keyboard access for all controls (e.g. enable Tab in modal dialogs)"
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 
-echo "Interaction: Disable the 'Are you sure you want to open this application?' dialog"
+# "Interaction: Disable the 'Are you sure you want to open this application?' dialog"
 defaults write com.apple.LaunchServices LSQuarantine -bool false
 
-echo "Interaction: Disable the warning when changing a file extension"
+# "Interaction: Disable the warning when changing a file extension"
 defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 
-echo "Interaction: Expand print panel by default"
+# "Interaction: Expand print panel by default"
 defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
 
-echo "Interatcion: Expand save panel by default"
+# "Interatcion: Expand save panel by default"
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
 
-echo "Interaction: Add a context menu item for showing the Web Inspector in web views"
+# "Interaction: Add a context menu item for showing the Web Inspector in web views"
 defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
 
-echo "Interaction: Make ⌘ + F focus the search input in iTunes"
+# "Interaction: Make ⌘ + F focus the search input in iTunes"
 defaults write com.apple.iTunes NSUserKeyEquivalents -dict-add "Target Search Field" "@F"
 
-echo "Interaction: Use current directory as default search scope in Finder"
+# "Interaction: Use current directory as default search scope in Finder"
 defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
 
-echo "Visual: Automatically illuminate built-in MacBook keyboard in low light"
+# "Visual: Automatically illuminate built-in MacBook keyboard in low light"
 defaults write com.apple.BezelServices kDim -bool true
 
-echo "Turn off keyboard illumination when computer is not used for 5 minutes"
+# "Turn off keyboard illumination when computer is not used for 5 minutes"
 defaults write com.apple.BezelServices kDimTime -int 300
 
-echo "Visual: show hidden files by default"
+# "Visual: show hidden files by default"
 defaults write com.apple.finder AppleShowAllFiles -bool true
 
-echo "Visual: Always open everything in column view"
+# "Visual: Always open everything in column view"
 defaults write com.apple.Finder FXPreferredViewStyle clmv
 
-echo "Visual: Make Dock icons of hidden applications translucent"
+# "Visual: Make Dock icons of hidden applications translucent"
 defaults write com.apple.dock showhidden -bool true
 
-echo "Visual: Show remaining battery time; show percentage"
+# "Visual: Show remaining battery time; show percentage"
 defaults write com.apple.menuextra.battery ShowPercent -string "YES"
 defaults write com.apple.menuextra.battery ShowTime -string "YES"
 
-echo "Visual: Show all filename extensions in Finder"
+# "Visual: Show all filename extensions in Finder"
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 
-echo "Visual: Show Path bar in Finder"
+# "Visual: Show Path bar in Finder"
 defaults write com.apple.finder ShowPathbar -bool true
 
-echo "Visual: Show Status bar in Finder"
+# "Visual: Show Status bar in Finder"
 defaults write com.apple.finder ShowStatusBar -bool true
 
-echo "Visual: Disable shadow in screenshots"
+# "Visual: Disable shadow in screenshots"
 defaults write com.apple.screencapture disable-shadow -bool true
 
-echo "Visual: Enable highlight hover effect for the grid view of a stack (Dock)"
+# "Visual: Enable highlight hover effect for the grid view of a stack (Dock)"
 defaults write com.apple.dock mouse-over-hilte-stack -bool true
 
-echo "Visual: Show indicator lights for open applications in the Dock"
+# "Visual: Show indicator lights for open applications in the Dock"
 defaults write com.apple.dock show-process-indicators -bool true
 
-echo "Visual: Show the ~/Library folder"
+# "Visual: Show the ~/Library folder"
 chflags nohidden ~/Library
 
-echo "Visual: Display full POSIX path as Finder window title"
+# "Visual: Display full POSIX path as Finder window title"
 defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
 
 #####  App specific #####
 
-echo "Disable press-and-hold for keys in favor of key repeat in Obsidian"
+# "Disable press-and-hold for keys in favor of key repeat in Obsidian"
 defaults write md.obsidian ApplePressAndHoldEnabled -bool false
+
+
 
 
 #####  Not enabled  #####

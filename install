@@ -24,54 +24,6 @@ cd $HOME
 
 exec chezmoi init --apply --source=$install_dir
 
-if [ ! -d $HOME/.vim/bundle/Vundle.vim ]; then
-  git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
-fi
-
-echo "Installing Vim packages"
-vi +PluginInstall +qa
-
-echo "Installing coc language servers"
-vi +"CocInstall coc-tailwindcss coc-sh coc-solargraph coc-json coc-html coc-css coc-json" +qa
-
-cd $HOME
-
-if [! -d $HOME/.hammerspoon/Spoons/VimMode.spoon ]; then
-  #####  Hammerspoon - vim mode  #####
-  echo "Configuring hammerspoon vim mode"
-  bash <(curl -s https://raw.githubusercontent.com/dbalatero/VimMode.spoon/master/bin/installer)
-fi
-
-if [! -d $HOME/.hammerspoon/Spoons/SpoonInstall.spoon ]; then
-  echo "Script to install Hammerspoon vim mode failed to install SpoonInstall"
-  echo "See https://raw.githubusercontent.com/dbalatero/VimMode.spoon/master/bin/installer -
-  bootstrap_spoon_install and use `wget -nv --no-check-certificate`"
-fi
-
-cd ${install_dir}
-
-echo "Setup bundler options for jobs and retry see ~/.bundle/confg"
-bundle config set --global jobs 4
-bundle config set --global retry 3
-
-echo "Installing latest Ruby"
-asdf plugin add ruby https://github.com/asdf-vm/asdf-ruby.git
-asdf install ruby latest
-
-echo "Setting up coc-solargraph for vim"
-gem install solargraph
-nvim +CocInstall\ coc-solargraph +qa
-echo "coc-solargraph configured. More info: https://github.com/neoclide/coc-solargraph"
-echo "Ruby setup completed"
-
-if [ ! -d $HOME/tmp ]; then
-  echo "Creating a tmp folder in $HOME"
-  mkdir $HOME/tmp
-fi
-
-echo "Setting defaults for OSX"
-. ./system/osx-settings
-
 count=0
 
 until [ -f "$HOME/.env.private" ]; do
