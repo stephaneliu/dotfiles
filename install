@@ -2,12 +2,12 @@
 
 set -e # -e: exit on error
 
-install_dir=~/.dotfiles
+install_dir=~/.local/share/chezmoi
 unset GIT_SSL_CERT
 
 echo $install_dir
 
-# echo "Installing homebrew"
+echo "Installing homebrew"
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 echo "Installing Homebrew packages"
@@ -36,17 +36,6 @@ vi +"CocInstall coc-tailwindcss coc-sh coc-solargraph coc-json coc-html coc-css 
 
 cd $HOME
 
-if [ -d $HOME/.oh-my-zsh ]; then
-  echo "Oh-my-zsh already installed"
-else
-  echo "Installing oh-my-zsh"
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-  echo "If changing shell (chsh) to zsh failed, sudo bash then 'chsh -s $(brew --prefix)/bin/zsh {user}'"
-
-  echo "Installing Powerlevel9k thems for Oh-my-zsh"
-  git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
-fi
-
 if [! -d $HOME/.hammerspoon/Spoons/VimMode.spoon ]; then
   #####  Hammerspoon - vim mode  #####
   echo "Configuring hammerspoon vim mode"
@@ -61,9 +50,19 @@ fi
 
 cd ${install_dir}
 
-for setup in tag-*/setup; do
-  . "$setup"
-done
+echo "Setup bundler options for jobs and retry see ~/.bundle/confg"
+bundle config set --global jobs 4
+bundle config set --global retry 3
+
+echo "Installing latest Ruby"
+asdf plugin add ruby https://github.com/asdf-vm/asdf-ruby.git
+asdf install ruby latest
+
+echo "Setting up coc-solargraph for vim"
+gem install solargraph
+nvim +CocInstall\ coc-solargraph +qa
+echo "coc-solargraph configured. More info: https://github.com/neoclide/coc-solargraph"
+echo "Ruby setup completed"
 
 if [ ! -d $HOME/tmp ]; then
   echo "Creating a tmp folder in $HOME"

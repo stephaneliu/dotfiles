@@ -1,0 +1,11 @@
+[".oh-my-zsh"]
+    type = "archive"
+    url = "https://github.com/ohmyzsh/ohmyzsh/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
+[".oh-my-zsh/custom/themes/powerlevel9k"]
+  type = "archive"
+  url = "https://github.com/bhilburn/powerlevel9k.git"
+  exact = true
+  stripComponents = 1
