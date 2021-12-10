@@ -1,11 +1,14 @@
 #!/bin/sh
 
-# Exits immediately on error
-# set -e # disabled until script is stabilized
-install_dir=$PWD
+set -e # -e: exit on error
+
+install_dir=~/.dotfiles
 unset GIT_SSL_CERT
 
-source $HOME/.dotfiles/bin/os_type.sh
+echo $install_dir
+
+# echo "Installing homebrew"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 echo "Installing Homebrew packages"
 brew update
@@ -17,16 +20,9 @@ done
 
 export PATH=$(brew --prefix)/bin:$PATH
 
-# Link libpq to /usr/local/bin
-
-# Before `rcup` runs, there is no ~/.rcrc, so we must tell `rcup` where to look.
-# We need the rcrc because it tells `rcup` to ignore thousands of useless Vim
-# backup files that slow it down significantly.
-# Pass -v flag to run with verbose
 cd $HOME
 
-echo "Linking dotfiles into $HOME"
-RCRC=$HOME/.dotfiles/rcrc rcup -f
+exec chezmoi init --apply --source=$install_dir
 
 if [ ! -d $HOME/.vim/bundle/Vundle.vim ]; then
   git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
