@@ -36,7 +36,7 @@
   line-numbers = true
   navigate = true
   syntax-theme= 'Solarized (dark)'
-  hyperlinks = true  # hyperlink git commits
+  hyperlinks = false # hyperlink git commits
   # side-by-side = true
 [merge]
   conflictstyle = diff3
@@ -123,3 +123,5 @@
 	helper = osxkeychain
 [web]
   browser = firefox
+[gpg]
+	program = gpg
