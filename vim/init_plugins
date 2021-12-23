@@ -43,6 +43,8 @@ Plugin 'tomtom/tcomment_vim'
 Plugin 'tomtom/tlib_vim'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
+Plugin 'tyru/open-browser.vim' " open-brwoser-github.vim & open-browser-unicode.vim dependency
+Plugin 'tyru/open-browser-unicode.vim'
 Plugin 'vim-scripts/camelcasemotion'
 Plugin 'vim-scripts/matchit.zip'
 Plugin 'vim-scripts/notes.vim'
