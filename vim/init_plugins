@@ -48,11 +48,11 @@ Plugin 'tyru/open-browser-unicode.vim'
 Plugin 'vim-scripts/camelcasemotion'
 Plugin 'vim-scripts/matchit.zip'
 Plugin 'vim-scripts/scratch.vim'
-" Plugin 'vim-scripts/simplefold'  # <leader>f conflicts with coc intellisense
 Plugin 'vim-scripts/taglist.vim'
 " Plugin 'vim-syntastic/syntastic'
 Plugin 'dense-analysis/ale'
-Plugin 'xolox/vim-session' # Manage sessions :SaveSession / OpenSession
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-session' " Manage sessions :SaveSession / OpenSession
 
 Plugin 'junegunn/fzf'
 Plugin 'michal-h21/vim-zettel'
