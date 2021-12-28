@@ -2,7 +2,9 @@
 
 run_check = ENV['SAFE_COMMIT'].nil?
 
-do_not_commit_files = %w(.editrc .inputrc .tool-versions)
+do_not_commit_files = %w[.editrc .bashrc .inputrc .tool-versions]
+
+# Use $GIT_DIR to get project specific blacklist files
 
 # Comment why file added to do not commit list
 # do_not_commit_files << 'some-file
@@ -33,8 +35,7 @@ if run_check
     # todo_hits.push filename if $? == 0
   end
 
-  if do_not_commit_files_hit.any? || focus_hits.any? || binding_hits.any? ||
-       todo_hits.any?
+  if do_not_commit_files_hit.any? || focus_hits.any? || binding_hits.any? || todo_hits.any?
     # 31m - Red              # 32m - Green                  # 33m - Yellow
     # 34m - Blue             # 35m - Purple                 # 36m - Cyan
     # 37m - White            # bold - prepend 1; ie - 1;35m # underline - prepend 4;
