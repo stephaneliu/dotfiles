@@ -18,39 +18,36 @@ tap 'homebrew/core'
 tap 'homebrew/services' # `brew services restart postgres`, etc
 tap 'thoughtbot/formulae'
 tap 'cooklang/tap'
-# don't tap both cask-fonts and caskroom/fonts
-# tap "caskroom/fonts"
 
 brew 'asdf'
 brew 'autojump'
-brew 'bat' # cat with wings = bat (cat with syntax color)
+brew 'bat'                         # cat with wings = bat (cat with syntax color)
 brew 'chruby'
 brew 'cmatrix'
-brew 'colordiff' # colorful diffs (alias diff='colordiff -u')
+brew 'colordiff'                   # colorful diffs (alias diff='colordiff -u')
 brew 'cooklang/tap/cook'
-brew 'ctop' # Top-like interface for container metrics
-brew 'fzf' # Fuzzy finder
+brew 'ctop'                        # Top-like interface for container metrics
+brew 'fzf'                         # Fuzzy finder
 brew 'git'
-brew 'git-delta' # Syntax highlighter for git, diff, & grep - https://github.com/dandavison/delta
+brew 'git-delta'                   # Syntax highlighter for git, diff, & grep - https://github.com/dandavison/delta
 brew 'gitsh'
 brew 'gpg'
-brew 'heroku/brew/heroku' # The recommended way to use Heroku
-brew 'gh' # Fast GitHub client released in 2020
-brew 'jq' # Lightweight and flexible command-line JSON processor
-brew 'imagemagick' # Dependency for Lolcommits
+brew 'heroku/brew/heroku'          # The recommended way to use Heroku
+brew 'gh'                          # Fast GitHub client released in 2020
+brew 'jq'                          # Lightweight and flexible command-line JSON processor
+brew 'imagemagick'                 # Dependency for Lolcommits
 brew 'libpq'
-brew 'mas' # Mac appstore cli
+brew 'mas'                         # Mac appstore cli
 brew 'neovim'
-# brew 'opensc' # smart card support
 brew 'reattach-to-user-namespace'
 brew 'ripgrep'
 brew 'ruby-install'
-brew 'terminal-notifier' # programatically send messages to notifications
-brew 'the_silver_searcher' # a better ack/grep
+brew 'terminal-notifier'           # programatically send messages to notifications
+brew 'the_silver_searcher'         # a better ack/grep
 brew 'thoughtbot/formulae/rcm'
-brew 'tldr' # man pages implemented in rust - `tldr ssh`
+brew 'tldr'                        # man pages implemented in rust - `tldr ssh`
 brew 'tmux'
-brew 'universal-ctags' # so :Rtags works
+brew 'universal-ctags'             # so :Rtags works
 brew 'shared-mime-info'
 brew 'vim'
 brew 'wget'
@@ -58,6 +55,8 @@ brew 'yarn'
 brew 'zsh'
 brew 'zsh-completions'
 
+# brew 'opensc'                                                                  # smart card support
+#
 unless /zsh$/.match?(ENV.fetch('SHELL', ''))
   puts 'To use the Homebrew-installed ZSH:'
   puts '  sudo echo $(brew --prefix)/bin/zsh >> /etc/shells'
@@ -67,7 +66,6 @@ end
 cask '1password' unless system 'ls /Applications/1Password*'
 cask 'alfred' unless system 'ls /Applications/Alfred*'
 cask 'app-cleaner'
-# cask 'graphiql'
 cask 'font-hack-nerd-font'
 cask 'font-jetbrains-mono-nerd-font'
 cask 'gpg-suite-no-mail'
