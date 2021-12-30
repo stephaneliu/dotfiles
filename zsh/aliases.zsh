@@ -1,3 +1,14 @@
+# alias j to z
+function j {
+  if [[ $# < 1 ]]; then
+    cd
+  elif [[ $1 = "-" ]]; then
+    cd -
+  else
+    z $@
+  fi
+}
+
 alias 'ps?'='ps aux | gr '
 alias ..="cd .."
 alias :q="exit"
@@ -6,7 +17,6 @@ alias gg='clear'
 alias h='heroku'
 alias hr='heroku run'
 alias inet='ifconfig | grep inet'
-alias j='z'
 alias l='ls -alFHh'
 alias ll='ls -CFHh'
 alias lol='LOLCOMMITS_DIR=$HOME/Documents/lolcommits lolcommits --capture --fork --delay "$LOL_DELAY" --device "$WEBCAM"'
