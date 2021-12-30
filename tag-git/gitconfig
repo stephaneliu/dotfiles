@@ -35,6 +35,7 @@
   unignore = update-index --no-assume-unchanged
   unstage = reset HEAD
   up = pull --rebase
+  vdf = difftool
 [commit]
 	template = ~/.git-template/commit_template.txt
   # gpgsign = true
@@ -58,8 +59,11 @@
   colorMoved = default
   compactionHeuristic = true # experimental - easier diff reading
   mnemonicprefix = true
+  tool = vimdiff3
 [diff "rspec"]
   xfuncname = "^[ \t]*((RSpec|describe|context|it|before|after|around|feature|scenario)[ \t].*)$"
+[difftool "vimdiff3"]
+	path = nvim
 [fetch]
   prune = true
 [filter "lfs"]
@@ -84,9 +88,12 @@
   commit = no # no commit for ff without any changes
   conflictstyle = diff3
   stat = true
-	tool = vimdiff
+	tool = vimdiff3
 [mergetool]
-  keepBackup = false
+  keepBackup = false # false - delete .orig files
+  path = nvim
+[mergetool "vimdiff3"]
+	path = nvim
 [path]
 	include = /Users/sliu/.gitconfig.private
 [rebase]
