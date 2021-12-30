@@ -1,27 +1,43 @@
-[init]
-  templateDir = ~/.git-template
-[user]
-	email = 64043+stephaneliu@users.noreply.github.com
-  name = Stephane Liu
-  signingkey = D58C7B33EE01D6B0
-[github]
-  user = stephaneliu
-# [color]
-#   ui = auto
-# [color "branch"]
-#   current = yellow reverse
-#   local = yellow
-#   remote = green
-# [color "diff"]
-#   frag = magenta bold
-#   meta = yellow bold
-#   new = green bold
-#   old = red bold
-#   whitespace = red reverse
-# [color "status"]
-#   added = yellow
-#   changed = green
-#   untracked = cyan
+[alias]
+	ctags = !.git/hooks/ctags
+  a = add --patch
+  ad = add
+  amend = commit --amend
+  br = branch -vv
+  ci = commit
+  cia = commit --amend
+  cic = commit --amend --no-edit
+  co = checkout
+  commend = commit --amend --no-edit
+  df = diff
+  dfs = diff --cached
+  follow = log --follow -p --
+  gr = grep --extended-regexp --break --heading --line-number
+  home = config user.email \"sliu@sjliu.com\"
+  ignore = update-index --assume-unchanged
+  ignored = !git ls-files -v | grep \"^[[:lower:]]\"
+  l = log --show-linear-break --decorate --show-signature --stat
+  lg = log -p --show-linear-break --show-signature
+  lgg = log --oneline --show-linear-break --show-signature
+  ln = log --name-only --show-linear-break --show-signature
+  lol = log --graph --decorate --pretty=oneline --abbrev-commit
+  lola = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+  lolaauth = log --graph --decorate --pretty=short --abbrev-commit --all
+  lolauth = log --graph --decorate --pretty=short --abbrev-commit
+  mg = merge
+  newauthor = commit --amend --reset-author -C HEAD
+  pl = pull
+  ps = push
+  recommit = commit --amend
+  st = status --short --branch
+  tags = tag --list
+  undo = reset --soft HEAD^
+  unignore = update-index --no-assume-unchanged
+  unstage = reset HEAD
+  up = pull --rebase
+[commit]
+	template = ~/.git-template/commit_template.txt
+  # gpgsign = true
 [core]
   attributesfile = ~/.gitattributes # https://tekin.co.uk/2020/10/better-git-diff-output-for-ruby-python-elixir-and-more
   editor = nvim
@@ -30,98 +46,54 @@
   pager = delta
   quotepath = false
   whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
-[interactive]
-  diffFilter = delta --color-only
+[credential]
+	helper = osxkeychain
 [delta]
+  hyperlinks = false # hyperlink git commits
   line-numbers = true
   navigate = true
-  syntax-theme= 'Solarized (dark)'
-  hyperlinks = false # hyperlink git commits
   # side-by-side = true
-[merge]
-  conflictstyle = diff3
+  syntax-theme= 'Solarized (dark)'
 [diff]
   colorMoved = default
-[alias]
-  a = add --patch
-  ad = add
-  br = branch -vv
-
-  cac = !sh -c 'git config --global --replace-all http.sslcert \"LIU.STEPHANE.1241980045\" && git config --global --replace-all http.sslcapath \"/Users/sliu/etc/pki/ca-trust\"'
-  nocac = config --global --remove-section http
-
-	ctags = !.git/hooks/ctags
-  amend = commit --amend
-  ci = commit
-  cia = commit --amend
-  cic = commit --amend --no-edit
-  co = checkout
-  commend = commit --amend --no-edit
-  df = diff
-  dfs = diff --cached
-  gr = grep --extended-regexp --break --heading --line-number
-  ignore = update-index --assume-unchanged
-  ignored = !git ls-files -v | grep \"^[[:lower:]]\"
-  recommit = commit --amend
-  unignore = update-index --no-assume-unchanged
-
-  l = log --show-linear-break --decorate --show-signature --stat
-  # l = log --show-linear-break --decorate --show-signature --name-only
-  lola = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
-  lg = log -p --show-linear-break --show-signature
-  ln = log --name-only --show-linear-break --show-signature
-  lgg = log --oneline --show-linear-break --show-signature
-  lol = log --graph --decorate --pretty=oneline --abbrev-commit
-  lolauth = log --graph --decorate --pretty=short --abbrev-commit
-  lolaauth = log --graph --decorate --pretty=short --abbrev-commit --all
-
-  follow = log --follow -p --
-
-  home = config user.email \"sliu@sjliu.com\"
-  mg = merge
-  newauthor = commit --amend --reset-author -C HEAD
-  pl = pull
-  ps = push
-  st = status --short --branch
-  tags = tag --list
-  undo = reset --soft HEAD^
-  unstage = reset HEAD
-  up = pull --rebase
-[mergetool]
-  keepBackup = false
-[rerere]
-	enabled = true
-[merge]
-	tool = vimdiff
-  stat = true
-  commit = no # no commit for ff without any changes
-[diff]
-  mnemonicprefix = true
   compactionHeuristic = true # experimental - easier diff reading
+  mnemonicprefix = true
 [diff "rspec"]
   xfuncname = "^[ \t]*((RSpec|describe|context|it|before|after|around|feature|scenario)[ \t].*)$"
+[fetch]
+  prune = true
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	process = git-lfs filter-process
+	required = true
+	smudge = git-lfs smudge -- %f
+[github]
+  user = stephaneliu
+[gitsh]
+  defaultCommand = status --short --branch
+[gpg]
+	program = gpg
 [grep]
   extendRegexp = true
   lineNumber = true
-[fetch]
-  prune = true
-[rebase]
-  autosquash = true
+[init]
+  templateDir = ~/.git-template
+[interactive]
+  diffFilter = delta --color-only
+[merge]
+  commit = no # no commit for ff without any changes
+  conflictstyle = diff3
+  stat = true
+	tool = vimdiff
+[mergetool]
+  keepBackup = false
 [path]
 	include = /Users/sliu/.gitconfig.private
-[filter "lfs"]
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
-	clean = git-lfs clean -- %f
-[commit]
-	template = ~/.git-template/commit_template.txt
-  # gpgsign = true
-[gitsh]
-  defaultCommand = status --short --branch
-[credential]
-	helper = osxkeychain
-[web]
-  browser = firefox
-[gpg]
-	program = gpg
+[rebase]
+  autosquash = true
+[rerere]
+	enabled = true
+[user]
+	email = 64043+stephaneliu@users.noreply.github.com
+  name = Stephane Liu
+  signingkey = D58C7B33EE01D6B0
