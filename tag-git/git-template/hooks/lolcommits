@@ -33,7 +33,8 @@ blue='\x1B\033[0;34m'
 cyan='\x1B\033[0;36m'
 reset_color='\x1B\033[0m'
 lolcommits_dir="$HOME/Documents/lolcommits"
-repo_dir="${PWD##*/}"
+potentially_dirty_repo_dir="${PWD##*/}"
+repo_dir=${potentially_dirty_repo_dir/\./dot}
 custom_lol_config="$lolcommits_dir/config.yml"
 repo_lolcommits_dir="$lolcommits_dir/`echo $repo_dir`"
 
