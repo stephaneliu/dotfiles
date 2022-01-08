@@ -1,6 +1,6 @@
 [alias]
 	ctags = !.git/hooks/ctags
-  a = add --patch
+  ap = add --patch
   ad = add
   amend = commit --amend
   br = branch -vv
