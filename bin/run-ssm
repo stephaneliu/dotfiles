@@ -1,0 +1,54 @@
+#!/bin/bash
+
+# Prerequisits:
+#  aws-google-auth: pip install aws-google-auth
+#  jq: brew install jq | apt install jq
+#  docker: https://docs.docker.com/get-docker/
+
+login_to_aws(){
+  # Login requires answering a Captcha and 2FA
+  aws-google-auth \
+      -u $AWS_SSO_USER \
+      -k -R us-east-1 \
+      -I $AWS_SSO_IDP \
+      -S $AWS_SSO_S \
+      -r arn:aws:iam::$AWS_ACCOUNT_ID:role/google-$AWS_SSO_ROLE \
+      --save-failure-html
+}
+
+run(){
+  docker login -u AWS -p $(aws ecr get-login-password --region us-east-1) $AWS_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com
+  docker pull $AWS_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/dev-tools:latest
+  docker run -v ~/.gitconfig:/root/.gitconfig -v ~/.aws:/root/.aws -it $AWS_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/dev-tools:latest /bin/bash
+}
+
+help(){
+    echo "Syntax ssm-to-fargate.sh [-l|r|h]"
+    echo
+    echo "options:"
+    echo "l    Login into AWS?"
+    echo "r    Whice role to assume [dev|admin]"
+    echo "h    Print help"
+}
+
+ROLE="dev"
+LOGIN="false"
+
+while getopts ":hlr:" option; do
+    case $option in
+        h)
+            help
+            exit;;
+        l) LOGIN="true";;
+        r) ROLE=$OPTARG;;
+        \?)
+            echo "Invalid option"
+            exit;;
+    esac
+done
+
+if [ "$LOGIN" = "true" ]; then
+    login_to_aws
+fi
+
+run
