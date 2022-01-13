@@ -37,6 +37,7 @@ brew 'gh'                          # Fast GitHub client released in 2020
 brew 'jq'                          # Lightweight and flexible command-line JSON processor
 brew 'imagemagick'                 # Dependency for Lolcommits
 brew 'libpq'
+brew 'lsd'                         # Better Unix - better ls
 brew 'mas'                         # Mac appstore cli
 brew 'neovim'
 brew 'reattach-to-user-namespace'
