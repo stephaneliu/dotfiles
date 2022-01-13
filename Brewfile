@@ -27,6 +27,7 @@ brew 'cmatrix'
 brew 'colordiff'                   # colorful diffs (alias diff='colordiff -u')
 brew 'cooklang/tap/cook'
 brew 'ctop'                        # Top-like interface for container metrics
+brew 'dust'                        # Better Unix: better du - https://github.com/bootandy/dust
 brew 'fzf'                         # Fuzzy finder
 brew 'git'
 brew 'git-delta'                   # Syntax highlighter for git, diff, & grep - https://github.com/dandavison/delta
@@ -37,7 +38,7 @@ brew 'gh'                          # Fast GitHub client released in 2020
 brew 'jq'                          # Lightweight and flexible command-line JSON processor
 brew 'imagemagick'                 # Dependency for Lolcommits
 brew 'libpq'
-brew 'lsd'                         # Better Unix - better ls
+brew 'lsd'                         # Better Unix: better ls
 brew 'mas'                         # Mac appstore cli
 brew 'neovim'
 brew 'reattach-to-user-namespace'
