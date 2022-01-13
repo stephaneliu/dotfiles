@@ -27,6 +27,7 @@ brew 'cmatrix'
 brew 'colordiff'                   # colorful diffs (alias diff='colordiff -u')
 brew 'cooklang/tap/cook'
 brew 'ctop'                        # Top-like interface for container metrics
+brew 'duf'                         # Better Unix: better duf - https://github.com/muesli/duf
 brew 'dust'                        # Better Unix: better du - https://github.com/bootandy/dust
 brew 'fzf'                         # Fuzzy finder
 brew 'git'
@@ -41,6 +42,7 @@ brew 'libpq'
 brew 'lsd'                         # Better Unix: better ls
 brew 'mas'                         # Mac appstore cli
 brew 'neovim'
+brew 'procs'                       # Better unix: better ps
 brew 'reattach-to-user-namespace'
 brew 'ripgrep'
 brew 'ruby-install'

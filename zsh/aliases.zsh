@@ -9,11 +9,11 @@ function j {
   fi
 }
 
-alias 'ps?'='ps aux | gr '
+alias 'ps?'='procs | ag '
 alias ..="cd .."
 alias :q="exit"
 alias cat="bat --theme='Solarized (dark)'"
-alias du='dust'
+# alias du='dust'
 alias gg='clear'
 alias h='heroku'
 alias hr='heroku run'
@@ -24,6 +24,7 @@ alias lol='LOLCOMMITS_DIR=$HOME/Documents/lolcommits lolcommits --capture --fork
 alias loll='LOLCOMMITS_DIR=$HOME/Documents/lolcommits lolcommits --last'
 alias matrix='cmatrix'
 alias nc='nocorrect'
+alias ps='procs'
 alias q='exit'
 alias rcup='rcup -v'
 alias screencast='ffmpeg -f x11grab -r 25 -s 1600x1200 -i :0.0 ~/tmp/output.mpg'
