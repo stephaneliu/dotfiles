@@ -13,7 +13,7 @@ alias 'ps?'='procs | ag '
 alias ..="cd .."
 alias :q="exit"
 alias cat="bat --theme='Solarized (dark)'"
-# alias du='dust'
+alias du='dust'
 alias gg='clear'
 alias h='heroku'
 alias hr='heroku run'
