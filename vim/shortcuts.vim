@@ -57,3 +57,6 @@ nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 cmap w!! %!sudo tee > /dev/null %
 
 map <silent> <leader>bg :let &background = ( &background == "dark"? "light" : "dark" )<CR>
+
+" toggle current line highlighting
+nmap <leader>hl :set cursorline!<CR>

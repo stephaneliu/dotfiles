@@ -14,7 +14,7 @@ set tabstop=2
 set nu ruler                        " forces ruler to be visible (vice toggle)
 set autoindent
 set scrolloff=3                     " number of visible lines above and below cursor
-" set cursorline                      " highlight current line
+set cursorline                      " highlight current line
 set statusline=1
 set laststatus=2                    " always show statuline
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P  " show git info
