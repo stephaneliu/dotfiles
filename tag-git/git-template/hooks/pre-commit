@@ -11,9 +11,9 @@ do_not_commit_files = []
 
 if run_check
   do_not_commit_files_hit = []
-  focus_hits = []
-  binding_hits = []
-  todo_hits = []
+  focus_hits              = []
+  binding_hits            = []
+  todo_hits               = []
 
   # Find all filenames in spec directory that have been (A)dded (C)opied or (M)odified
   filenames = `git diff --cached --name-only --diff-filter=ACM`.split("\n")
@@ -23,7 +23,7 @@ if run_check
   ).any?
 
   filenames.each do |filename|
-    if filename.end_with? '_spec.rb'
+    if File.dirname(filename) =~ /spec/
       `git diff --cached #{filename} | grep \^+\[\^+\] | grep -E 'focus|fit\s|fspecify|fcontext|fdescribe'`
       focus_hits.push filename if $? == 0
     end
