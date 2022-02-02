@@ -10,7 +10,7 @@ function g {
 }
 
 alias 'g-'='git co -'
-alias gad='git add'
+alias gad='git add --patch'
 alias gap='git add --patch'
 alias gbr='git br'
 alias gcl='git clone'
