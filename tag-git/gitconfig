@@ -10,7 +10,7 @@
   co = checkout
   commend = commit --amend --no-edit
   df = diff
-  dfs = diff --cached
+  dc = diff --cached
   follow = log --follow -p --
   gr = grep --extended-regexp --break --heading --line-number
   home = config user.email \"sliu@sjliu.com\"
