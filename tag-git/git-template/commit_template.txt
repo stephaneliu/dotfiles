@@ -1,13 +1,15 @@
 # <TYPE>: <Title> (less than 50 characters)
 # !<------------ Max 50 characters ------------->|
 # !<-- Empty line is a separator betwen title and description -->|
-# Co-authored-by: name <name@example.com>
-# Co-authored-by: another-name <another-name@example.com>
 
 # Description: Explain why change was needed and what was changed
 # !<--------------- Fit description in 72 characters ----------------->|
 # You can use checklist and markdown
 #   - Something done
+
+# Co authors must be the last lines of message
+# Co-authored-by: name <name@example.com>
+# Co-authored-by: another-name <another-name@example.com>
 
 # Include links to related resources, task descriptions
 #   - task (github, trello, email)
