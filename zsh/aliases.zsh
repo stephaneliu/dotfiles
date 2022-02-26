@@ -45,7 +45,7 @@ t() {
 }
 alias version='bat /etc/issue'
 alias vim="echo \"Use v\""
-alias v='nvim'
+alias v='nvim +OpenSession'
 alias vpnip='ifconfig | grep inet | grep "128\|198" | grep netmask | cut -d " " -f 2'
 alias which="which -a"
 
