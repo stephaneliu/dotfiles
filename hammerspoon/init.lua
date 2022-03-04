@@ -18,6 +18,7 @@ vim
   :disableForApp('Obsidian')
   :disableForApp('Google Chrome')
   :disableForApp('Sidekick')
+  :disableForApp('KeyCastr')
 
 -- If you want the screen to dim (a la Flux) when you enter normal mode
 -- flip this to true.
