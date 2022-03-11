@@ -77,6 +77,18 @@ let g:rails_projections = {
   \   "template":  "# frozen_string_literal: true\n\nrequire \"rails_helper\"\n\nRSpec.describe {camelcase|capitalize|colons}Form do\n\nend",
   \   "keywords": "before describe context fdescribe fcontext fit"
   \ },
+  \ "app/graphql/legacy/mutations/*_mutation.rb": {
+  \   "command":   "gmutation",
+  \   "affinity":  "collection",
+  \   "test":      "spec/graphql/legacy/mutations/{singular}_mutation_spec.rb",
+  \   "template":  "# frozen_string_literal: true\n\nmodule Legacy\n  module Mutations\n    class {camelcase|capitalize|colons}Mutation < BaseMutation\n      graphql_name '{camelcase|capitalize|colons}'\n      description 'REPLACE THIS'\n\n      def resolve()\n        if result.success?\n          {\n            SOMETHING: result.SOMETHING,\n            errors: []\n          }\n        else\n          {\n            SOMETHING: nil,\n            errors: errors_for_record(result)\n          }\n        end\n      end\n    end\n  end\nend"
+  \ },
+  \ "spec/graphql/legacy/mutations/*_mutation_spec.rb": {
+  \   "command":   "sgmutation",
+  \   "alternate": "app/graphql/legacy/mutations/{singular}_mutation.rb",
+  \   "template":  "# frozen_string_literal: true\n\nrequire \"rails_helper\"\n\nRSpec.describe Legacy::Mutations::{camelcase|capitalize|colons}Mutation, type: :graphql do\n\nend",
+  \   "keywords": "before describe context fdescribe fcontext fit"
+  \ },
   \ "spec/helpers/*_helper_spec.rb": {
   \   "command":   "shelp",
   \   "alternate": "app/helpers/%s.rb",
