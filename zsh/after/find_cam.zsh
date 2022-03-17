@@ -4,7 +4,7 @@ webcam=$(system_profiler SPCameraDataType | grep Logitech\ Webcam\ C930e | sed '
 delay=1
 
 if [ -z "$webcam" ]; then
-  webcam="FaceTime HD Camera (Built-in)"
+  webcam="FaceTime HD Camera"
 fi
 export WEBCAM=$webcam
 export LOL_DELAY=$delay
