@@ -27,7 +27,7 @@ Pry.config.prompt = Pry::NAV_PROMPT unless defined?(Pry::Prompt)
 # === COLORS ===
 unless ENV['PRY_BW']
   Pry.color = true
-  Pry.config.theme = 'railscasts"
+  Pry.config.theme = 'railscasts'
   Pry.config.prompt = PryRails::RAILS_PROMPT if defined?(PryRails::RAILS_PROMPT)
   Pry.config.prompt ||= Pry.prompt
 end
