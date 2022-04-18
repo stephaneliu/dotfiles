@@ -60,3 +60,5 @@ map <silent> <leader>bg :let &background = ( &background == "dark"? "light" : "d
 
 " toggle current line highlighting
 nmap <leader>hl :set cursorline!<CR>
+
+cmap ff f\(des\\|con\\|it\)<CR>
