@@ -82,6 +82,7 @@ cask 'keycastr' # dispaly keystrokes for screencasts
 cask 'numi'
 cask 'obsidian' unless system 'ls /Applications/Obsidian.app'
 cask 'pushplaylabs-sidekick' unless system 'ls /Applications/Sidekick.app'
+cask 'unclack' # unless system 'ls /Application/Unclack.app' # https://unclack.app/#/
 
 # CLI: mas search [app]
 # Returns app name and app id
