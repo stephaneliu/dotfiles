@@ -10,7 +10,8 @@
   co = checkout
   commend = commit --amend --no-edit
   df = diff
-  dc = diff --cached
+  dc = diff --cached  # mneumonic git diff cached
+  ds = diff --cached  # mneumonic git diff staged
   follow = log --follow -p --
   gr = grep --extended-regexp --break --heading --line-number
   gone = ! "git fetch -p && git for-each-ref --format '%(refname:short) %(upstream:track)' | awk '$2 == \"[gone]\" {print $1}' | xargs -r git branch -D"
