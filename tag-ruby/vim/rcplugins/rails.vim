@@ -138,12 +138,12 @@ let g:rails_projections = {
   \ "app/jobs/*.rb": {
   \   "command":   "job",
   \   "test":      "spec/jobs/{singular}_spec.rb",
-  \   "template":  "# frozen_string_literal: true\n\nclass {camelcase|capitalize|colons}\n  def initialize\n  end\nend"
+  \   "template":  "# frozen_string_literal: true\n\nclass {camelcase|capitalize|colons}Job\n  include Sidekiq::Worker\n  sidekiq_options queue: '[CHANGE_QUEUE]', retry: [CHANGE_RETRY]\n  def perform(ARGS)\n  end\nend"
   \ },
   \ "spec/jobs/*_job_spec.rb": {
   \   "command":   "sjob",
   \   "alternate": "app/jobs/{singular}.rb",
-  \   "template":  "# frozen_string_literal: true\n\nclass {camelcase|capitalize|colons}\n  def initialize\n  end\nend"
+  \   "template":  "# frozen_string_literal: true\n\nclass {camelcase|capitalize|colons}Job\n  def initialize\n  end\nend"
   \ },
   \ "app/reports/*.rb": {
   \   "command":   "report",
