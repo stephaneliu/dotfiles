@@ -90,12 +90,12 @@
   commit = no # no commit for ff without any changes
   conflictstyle = diff3
   stat = true
-	tool = vimdiff3
+	tool = vim-conflicted
 [mergetool]
   keepBackup = false # false - delete .orig files
   path = nvim
-[mergetool "vimdiff3"]
-	path = nvim
+[mergetool "vim-conflicted"]
+	cmd = nvim +Conflicted
 [path]
 	include = /Users/sliu/.gitconfig.private
 [rebase]

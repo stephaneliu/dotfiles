@@ -1,4 +1,5 @@
 Plugin 'airblade/vim-gitgutter'
+Plugin 'christoomey/vim-conflicted'
 Plugin 'mattn/gist-vim'
 Plugin 'mattn/webapi-vim'
 Plugin 'ruanyl/vim-gh-line'
