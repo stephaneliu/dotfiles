@@ -11,7 +11,7 @@ Plugin 'kchmck/vim-coffee-script'
 
 " Colorcheme
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'croaky/vim-colors-github'
+Plugin 'iCyMind/NeoSolarized'
 
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'alvan/vim-closetag'
@@ -25,7 +25,6 @@ Plugin 'plasticboy/vim-markdown'
 Plugin 'guns/xterm-color-table.vim'
 Plugin 'honza/vim-snippets'
 Plugin 'justinmk/vim-sneak'
-Plugin 'lifepillar/vim-solarized8'
 Plugin 'mattn/calendar-vim'
 Plugin 'mileszs/ack.vim'
 Plugin 'nathanaelkane/vim-indent-guides'
