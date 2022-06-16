@@ -36,6 +36,7 @@ alias grbc='OVERCOMMIT_DISABLE=1 git rebase --continue'
 alias grs='git reset'
 alias grsh='git reset --hard'
 alias grm='git rm -rf'
+alias gup='git up'
 alias gus='git unstage'
 alias gwip="git add . && OVERCOMMIT_DISABLE=1 git commit -m \"***** Chore: WIP WIP WIP *****\""
 
