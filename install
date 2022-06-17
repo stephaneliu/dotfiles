@@ -35,10 +35,16 @@ fi
 echo "Installing Vim packages"
 vi +PluginInstall +qa
 
-echo "Installing coc language servers"
-vi +"CocInstall coc-tailwindcss coc-sh coc-solargraph coc-json coc-html coc-css coc-json" +qa
-
 cd $HOME
+echo "Enahancing Rails intellisence for solargraph"
+if [ ! -d $HOME/code/rails-intellisence-in-solargraph-enhancement ]; then
+  mkdir $HOME/code/rails-intellisence-in-solargraph-enhancement
+fi
+git clone https://gist.github.com/castwide/28b349566a223dfb439a337aea29713e \
+  $HOME/code/rails-intellisence-in-solargraph-enhancement
+
+echo 'symlink ~/code/rails-intellisence-in-solargraph-enhancement/rails.rb into config/definition.rb \
+  for each Rails project'
 
 if [ -d $HOME/.oh-my-zsh ]; then
   echo "Oh-my-zsh already installed"
