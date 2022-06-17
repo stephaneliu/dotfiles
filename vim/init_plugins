@@ -27,6 +27,7 @@ Plugin 'justinmk/vim-sneak'
 Plugin 'mattn/calendar-vim'
 Plugin 'mileszs/ack.vim'
 Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'neovim/nvim-lspconfig'
 Plugin 'pangloss/vim-javascript'
 Plugin 'posva/vim-vue.git'               " # vue syntax highlighting
 Plugin 'prettier/vim-prettier', { 'do': 'yarn install' }
