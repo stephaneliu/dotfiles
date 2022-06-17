@@ -21,5 +21,6 @@
 
 # Ignore application configuration
 /config/application.yml
+/config/definition.rb
 
 .trash
