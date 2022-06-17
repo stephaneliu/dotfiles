@@ -6,9 +6,7 @@ echo "Installing latest Ruby"
 asdf plugin add ruby https://github.com/asdf-vm/asdf-ruby.git
 asdf install ruby latest
 
-echo "Setting up coc-solargraph for vim"
+echo "Setting up solargraph for vim"
 gem install solargraph
-nvim +CocInstall\ coc-solargraph +qa
-echo "coc-solargraph configured. More info: https://github.com/neoclide/coc-solargraph"
 
 echo "Ruby setup completed"

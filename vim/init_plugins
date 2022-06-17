@@ -18,7 +18,6 @@ Plugin 'alvan/vim-closetag'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'davidoc/taskpaper.vim'
 Plugin 'ervandew/regex'
-Plugin 'iamcco/coc-tailwindcss'
 Plugin 'godlygeek/tabular.git'
 " must be after tabular
 Plugin 'plasticboy/vim-markdown'
@@ -28,7 +27,6 @@ Plugin 'justinmk/vim-sneak'
 Plugin 'mattn/calendar-vim'
 Plugin 'mileszs/ack.vim'
 Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'neoclide/coc.nvim', { 'branch': 'release', 'do': 'yarn install --frozen-lockfile' }
 Plugin 'pangloss/vim-javascript'
 Plugin 'posva/vim-vue.git'               " # vue syntax highlighting
 Plugin 'prettier/vim-prettier', { 'do': 'yarn install' }
