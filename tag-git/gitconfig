@@ -56,7 +56,7 @@
   line-numbers = true
   navigate = true
   # side-by-side = true
-  syntax-theme= 'Solarized (dark)'
+  syntax-theme= Solarized (dark)
 [diff]
   colorMoved = default
   compactionHeuristic = true # experimental - easier diff reading
