@@ -26,11 +26,11 @@ vmap <leader>hash :s/:\([^ ]*\)\(\s*\)=>/\1:/g<CR>
 nmap <leader>;dcr :%s/\r//g<CR>
 
 " simplify window navigation with ctrl
-nmap <C-J> <C-W>j
-nmap <C-K> <C-W>k
-nmap <C-L> <C-W>l
-nmap <C-H> <C-W>h
-nmap <C-K> <C-W>k
+nmap <C-j> <C-w>j
+nmap <C-k> <C-w>k
+nmap <C-l> <C-w>l
+nmap <C-h> <C-w>h
+nmap <C-k> <C-w>k
 
 " simplify tabbed navigation with shift
 nmap <S-H> gT
