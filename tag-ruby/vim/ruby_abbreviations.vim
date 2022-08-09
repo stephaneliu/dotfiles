@@ -14,8 +14,5 @@ iabbrev brpit binding.remote.pry if Rails.env.test?
 " byebug
 iabbrev bb byebug
 
-" Rails 7 debug - https://github.com/ruby/debug
-iabbrev db debugger
-
 " RSpec
 iabbrev af :aggregate_failures
