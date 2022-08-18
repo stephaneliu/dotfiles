@@ -70,6 +70,7 @@ end
 cask '1password' unless system 'ls /Applications/1Password*'
 cask 'alfred' unless system 'ls /Applications/Alfred*'
 cask 'app-cleaner'
+cask 'rocket' unless system 'ls /Applications/Rocket*'
 cask 'cron' unless system 'ls /Applications/Cron*'
 cask 'font-hack-nerd-font'
 cask 'font-jetbrains-mono-nerd-font'
