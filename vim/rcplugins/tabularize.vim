@@ -6,6 +6,6 @@ vmap <Leader>a; :Tabularize /:/l1r0<CR>
 vmap <Leader>a{ :Tabularize /^[^{]*\zs{/<CR>
 vmap <Leader>ah :Tabularize /=><CR>
 vmap <Leader>a# :Tabularize /#<CR>
+vmap <Leader>a- :Tabularize /-<CR>
 " match stabby lambda
-vmap <Leader>a- :Tabularize /-><CR>
 vmap <Leader>as :Tabularize /-><CR>

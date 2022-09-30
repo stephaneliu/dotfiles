@@ -4,3 +4,4 @@ Host hicrane
   HostName 173.255.254.99
   Port 8383
   User deployer
+  IdentityFile ~/.ssh/id_hcr_rsa

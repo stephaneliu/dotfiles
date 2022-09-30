@@ -38,7 +38,7 @@ alias grsh='git reset --hard'
 alias grm='git rm -rf'
 alias gup='git up'
 alias gus='git unstage'
-alias gwip="git add . && OVERCOMMIT_DISABLE=1 git commit -m \"***** Chore: WIP WIP WIP *****\""
+alias gwip="git add . && SAFE_COMMIT=1 OVERCOMMIT_DISABLE=1 git commit -m \"***** Chore: WIP WIP WIP *****\""
 
 alias nocac='export _GIT_SSL_CERT=$GIT_SSL_CERT && unset GIT_SSL_CERT'
 alias yescac='export GIT_SSL_CERT=$_GIT_SSL_CERT && unset _GIT_SSL_CERT'

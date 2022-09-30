@@ -39,7 +39,7 @@ noremap <C-n> :call NumberToggle()<cr>
 set numberwidth=3
 
 set colorcolumn=120                 " set a highlighted column at the 120th character on line
-set textwidth=100                   " word wrap at 100 characters
+set textwidth=120                   " word wrap at 120 characters
 set wrapmargin=2                    " command to actually wrap on the display
 
 set statusline=1
