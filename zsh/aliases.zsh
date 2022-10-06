@@ -38,7 +38,7 @@ t() {
   # session with name $1 or focus
   session_name=${1:-focus}
 
-  if tmux list-sessions | grep -q ${session_name}; then
+  if tmux list-sessions 2>/dev/null | grep -q ${session_name}; then
     tmux -2 attach-session -t $session_name
   else
     tmux -2 new -t $session_name
