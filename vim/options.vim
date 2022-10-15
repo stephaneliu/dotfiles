@@ -7,7 +7,7 @@ set ttimeout
 set timeoutlen=100
 set ff=unix                     " save new lines without CR
 
-set mouse=a " use mouse to copy without line numbers in terminal 
+set mouse=a " use mouse to copy without line numbers in terminal
 set showcmd
 set nu ruler                        " forces ruler to be visible (vice toggle)
 set scrolloff=3                     " number of visible lines above and below cursor
@@ -33,3 +33,6 @@ set showmatch
 set ignorecase smartcase  " case sensitive search only if it contains upper-case char
 
 set splitbelow splitright " Split below and right
+
+set foldmethod=indent
+set nofoldenable
