@@ -14,13 +14,6 @@ alias pspec="bin/pspec"
 alias vig="vi Gemfile"
 alias dnup="bin/rails db:drop && bin/rails db:create && bin/rails prepare"
 
-alias dsh="dip sh"
-alias dg="dip guard"
-alias dr="dip rails"
-alias drc="dip rails c"
-alias drs="dip rails s"
-alias dbe="dip bundle exec"
-
 dev_run() {
   if dockered && ! in_docker; then
     rails_docker_name=$RAILS_DOCKER || 'app'

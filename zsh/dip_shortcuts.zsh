@@ -1,0 +1,7 @@
+alias dsh="dip sh"
+alias dg="dip guard"
+alias dr="dip rails"
+alias drc="dip rails c"
+alias drs="dip compose up -d sidekiq webpacker && dip rails s"
+alias ddown="dip compose down"
+alias dbe="dip bundle exec"
