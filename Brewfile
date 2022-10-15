@@ -49,6 +49,7 @@ brew 'the_silver_searcher'         # a better ack/grep
 brew 'thoughtbot/formulae/rcm'
 brew 'tldr'                        # man pages implemented in rust - `tldr ssh`
 brew 'tmux'
+brew 'tmuxinator-completion'
 brew 'universal-ctags'             # so :Rtags works
 brew 'shared-mime-info'
 brew 'viddy'                       # watch [process] https://github.com/sachaos/viddy

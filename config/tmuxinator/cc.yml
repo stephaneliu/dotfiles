@@ -1,0 +1,72 @@
+# /Users/stephane.liu/.config/tmuxinator/api.yml
+
+name: cc
+root: ~/code
+
+# Optional tmux socket
+# socket_name: foo
+
+# Note that the pre and post options have been deprecated and will be replaced by
+# project hooks.
+
+# Project hooks
+
+# Runs on project start, always
+# on_project_start: command
+
+# Run on project start, the first time
+# on_project_first_start: command
+
+# Run on project start, after the first time
+# on_project_restart: command
+
+# Run on project exit ( detaching from tmux session )
+# on_project_exit: command
+
+# Run on project stop
+on_project_stop:
+  - cd ~/code/companycam/api
+  - dip stop
+
+# Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
+# pre_window: rbenv shell 2.0.0-p247
+
+# Pass command line options to tmux. Useful for specifying a different tmux.conf.
+# tmux_options: -f ~/.tmux.mac.conf
+
+# Change the command to call tmux.  This can be used by derivatives/wrappers like byobu.
+# tmux_command: byobu
+
+# Specifies (by name or index) which window will be selected on project startup. If not set, the first window is used.
+# startup_window: editor
+
+# Specifies (by index) which pane of the specified window will be selected on project startup. If not set, the first pane is used.
+# startup_pane: 1
+
+# Controls whether the tmux session should be attached to automatically. Defaults to true.
+# attach: false
+
+windows:
+  - api:
+      layout: d088,240x84,0,0{148x84,0,0[148x82,0,0,1,148x1,0,83,16],91x84,149,0[91x20,149,0,7,91x20,149,21,12,91x20,149,42,14,91x21,149,63,15]}
+      root: ~/code/companycam/api
+      panes:
+        - v
+        - scratch:
+        - guard:
+          - clear
+          - echo "Waiting for cocam up to complete..."
+          - sleep 45
+          - dip guard
+        - console:
+          - clear
+          - echo "Waiting for cocam up to complete..." && sleep 45 && dip sh
+          - rails c
+        - server: cocam up
+        - clear && echo "Waiting for cocam up to complete..." && sleep 45 && dip sh
+
+  - dot:
+      root: ~/.dotfiles
+
+  - net:
+      root: ~/code/netops
