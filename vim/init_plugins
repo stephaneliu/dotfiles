@@ -20,7 +20,7 @@ Plugin 'davidoc/taskpaper.vim'
 Plugin 'ervandew/regex'
 Plugin 'godlygeek/tabular.git'
 " must be after tabular
-Plugin 'plasticboy/vim-markdown'
+" Plugin 'plasticboy/vim-markdown'
 Plugin 'github/copilot.vim'
 Plugin 'guns/xterm-color-table.vim'
 Plugin 'honza/vim-snippets'
