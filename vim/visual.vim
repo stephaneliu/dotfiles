@@ -47,3 +47,5 @@ set laststatus=2                    " always show statuline
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P  " show git info
 
 set conceallevel=0                  " Prevents markdown from being hidden - i.e. expands hyperlinks
+
+nmap <leader>qm :resize 40<CR>
