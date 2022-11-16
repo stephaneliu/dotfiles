@@ -31,7 +31,7 @@ alias gpl='git pull'
 alias gps='git push'
 alias grb='git rebase'
 alias grba='OVERCOMMIT_DISABLE=1 git rebase --abort'
-alias grbi='OVERCOMMIT_DISABLE=1 git rebase -i'
+# alias grbi='OVERCOMMIT_DISABLE=1 git rebase -i'
 alias grbc='OVERCOMMIT_DISABLE=1 git rebase --continue'
 alias grs='git reset'
 alias grsh='git reset --hard'
@@ -42,6 +42,10 @@ alias gwip="git add . && SAFE_COMMIT=1 OVERCOMMIT_DISABLE=1 git commit -m \"****
 
 alias nocac='export _GIT_SSL_CERT=$GIT_SSL_CERT && unset GIT_SSL_CERT'
 alias yescac='export GIT_SSL_CERT=$_GIT_SSL_CERT && unset _GIT_SSL_CERT'
+
+grbi() {
+  OVERCOMMIT_DISABLE=1 git rebase -i HEAD~$1
+}
 
 # Complete g like git
 compdef g=git
