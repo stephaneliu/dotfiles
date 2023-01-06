@@ -22,8 +22,6 @@ alias l="lsd -AlFh --size short --group-dirs last --blocks size --blocks date --
 # mneumonic 'l's 'b'y 's'ize
 alias lbs="lsd -AlFh --size short --group-dirs first --total-size --sort size --blocks size --blocks name"
 alias ll="lsd -AlFh --size short --group-dirs last --date '+%m-%d-%y %R'"
-alias lol='LOLCOMMITS_DIR=$HOME/Documents/lolcommits lolcommits --capture --fork --delay "$LOL_DELAY" --device "$WEBCAM"'
-alias loll='LOLCOMMITS_DIR=$HOME/Documents/lolcommits lolcommits --last'
 alias matrix='cmatrix'
 alias nc='nocorrect'
 alias ps='procs'
