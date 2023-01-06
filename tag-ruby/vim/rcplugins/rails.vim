@@ -15,8 +15,8 @@
 "
 " globals
 let g:rails_projections = {
-  \ "app/javascript/stylesheets/*": {
-  \   "command":   "jstyle"
+  \ "app/javascript/controllers/*": {
+  \   "command":   "stimulus",
   \ },
   \ "config/*": {
   \   "command":   "config"
@@ -50,7 +50,7 @@ let g:rails_projections = {
   \     "RSpec.describe {camelcase|capitalize|colons}Adapter do",
   \     "end"
   \   ],
-  \   "rubyMacro": ["after", "before", "describe", "context", "fdescribe", "fcontext", "fit", "fspecify", "let"]
+  \   "rubyMacro": ["after", "before", "describe", "context", "fdescribe", "fcontext", "fit", "from", "fspecify", "let", "let!", "to"]
   \ },
   \ "app/channels/*_channel.rb": {
   \   "command":   "channel",
@@ -86,7 +86,7 @@ let g:rails_projections = {
   \     "end"
   \   ],
   \   "alternate": "app/channels/%s_channel.rb",
-  \   "rubyMacro": ["after", "before", "describe", "context", "fdescribe", "fcontext", "fit", "fspecify", "let", "let!"]
+  \   "rubyMacro": ["after", "before", "describe", "context", "fdescribe", "fcontext", "fit", "from", "fspecify", "let", "let!", "to"]
   \ },
   \ "app/finders/*_finder.rb": {
   \   "command":   "finder",
@@ -111,7 +111,7 @@ let g:rails_projections = {
   \     "RSpec.describe {camelcase|capitalize|colons}Finder do",
   \     "end"
   \   ],
-  \   "rubyMacro": ["after", "before", "describe", "context", "fdescribe", "fcontext", "fit", "fspecify", "let", "let!"]
+  \   "rubyMacro": ["after", "before", "describe", "context", "fdescribe", "fcontext", "fit", "from", "fspecify", "let", "let!", "to"]
   \ },
   \ "app/forms/*_form.rb": {
   \   "command":  "form",
@@ -137,7 +137,7 @@ let g:rails_projections = {
   \     "RSpec.describe {camelcase|capitalize|colons}Form do",
   \     "end"
   \   ],
-  \   "rubyMacro": ["after", "before", "describe", "context", "fdescribe", "fcontext", "fit", "fspecify", "let", "let!"]
+  \   "rubyMacro": ["after", "before", "describe", "context", "fdescribe", "fcontext", "fit", "from", "fspecify", "let", "let!", "to"]
   \ },
   \ "app/graphql/fields/*_type.rb": {
   \   "command":   "gfield",
@@ -149,9 +149,10 @@ let g:rails_projections = {
   \   ],
   \ },
   \ "app/graphql/mutations/*_mutation.rb": {
-  \   "command":   "gmutation",
-  \   "affinity":  "collection",
-  \   "test":      "spec/graphql/mutations/{singular}_mutation_spec.rb",
+  \   "command":  "gmutation",
+  \   "affinity": "collection",
+  \   "related":  "app/graphql/mutations/base_mutation.rb",
+  \   "test":     "spec/graphql/mutations/{singular}_mutation_spec.rb",
   \   "template": [
   \     "# frozen_string_literal: true",
   \     "",
@@ -188,7 +189,7 @@ let g:rails_projections = {
   \   "RSpec.describe Mutations::{camelcase|capitalize|colons}Mutation, type: :graphql do",
   \   "end"
   \   ],
-  \   "rubyMacro": ["after", "before", "describe", "context", "fdescribe", "fcontext", "fit", "fspecify", "let", "let!"]
+  \   "rubyMacro": ["after", "before", "describe", "context", "fdescribe", "fcontext", "fit", "from", "fspecify", "let", "let!", "to"]
   \ },
   \ "app/graphql/inputs/*_input.rb": {
   \   "command":   "ginput",
@@ -212,12 +213,12 @@ let g:rails_projections = {
   \     "RSpec.describe CompanyCamSchema do",
   \     "end"
   \   ],
-  \   "rubyMacro": ["after", "before", "describe", "context", "fdescribe", "fcontext", "fit", "fspecify", "let", "let!"]
+  \   "rubyMacro": ["after", "before", "describe", "context", "fdescribe", "fcontext", "fit", "from", "fspecify", "let", "let!", "to"]
   \ },
   \ "app/graphql/types/*_type.rb": {
-  \   "command":   "gtype",
-  \   "affinity":  "collection",
-  \   "template":  [
+  \   "command":  "gtype",
+  \   "affinity": "collection",
+  \   "template": [
   \     "# frozen_string_literal: true",
   \     "",
   \     "module Types",
@@ -238,7 +239,7 @@ let g:rails_projections = {
   \     "RSpec.describe CompanyCamSchema, type: :graphql do",
   \     "end"
   \   ],
-  \   "rubyMacro": ["after", "before", "describe", "context", "fdescribe", "fcontext", "fit", "fspecify", "let", "let!"]
+  \   "rubyMacro": ["after", "before", "describe", "context", "fdescribe", "fcontext", "fit", "from", "fspecify", "let", "let!", "to"]
   \ },
   \ "app/graphql/enums/*_enum.rb": {
   \   "command":   "genum",
@@ -266,7 +267,7 @@ let g:rails_projections = {
   \     "RSpec.describe {camelcase|capitalize|colons}Helper do",
   \     "end"
   \   ],
-  \   "rubyMacro": ["after", "before", "describe", "context", "fdescribe", "fcontext", "fit", "fspecify", "let", "let!"]
+  \   "rubyMacro": ["after", "before", "describe", "context", "fdescribe", "fcontext", "fit", "from", "fspecify", "let", "let!", "to"]
   \ },
   \ "app/interactors/*_interactor.rb": {
   \   "command":   "interactor",
@@ -296,7 +297,7 @@ let g:rails_projections = {
   \     "class {camelcase|capitalize|colons}Interactor",
   \     "end"
   \   ],
-  \   "rubyMacro": ["after", "before", "describe", "context", "fdescribe", "fcontext", "fit", "fspecify", "let", "let!"]
+  \   "rubyMacro": ["after", "before", "describe", "context", "fdescribe", "fcontext", "fit", "from", "fspecify", "let", "let!", "to"]
   \ },
   \ "app/jobs/*.rb": {
   \   "command":   "job",
@@ -350,7 +351,7 @@ let g:rails_projections = {
   \     "RSpec.describe {camelcase|capitalize|colons}Report do",
   \     "end"
   \   ],
-  \   "rubyMacro": ["after", "before", "describe", "context", "fdescribe", "fcontext", "fit", "fspecify", "let", "let!"]
+  \   "rubyMacro": ["after", "before", "describe", "context", "fdescribe", "fcontext", "fit", "from", "fspecify", "let", "let!", "to"]
   \ },
   \ "app/models/concerns/*.rb": {
   \   "command":   "concern",
@@ -368,7 +369,7 @@ let g:rails_projections = {
   \   "affinity":  "resource",
   \   "template":  "# frozen_string_literal: true\n\nrequire \"spec_helper\"\n\nRSpec.describe Null{camelcase|capitalize|colons} do\n\nend",
   \   "alternate": "app/nulls/null_%s.rb",
-  \   "rubyMacro": ["after", "before", "describe", "context", "fdescribe", "fcontext", "fit", "fspecify", "let", "let!"]
+  \   "rubyMacro": ["after", "before", "describe", "context", "fdescribe", "fcontext", "fit", "from", "fspecify", "let", "let!", "to"]
   \ },
   \ "app/pages/*_page.rb": {
   \   "command":   "page",
@@ -381,7 +382,7 @@ let g:rails_projections = {
   \   "affinity":  "resource",
   \   "template":  "# frozen_string_literal: true\n\nrequire \"spec_helper\"\n\nRSpec.describe {camelcase|capitalize|colons}Page do\n\nend",
   \   "alternate": "app/nulls/null_%s.rb",
-  \   "rubyMacro": ["after", "before", "describe", "context", "fdescribe", "fcontext", "fit", "fspecify", "let", "let!"]
+  \   "rubyMacro": ["after", "before", "describe", "context", "fdescribe", "fcontext", "fit", "from", "fspecify", "let", "let!", "to"]
   \ },
   \ "app/policies/*_policy.rb": {
   \   "command":   "policy",
@@ -405,7 +406,7 @@ let g:rails_projections = {
   \   "command":  "spresenter",
   \   "template": "# frozen_string_literal: true\n\nrequire \"rails_helper\"\n\nRSpec.describe {camelcase|capitalize|colons}Presenter do\n\nend",
   \   "alternate": "app/presenters/%s.rb",
-  \   "rubyMacro": ["after", "before", "describe", "context", "fdescribe", "fcontext", "fit", "fspecify", "let", "let!"]
+  \   "rubyMacro": ["after", "before", "describe", "context", "fdescribe", "fcontext", "fit", "from", "fspecify", "let", "let!", "to"]
   \ },
   \ "app/queries/*_query.rb": {
   \   "command":   "query",
@@ -416,7 +417,7 @@ let g:rails_projections = {
   \ "spec/queries/*_query_spec.rb": {
   \   "command":  "squery",
   \   "template": "# frozen_string_literal: true\n\nrequire \"rails_helper\"\n\nRSpec.describe {camelcase|capitalize|colons}Query do\n\nend",
-  \   "rubyMacro": ["after", "before", "describe", "context", "fdescribe", "fcontext", "fit", "fspecify", "let", "let!"]
+  \   "rubyMacro": ["after", "before", "describe", "context", "fdescribe", "fcontext", "fit", "from", "fspecify", "let", "let!", "to"]
   \ },
   \ "app/services/*.rb": {
   \   "command":   "service",
@@ -426,7 +427,7 @@ let g:rails_projections = {
   \ "spec/services/*_spec.rb": {
   \   "command":  "sservice",
   \   "template": "# frozen_string_literal: true\n\nrequire \"rails_helper\"\n\nRSpec.describe {camelcase|capitalize|colons} do\n\nend",
-  \   "rubyMacro": ["after", "before", "describe", "context", "fdescribe", "fcontext", "fit", "fspecify", "let", "let!"]
+  \   "rubyMacro": ["after", "before", "describe", "context", "fdescribe", "fcontext", "fit", "from", "fspecify", "let", "let!", "to"]
   \ },
   \ "spec/support/*.rb": {
   \   "command":  "ssupport",
@@ -435,7 +436,7 @@ let g:rails_projections = {
   \ "spec/system/*_spec.rb": {
   \   "command":  "ssystem",
   \   "template": "# frozen_string_literal: true\n\nrequire \"features_helper\"\n\nRSpec.describe \"{capitalize}\" do\n\nend",
-  \   "rubyMacro": ["after", "before", "describe", "context", "fdescribe", "fcontext", "fit", "fspecify", "let", "let!"]
+  \   "rubyMacro": ["after", "before", "describe", "context", "fdescribe", "fcontext", "fit", "from", "fspecify", "let", "let!", "to"]
   \ },
   \ "app/view_models/*_view.rb": {
   \   "command":   "view_model",
@@ -455,7 +456,7 @@ let g:rails_projections = {
   \   "alternate": "spec/lib/tasks/{}_rake_spec.rb",
   \   "test":      "spec/lib/tasks/{}_rake_spec.rb",
   \   "template":  "# frozen_string_literal: true\n\nnamespace :{} do\n  desc \"[description]\"\n  task something: :environment do\n  end\nend",
-  \   "rubyMacro": ["after", "before", "describe", "context", "fdescribe", "fcontext", "fit", "fspecify", "let", "let!"]
+  \   "rubyMacro": ["after", "before", "describe", "context", "fdescribe", "fcontext", "fit", "from", "fspecify", "let", "let!", "to"]
   \ },
   \ "spec/lib/tasks/*_rake_spec.rb": {
   \   "command":  "stask",
@@ -465,7 +466,7 @@ let g:rails_projections = {
   \ "spec/controllers/*_controller_spec.rb": {
   \   "command":  "scontroller",
   \   "template": "# frozen_string_literal: true\n\nrequire \"rails_helper\"\n\nRSpec.describe {camelcase|capitalize|colons}Controller do\n\nend",
-  \   "rubyMacro": ["after", "before", "describe", "context", "fdescribe", "fcontext", "fit", "fspecify", "let", "let!"]
+  \   "rubyMacro": ["after", "before", "describe", "context", "fdescribe", "fcontext", "fit", "from", "fspecify", "let", "let!", "to"]
   \ },
   \ "spec/factories/*.rb": {
   \   "command":   "factory",
