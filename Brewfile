@@ -21,7 +21,7 @@ tap 'cooklang/tap'
 brew 'asdf'
 brew 'autojump'
 brew 'bat'                         # cat with wings = bat (cat with syntax color) - https://github.com/sharkdp/bat
-brea 'cheat'                       # Terminal cheatsheets - https://github.com/cheat/cheat
+brew 'cheat'                       # Terminal cheatsheets - https://github.com/cheat/cheat
 brew 'chruby'
 brew 'cmatrix'
 brew 'colordiff'                   # colorful diffs (alias diff='colordiff -u')
@@ -54,7 +54,6 @@ brew 'tmuxinator-completion'
 brew 'universal-ctags'             # so :Rtags works
 brew 'shared-mime-info'
 brew 'viddy'                       # watch [process] https://github.com/sachaos/viddy
-brew 'vim'
 brew 'wget'
 brew 'yarn'
 brew 'zsh'
@@ -70,7 +69,7 @@ end
 
 cask '1password' unless system 'ls /Applications/1Password*'
 cask 'alfred' unless system 'ls /Applications/Alfred*'
-cask 'app-cleaner'
+cask 'app-cleaner' unless system 'ls /Applications/AppCleaner*'
 cask 'rocket' unless system 'ls /Applications/Rocket*'
 cask 'cron' unless system 'ls /Applications/Cron*'
 cask 'dash' unless system 'ls /Applications/Dash.app'
