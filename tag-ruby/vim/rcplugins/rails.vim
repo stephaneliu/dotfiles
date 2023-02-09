@@ -215,6 +215,9 @@ let g:rails_projections = {
   \   ],
   \   "rubyMacro": ["after", "before", "describe", "context", "fdescribe", "fcontext", "fit", "from", "fspecify", "let", "let!", "to"]
   \ },
+  \ "app/graphql/company_cam_schema.rb": {
+  \   "command":   "gschema"
+  \ },
   \ "app/graphql/types/*_type.rb": {
   \   "command":  "gtype",
   \   "affinity": "collection",
