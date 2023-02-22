@@ -70,24 +70,30 @@ end
 cask '1password' unless system 'ls /Applications/1Password*'
 cask 'alfred' unless system 'ls /Applications/Alfred*'
 cask 'app-cleaner' unless system 'ls /Applications/AppCleaner*'
-cask 'rocket' unless system 'ls /Applications/Rocket*'
 cask 'cron' unless system 'ls /Applications/Cron*'
 cask 'dash' unless system 'ls /Applications/Dash.app'
+cask 'divvy' unless system 'ls /Applications/Divvy.app'
+cask 'docker' unless system 'ls /Applications/Docker.app'
 cask 'font-hack-nerd-font'
 cask 'font-jetbrains-mono-nerd-font'
 cask 'gpg-suite-no-mail'
+cask 'graphiql' unless system 'ls /Applications/GraphiQL.app'
 cask 'hammerspoon'
-# cask 'hocus-focus' # utility auto close unfocused applications - http://hocusfoc.us
+cask 'kindavim' unless system 'ls /Applications/kindaVim.app'
+cask 'readdle-spark' unless system 'ls /Applications/Spark*'
+cask 'rocket' unless system 'ls /Applications/Rocket*' # emoji helper
+cask 'tailscale' unless system 'ls /Applications/Tailscale.app' # zero trust network
 cask 'iterm2'
 cask 'karabiner-elements'
 cask 'keycastr' # dispaly keystrokes for screencasts
 cask 'numi'
-cask 'obsidian' unless system 'ls /Applications/Obsidian.app'
 cask 'pushplaylabs-sidekick' unless system 'ls /Applications/Sidekick.app'
-cask 'unclack' # unless system 'ls /Application/Unclack.app' # https://unclack.app/#/
+cask 'via' unless system 'ls /Applications/VIA.app'
 
 # CLI: mas search [app]
 # Returns app name and app id
 # mas install [app_id]
-mas 'Spark', id: 1_176_895_641
+mas 'Craft - Docs and Notes Editor', id: 1_487_937_127
 mas 'Hand Mirror', id: 1_502_839_586
+mas 'Magnet', id: 441_258_766
+mas 'Marked 2', id: 890_031_187
