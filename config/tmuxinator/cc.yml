@@ -1,7 +1,7 @@
 # /Users/stephane.liu/.config/tmuxinator/api.yml
 
 name: cc
-root: ~/code
+root: ~/code/companycam/api
 
 # Optional tmux socket
 # socket_name: foo
@@ -51,19 +51,18 @@ windows:
       layout: d088,240x84,0,0{148x84,0,0[148x82,0,0,1,148x1,0,83,16],91x84,149,0[91x20,149,0,7,91x20,149,21,12,91x20,149,42,14,91x21,149,63,15]}
       root: ~/code/companycam/api
       panes:
-        - v
+        - vim:
+          - v
         - scratch:
         - guard:
-          - clear
-          - echo "Waiting for cocam up to complete..."
-          - sleep 45
           - dip guard
         - console:
-          - clear
-          - echo "Waiting for cocam up to complete..." && sleep 45 && dip sh
+          - dip sh
           - rails c
-        - server: cocam up
-        - clear && echo "Waiting for cocam up to complete..." && sleep 45 && dip sh
+        - server:
+          - dip compose up -d webpacker sidekiq && dip rails s
+        - docker_shell:
+          - dip sh
 
   - dot:
       root: ~/.dotfiles
