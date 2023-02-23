@@ -105,6 +105,9 @@ until [ -f "$HOME/.env.private" ]; do
   fi
 done
 
+echo "Restoring application preferences"
+$HOME/bin/plist import
+
 echo "###### TODO ######"
 echo "Update .zsh/npm.zsh token from 1Password"
 echo "Done!"
