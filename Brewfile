@@ -78,7 +78,6 @@ cask 'font-hack-nerd-font'
 cask 'font-jetbrains-mono-nerd-font'
 cask 'gpg-suite-no-mail'
 cask 'graphiql' unless system 'ls /Applications/GraphiQL.app'
-cask 'hammerspoon'
 cask 'kindavim' unless system 'ls /Applications/kindaVim.app'
 cask 'readdle-spark' unless system 'ls /Applications/Spark*'
 cask 'rocket' unless system 'ls /Applications/Rocket*' # emoji helper
