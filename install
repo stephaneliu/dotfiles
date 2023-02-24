@@ -5,8 +5,6 @@
 install_dir=$PWD
 unset GIT_SSL_CERT
 
-source $HOME/.dotfiles/bin/os_type.sh
-
 echo "Installing Homebrew packages"
 brew update
 brew tap homebrew/bundle

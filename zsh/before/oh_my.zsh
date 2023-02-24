@@ -1,14 +1,8 @@
-source $HOME/.dotfiles/bin/os_type.sh
-
 ZSH=$HOME/.oh-my-zsh
 
 POWERLEVEL9K_MODE='nerdfont-complete'
 
-if is_osx; then
-  ZSH_THEME="powerlevel10k/powerlevel10k"
-else
-  ZSH_THEME="robbyrussell"
-fi
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 COMPLETION_WAITING_DOTS="true"
 
