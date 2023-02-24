@@ -4,6 +4,7 @@
   ad = add
   amend = commit --amend
   br = branch -vv
+  churn = ! "git-churn"
   ci = commit
   cia = commit --amend
   cic = commit --amend --no-edit
