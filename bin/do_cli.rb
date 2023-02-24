@@ -1,16 +1,19 @@
 #!/usr/bin/env ruby
+
+# frozen_string_literal: true
+
 require 'barge'
 require 'delegate'
 
 class DigitalOcean
-  attr_reader :client, :droplets, :sizes
+  attr_reader :client
 
   def initialize
     @client = Barge::Client.new(access_token: ENV['DO_KEY'])
   end
 
   def droplets
-    @_droplets ||= client.droplet.all[:droplets].map { |drop| DropletDecorator.new(drop) }
+    @droplets ||= client.droplet.all[:droplets].map { |drop| DropletDecorator.new(drop) }
   end
 
   def list_droplets
@@ -22,7 +25,7 @@ class DigitalOcean
   end
 
   def sizes
-    @_sizes ||= client.size.all.sizes.map { |size| SizeDecorator.new(size) }
+    @sizes ||= client.size.all.sizes.map { |size| SizeDecorator.new(size) }
   end
 
   def list_regions
@@ -30,7 +33,7 @@ class DigitalOcean
   end
 
   def regions
-    @_regions ||= client.region.all.regions.map {|region| RegionDecorator.new(region) }
+    @regions ||= client.region.all.regions.map { |region| RegionDecorator.new(region) }
   end
 
   def list_images
@@ -38,7 +41,7 @@ class DigitalOcean
   end
 
   def images
-    @_images ||= client.image.all.images.map { |image| ImageDecorator.new(image) }
+    @images ||= client.image.all.images.map { |image| ImageDecorator.new(image) }
   end
 
   def list_ssh_keys
@@ -46,7 +49,7 @@ class DigitalOcean
   end
 
   def ssh_keys
-    @_keys ||= client.key.all.ssh_keys.map {|key| SshKeyDecorator.new(key) }
+    @ssh_keys ||= client.key.all.ssh_keys.map { |key| SshKeyDecorator.new(key) }
   end
 
   def create
@@ -54,20 +57,20 @@ class DigitalOcean
 
     options = {}
 
-    ask "Name of droplet" do |answer|
+    ask 'Name of droplet' do |answer|
       options[:name] = answer
-      "continue"
+      'continue'
     end
 
-    ask "Region of droplet (region / list)" do |answer|
-      region = ""
+    ask 'Region of droplet (region / list)' do |answer|
+      region = ''
 
-      if answer == "list"
+      if answer == 'list'
         list_regions
-        region = ""
+        region = ''
       elsif !regions.map(&:slug).include? answer
         puts "Region #{answer} not found. Try 'list'"
-        region = ""
+        region = ''
       else
         region = answer
         options[:region] = region
@@ -77,46 +80,42 @@ class DigitalOcean
     end
 
     ask "What size instance? (1-#{sizes.size} / list)" do |answer|
-      size = ""
-
       case answer
-      when "list"
+      when 'list'
         sizes.each_with_index do |size, index|
           puts "#{index + 1} - #{size.slug}"
         end
-        size = ""
-      when "1".."#{sizes.size - 1}"
+      when 1.to_s..(sizes.size - 1).to_s
         size = sizes.map(&:slug)[Integer(answer) - 1]
         options[:size] = size
       else
         puts "Size unexpected: #{answer}"
-        size = ""
       end
     end
 
     ask "Image name? (1-#{images.size}, list)" do |answer|
-      image = ""
+      image = ''
 
       case answer
-      when "list"
-        images.each_with_index do |image, index|
-          puts "#{index + 1} - #{image}"
+      when 'list'
+        images.each_with_index do |vm_image, index|
+          puts "#{index + 1} - #{vm_image}"
         end
-      when "0".."#{images.size}"
+      when 0.to_s..images.size.to_s
         image = images.map(&:slug)[Integer(answer) - 1]
         options[:image] = image
       else
         puts "Image unexpected: #{answer}"
-        image = ""
+        image = ''
       end
 
       image
     end
 
-    ask "ssh key id (ssh key id / list)" do |answer|
+    ask 'ssh key id (ssh key id / list)' do |answer|
       selected_ssh_keys = []
 
-      if answer == "list"
+      if answer == 'list'
         list_ssh_keys
       elsif !ssh_keys.map(&:id).include? Integer(answer)
         puts "ssh key id not found. Try 'list'"
@@ -127,55 +126,49 @@ class DigitalOcean
       selected_ssh_keys
     end
 
-    ask "Enable backup? (yes / no)" do |answer|
+    ask 'Enable backup? (yes / no)' do |answer|
       enable_backup = false
 
-      if answer.downcase == 'yes'
-        enable_backup = true
-      end
+      enable_backup = true if answer.downcase == 'yes'
 
       options[:backups] = enable_backup
-      "continue"
+      'continue'
     end
 
-    ask "Enable ipv6? (yes / no)" do |answer|
+    ask 'Enable ipv6? (yes / no)' do |answer|
       enable_ipv6 = false
 
-      if answer.downcase == 'yes'
-        enable_ipv6 = true
-      end
+      enable_ipv6 = true if answer.downcase == 'yes'
 
       options[:ipv6] = enable_ipv6
-      "continue"
+      'continue'
     end
 
     puts options
-    confirm "Create a new image? (YES / [NO])", "YES" do
-      puts "Image being created"
+    confirm 'Create a new image? (YES / [NO])', 'YES' do
+      puts 'Image being created'
       puts client.droplet.create(options).success?
     end
   end
 
   def destroy
-    droplet_id = ""
-    ask "What is the ID of the droplet? (droplet_id / list)" do |answer|
-      if answer.downcase == "list"
+    droplet_id = ''
+    ask 'What is the ID of the droplet? (droplet_id / list)' do |answer|
+      if answer.downcase == 'list'
         list_droplets
       else
-        droplet_id  = answer
+        droplet_id = answer
       end
 
       droplet_id
     end
 
-    confirm "Are you sure you want to delete: #{droplet_id}? (YES / [NO])", "YES" do
-      if client.droplet.destroy(droplet_id)
-        puts "Droplet #{droplet_id} destroyed"
-      end
+    confirm "Are you sure you want to delete: #{droplet_id}? (YES / [NO])", 'YES' do
+      puts "Droplet #{droplet_id} destroyed" if client.droplet.destroy(droplet_id)
     end
   end
 
-  # TODO - Implement 'ask' format
+  # TODO: Implement 'ask' format
   def snapshot(droplet_id, snapshot_name)
     client.droplet.snapshot(droplet_id, name: snapshot_name)
   end
@@ -184,7 +177,7 @@ class DigitalOcean
 
   def preload
     print 'Hang on while I connect to Digital Ocean...'
-    [:regions, :sizes, :images, :ssh_keys].each do |preload|
+    %i[regions sizes images ssh_keys].each do |preload|
       public_send(preload)
       print '...'
     end
@@ -192,13 +185,13 @@ class DigitalOcean
   end
 
   def ask(question)
-    answer = ""
-    while answer.empty? do
+    answer = ''
+    while answer.empty?
       puts question
       answer = $stdin.gets.chomp!
 
       if quit?(answer)
-        exit 
+        exit
       else
         answer = yield answer
       end
@@ -228,23 +221,21 @@ class DigitalOcean
 
     droplet
   end
-
 end
 
 class DropletNotFoundError < StandardError; end
 
 class SizeDecorator < SimpleDelegator
-  
   def to_s
-    <<-eos
-Memory: #{slug.capitalize}
-Disk:  #{disk}GB
-Transfers: #{transfer}Gib
-Price / Month: $#{price_monthly}
-Price / Hour: $#{price_hourly}
-Available Regions #{regions}
+    <<~OUTPUT
+      Memory: #{slug.capitalize}
+      Disk:  #{disk}GB
+      Transfers: #{transfer}Gib
+      Price / Month: $#{price_monthly}
+      Price / Hour: $#{price_hourly}
+      Available Regions #{regions}
 
-    eos
+    OUTPUT
   end
 end
 
@@ -252,17 +243,16 @@ class DropletDecorator < SimpleDelegator
   attr_reader :definition, :droplets
 
   def to_s
-    <<-eos
-ID: #{id}
-Name: #{name}
-Region: #{region.name} / #{region.slug}
-OS: #{kernel.name} - #{kernel.version}
-Memory Size: #{memory}
-Disk Size: #{disk}
+    <<-OUTPUT
+      ID: #{id}
+      Name: #{name}
+      Region: #{region.name} / #{region.slug}
+      OS: #{kernel.name} - #{kernel.version}
+      Memory Size: #{memory}
+      Disk Size: #{disk}
 
-    eos
+    OUTPUT
   end
-
 end
 
 class RegionDecorator < SimpleDelegator
@@ -281,28 +271,27 @@ end
 
 class SshKeyDecorator < SimpleDelegator
   def to_s
-    <<-eos
-#{id} - (#{name}): #{public_key}
+    <<-KEY
+      #{id} - (#{name}): #{public_key}
 
-    eos
+    KEY
   end
 end
 
 digital_ocean = DigitalOcean.new
 
-available_actions  = %w(create destroy)
-available_lists = %w(droplets images regions sizes ssh_keys)
+available_actions = %w[create destroy]
+available_lists = %w[droplets images regions sizes ssh_keys]
 
+# TODO: REPL command interface
+action, context = ARGV
 
-# TODO - REPL command interface
-action, context= ARGV
-
-if action == "list" && available_lists.include?(context)
+if action == 'list' && available_lists.include?(context)
   digital_ocean.send("#{action}_#{context}")
 elsif available_actions.include? action
   digital_ocean.send(action)
 else
-  puts "Request not recognized. Try one of these:"
-  puts available_lists.map {|list| "list #{list}"}
+  puts 'Request not recognized. Try one of these:'
+  puts(available_lists.map { |list| "list #{list}" })
   puts "or #{available_actions}"
 end
