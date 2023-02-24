@@ -1,30 +1,54 @@
-USAGE='USAGE: plist import|export'
-BASE_DIR="$HOME/Documents/Resource/Software/plists"
+#!/usr/bin/env ruby
 
-if [ $# -eq 0 ]; then
-  echo  $USAGE
-  exit 0
-fi
+# frozen_string_literal: true
 
-# Check for directory
-[ ! -d  $BASE_DIR ] && echo "Directory $BASE_DIR does not exist" && exit 0
+EXPORT_DIR = File.join(ENV['HOME'], 'Documents', 'Resource', 'Software', 'plists').freeze
+APP_PREFERENCES = [
+  'com.crowdcafe.windowmagnet', 'com.mizage.direct.Divvy', 'com.kapeli.dashdoc',
+  'com.googlecode.iterm2', 'io.github.keycastr'
+].freeze
 
-if [[ $1 = "export" ]]; then
-  echo "Exporting plists"
+def import
+  error_with_message("Directory #{EXPORT_DIR} does not exist") unless destination_dir_exists?
+  error_with_message("There are no plists in #{EXPORT_DIR}") unless plists_exists?
 
-  defaults export com.crowdcafe.windowmagnet $BASE_DIR/com.crowdcafe.windowmagnet.plist
-  defaults export com.mizage.direct.Divvy $BASE_DIR/com.mizage.direct.Divvy.plist
-  defaults export com.kapeli.dashdoc $BASE_DIR/com.kapeli.dashdoc.plist
-  defaults export com.googlecode.iterm2 $BASE_DIR/com.googlecode.iterm2.plist
-  defaults export io.github.keycastr $BASE_DIR/io.github.keycastr.plist
-elif [[ $1 = "import" ]]; then
-  echo "Importing plists"
+  puts "Import #{APP_PREFERENCES.size} plists from #{EXPORT_DIR}"
 
-  defaults import com.crowdcafe.windowmagnet $BASE_DIR/com.crowdcafe.windowmagnet.plist
-  defaults import com.mizage.direct.Divvy $BASE_DIR/com.mizage.direct.Divvy.plist
-  defaults import com.kapeli.dashdoc $BASE_DIR/com.kapeli.dashdoc.plist
-  defaults import com.googlecode.iterm2 $BASE_DIR/com.googlecode.iterm2.plist
-  defaults import io.github.keycastr $BASE_DIR/io.github.keycastr.plist
+  APP_PREFERENCES.each do |app_preference|
+    system "defaults import #{app_preference} #{EXPORT_DIR}/#{app_preference}.plist"
+  end
+end
+
+# https://andrew.hawker.io/dailies/2021/03/01/migrate-divvy-configuration/
+def export
+  error_with_message("Directory #{EXPORT_DIR} does not exist") unless destination_dir_exists?
+
+  puts "Exporting #{APP_PREFERENCES.size} plists to #{EXPORT_DIR}"
+
+  APP_PREFERENCES.each do |app_preference|
+    system "defaults export #{app_preference} #{EXPORT_DIR}/#{app_preference}.plist"
+  end
+end
+
+def error_with_message(message)
+  puts message
+  exit 1
+end
+
+def destination_dir_exists?
+  Dir.exist?(EXPORT_DIR)
+end
+
+def plists_exists?
+  Dir.glob("#{EXPORT_DIR}/*.plist").any?
+end
+
+case ARGV.first
+when 'import'
+  import
+when 'export'
+  export
 else
-  echo "option '$1' unknown. $USAGE"
-fi
+  puts 'USAGE: plist import|export'
+  exit
+end
