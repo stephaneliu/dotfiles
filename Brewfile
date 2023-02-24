@@ -17,8 +17,8 @@ tap 'homebrew/core'
 tap 'homebrew/services' # `brew services restart postgres`, etc
 tap 'thoughtbot/formulae'
 tap 'cooklang/tap'
+tap 'jdxcode/tap'
 
-brew 'asdf'
 brew 'autojump'
 brew 'bat'                         # cat with wings = bat (cat with syntax color) - https://github.com/sharkdp/bat
 brew 'cheat'                       # Terminal cheatsheets - https://github.com/cheat/cheat
@@ -44,6 +44,7 @@ brew 'neovim'
 brew 'procs'                       # Better unix: better ps
 brew 'reattach-to-user-namespace'
 brew 'ripgrep'
+brew 'rtx'                         # asdf written in Rust. No shims
 brew 'ruby-install'
 brew 'terminal-notifier'           # programatically send messages to notifications
 brew 'the_silver_searcher'         # a better ack/grep

@@ -3,8 +3,8 @@ bundle config set --global jobs 4
 bundle config set --global retry 3
 
 echo "Installing latest Ruby"
-asdf plugin add ruby https://github.com/asdf-vm/asdf-ruby.git
-asdf install ruby latest
+eval "$(rtx activate zsh)"
+rtx install ruby latest
 
 echo "Setting up solargraph for vim"
 gem install solargraph
