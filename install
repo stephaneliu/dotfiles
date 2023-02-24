@@ -108,6 +108,8 @@ done
 echo "Restoring application preferences"
 $HOME/bin/plist import
 
-echo "###### TODO ######"
-echo "Update .zsh/npm.zsh token from 1Password"
+# If this fails, read https://support.1password.com/docs/cli/get-started
+echo "Creating npm token from 1Password"
+echo $(op read op://Private/NPM\ token/notesPlain) > $HOME/.zsh/npm.zsh
+
 echo "Done!"
