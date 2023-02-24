@@ -20,7 +20,7 @@ let g:ale_fixers = {
 let g:ale_fix_on_save = 1
 " Only run linters named in ale_linters settings
 " https://github.com/dense-analysis/ale/blob/ed8104b6ab10f63c78e49b60d2468ae2656250e9/README.md#5i-how-do-i-disable-particular-linters
-let g:ale_linters_explicit = 1
+" let g:ale_linters_explicit = 1
 
 function! LinterStatus() abort
   let l:counts = ale#statusline#Count(bufnr(''))
