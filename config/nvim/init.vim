@@ -1,6 +1,8 @@
 set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath=&runtimepath
 
+let mapleader=","
+
 " Stolen wholesale from christoomey, whose dotfiles you really should check out:
 " https://github.com/christoomey/dotfiles
 function! s:SourceConfigFilesIn(directory)
@@ -12,28 +14,13 @@ function! s:SourceConfigFilesIn(directory)
   endfor
 endfunction
 
-function! s:LoadPlugins()
-  " set the runtime path to include Vundle and initialize
-  set rtp+=~/.vim/bundle/Vundle.vim
-  call vundle#begin('~/.vim/bundle')
-  " Must rename file because Vundle complains when it is loaded later ins
-  source ~/.vim/init_plugins " file to manage plugins
-  " source `~/.vim/plugins/*`
-  " For example, `~/.vim/plugins/ruby.vim` is symlinked to `tag-ruby/vim/plugins/ruby.vim`
-  call s:SourceConfigFilesIn('plugins')
-  call vundle#end()
-endfunction
-
-let mapleader=","  " maps leader from \" (double quote) to ,
-
-call s:LoadPlugins()
-
-" vundle loads all the file-type, syntax and color scheme files, so turn them
-" on after loading plugins
+call plug#begin('~/.vim/bundle')
+call s:SourceConfigFilesIn('rcplugins')
+call plug#end()
 
 filetype plugin indent on " required
+syntax enable " Must be before configuring plugins which configures syntax highlighting color
 
 call s:SourceConfigFilesIn('')
-call s:SourceConfigFilesIn('functions')
-syntax enable " Must be before configuring plugins which configures syntax highlighting color
-call s:SourceConfigFilesIn('rcplugins')
+
+colorscheme NeoSolarized
