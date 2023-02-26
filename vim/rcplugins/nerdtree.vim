@@ -1,3 +1,5 @@
+Plug 'scrooloose/nerdtree'
+
 let NERDTreeQuitOnOpen = 1                            " NERDTree config
 let NERDTreeShowHidden = 1
 

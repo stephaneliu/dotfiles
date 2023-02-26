@@ -1,0 +1,1 @@
+Plug 'alvan/vim-closetag'

@@ -1,3 +1,5 @@
+Plug 'godlygeek/tabular.git'
+
 vmap <Leader>a= :Tabularize /^[^=]*\zs=/l1<CR>
 vmap <Leader>ae :Tabularize /^[^=]*\zs=/l1<CR>
 vmap <Leader>a: :Tabularize /^[^\ s+]*\zs,/r0l0l0<CR>
