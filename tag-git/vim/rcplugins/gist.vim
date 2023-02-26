@@ -1,3 +1,5 @@
+Plug 'mattn/gist-vim'
+
 let g:gist_open_browser_after_post = 1
 " Copy the URL after gisting
 let g:gist_clip_command = 'pbcopy'

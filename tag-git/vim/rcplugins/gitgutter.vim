@@ -1,3 +1,5 @@
+Plug 'airblade/vim-gitgutter'
+
 let g:gitgutter_highlight_lines = 1
 map <leader>ggh :GitGutterLineHighlightsToggle<CR>
 map <leader>ggf :GitGutterFold<CR>

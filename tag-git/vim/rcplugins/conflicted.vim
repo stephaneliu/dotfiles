@@ -1,3 +1,5 @@
+Plug 'christoomey/vim-conflicted'
+
 set stl+=%{ConflictedVersion()}
 " Resolve and move to next conflicted file
 nnoremap ]m :GitNextConflict<cr>
