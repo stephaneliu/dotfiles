@@ -28,17 +28,6 @@ bind C-s split-window -v -c "#{pane_current_path}"\; resize-pane -y 35%
 bind v split-window -h -c "#{pane_current_path}" \; resize-pane -x 38%
 bind C-v split-window -h -c "#{pane_current_path}" \; resize-pane -x 38%
 
-# navigate panes with hjkl
-bind h select-pane -L
-bind j select-pane -D
-bind k select-pane -U
-bind l select-pane -R
-
-bind C-h select-pane -L \; resize-pane -R 1000
-bind C-j select-pane -D \; resize-pane -y 35%
-bind C-k select-pane -U \; resize-pane -D 1000
-bind C-l select-pane -R \; resize-pane -x 38%
-
 # resize panes like vim
 # -r option makes it repeatable
 bind -r H resize-pane -L 5
