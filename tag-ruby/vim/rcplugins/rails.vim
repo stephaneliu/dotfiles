@@ -1,3 +1,5 @@
+Plug 'tpope/vim-rails'
+
 " Rails Projections -  help rails-projections
 
 " `%s`: `{}` (Original)
