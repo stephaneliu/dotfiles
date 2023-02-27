@@ -102,6 +102,9 @@ until [ -f "$HOME/.env.private" ]; do
   fi
 done
 
+echo "Installing MonoLisa fonts"
+cp -r $HOME/Documents/resource/Software/fonts/MonoLisa-basic-2.005-ttf/ttf/*.ttf $HOME/Library/Fonts
+
 echo "Restoring application preferences"
 $HOME/bin/plist import
 
