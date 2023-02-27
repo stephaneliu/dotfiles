@@ -12,16 +12,16 @@ case $hour_of_day in
   00 | 01 | 02 | 03 | 04)
     hour_color=$night_color
     ;;
-  05 | 06 | 07 | 08 | 09)
+  05 | 06 | 07 | 08 | 09 | 10 )
     hour_color=$morning_color
     ;;
-  10 | 11 | 12 | 13 | 14 | 15 | 16)
+  11 | 12 | 13 | 14 | 15 )
     hour_color=$afternoon_color
     ;;
-  17 | 18 | 19 )
+  16 | 17 | 18 )
     hour_color=$sunset_color
     ;;
-  20 | 21 | 22 | 23 | 24)
+  19 | 20 | 21 | 22 | 23 | 24)
     hour_color=$night_color
     ;;
 esac
