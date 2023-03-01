@@ -24,3 +24,5 @@
 /config/definition.rb
 
 .trash
+
+.solargraph.yml
