@@ -31,17 +31,6 @@ alias rcdn='rcdn -v'
 alias screencast='ffmpeg -f x11grab -r 25 -s 1600x1200 -i :0.0 ~/tmp/output.mpg'
 alias ssh='TERM=xterm ssh'
 alias terminal-notifier='reattach-to-user-namespace terminal-notifier'
-alias tmux="tmux -2"
-t() {
-  # session with name $1 or focus
-  session_name=${1:-focus}
-
-  if tmux list-sessions 2>/dev/null | grep -q ${session_name}; then
-    tmux -2 attach-session -t $session_name
-  else
-    tmux -2 new -t $session_name
-  fi
-}
 alias version='bat /etc/issue'
 alias vim="echo \"Use v\""
 alias v='nvim +OpenSession'
