@@ -1,3 +1,0 @@
-#!/bin/sh
-
-aws-google-auth -u $AWS_SSO_USER -k -R $AWS_SSO_REGION --idp-id $AWS_SSO_IDP -S $AWS_SSO_S -r $AWS_SSO_R -p default

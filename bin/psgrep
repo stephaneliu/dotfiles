@@ -1,1 +1,1 @@
-ps up $(pgrep -f $@) 2>&-
+echo "Use pgrep [process]"
