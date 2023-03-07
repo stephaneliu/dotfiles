@@ -45,6 +45,13 @@ grbi() {
   OVERCOMMIT_DISABLE=1 git rebase -i HEAD~$1
 }
 
+# [g]it [c]ommit [r]e[b]ase
+# Make a commit with the intent on rebasing & squashing it later
+# Needs a reference to the commit you are squashing with
+gcrb() {
+  git commit -m "**** Squash with $1 ****"
+}
+
 # Complete g like git
 compdef g=git
 compdef _git gad=git-add
