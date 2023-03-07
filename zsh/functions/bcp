@@ -1,4 +1,5 @@
 #! /bin/sh
+
 # Delete (one or multiple) selected application(s)
 # mnemonic [B]rew [C]lean [P]lugin (e.g. uninstall)
 bcp() {
