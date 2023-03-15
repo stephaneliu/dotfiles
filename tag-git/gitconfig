@@ -103,6 +103,8 @@
   autosquash = true
 [rerere]
 	enabled = true
+[push]
+  autoSetupRemote = true
 [user]
 	email = 64043+stephaneliu@users.noreply.github.com
   name = Stephane Liu
