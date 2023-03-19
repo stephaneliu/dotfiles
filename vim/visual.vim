@@ -2,8 +2,6 @@ if has('gui_running')
   set guioptions-=T                 " hide the toolbar - who uses it anyways?
 endif
 
-" use mouse to copy without line numbers in terminal
-set mouse=a
 " set statusline=%t\ %y\ format:\ %{&ff};\ [%c,%l]
 
 set showcmd
