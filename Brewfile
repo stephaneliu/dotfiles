@@ -11,6 +11,7 @@
 # Versioning is not a feature of brew bundle. Only the latest version is installed
 
 tap 'homebrew/cask'
+tap 'buo/cask-upgrade' # Fix cask upgrade when exists
 tap 'homebrew/cask-fonts'
 tap 'homebrew/command-not-found'
 tap 'homebrew/core'
@@ -23,6 +24,7 @@ brew 'autojump'
 brew 'bat'                         # cat with wings = bat (cat with syntax color) - https://github.com/sharkdp/bat
 brew 'cheat'                       # Terminal cheatsheets - https://github.com/cheat/cheat
 brew 'chruby'
+brew 'cmake'                       # Ruby native extensions
 brew 'cmatrix'
 brew 'colordiff'                   # colorful diffs (alias diff='colordiff -u')
 brew 'cooklang/tap/cook'
@@ -34,13 +36,15 @@ brew 'git'
 brew 'git-delta'                   # Syntax highlighter for git, diff, & grep - https://github.com/dandavison/delta
 brew 'gitsh'
 brew 'gpg'
-brew 'gh'                          # Fast GitHub client released in 2020
+brew 'gh'                          # Fast GitHub client released in 2022
+brew 'helix'
 brew 'jq'                          # Lightweight and flexible command-line JSON processor
 brew 'imagemagick'                 # Dependency for Lolcommits
 brew 'libpq'
 brew 'lsd'                         # Better Unix: better ls
 brew 'mas'                         # Mac appstore cli
 brew 'neovim'
+brew 'pkg-config'                  # Ruby native extensions
 brew 'procs'                       # Better unix: better ps
 brew 'reattach-to-user-namespace'
 brew 'ripgrep'
@@ -68,28 +72,28 @@ unless /zsh$/.match?(ENV.fetch('SHELL', ''))
   puts '  chsh -s $(brew --prefix)/bin/zsh'
 end
 
-cask '1password' unless system 'ls /Applications/1Password*'
-cask 'alfred' unless system 'ls /Applications/Alfred*'
-cask 'app-cleaner' unless system 'ls /Applications/AppCleaner*'
-cask 'cron' unless system 'ls /Applications/Cron*'
-cask 'dash' unless system 'ls /Applications/Dash.app'
-cask 'divvy' unless system 'ls /Applications/Divvy.app'
-cask 'docker' unless system 'ls /Applications/Docker.app'
+cask '1password'
+cask 'app-cleaner' unless system 'ls /Applications/AppCleaner*' # Version is free legacy
+cask 'cron'
+cask 'dash'
+cask 'divvy'
+cask 'docker'
 cask 'font-hack-nerd-font'
 cask 'font-jetbrains-mono-nerd-font'
 cask 'gpg-suite-no-mail'
-cask 'graphiql' unless system 'ls /Applications/GraphiQL.app'
-cask 'kindavim' unless system 'ls /Applications/kindaVim.app'
-cask 'kitty' unless system 'ls /Applications/Kitty.app'
-cask 'readdle-spark' unless system 'ls /Applications/Spark*'
-cask 'rocket' unless system 'ls /Applications/Rocket*' # emoji helper
-cask 'tailscale' unless system 'ls /Applications/Tailscale.app' # zero trust network
-cask 'iterm2'
+cask 'graphiql'
+cask 'kap'
+cask 'kindavim'
+cask 'kitty'
+cask 'raycast'
+cask 'readdle-spark'
+cask 'rocket'
+cask 'tailscale'
 cask 'karabiner-elements'
 cask 'keycastr' # dispaly keystrokes for screencasts
 cask 'numi'
-cask 'pushplaylabs-sidekick' unless system 'ls /Applications/Sidekick.app'
-cask 'via' unless system 'ls /Applications/VIA.app'
+cask 'pushplaylabs-sidekick'
+cask 'ultimaker-cura'
 
 # CLI: mas search [app]
 # Returns app name and app id
