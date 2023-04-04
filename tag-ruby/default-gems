@@ -1,7 +1,9 @@
 bundler
+dip
+git_fame
+neovim
 pry
 solargraph
 tmuxinator
-tty-prompt
 tty-command
-neovim
+tty-prompt
