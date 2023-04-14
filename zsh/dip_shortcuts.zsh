@@ -15,7 +15,23 @@ function drc() {
   fi
 }
 
-alias dsh="dip sh"
+function dsh() {
+  local restart=0 && [[ "$1" == "-r" ]] && restart=1
+
+  local sh_id=$(docker ps --format "{{.ID}}-{{.Command}}" | grep bin/bash | cut -d '-' -f 1)
+
+  if [ "$(docker ps -a -q -f id=$sh_id)" ]; then
+    if [ $restart -gt 0 ]; then
+      echo "Restarting shell container"
+      docker stop $sh_id > /dev/null && dip sh
+    else
+      docker exec -it $sh_id /bin/bash
+    fi
+  else
+    dip sh
+  fi
+}
+
 alias dg="dip guard"
 alias dr="dip rails"
 alias drs="dip compose up -d sidekiq webpacker && dip rails s"
