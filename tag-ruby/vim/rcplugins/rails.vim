@@ -361,7 +361,7 @@ let g:rails_projections = {
   \ "app/models/concerns/*.rb": {
   \   "command":   "concern",
   \   "test":      "spec/model/concerns/{singular}_spec.rb",
-  \   "template":  "# frozen_string_literal: true\n\nmodule {camelcase|capitalize|colons}\n  extend ActiveSupport::Concern\n\n  included do\n    #something interesting\n  end\nend"
+  \   "template":  "# frozen_string_literal: true\n\nmodule {camelcase|capitalize|colons}\n  extend ActiveSupport::Concern\n\n  included do\n    # something interesting\n  end\nend"
   \ },
   \ "app/nulls/*.rb": {
   \   "command":   "null",
