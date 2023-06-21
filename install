@@ -2,7 +2,6 @@
 
 # Exits immediately on error
 # set -e # disabled until script is stabilized
-cd ~
 
 if xcode-select --version >/dev/null 2>&1; then
   echo "Xcode command line tools already installed"
@@ -42,11 +41,7 @@ fi
 echo "Installing Homebrew packages"
 brew update
 brew tap homebrew/bundle
-echo "ls .dotfiles"
-ls -alh ~/
-echo "how about pwd"
-echo $PWD
-brew bundle --file=$HOME/.dotfiles/Brewfile
+brew bundle --file=.dotfiles/Brewfile
 
 # export PATH=$(brew --prefix)/bin:$PATH
 #
