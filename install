@@ -10,51 +10,33 @@ else
   xcode-select --install
 
   if ! [[ -z "$TEST" ]]; then
-    if xcode-select --version >/dev/null 2>&1; then
-      echo "xcode installed correctly"
-    else
-      echo "xcode did not install correctly"
-      exit 1
-    fi
+    .dotfiles/test/xcode_test
   fi
 fi
-
-
-echo "Installing Homebrew"
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
 
 if brew --version >/dev/null 2>&1; then
   echo "Homebrew already installed"
 else
   echo "Installing Homebrew"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
   if ! [[ -z "$TEST" ]]; then
-    if brew --version >/dev/null 2>&1; then
-      echo "Homebrew installed correctly"
-    else
-      echo "Homebrew did not install correctly"
-      exit 1
-    fi
+    .dotfiles/test/homebrew_test
   fi
 fi
 
-echo "Installing Homebrew packages"
-brew update
-brew tap homebrew/bundle
-brew bundle --file=.dotfiles/Brewfile
+# We'll 'assume' homebrew just works to reduce test duration
+if [[ -z "$TEST" ]]; then
+  echo "Installing Homebrew packages"
+  brew update
+  brew tap homebrew/bundle
+  brew bundle --file=.dotfiles/Brewfile
+fi
 
 # export PATH=$(brew --prefix)/bin:$PATH
-#
-# # Link libpq to /usr/local/bin
-#
-# # Before `rcup` runs, there is no ~/.rcrc, so we must tell `rcup` where to look.
-# # We need the rcrc because it tells `rcup` to ignore thousands of useless Vim
-# # backup files that slow it down significantly.
-# # Pass -v flag to run with verbose
-# cd $HOME
-#
-# echo "Linking dotfiles into $HOME"
-# RCRC=$HOME/.dotfiles/rcrc rcup -f
+# echo "Linking dotfiles"
+# RCRC=.dotfiles/rcrc rcup -fv
+
 #
 # echo "Installing vim-plug"
 # sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
