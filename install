@@ -39,7 +39,11 @@ fi
 export PATH=$(brew --prefix)/bin:$PATH
 
 echo "Linking dotfiles"
-RCRC=.dotfiles/rcrc rcup -f
+RCRC=.dotfiles/rcrc rcup -fv
+
+if ! [[ -z "$TEST" ]]; then
+  .dotfiles/test/rcm_test
+fi
 
 
 echo "Installing vim-plug"
