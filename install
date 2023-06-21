@@ -33,9 +33,10 @@ if [[ -z "$TEST" ]]; then
   brew bundle --file=.dotfiles/Brewfile
 fi
 
-# export PATH=$(brew --prefix)/bin:$PATH
-# echo "Linking dotfiles"
-# RCRC=.dotfiles/rcrc rcup -fv
+export PATH=$(brew --prefix)/bin:$PATH
+
+echo "Linking dotfiles"
+RCRC=.dotfiles/rcrc rcup -f
 
 #
 # echo "Installing vim-plug"
