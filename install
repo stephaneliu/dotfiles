@@ -44,6 +44,8 @@ brew update
 brew tap homebrew/bundle
 echo "ls .dotfiles"
 ls -alh ~/
+echo "how about pwd"
+echo $PWD
 brew bundle --file=$HOME/.dotfiles/Brewfile
 
 # export PATH=$(brew --prefix)/bin:$PATH
