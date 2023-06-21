@@ -25,13 +25,10 @@ if ! [[ -z "$TEST" ]]; then
   .dotfiles/test/homebrew_test
 fi
 
-# We'll 'assume' homebrew just works to reduce test duration
-if [[ -z "$TEST" ]]; then
-  echo "Installing Homebrew packages"
-  brew update
-  brew tap homebrew/bundle
-  brew bundle --file=.dotfiles/Brewfile
-fi
+echo "Installing Homebrew packages"
+brew update
+brew tap homebrew/bundle
+brew bundle --file=.dotfiles/Brewfile
 
 export PATH=$(brew --prefix)/bin:$PATH
 
