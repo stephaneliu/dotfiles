@@ -2,6 +2,11 @@
 
 Host hicrane
   HostName 173.255.254.99
+  HostKeyAlgorithms +ssh-rsa
   Port 8383
   User deployer
-  IdentityFile ~/.ssh/id_hcr_rsa
+  IdentityFile ~/.ssh/hicrane
+Host lish
+  HostName lish-us-west.linode.com
+  User stephaneliu
+  IdentityFile ~/.ssh/linode_lish
