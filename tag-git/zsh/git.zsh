@@ -10,7 +10,7 @@ function g {
 alias 'g-'='git co -'
 alias gad='git add --patch'
 alias gap='git add --patch'
-alias gbr='git br'
+alias gbr='git for-each-ref --color=always --sort=-committerdate refs/heads/ --format="%(color:bold green)%(committerdate:relative)%09%(color:bold yellow)%(refname:short)%(color:normal)" | tac'
 alias gcl='git clone'
 alias gco='git checkout'
 alias gci='git commit'
