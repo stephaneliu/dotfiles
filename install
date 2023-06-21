@@ -23,6 +23,18 @@ if ! [[ -z "$TEST" ]]; then
   fi
 fi
 
+echo "Installing Homebrew"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+
+if ! [[ -z "$TEST" ]]; then
+  if brew --version >/dev/null 2>&1; then
+    echo "Homebrew installed correctly"
+  else
+    echo "Homebrew did not install correctly"
+    exit 1
+  fi
+fi
 #
 # echo "Installing Homebrew packages"
 # brew update
