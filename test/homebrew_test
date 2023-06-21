@@ -1,8 +1,8 @@
 if ! [[ -z "$TEST" ]]; then
   if brew --version >/dev/null 2>&1; then
-    echo "Homebrew installed correctly"
+    echo "+++ Homebrew installed correctly"
   else
-    echo "Homebrew did not install correctly"
+    echo "*** Homebrew did not install correctly"
     exit 1
   fi
 fi

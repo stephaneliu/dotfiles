@@ -1,6 +1,6 @@
 if xcode-select --version >/dev/null 2>&1; then
-  echo "xcode installed correctly"
+  echo "+++ xcode installed correctly"
 else
-  echo "xcode did not install correctly"
+  echo "*** xcode did not install correctly"
   exit 1
 fi
