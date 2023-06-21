@@ -7,6 +7,7 @@ else
   ls -alh ~/
   ls -alh ./
   ls -alh .dotfiles
+  echo "Current dir $PWD"
   exit 1
 fi
 
