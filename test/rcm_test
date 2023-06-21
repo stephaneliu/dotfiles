@@ -10,6 +10,8 @@ else
   echo "Current dir $PWD"
   echo "Previous dir"
   ls -alh ../
+  echo "Previous previous dir"
+  ls -alh ../../
   exit 1
 fi
 
