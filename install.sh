@@ -64,6 +64,7 @@ handle_file_ln() {
   $LN -sf "$1" "$2"
 }
 echo "*** PWD: $PWD"
+echo "which ln: $(which ln)"
 
 handle_file_ln "$PWD/.dotfiles/tag-git/git-template/commit_template.txt" "~/.git-template/commit_template.txt"
 handle_file_ln "$PWD/.dotfiles/tag-git/git-template/hooks/lolcommits" "~/.git-template/hooks/lolcommits"
