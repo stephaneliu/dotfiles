@@ -25,10 +25,16 @@ if ! [[ -z "$TEST" ]]; then
   .dotfiles/test/homebrew_test
 fi
 
-echo "Installing Homebrew packages"
-brew update
-brew tap homebrew/bundle
-brew bundle --file=.dotfiles/Brewfile
+# Don't install anything if this is a test run
+if [[ -z "$TEST" ]]; then
+  echo "Installing Homebrew packages"
+  brew update
+  brew tap homebrew/bundle
+  brew bundle --file=.dotfiles/Brewfile
+else
+  brew install rcm
+  brew install nvim
+fi
 
 export PATH=$(brew --prefix)/bin:$PATH
 
