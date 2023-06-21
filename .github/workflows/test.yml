@@ -7,7 +7,6 @@ on:
 
 jobs:
   test:
-    env:
     runs-on: macos-latest
 
     steps:
