@@ -38,6 +38,10 @@ fi
 
 export PATH=$(brew --prefix)/bin:$PATH
 
+if ! [[ -z "$TEST" ]]; then
+  .dotfiles/test/rcup_test
+fi
+
 echo "Linking dotfiles"
 RCRC=.dotfiles/rcrc rcup -fv
 

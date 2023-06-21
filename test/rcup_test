@@ -1,0 +1,6 @@
+if command -v rcup $> /dev/null; then
+  echo "+++ rcup installed correctly"
+else
+  echo "*** rcup did not install correctly"
+  exit 1
+fi
