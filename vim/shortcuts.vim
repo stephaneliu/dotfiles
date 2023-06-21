@@ -30,7 +30,6 @@ nmap <C-j> <C-w>j
 nmap <C-k> <C-w>k
 nmap <C-l> <C-w>l
 nmap <C-h> <C-w>h
-nmap <C-k> <C-w>k
 
 " simplify tabbed navigation with shift
 nmap <S-H> gT

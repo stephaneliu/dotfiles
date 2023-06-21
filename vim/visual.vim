@@ -46,4 +46,7 @@ set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P  " show
 
 set conceallevel=0                  " Prevents markdown from being hidden - i.e. expands hyperlinks
 
-nmap <leader>qm :resize 40<CR>
+" (q)uickfix (l)arge
+nmap <leader>ql :resize 40<CR>
+" (q)uickfix (s)mall
+nmap <leader>qs :resize 90<CR>
