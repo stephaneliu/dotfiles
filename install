@@ -3,47 +3,47 @@
 # Exits immediately on error
 # set -e # disabled until script is stabilized
 cd ~
-install_dir=~
-
-echo "install_dir: $install_dir"
 
 if xcode-select --version >/dev/null 2>&1; then
   echo "Xcode command line tools already installed"
 else
   echo "Installing Xcode command line tools"
   xcode-select --install
-fi
 
-if ! [[ -z "$TEST" ]]; then
-  if xcode-select --version >/dev/null 2>&1; then
-    echo "xcode installed correctly"
-  else
-    echo "xcode did not install correctly"
-    exit 1
+  if ! [[ -z "$TEST" ]]; then
+    if xcode-select --version >/dev/null 2>&1; then
+      echo "xcode installed correctly"
+    else
+      echo "xcode did not install correctly"
+      exit 1
+    fi
   fi
 fi
+
 
 echo "Installing Homebrew"
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 
-if ! [[ -z "$TEST" ]]; then
-  if brew --version >/dev/null 2>&1; then
-    echo "Homebrew installed correctly"
-  else
-    echo "Homebrew did not install correctly"
-    exit 1
+if brew --version >/dev/null 2>&1; then
+  echo "Homebrew already installed"
+else
+  echo "Installing Homebrew"
+  if ! [[ -z "$TEST" ]]; then
+    if brew --version >/dev/null 2>&1; then
+      echo "Homebrew installed correctly"
+    else
+      echo "Homebrew did not install correctly"
+      exit 1
+    fi
   fi
 fi
-#
-# echo "Installing Homebrew packages"
-# brew update
-# brew tap homebrew/bundle
-# brew bundle
-# for brewfile in */Brewfile; do
-#   brew bundle --file="$brewfile"
-# done
-#
+
+echo "Installing Homebrew packages"
+brew update
+brew tap homebrew/bundle
+brew bundle --file=$HOME/.dotfiles/Brewfile
+
 # export PATH=$(brew --prefix)/bin:$PATH
 #
 # # Link libpq to /usr/local/bin
