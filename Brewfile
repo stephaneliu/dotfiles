@@ -16,7 +16,6 @@ tap 'homebrew/cask-fonts'
 tap 'homebrew/command-not-found'
 tap 'homebrew/core'
 tap 'homebrew/services' # `brew services restart postgres`, etc
-tap 'thoughtbot/formulae'
 tap 'cooklang/tap'
 tap 'jdxcode/tap'
 
@@ -54,7 +53,7 @@ brew 'rtx'                         # asdf written in Rust. No shims
 brew 'ruby-install'
 brew 'terminal-notifier'           # programatically send messages to notifications
 brew 'the_silver_searcher'         # a better ack/grep
-brew 'thoughtbot/formulae/rcm'
+brew 'rcm'
 brew 'tldr'                        # man pages implemented in rust - `tldr ssh`
 brew 'tmux'
 brew 'universal-ctags'             # so :Rtags works
@@ -91,6 +90,6 @@ cask 'ultimaker-cura'
 # CLI: mas search [app]
 # Returns app name and app id
 # mas install [app_id]
-mas 'Hand Mirror', id: 1_502_839_586
-mas 'Magnet', id: 441_258_766
-mas 'Marked 2', id: 890_031_187
+mas 'Hand Mirror', id: 1502839586
+mas 'Magnet', id: 441258766
+mas 'Marked 2', id: 890031187
