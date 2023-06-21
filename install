@@ -32,6 +32,7 @@ if [[ -z "$TEST" ]]; then
   brew tap homebrew/bundle
   brew bundle --file=.dotfiles/Brewfile
 else
+  # Test Dependencies
   brew install neovim
 fi
 

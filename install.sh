@@ -65,6 +65,9 @@ handle_file_ln() {
 }
 echo "*** PWD: $PWD"
 
+echo "*** cat template"
+cat .dotfiles/tag-git/git-template/commit_template.txt
+
 handle_file_ln ".dotfiles/tag-git/git-template/commit_template.txt" "~/.git-template/commit_template.txt"
 handle_file_ln ".dotfiles/tag-git/git-template/hooks/lolcommits" "~/.git-template/hooks/lolcommits"
 handle_file_ln ".dotfiles/tag-git/git-template/hooks/post-checkout" "~/.git-template/hooks/post-checkout"
