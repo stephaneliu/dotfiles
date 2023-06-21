@@ -33,7 +33,8 @@ if [[ -z "$TEST" ]]; then
   brew bundle --file=.dotfiles/Brewfile
 else
   # Test Dependencies
-  brew install neovim
+  # brew install neovim
+  brew install rtx
 fi
 
 export PATH=$(brew --prefix)/bin:$PATH
