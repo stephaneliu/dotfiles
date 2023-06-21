@@ -42,6 +42,8 @@ fi
 echo "Installing Homebrew packages"
 brew update
 brew tap homebrew/bundle
+echo "ls .dotfiles"
+ls -alh ~/
 brew bundle --file=$HOME/.dotfiles/Brewfile
 
 # export PATH=$(brew --prefix)/bin:$PATH
