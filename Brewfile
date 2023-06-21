@@ -40,9 +40,11 @@ brew 'gh'                          # Fast GitHub client released in 2022
 brew 'helix'
 brew 'jq'                          # Lightweight and flexible command-line JSON processor
 brew 'imagemagick'                 # Dependency for Lolcommits
-brew 'libpq'
+brew 'libpq'                       # pg client https://formulae.brew.sh/formula/libpq
+brew 'lnav'                        # Log file navigator - https://lnav.org/
 brew 'lsd'                         # Better Unix: better ls
 brew 'mas'                         # Mac appstore cli
+brew 'mdcat'                       # View markdown in kitty - `mdcat README.md`
 brew 'neovim'
 brew 'pkg-config'                  # Ruby native extensions
 brew 'procs'                       # Better unix: better ps
@@ -86,7 +88,6 @@ cask 'kap'
 cask 'kitty'
 cask 'raycast'
 cask 'readdle-spark'
-cask 'rocket'
 cask 'tailscale'
 cask 'karabiner-elements'
 cask 'keycastr' # dispaly keystrokes for screencasts
