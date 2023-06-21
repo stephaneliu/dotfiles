@@ -1,4 +1,4 @@
-EXCLUDES="system README.md install setup LICENSE-MIT.txt utils"
+EXCLUDES="system README.md install LICENSE-MIT.txt setup test utils Brewfile.lock.json"
 SYMLINK_DIRS="bundle backups undodir"
 UNDOTTED='bin Brewfile'
 TAGS="git ruby tmux"

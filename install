@@ -1,115 +1,156 @@
 #!/bin/sh
 
 # Exits immediately on error
-# set -e # disabled until script is stabilized
-install_dir=$PWD
-unset GIT_SSL_CERT
+set -e
 
-echo "Installing Homebrew packages"
-brew update
-brew tap homebrew/bundle
-brew bundle
-for brewfile in */Brewfile; do
-  brew bundle --file="$brewfile"
-done
+
+test() {
+  if ! [[ -z "$TEST" ]]; then
+    $1
+  fi
+}
+
+if xcode-select --version >/dev/null 2>&1; then
+  echo "+++ Xcode command line tools already installed"
+else
+  echo "+++ Installing Xcode command line tools"
+  xcode-select --install
+fi
+
+test $HOME/.dotfiles/test/xcode_test
+
+if brew --version >/dev/null 2>&1; then
+  echo "+++ Homebrew already installed"
+else
+  echo "+++ Installing Homebrew"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+
+test $HOME/.dotfiles/test/homebrew_test
+
+# Don't install anything if this is a test run
+if [[ -z "$TEST" ]]; then
+  echo "+++ Installing Homebrew packages"
+  brew update
+  brew tap homebrew/bundle
+  brew bundle --file=$HOME/.dotfiles/Brewfile
+else
+  # Test Dependencies
+  brew install -q neovim
+  brew install -q rtx
+  brew install -q rcm
+fi
+
+test $HOME/.dotfiles/test/rcup_test
 
 export PATH=$(brew --prefix)/bin:$PATH
 
-# Link libpq to /usr/local/bin
-
-# Before `rcup` runs, there is no ~/.rcrc, so we must tell `rcup` where to look.
-# We need the rcrc because it tells `rcup` to ignore thousands of useless Vim
-# backup files that slow it down significantly.
-# Pass -v flag to run with verbose
+# activate submodule before running rcup so submodules link correctly
+cd $HOME/.dotfiles
+echo "+++ Updating git submodules"
+git submodule update
 cd $HOME
 
-echo "Linking dotfiles into $HOME"
-RCRC=$HOME/.dotfiles/rcrc rcup -f
+test $HOME/.dotfiles/test/git_submodule_test
 
-echo "Installing vim-plug"
+echo "+++ Linking dotfiles"
+RCRC=$HOME/.dotfiles/rcrc rcup -fq
+
+# Create git ignored directory
+echo "+++ Creating git ignored directory, .vim/bundle"
+mkdir -p $HOME/.vim/bundle
+
+test $HOME/.dotfiles/test/rcm_test
+
+echo "+++ Installing vim-plug"
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
-echo "Installing Vim packages"
-vi +PlugInstall +qa
+echo "+++ Installing Vim packages"
+# shada file, .viminfo, is owned by root on GH CI. Set -i NONE does not read or write to shada file
+nvim --headless -i NONE +PlugInstall +qa
 
-cd $HOME
-echo "Enahancing Rails intellisence for solargraph"
+echo "+++ Install Github Copilot"
+nvim --headless -i +CopilotInstall +qa
+
+echo "+++ Enahancing Rails intellisence for solargraph"
 if [ ! -d $HOME/code/rails-intellisence-in-solargraph-enhancement ]; then
-  mkdir $HOME/code/rails-intellisence-in-solargraph-enhancement
+  mkdir -p $HOME/code/rails-intellisence-in-solargraph-enhancement
 fi
 git clone https://gist.github.com/castwide/28b349566a223dfb439a337aea29713e \
   $HOME/code/rails-intellisence-in-solargraph-enhancement
 
-echo "Installing TailwindCSS language server"
-yarn global add @tailwindcss/language-server
+# echo "+++ Installing TailwindCSS language server"
+# yarn global add @tailwindcss/language-server
 
-echo 'symlink ~/code/rails-intellisence-in-solargraph-enhancement/rails.rb into config/definition.rb \
+echo '+++ symlink ~/code/rails-intellisence-in-solargraph-enhancement/rails.rb into config/definition.rb \
   for each Rails project'
 
 if [ -d $HOME/.oh-my-zsh ]; then
-  echo "Oh-my-zsh already installed"
+  echo "+++ Oh-my-zsh already installed"
 else
-  echo "Installing oh-my-zsh"
+  echo "+++ Installing oh-my-zsh"
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-  echo "If changing shell (chsh) to zsh failed, sudo bash then 'chsh -s $(brew --prefix)/bin/zsh {user}'"
+  echo "+++ If changing shell (chsh) to zsh failed, sudo bash then 'chsh -s $(brew --prefix)/bin/zsh {user}'"
 
-  echo "Installing Powerlevel10k thems for Oh-my-zsh"
-  git clone https://github.com/romkatv/ppowerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+  test $HOME/.dotfiles/test/oh_my_zsh_test
+
+  echo "+++ Installing Powerlevel10k thems for Oh-my-zsh"
+  git clone https://github.com/romkatv/powerlevel10k $HOME/.oh-my-zsh/custom/themes/powerlevel10k
+
+  test $HOME/.dotfiles/test/oh_my_zsh_customizations_test
 fi
 
-cd ${install_dir}
-
-for setup in tag-*/setup; do
-  . "$setup"
-done
-
-echo "Install Github Copilot"
-vi +CopilotInstall +qa
-# Import iTerm profile with solarized colors and remap of meta key to Esc+ for <M-[> and <M-]> (next
-# and previouis suggestion to work in Copilot.
-# https://github.com/github-community/community/discussions/6862#discussioncomment-3012543
-cp $HOME/.dotfiles/iterm2/Solarized.itermcolors $HOME/Library/Application\ Support/iTerm2/DynamicProfiles/
 
 if [ ! -d $HOME/tmp ]; then
-  echo "Creating a tmp folder in $HOME"
+  echo "+++ Creating a tmp folder in $HOME"
   mkdir $HOME/tmp
 fi
 
-echo "Setting defaults for OSX"
-. ./system/osx-settings
+# Skip if running on CI
+if [[ -z "$TEST" ]]; then
+  for setup in $HOME/.dotfiles/tag-*/setup; do
+    . "$setup"
+  done
 
-count=0
+  echo "+++ Setting defaults for OSX"
+  . $HOME/.dotfiles/system/osx-settings
 
-until [ -f "$HOME/.env.private" ]; do
-  if [ $count -eq 0 ]; then
-    let count++
-    echo "Copy .private.env from 1Password to $HOME <ENTER|(q)uit>"
-    read response
+  count=0
 
-    if [ "$response" = "q" ]; then
-      echo "Quitting..."
-      exit 0
+  until [ -f "$HOME/.env.private" ]; do
+    if [ $count -eq 0 ]; then
+      let count++
+      echo "+++ Copy .private.env from 1Password to $HOME <ENTER|(q)uit>"
+      read response
+
+      if [ "$response" = "q" ]; then
+        echo "+++ Quitting..."
+        exit 0
+      fi
+    elif [ ! -f "$HOME/.env.private" ]; then
+      echo "+++ $HOME/.private.env could not be found. <ENTER|(q)uit>"
+      read response
+
+      if [ "$response" = "q" ]; then
+        echo "+++ Quitting..."
+        exit 0
+      fi
     fi
-  elif [ ! -f "$HOME/.env.private" ]; then
-    echo "$HOME/.private.env could not be found. <ENTER|(q)uit>"
-    read response
+  done
 
-    if [ "$response" = "q" ]; then
-      echo "Quitting..."
-      exit 0
-    fi
-  fi
-done
+  printf "%s " "Login into 1Password and let it synchronize. Press <ENTER> when done."
+  read response
 
-echo "Installing MonoLisa fonts"
-cp -r $HOME/Documents/resource/Software/fonts/MonoLisa-basic-2.005-ttf/ttf/*.ttf $HOME/Library/Fonts
+  # If this fails, read https://support.1password.com/docs/cli/get-started
+  echo "+++ Creating npm token from 1Password"
+  echo $(op read op://Private/NPM\ token/notesPlain) > $HOME/.zsh/npm.zsh
 
-echo "Restoring application preferences"
-$HOME/bin/plist import
+  echo "+++ Installing MonoLisa fonts"
+  cp -r $HOME/Documents/resource/Software/fonts/MonoLisa-basic-2.005-ttf/ttf/*.ttf $HOME/Library/Fonts
 
-# If this fails, read https://support.1password.com/docs/cli/get-started
-echo "Creating npm token from 1Password"
-echo $(op read op://Private/NPM\ token/notesPlain) > $HOME/.zsh/npm.zsh
+  echo "+++ Restoring application preferences"
+  $HOME/bin/plist import
+fi
 
-echo "Done!"
+echo "+++ Done!"

@@ -1,0 +1,8 @@
+test_reference="Homebrew"
+
+if brew --version >/dev/null 2>&1; then
+  echo "+++ $test_reference installed correctly"
+else
+  echo "*** $test_reference did not install correctly"
+  exit 1
+fi
