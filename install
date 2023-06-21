@@ -25,23 +25,28 @@ if ! [[ -z "$TEST" ]]; then
   .dotfiles/test/homebrew_test
 fi
 
-echo "Installing Homebrew packages"
-brew update
-brew tap homebrew/bundle
-brew bundle --file=.dotfiles/Brewfile
+if [[ -z "$TEST" ]]; then
+  echo "Installing Homebrew packages"
+  brew update
+  brew tap homebrew/bundle
+  brew bundle --file=.dotfiles/Brewfile
+else
+  brew tap thoughtbot/formulae
+  brew install thoughtbot/formulae/rcm
+fi
 
 export PATH=$(brew --prefix)/bin:$PATH
 
 echo "Linking dotfiles"
 RCRC=.dotfiles/rcrc rcup -f
 
-#
-# echo "Installing vim-plug"
-# sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-#        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-#
-# echo "Installing Vim packages"
-# vi +PlugInstall +qa
+
+echo "Installing vim-plug"
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+
+echo "Installing Vim packages"
+nvim +PlugInstall +qa
 #
 # cd $HOME
 # echo "Enahancing Rails intellisence for solargraph"
