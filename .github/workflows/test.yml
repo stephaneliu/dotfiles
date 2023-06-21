@@ -7,6 +7,8 @@ on:
 
 jobs:
   test:
+    env:
+      TEST: true
     runs-on: macos-latest
 
     steps:
