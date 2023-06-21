@@ -34,7 +34,8 @@ if [[ -z "$TEST" ]]; then
 else
   # Test Dependencies
   # brew install neovim
-  brew install rtx
+  # brew install rtx
+  echo
 fi
 
 export PATH=$(brew --prefix)/bin:$PATH

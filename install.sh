@@ -63,9 +63,15 @@ handle_file_ln() {
   verbose "mkdir $($DIRNAME "$2")"
   $MKDIR -p "$($DIRNAME "$2")"
   $LN -sf "$1" "$2"
+
+  if [ ! -e "$2" ]; then
+    echo "ln failed for $2"
+    exit
+  fi
 }
 echo "*** PWD: $PWD"
 echo "which ln: $(which ln)"
+echo "which mkdir: $(which mkdir)"
 
 handle_file_ln "$PWD/.dotfiles/tag-git/git-template/commit_template.txt" "~/.git-template/commit_template.txt"
 handle_file_ln "$PWD/.dotfiles/tag-git/git-template/hooks/lolcommits" "~/.git-template/hooks/lolcommits"
