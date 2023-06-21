@@ -137,7 +137,7 @@ handle_file_ln "$PWD/.dotfiles/config/kitty/font.conf" "~/.config/kitty/font.con
 handle_file_ln "$PWD/.dotfiles/config/kitty/grab.conf" "~/.config/kitty/grab.conf"
 handle_file_ln "$PWD/.dotfiles/config/kitty/hints.conf" "~/.config/kitty/hints.conf"
 handle_file_ln "$PWD/.dotfiles/config/kitty/kitty.conf" "~/.config/kitty/kitty.conf"
-handle_file_ln "$PWD/.dotfiles/config/kitty/kitty_grab/LICENSE" "~/.config/kitty/kitty_grab/LICENSE"
+# handle_file_ln "$PWD/.dotfiles/config/kitty/kitty_grab/LICENSE" "~/.config/kitty/kitty_grab/LICENSE"
 handle_file_ln "$PWD/.dotfiles/config/kitty/kitty_grab/_grab_ui.py" "~/.config/kitty/kitty_grab/_grab_ui.py"
 handle_file_ln "$PWD/.dotfiles/config/kitty/kitty_grab/grab-vim.conf.example" "~/.config/kitty/kitty_grab/grab-vim.conf.example"
 handle_file_ln "$PWD/.dotfiles/config/kitty/kitty_grab/grab.conf.example" "~/.config/kitty/kitty_grab/grab.conf.example"
