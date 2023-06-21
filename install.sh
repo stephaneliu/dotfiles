@@ -59,8 +59,8 @@ handle_file_ln() {
         ;;
     esac
   fi
-  verbose "'$1' -> '$2'"
   verbose "mkdir $($DIRNAME "$2")"
+  verbose "'$1' -> '$2'"
   $MKDIR -p "$($DIRNAME "$2")"
   $LN -sf "$1" "$2"
 
@@ -268,4 +268,4 @@ echo "which mkdir: $(which mkdir)"
 # handle_file_ln "$PWD/.dotfiles/zsh/user.zsh" "~/.zsh/user.zsh"
 # handle_file_ln "$PWD/.dotfiles/zsh/vim.zsh" "~/.zsh/vim.zsh"
 # handle_file_ln "$PWD/.dotfiles/zsh/z.zsh" "~/.zsh/z.zsh"
-handle_file_ln "$PWD/.dotfiles/zshrc" "~/.zshrc"
+handle_file_ln "$PWD/.dotfiles/zshrc" "$HOME/.zshrc"
