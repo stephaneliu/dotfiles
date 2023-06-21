@@ -43,7 +43,8 @@ if ! [[ -z "$TEST" ]]; then
 fi
 
 echo "Linking dotfiles"
-RCRC=.dotfiles/rcrc rcup -fv
+.dotfiles/install.sh
+# RCRC=.dotfiles/rcrc rcup -fv
 
 if ! [[ -z "$TEST" ]]; then
   .dotfiles/test/rcm_test
