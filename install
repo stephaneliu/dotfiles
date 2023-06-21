@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Exits immediately on error
-# set -e # disabled until script is stabilized
+set -e
 
 if xcode-select --version >/dev/null 2>&1; then
   echo "Xcode command line tools already installed"
@@ -47,7 +47,7 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
 echo "Installing Vim packages"
-nvim "+PlugInstall +qa"
+nvim --headless +PlugInstall +qa
 #
 # cd $HOME
 # echo "Enahancing Rails intellisence for solargraph"
