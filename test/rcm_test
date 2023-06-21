@@ -6,6 +6,7 @@ else
   echo "*** rcm did not install dotfiles correctly"
   ls -alh ~/
   ls -alh ./
+  ls -alh .dotfiles
   exit 1
 fi
 
