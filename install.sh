@@ -60,6 +60,7 @@ handle_file_ln() {
     esac
   fi
   verbose "'$1' -> '$2'"
+  verbose "mkdir $($DIRNAME "$2")"
   $MKDIR -p "$($DIRNAME "$2")"
   $LN -sf "$1" "$2"
 }
