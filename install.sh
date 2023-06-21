@@ -63,6 +63,8 @@ handle_file_ln() {
   $MKDIR -p "$($DIRNAME "$2")"
   $LN -sf "$1" "$2"
 }
+echo "*** PWD: $PWD"
+
 handle_file_ln ".dotfiles/tag-git/git-template/commit_template.txt" "~/.git-template/commit_template.txt"
 handle_file_ln ".dotfiles/tag-git/git-template/hooks/lolcommits" "~/.git-template/hooks/lolcommits"
 handle_file_ln ".dotfiles/tag-git/git-template/hooks/post-checkout" "~/.git-template/hooks/post-checkout"

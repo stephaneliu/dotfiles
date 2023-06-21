@@ -4,17 +4,14 @@ if [ -L $zshrc ]; then
   echo "+++ rcm installed correctly."
 else
   echo "*** rcm did not install dotfiles correctly"
+  echo "*** $HOME"
   ls -alh ~/
-  ls -alh ./
-  ls -alh .dotfiles
   echo "Current dir $PWD"
-  echo "Previous dir"
-  ls -alh ../
-  echo "Previous previous dir"
-  ls -alh ../../
   echo "Create a hello file in home"
   echo "Hello world" > $HOME/hello.txt
   echo "File seen?"
+  echo "Hello world2 to ~" > ~/hello2.txt
+  echo "Hello world2 to ~ seen?"
   ls -alh ~/
   exit 1
 fi
