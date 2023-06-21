@@ -8,6 +8,8 @@ else
   ls -alh ./
   ls -alh .dotfiles
   echo "Current dir $PWD"
+  echo "Previous dir"
+  ls -alh ../
   exit 1
 fi
 
