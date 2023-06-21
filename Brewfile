@@ -57,7 +57,6 @@ brew 'the_silver_searcher'         # a better ack/grep
 brew 'thoughtbot/formulae/rcm'
 brew 'tldr'                        # man pages implemented in rust - `tldr ssh`
 brew 'tmux'
-brew 'tmuxinator-completion'
 brew 'universal-ctags'             # so :Rtags works
 brew 'shared-mime-info'
 brew 'viddy'                       # watch [process] https://github.com/sachaos/viddy
@@ -66,16 +65,9 @@ brew 'yarn'
 brew 'zsh'
 brew 'zsh-completions'
 
-# brew 'opensc'                                                                  # smart card support
-#
-unless /zsh$/.match?(ENV.fetch('SHELL', ''))
-  puts 'To use the Homebrew-installed ZSH:'
-  puts '  sudo echo $(brew --prefix)/bin/zsh >> /etc/shells'
-  puts '  chsh -s $(brew --prefix)/bin/zsh'
-end
-
 cask '1password'
 cask 'app-cleaner' unless system 'ls /Applications/AppCleaner*' # Version is free legacy
+cask 'craft'
 cask 'cron'
 cask 'dash'
 cask 'divvy'
@@ -88,6 +80,7 @@ cask 'kap'
 cask 'kitty'
 cask 'raycast'
 cask 'readdle-spark'
+cask 'reflect'
 cask 'tailscale'
 cask 'karabiner-elements'
 cask 'keycastr' # dispaly keystrokes for screencasts
@@ -98,7 +91,6 @@ cask 'ultimaker-cura'
 # CLI: mas search [app]
 # Returns app name and app id
 # mas install [app_id]
-mas 'Craft - Docs and Notes Editor', id: 1_487_937_127
 mas 'Hand Mirror', id: 1_502_839_586
 mas 'Magnet', id: 441_258_766
 mas 'Marked 2', id: 890_031_187
