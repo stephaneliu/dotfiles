@@ -40,7 +40,7 @@ fi
 export PATH=$(brew --prefix)/bin:$PATH
 
 echo "Linking dotfiles"
-ln -s .dotfiles/.zshrc $HOME/.zshrc
+ln -s .dotfiles/zshrc $HOME/.zshrc
 # .dotfiles/install.sh
 # RCRC=.dotfiles/rcrc rcup -fv
 

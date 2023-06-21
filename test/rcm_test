@@ -2,6 +2,11 @@ zshrc="$HOME/.zshrc"
 
 if [ -L $zshrc ]; then
   echo "+++ rcm installed correctly."
+
+  echo "*** home dir"
+  ls -alh ~/
+  echo "*** zshrc contents"
+  cat ~/.zshrc
 else
   echo "*** rcm did not install dotfiles correctly"
   echo "*** $HOME"
