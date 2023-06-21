@@ -32,15 +32,10 @@ if [[ -z "$TEST" ]]; then
   brew tap homebrew/bundle
   brew bundle --file=.dotfiles/Brewfile
 else
-  brew install rcm
   brew install neovim
 fi
 
 export PATH=$(brew --prefix)/bin:$PATH
-
-if ! [[ -z "$TEST" ]]; then
-  .dotfiles/test/rcup_test
-fi
 
 echo "Linking dotfiles"
 .dotfiles/install.sh
