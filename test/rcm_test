@@ -12,6 +12,10 @@ else
   ls -alh ../
   echo "Previous previous dir"
   ls -alh ../../
+  echo "Create a hello file in home"
+  echo "Hello world" > $HOME/hello.txt
+  echo "File seen?"
+  ls -alh ~/
   exit 1
 fi
 
