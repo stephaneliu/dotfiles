@@ -1,6 +1,6 @@
 zshrc="$HOME/.zshrc"
 
-if [[ -L $zshrc ]]; then
+if [ -L $zshrc ]; then
   echo "+++ rcm installed correctly."
 else
   echo "*** rcm did not install dotfiles correctly"
