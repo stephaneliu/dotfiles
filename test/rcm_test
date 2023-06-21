@@ -5,6 +5,7 @@ if [ -L $zshrc ]; then
 else
   echo "*** rcm did not install dotfiles correctly"
   ls -alh ~/
+  ls -alh ./
   exit 1
 fi
 
