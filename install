@@ -8,10 +8,10 @@ if xcode-select --version >/dev/null 2>&1; then
 else
   echo "Installing Xcode command line tools"
   xcode-select --install
+fi
 
-  if ! [[ -z "$TEST" ]]; then
-    .dotfiles/test/xcode_test
-  fi
+if ! [[ -z "$TEST" ]]; then
+  .dotfiles/test/xcode_test
 fi
 
 if brew --version >/dev/null 2>&1; then
@@ -19,10 +19,10 @@ if brew --version >/dev/null 2>&1; then
 else
   echo "Installing Homebrew"
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
 
-  if ! [[ -z "$TEST" ]]; then
-    .dotfiles/test/homebrew_test
-  fi
+if ! [[ -z "$TEST" ]]; then
+  .dotfiles/test/homebrew_test
 fi
 
 # We'll 'assume' homebrew just works to reduce test duration
