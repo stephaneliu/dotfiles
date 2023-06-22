@@ -12,12 +12,9 @@ else
   echo "*** $HOME"
   ls -alh ~/
   echo "Current dir $PWD"
-  echo "Create a hello file in home"
-  echo "Hello world" > $HOME/hello.txt
-  echo "File seen?"
-  echo "Hello world2 to ~" > ~/hello2.txt
-  echo "Hello world2 to ~ seen?"
-  ls -alh ~/
+  echo $PWD
+  echo "ls $PWD"
+  ls -alh ./
   exit 1
 fi
 
