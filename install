@@ -50,6 +50,25 @@ test $HOME/.dotfiles/test/rcup_test
 
 
 
+# Since oh-my-zsh replaces .zshrc, install oh-my-zsh before rcm
+if [ -d $HOME/.oh-my-zsh ]; then
+  echo "+++ Oh-my-zsh already installed"
+else
+  touch $HOME/.zshrc
+  echo "+++ Installing oh-my-zsh"
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+  echo "+++ If changing shell (chsh) to zsh failed, sudo bash then 'chsh -s $(brew --prefix)/bin/zsh {user}'"
+
+  test $HOME/.dotfiles/test/oh_my_zsh_test
+
+  echo "+++ Installing Powerlevel10k thems for Oh-my-zsh"
+  git clone https://github.com/romkatv/powerlevel10k $HOME/.oh-my-zsh/custom/themes/powerlevel10k
+
+  test $HOME/.dotfiles/test/oh_my_zsh_customizations_test
+fi
+
+
+
 export PATH=$(brew --prefix)/bin:$PATH
 
 # activate submodule before running rcup so submodules link correctly
@@ -102,23 +121,6 @@ echo '+++ symlink ~/code/rails-intellisence-in-solargraph-enhancement/rails.rb i
 
 # echo "+++ Installing TailwindCSS language server"
 # yarn global add @tailwindcss/language-server
-
-
-
-if [ -d $HOME/.oh-my-zsh ]; then
-  echo "+++ Oh-my-zsh already installed"
-else
-  echo "+++ Installing oh-my-zsh"
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-  echo "+++ If changing shell (chsh) to zsh failed, sudo bash then 'chsh -s $(brew --prefix)/bin/zsh {user}'"
-
-  test $HOME/.dotfiles/test/oh_my_zsh_test
-
-  echo "+++ Installing Powerlevel10k thems for Oh-my-zsh"
-  git clone https://github.com/romkatv/powerlevel10k $HOME/.oh-my-zsh/custom/themes/powerlevel10k
-
-  test $HOME/.dotfiles/test/oh_my_zsh_customizations_test
-fi
 
 
 
