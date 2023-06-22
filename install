@@ -3,6 +3,13 @@
 # Exits immediately on error
 set -e
 
+
+test() {
+  if ! [[ -z "$TEST" ]]; then
+    $1
+  fi
+}
+
 if xcode-select --version >/dev/null 2>&1; then
   echo "+++ Xcode command line tools already installed"
 else
@@ -10,9 +17,7 @@ else
   xcode-select --install
 fi
 
-if ! [[ -z "$TEST" ]]; then
-  $HOME/.dotfiles/test/xcode_test
-fi
+test $HOME/.dotfiles/test/xcode_test
 
 if brew --version >/dev/null 2>&1; then
   echo "+++ Homebrew already installed"
@@ -21,9 +26,7 @@ else
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
-if ! [[ -z "$TEST" ]]; then
-  $HOME/.dotfiles/test/homebrew_test
-fi
+test $HOME/.dotfiles/test/homebrew_test
 
 # Don't install anything if this is a test run
 if [[ -z "$TEST" ]]; then
@@ -38,9 +41,7 @@ else
   brew install rcm
 fi
 
-if ! [[ -z "$TEST" ]]; then
-  $HOME/.dotfiles/test/rcup_test
-fi
+test $HOME/.dotfiles/test/rcup_test
 
 export PATH=$(brew --prefix)/bin:$PATH
 
@@ -50,9 +51,7 @@ echo "+++ Updating git submodules"
 git submodule update
 cd $HOME
 
-if ! [[ -z "$TEST" ]]; then
-  $HOME/.dotfiles/test/git_submodule_test
-fi
+test $HOME/.dotfiles/test/git_submodule_test
 
 echo "+++ Linking dotfiles"
 RCRC=$HOME/.dotfiles/rcrc rcup -fq
@@ -61,9 +60,7 @@ RCRC=$HOME/.dotfiles/rcrc rcup -fq
 echo "+++ Creating git ignored directory, .vim/bundle"
 mkdir -p $HOME/.vim/bundle
 
-if ! [[ -z "$TEST" ]]; then
-  $HOME/.dotfiles/test/rcm_test
-fi
+test $HOME/.dotfiles/test/rcm_test
 
 echo "+++ Installing vim-plug"
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
@@ -93,16 +90,12 @@ else
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
   echo "+++ If changing shell (chsh) to zsh failed, sudo bash then 'chsh -s $(brew --prefix)/bin/zsh {user}'"
 
-  if ! [[ -z "$TEST" ]]; then
-    $HOME/.dotfiles/test/oh_my_zsh_test
-  fi
+  test $HOME/.dotfiles/test/oh_my_zsh_test
 
   echo "+++ Installing Powerlevel10k thems for Oh-my-zsh"
   git clone https://github.com/romkatv/powerlevel10k $HOME/.oh-my-zsh/custom/themes/powerlevel10k
 
-  if ! [[ -z "$TEST" ]]; then
-    $HOME/.dotfiles/test/oh_my_zsh_customizations_test
-  fi
+  test $HOME/.dotfiles/test/oh_my_zsh_customizations_test
 fi
 
 # cd ${install_dir}
