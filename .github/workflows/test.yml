@@ -1,4 +1,4 @@
-name: Test
+name: Test install script
 
 on:
   push:
@@ -21,7 +21,9 @@ jobs:
     runs-on: macos-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Check out repo
+        uses: actions/checkout@v3
         with:
           path: '.dotfiles'
-      - run: ./.dotfiles/test/runner
+      - name: Perform install
+        run: ./.dotfiles/test/runner
