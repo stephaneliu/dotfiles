@@ -101,11 +101,6 @@ else
   test $HOME/.dotfiles/test/oh_my_zsh_customizations_test
 fi
 
-cd $HOME/.dotfiles
-
-for setup in tag-*/setup; do
-  . "$setup"
-done
 
 if [ ! -d $HOME/tmp ]; then
   echo "+++ Creating a tmp folder in $HOME"
@@ -114,12 +109,13 @@ fi
 
 # Skip if running on CI
 if [[ -z "$TEST" ]]; then
-  echo "+++ Setting defaults for OSX"
-  . ./system/osx-settings
-fi
+  for setup in $HOME/.dotfiles/tag-*/setup; do
+    . "$setup"
+  done
 
-# Skip if running on CI
-if [[ -z "$TEST" ]]; then
+  echo "+++ Setting defaults for OSX"
+  . $HOME/.dotfiles/system/osx-settings
+
   count=0
 
   until [ -f "$HOME/.env.private" ]; do
@@ -142,16 +138,19 @@ if [[ -z "$TEST" ]]; then
       fi
     fi
   done
+
+  printf "%s " "Login into 1Password and let it synchronize. Press <ENTER> when done."
+  read response
+
+  # If this fails, read https://support.1password.com/docs/cli/get-started
+  echo "+++ Creating npm token from 1Password"
+  echo $(op read op://Private/NPM\ token/notesPlain) > $HOME/.zsh/npm.zsh
+
+  echo "+++ Installing MonoLisa fonts"
+  cp -r $HOME/Documents/resource/Software/fonts/MonoLisa-basic-2.005-ttf/ttf/*.ttf $HOME/Library/Fonts
+
+  echo "+++ Restoring application preferences"
+  $HOME/bin/plist import
 fi
 
-# echo "+++ Installing MonoLisa fonts"
-# cp -r $HOME/Documents/resource/Software/fonts/MonoLisa-basic-2.005-ttf/ttf/*.ttf $HOME/Library/Fonts
-#
-# echo "+++ Restoring application preferences"
-# $HOME/bin/plist import
-#
-# # If this fails, read https://support.1password.com/docs/cli/get-started
-# echo "+++ Creating npm token from 1Password"
-# echo $(op read op://Private/NPM\ token/notesPlain) > $HOME/.zsh/npm.zsh
-#
-# echo "+++ Done!"
+echo "+++ Done!"
