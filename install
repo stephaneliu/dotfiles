@@ -10,6 +10,7 @@ test() {
   fi
 }
 
+
 if xcode-select --version >/dev/null 2>&1; then
   echo "+++ Xcode command line tools already installed"
 else
@@ -19,6 +20,8 @@ fi
 
 test $HOME/.dotfiles/test/xcode_test
 
+
+
 if brew --version >/dev/null 2>&1; then
   echo "+++ Homebrew already installed"
 else
@@ -27,6 +30,8 @@ else
 fi
 
 test $HOME/.dotfiles/test/homebrew_test
+
+
 
 # Don't install anything if this is a test run
 if [[ -z "$TEST" ]]; then
@@ -43,6 +48,8 @@ fi
 
 test $HOME/.dotfiles/test/rcup_test
 
+
+
 export PATH=$(brew --prefix)/bin:$PATH
 
 # activate submodule before running rcup so submodules link correctly
@@ -53,38 +60,50 @@ cd $HOME
 
 test $HOME/.dotfiles/test/git_submodule_test
 
+
+
 echo "+++ Linking dotfiles"
 RCRC=$HOME/.dotfiles/rcrc rcup -fq
-
 # Create git ignored directory
 echo "+++ Creating git ignored directory, .vim/bundle"
 mkdir -p $HOME/.vim/bundle
 
 test $HOME/.dotfiles/test/rcm_test
 
+
+
 echo "+++ Installing vim-plug"
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+
+
 
 echo "+++ Installing Vim packages"
 # shada file, .viminfo, is owned by root on GH CI. Set -i NONE does not read or write to shada file
 nvim --headless -i NONE +PlugInstall +qa
 
+
+
 echo "+++ Install Github Copilot"
 nvim --headless -i +CopilotInstall +qa
+
+
 
 echo "+++ Enahancing Rails intellisence for solargraph"
 if [ ! -d $HOME/code/rails-intellisence-in-solargraph-enhancement ]; then
   mkdir -p $HOME/code/rails-intellisence-in-solargraph-enhancement
 fi
+
 git clone https://gist.github.com/castwide/28b349566a223dfb439a337aea29713e \
   $HOME/code/rails-intellisence-in-solargraph-enhancement
+
+echo '+++ symlink ~/code/rails-intellisence-in-solargraph-enhancement/rails.rb into config/definition.rb \
+      for each Rails project'
 
 # echo "+++ Installing TailwindCSS language server"
 # yarn global add @tailwindcss/language-server
 
-echo '+++ symlink ~/code/rails-intellisence-in-solargraph-enhancement/rails.rb into config/definition.rb \
-  for each Rails project'
+
 
 if [ -d $HOME/.oh-my-zsh ]; then
   echo "+++ Oh-my-zsh already installed"
@@ -102,55 +121,38 @@ else
 fi
 
 
+
 if [ ! -d $HOME/tmp ]; then
   echo "+++ Creating a tmp folder in $HOME"
   mkdir $HOME/tmp
 fi
 
+
+
 # Skip if running on CI
 if [[ -z "$TEST" ]]; then
+  echo "+++ Installing 'tag' directories setup"
   for setup in $HOME/.dotfiles/tag-*/setup; do
     . "$setup"
   done
 
+  echo "+++ Restoring application preferences"
+  $HOME/bin/plist import
+
   echo "+++ Setting defaults for OSX"
   . $HOME/.dotfiles/system/osx-settings
-
-  count=0
-
-  until [ -f "$HOME/.env.private" ]; do
-    if [ $count -eq 0 ]; then
-      let count++
-      echo "+++ Copy .private.env from 1Password to $HOME <ENTER|(q)uit>"
-      read response
-
-      if [ "$response" = "q" ]; then
-        echo "+++ Quitting..."
-        exit 0
-      fi
-    elif [ ! -f "$HOME/.env.private" ]; then
-      echo "+++ $HOME/.private.env could not be found. <ENTER|(q)uit>"
-      read response
-
-      if [ "$response" = "q" ]; then
-        echo "+++ Quitting..."
-        exit 0
-      fi
-    fi
-  done
-
-  printf "%s " "Login into 1Password and let it synchronize. Press <ENTER> when done."
-  read response
-
-  # If this fails, read https://support.1password.com/docs/cli/get-started
-  echo "+++ Creating npm token from 1Password"
-  echo $(op read op://Private/NPM\ token/notesPlain) > $HOME/.zsh/npm.zsh
 
   echo "+++ Installing MonoLisa fonts"
   cp -r $HOME/Documents/resource/Software/fonts/MonoLisa-basic-2.005-ttf/ttf/*.ttf $HOME/Library/Fonts
 
-  echo "+++ Restoring application preferences"
-  $HOME/bin/plist import
+  printf "%s " "Login into 1Password and let it synchronize. Press <ENTER> when done."
+  read response
+
+  # More - https://support.1password.com/docs/cli/get-started
+  echo "+++ Creating npm token from 1Password"
+  echo $(op read op://Private/NPM\ token/notesPlain) > $HOME/.zsh/npm.zsh
 fi
+
+
 
 echo "+++ Done!"
