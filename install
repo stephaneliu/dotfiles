@@ -82,7 +82,7 @@ git clone https://gist.github.com/castwide/28b349566a223dfb439a337aea29713e \
 
 # echo "+++ Installing TailwindCSS language server"
 # yarn global add @tailwindcss/language-server
-#
+
 echo '+++ symlink ~/code/rails-intellisence-in-solargraph-enhancement/rails.rb into config/definition.rb \
   for each Rails project'
 
