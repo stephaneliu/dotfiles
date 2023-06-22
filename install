@@ -37,7 +37,7 @@ if [[ -z "$TEST" ]]; then
 else
   # Test Dependencies
   brew install neovim
-  # brew install rtx
+  brew install rtx
   brew install rcm
 fi
 
