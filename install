@@ -41,8 +41,10 @@ fi
 export PATH=$(brew --prefix)/bin:$PATH
 
 echo "Linking dotfiles"
-.dotfiles/install.sh
-# RCRC=.dotfiles/rcrc rcup -fv
+# Delete kitty_grab
+# rm vim/bundle
+# .dotfiles/install.sh
+RCRC=$PWD/.dotfiles/rcrc rcup -fv
 
 # Create git ignored directory
 mkdir -p $HOME/.vim/bundle
