@@ -44,10 +44,16 @@ fi
 
 export PATH=$(brew --prefix)/bin:$PATH
 
+# activate submodule before running rcup so submodules link correctly
+cd $HOME/.dotfiles
+git submodule update
+cd $HOME
+
+if ! [[ -z "$TEST" ]]; then
+  $HOME/.dotfiles/test/git_submodule_test
+fi
+
 echo "Linking dotfiles"
-# Delete kitty_grab
-# rm vim/bundle
-# .dotfiles/install.sh
 RCRC=$HOME/.dotfiles/rcrc rcup -fv
 
 # Create git ignored directory
@@ -56,7 +62,6 @@ mkdir -p $HOME/.vim/bundle
 if ! [[ -z "$TEST" ]]; then
   $HOME/.dotfiles/test/rcm_test
 fi
-
 
 echo "Installing vim-plug"
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
