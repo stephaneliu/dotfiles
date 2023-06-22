@@ -8,6 +8,5 @@ rtx install ruby@latest
 
 echo "Setting up solargraph for vim"
 gem install solargraph
-gem install tmuxinator
 
 echo "Ruby setup completed"
