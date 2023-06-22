@@ -44,6 +44,9 @@ echo "Linking dotfiles"
 .dotfiles/install.sh
 # RCRC=.dotfiles/rcrc rcup -fv
 
+# Create git ignored directory
+mkdir -p $HOME/.vim/bundle
+
 if ! [[ -z "$TEST" ]]; then
   .dotfiles/test/rcm_test
 fi
