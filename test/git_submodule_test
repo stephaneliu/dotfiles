@@ -1,0 +1,6 @@
+if [ -e $HOME/.dotfiles/config/kitty/kitty_grab ]; then
+  echo "+++ git submodule - kitty_grab installed correctly"
+else
+  echo "*** git submodule - kitty_grab did not install correctly"
+  exit 1
+fi
