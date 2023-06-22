@@ -71,7 +71,7 @@ echo "+++ Installing Vim packages"
 nvim --headless -i NONE +PlugInstall +qa
 
 echo "+++ Install Github Copilot"
-vi +CopilotInstall +qa
+nvim --headless +CopilotInstall +qa
 
 echo "+++ Enahancing Rails intellisence for solargraph"
 if [ ! -d $HOME/code/rails-intellisence-in-solargraph-enhancement ]; then
@@ -118,29 +118,32 @@ if [[ -z "$TEST" ]]; then
   . ./system/osx-settings
 fi
 
-# count=0
-#
-# until [ -f "$HOME/.env.private" ]; do
-#   if [ $count -eq 0 ]; then
-#     let count++
-#     echo "+++ Copy .private.env from 1Password to $HOME <ENTER|(q)uit>"
-#     read response
-#
-#     if [ "$response" = "q" ]; then
-#       echo "+++ Quitting..."
-#       exit 0
-#     fi
-#   elif [ ! -f "$HOME/.env.private" ]; then
-#     echo "+++ $HOME/.private.env could not be found. <ENTER|(q)uit>"
-#     read response
-#
-#     if [ "$response" = "q" ]; then
-#       echo "+++ Quitting..."
-#       exit 0
-#     fi
-#   fi
-# done
-#
+# Skip if running on CI
+if [[ -z "$TEST" ]]; then
+  count=0
+
+  until [ -f "$HOME/.env.private" ]; do
+    if [ $count -eq 0 ]; then
+      let count++
+      echo "+++ Copy .private.env from 1Password to $HOME <ENTER|(q)uit>"
+      read response
+
+      if [ "$response" = "q" ]; then
+        echo "+++ Quitting..."
+        exit 0
+      fi
+    elif [ ! -f "$HOME/.env.private" ]; then
+      echo "+++ $HOME/.private.env could not be found. <ENTER|(q)uit>"
+      read response
+
+      if [ "$response" = "q" ]; then
+        echo "+++ Quitting..."
+        exit 0
+      fi
+    fi
+  done
+fi
+
 # echo "+++ Installing MonoLisa fonts"
 # cp -r $HOME/Documents/resource/Software/fonts/MonoLisa-basic-2.005-ttf/ttf/*.ttf $HOME/Library/Fonts
 #
