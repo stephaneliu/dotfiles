@@ -69,8 +69,6 @@ else
   echo '+++ Installing rtx autocomplete'
   mkdir -p $HOME/.oh-my-zsh/custom/plugins/rtx
   rtx completion zsh > $HOME/.oh-my-zsh/custom/plugins/rtx/_rtx
-
-  test $HOME/.dotfiles/test/rtx_test
 fi
 
 
