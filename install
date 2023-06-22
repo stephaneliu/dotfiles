@@ -33,7 +33,7 @@ if [[ -z "$TEST" ]]; then
   brew bundle --file=$HOME/.dotfiles/Brewfile
 else
   # Test Dependencies
-  # brew install neovim
+  brew install neovim
   # brew install rtx
   brew install rcm
 fi
@@ -46,6 +46,7 @@ export PATH=$(brew --prefix)/bin:$PATH
 
 # activate submodule before running rcup so submodules link correctly
 cd $HOME/.dotfiles
+echo "Updating git submodules"
 git submodule update
 cd $HOME
 
