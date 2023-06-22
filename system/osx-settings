@@ -75,7 +75,6 @@ defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
 echo "Disable press-and-hold for keys in favor of key repeat in Obsidian"
 defaults write md.obsidian ApplePressAndHoldEnabled -bool false
 
-
 #####  Not enabled  #####
 
 # echo "Interaction: Save screenshots to ~/Desktop/screenshots"

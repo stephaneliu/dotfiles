@@ -70,6 +70,9 @@ echo "+++ Installing Vim packages"
 # shada file, .viminfo, is owned by root on GH CI. Set -i NONE does not read or write to shada file
 nvim --headless -i NONE +PlugInstall +qa
 
+echo "+++ Install Github Copilot"
+vi +CopilotInstall +qa
+
 echo "+++ Enahancing Rails intellisence for solargraph"
 if [ ! -d $HOME/code/rails-intellisence-in-solargraph-enhancement ]; then
   mkdir -p $HOME/code/rails-intellisence-in-solargraph-enhancement
@@ -104,17 +107,17 @@ for setup in tag-*/setup; do
   . "$setup"
 done
 
-echo "+++ Install Github Copilot"
-vi +CopilotInstall +qa
+if [ ! -d $HOME/tmp ]; then
+  echo "+++ Creating a tmp folder in $HOME"
+  mkdir $HOME/tmp
+fi
 
-# if [ ! -d $HOME/tmp ]; then
-#   echo "+++ Creating a tmp folder in $HOME"
-#   mkdir $HOME/tmp
-# fi
-#
-# echo "+++ Setting defaults for OSX"
-# . ./system/osx-settings
-#
+# Skip if running on CI
+if [[ -z "$TEST" ]]; then
+  echo "+++ Setting defaults for OSX"
+  . ./system/osx-settings
+fi
+
 # count=0
 #
 # until [ -f "$HOME/.env.private" ]; do
