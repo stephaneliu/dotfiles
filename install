@@ -35,7 +35,11 @@ else
   # Test Dependencies
   # brew install neovim
   # brew install rtx
-  echo
+  brew install rcm
+fi
+
+if ! [[ -z "$TEST" ]]; then
+  .dotfiles/test/rcup_test
 fi
 
 export PATH=$(brew --prefix)/bin:$PATH
