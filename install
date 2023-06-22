@@ -36,9 +36,9 @@ if [[ -z "$TEST" ]]; then
   brew bundle --file=$HOME/.dotfiles/Brewfile
 else
   # Test Dependencies
-  brew install neovim
-  brew install rtx
-  brew install rcm
+  brew install -q neovim
+  brew install -q rtx
+  brew install -q rcm
 fi
 
 test $HOME/.dotfiles/test/rcup_test
@@ -71,7 +71,7 @@ echo "+++ Installing Vim packages"
 nvim --headless -i NONE +PlugInstall +qa
 
 echo "+++ Install Github Copilot"
-nvim --headless +CopilotInstall +qa
+nvim --headless -i +CopilotInstall +qa
 
 echo "+++ Enahancing Rails intellisence for solargraph"
 if [ ! -d $HOME/code/rails-intellisence-in-solargraph-enhancement ]; then
