@@ -4,9 +4,9 @@
 set -e
 
 if xcode-select --version >/dev/null 2>&1; then
-  echo "*** Xcode command line tools already installed"
+  echo "+++ Xcode command line tools already installed"
 else
-  echo "*** Installing Xcode command line tools"
+  echo "+++ Installing Xcode command line tools"
   xcode-select --install
 fi
 
@@ -15,9 +15,9 @@ if ! [[ -z "$TEST" ]]; then
 fi
 
 if brew --version >/dev/null 2>&1; then
-  echo "*** Homebrew already installed"
+  echo "+++ Homebrew already installed"
 else
-  echo "*** Installing Homebrew"
+  echo "+++ Installing Homebrew"
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
@@ -27,7 +27,7 @@ fi
 
 # Don't install anything if this is a test run
 if [[ -z "$TEST" ]]; then
-  echo "*** Installing Homebrew packages"
+  echo "+++ Installing Homebrew packages"
   brew update
   brew tap homebrew/bundle
   brew bundle --file=$HOME/.dotfiles/Brewfile
@@ -46,7 +46,7 @@ export PATH=$(brew --prefix)/bin:$PATH
 
 # activate submodule before running rcup so submodules link correctly
 cd $HOME/.dotfiles
-echo "*** Updating git submodules"
+echo "+++ Updating git submodules"
 git submodule update
 cd $HOME
 
@@ -54,47 +54,47 @@ if ! [[ -z "$TEST" ]]; then
   $HOME/.dotfiles/test/git_submodule_test
 fi
 
-echo "*** Linking dotfiles"
+echo "+++ Linking dotfiles"
 RCRC=$HOME/.dotfiles/rcrc rcup -fq
 
 # Create git ignored directory
-echo "*** Creating git ignored directory, .vim/bundle"
+echo "+++ Creating git ignored directory, .vim/bundle"
 mkdir -p $HOME/.vim/bundle
 
 if ! [[ -z "$TEST" ]]; then
   $HOME/.dotfiles/test/rcm_test
 fi
 
-echo "*** Installing vim-plug"
+echo "+++ Installing vim-plug"
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
-echo "*** Installing Vim packages"
+echo "+++ Installing Vim packages"
 # shada file, .viminfo, is owned by root on GH CI. Set -i NONE does not read or write to shada file
 nvim --headless -i NONE +PlugInstall +qa
 #
 # cd $HOME
-# echo "*** Enahancing Rails intellisence for solargraph"
+# echo "+++ Enahancing Rails intellisence for solargraph"
 # if [ ! -d $HOME/code/rails-intellisence-in-solargraph-enhancement ]; then
 #   mkdir -p $HOME/code/rails-intellisence-in-solargraph-enhancement
 # fi
 # git clone https://gist.github.com/castwide/28b349566a223dfb439a337aea29713e \
 #   $HOME/code/rails-intellisence-in-solargraph-enhancement
 #
-# echo "*** Installing TailwindCSS language server"
+# echo "+++ Installing TailwindCSS language server"
 # yarn global add @tailwindcss/language-server
 #
-# echo '*** symlink ~/code/rails-intellisence-in-solargraph-enhancement/rails.rb into config/definition.rb \
+# echo '+++ symlink ~/code/rails-intellisence-in-solargraph-enhancement/rails.rb into config/definition.rb \
 #   for each Rails project'
 #
 # if [ -d $HOME/.oh-my-zsh ]; then
-#   echo "*** Oh-my-zsh already installed"
+#   echo "+++ Oh-my-zsh already installed"
 # else
-#   echo "*** Installing oh-my-zsh"
+#   echo "+++ Installing oh-my-zsh"
 #   sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-#   echo "*** If changing shell (chsh) to zsh failed, sudo bash then 'chsh -s $(brew --prefix)/bin/zsh {user}'"
+#   echo "+++ If changing shell (chsh) to zsh failed, sudo bash then 'chsh -s $(brew --prefix)/bin/zsh {user}'"
 #
-#   echo "*** Installing Powerlevel10k thems for Oh-my-zsh"
+#   echo "+++ Installing Powerlevel10k thems for Oh-my-zsh"
 #   git clone https://github.com/romkatv/ppowerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 # fi
 #
@@ -104,7 +104,7 @@ nvim --headless -i NONE +PlugInstall +qa
 #   . "$setup"
 # done
 #
-# echo "*** Install Github Copilot"
+# echo "+++ Install Github Copilot"
 # vi +CopilotInstall +qa
 # # Import iTerm profile with solarized colors and remap of meta key to Esc+ for <M-[> and <M-]> (next
 # # and previouis suggestion to work in Copilot.
@@ -112,11 +112,11 @@ nvim --headless -i NONE +PlugInstall +qa
 # cp $HOME/.dotfiles/iterm2/Solarized.itermcolors $HOME/Library/Application\ Support/iTerm2/DynamicProfiles/
 #
 # if [ ! -d $HOME/tmp ]; then
-#   echo "*** Creating a tmp folder in $HOME"
+#   echo "+++ Creating a tmp folder in $HOME"
 #   mkdir $HOME/tmp
 # fi
 #
-# echo "*** Setting defaults for OSX"
+# echo "+++ Setting defaults for OSX"
 # . ./system/osx-settings
 #
 # count=0
@@ -124,32 +124,32 @@ nvim --headless -i NONE +PlugInstall +qa
 # until [ -f "$HOME/.env.private" ]; do
 #   if [ $count -eq 0 ]; then
 #     let count++
-#     echo "*** Copy .private.env from 1Password to $HOME <ENTER|(q)uit>"
+#     echo "+++ Copy .private.env from 1Password to $HOME <ENTER|(q)uit>"
 #     read response
 #
 #     if [ "$response" = "q" ]; then
-#       echo "*** Quitting..."
+#       echo "+++ Quitting..."
 #       exit 0
 #     fi
 #   elif [ ! -f "$HOME/.env.private" ]; then
-#     echo "*** $HOME/.private.env could not be found. <ENTER|(q)uit>"
+#     echo "+++ $HOME/.private.env could not be found. <ENTER|(q)uit>"
 #     read response
 #
 #     if [ "$response" = "q" ]; then
-#       echo "*** Quitting..."
+#       echo "+++ Quitting..."
 #       exit 0
 #     fi
 #   fi
 # done
 #
-# echo "*** Installing MonoLisa fonts"
+# echo "+++ Installing MonoLisa fonts"
 # cp -r $HOME/Documents/resource/Software/fonts/MonoLisa-basic-2.005-ttf/ttf/*.ttf $HOME/Library/Fonts
 #
-# echo "*** Restoring application preferences"
+# echo "+++ Restoring application preferences"
 # $HOME/bin/plist import
 #
 # # If this fails, read https://support.1password.com/docs/cli/get-started
-# echo "*** Creating npm token from 1Password"
+# echo "+++ Creating npm token from 1Password"
 # echo $(op read op://Private/NPM\ token/notesPlain) > $HOME/.zsh/npm.zsh
 #
-# echo "*** Done!"
+# echo "+++ Done!"
