@@ -98,11 +98,11 @@ else
   test $HOME/.dotfiles/test/oh_my_zsh_customizations_test
 fi
 
-# cd ${install_dir}
-#
-# for setup in tag-*/setup; do
-#   . "$setup"
-# done
+cd $HOME/.dotfiles
+
+for setup in tag-*/setup; do
+  . "$setup"
+done
 #
 # echo "+++ Install Github Copilot"
 # vi +CopilotInstall +qa
