@@ -83,20 +83,28 @@ git clone https://gist.github.com/castwide/28b349566a223dfb439a337aea29713e \
 # echo "+++ Installing TailwindCSS language server"
 # yarn global add @tailwindcss/language-server
 #
-# echo '+++ symlink ~/code/rails-intellisence-in-solargraph-enhancement/rails.rb into config/definition.rb \
-#   for each Rails project'
-#
-# if [ -d $HOME/.oh-my-zsh ]; then
-#   echo "+++ Oh-my-zsh already installed"
-# else
-#   echo "+++ Installing oh-my-zsh"
-#   sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-#   echo "+++ If changing shell (chsh) to zsh failed, sudo bash then 'chsh -s $(brew --prefix)/bin/zsh {user}'"
-#
-#   echo "+++ Installing Powerlevel10k thems for Oh-my-zsh"
-#   git clone https://github.com/romkatv/ppowerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-# fi
-#
+echo '+++ symlink ~/code/rails-intellisence-in-solargraph-enhancement/rails.rb into config/definition.rb \
+  for each Rails project'
+
+if [ -d $HOME/.oh-my-zsh ]; then
+  echo "+++ Oh-my-zsh already installed"
+else
+  echo "+++ Installing oh-my-zsh"
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+  echo "+++ If changing shell (chsh) to zsh failed, sudo bash then 'chsh -s $(brew --prefix)/bin/zsh {user}'"
+
+  if ! [[ -z "$TEST" ]]; then
+    $HOME/.dotfiles/test/oh_my_zsh_test
+  fi
+
+  echo "+++ Installing Powerlevel10k thems for Oh-my-zsh"
+  git clone https://github.com/romkatv/powerlevel10k $HOME/.oh-my-zsh/custom/themes/powerlevel10k
+
+  if ! [[ -z "$TEST" ]]; then
+    $HOME/.dotfiles/test/oh_my_zsh_customizations_test
+  fi
+fi
+
 # cd ${install_dir}
 #
 # for setup in tag-*/setup; do

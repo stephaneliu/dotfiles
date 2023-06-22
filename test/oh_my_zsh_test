@@ -1,0 +1,8 @@
+if [ -e $HOME/.oh-my-zsh/oh-my-zsh.sh ]; then
+  echo "+++ Oh My ZSH installed correctly."
+else
+  echo "*** Oh My ZSH did not install correctly"
+  echo "*** Oh My ZSH dir"
+  ls -alh $HOME/.oh-my-zsh
+  exit 1
+fi
