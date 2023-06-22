@@ -11,7 +11,7 @@ else
 fi
 
 if ! [[ -z "$TEST" ]]; then
-  .dotfiles/test/xcode_test
+  $HOME/.dotfiles/test/xcode_test
 fi
 
 if brew --version >/dev/null 2>&1; then
@@ -22,7 +22,7 @@ else
 fi
 
 if ! [[ -z "$TEST" ]]; then
-  .dotfiles/test/homebrew_test
+  $HOME/.dotfiles/test/homebrew_test
 fi
 
 # Don't install anything if this is a test run
@@ -30,7 +30,7 @@ if [[ -z "$TEST" ]]; then
   echo "Installing Homebrew packages"
   brew update
   brew tap homebrew/bundle
-  brew bundle --file=.dotfiles/Brewfile
+  brew bundle --file=$HOME/.dotfiles/Brewfile
 else
   # Test Dependencies
   # brew install neovim
@@ -39,7 +39,7 @@ else
 fi
 
 if ! [[ -z "$TEST" ]]; then
-  .dotfiles/test/rcup_test
+  $HOME/.dotfiles/test/rcup_test
 fi
 
 export PATH=$(brew --prefix)/bin:$PATH
@@ -48,13 +48,13 @@ echo "Linking dotfiles"
 # Delete kitty_grab
 # rm vim/bundle
 # .dotfiles/install.sh
-RCRC=$PWD/.dotfiles/rcrc rcup -fv
+RCRC=$HOME/.dotfiles/rcrc rcup -fv
 
 # Create git ignored directory
 mkdir -p $HOME/.vim/bundle
 
 if ! [[ -z "$TEST" ]]; then
-  .dotfiles/test/rcm_test
+  $HOME/.dotfiles/test/rcm_test
 fi
 
 
