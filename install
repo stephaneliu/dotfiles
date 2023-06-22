@@ -55,7 +55,7 @@ if ! [[ -z "$TEST" ]]; then
 fi
 
 echo "Linking dotfiles"
-RCRC=$HOME/.dotfiles/rcrc rcup -fv
+RCRC=$HOME/.dotfiles/rcrc rcup -fq
 
 # Create git ignored directory
 mkdir -p $HOME/.vim/bundle
