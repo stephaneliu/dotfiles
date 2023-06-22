@@ -58,6 +58,7 @@ echo "*** Linking dotfiles"
 RCRC=$HOME/.dotfiles/rcrc rcup -fq
 
 # Create git ignored directory
+echo "*** Creating git ignored directory, .vim/bundle"
 mkdir -p $HOME/.vim/bundle
 
 if ! [[ -z "$TEST" ]]; then
@@ -69,7 +70,8 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
 echo "*** Installing Vim packages"
-nvim --headless +PlugInstall +qa
+# shada file, .viminfo, is owned by root on GH CI. Set -i NONE does not read or write to shada file
+nvim --headless -i NONE +PlugInstall +qa
 #
 # cd $HOME
 # echo "*** Enahancing Rails intellisence for solargraph"
