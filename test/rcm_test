@@ -1,10 +1,9 @@
-zshrc="$HOME/.zshrc"
+test_file="$HOME/.zshrc"
+test_reference="rcm"
 
-if [ -L $zshrc ]; then
-  echo "+++ rcm installed correctly."
+if [ -L $test_file ]; then
+  echo "+++ $test_reference installed correctly"
 else
-  echo "*** rcm did not install dotfiles correctly"
-  echo "*** $HOME"
-  ls -alh ~/
+  echo "*** $test_reference did not install correctly"
   exit 1
 fi

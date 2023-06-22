@@ -5,6 +5,6 @@ if [ -d $test_file ]; then
   echo "+++ $test_reference installed correctly"
 else
   echo "*** $test_reference did not install correctly"
-  ls -alh $HOME/.oh-my-zsh/custome/themes
+  ls -alh $HOME/.oh-my-zsh/custom/themes
   exit 1
 fi

@@ -1,8 +1,10 @@
-if [ -e $HOME/.oh-my-zsh/oh-my-zsh.sh ]; then
-  echo "+++ Oh My ZSH installed correctly."
+test_file="$HOME/.oh-my-zsh/oh-my-zsh.sh"
+test_reference="Oh My ZSH"
+
+if [ -e $test_file ]; then
+  echo "+++ $test_reference installed correctly"
 else
-  echo "*** Oh My ZSH did not install correctly"
-  echo "*** Oh My ZSH dir"
+  echo "*** $test_reference did not install correctly"
   ls -alh $HOME/.oh-my-zsh
   exit 1
 fi

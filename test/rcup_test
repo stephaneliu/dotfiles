@@ -1,6 +1,8 @@
+test_reference="rcup"
+
 if command -v rcup $> /dev/null; then
-  echo "+++ rcup installed correctly"
+  echo "+++ $test_reference installed correctly"
 else
-  echo "*** rcup did not install correctly"
+  echo "*** $test_reference did not install correctly"
   exit 1
 fi

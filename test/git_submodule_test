@@ -1,6 +1,10 @@
-if [ -d $HOME/.dotfiles/config/kitty/kitty_grab ]; then
-  echo "+++ git submodule - kitty_grab installed correctly"
+test_file="$HOME/.dotfiles/config/kitty/kitty_grab"
+test_reference="git submodule - kitty_grab"
+
+if [ -d $test_file ]; then
+  echo "+++ $test_reference installed correctly"
 else
-  echo "*** git submodule - kitty_grab did not install correctly"
+  echo "*** $test_reference did not install correctly"
+  ls -alh $HOME/.dotfiles/config/kitty
   exit 1
 fi

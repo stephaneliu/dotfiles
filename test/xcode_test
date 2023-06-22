@@ -1,6 +1,8 @@
+test_reference="xcode"
+
 if xcode-select --version >/dev/null 2>&1; then
-  echo "+++ xcode installed correctly"
+  echo "+++ $test_reference installed correctly"
 else
-  echo "*** xcode did not install correctly"
+  echo "*** $test_reference did not install correctly"
   exit 1
 fi
