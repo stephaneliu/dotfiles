@@ -108,7 +108,7 @@ nvim --headless -i NONE +PlugInstall +qa
 
 
 echo "+++ Install Github Copilot"
-nvim --headless -i +CopilotInstall +qa
+nvim --headless -i NONE +CopilotInstall +qa
 
 
 
