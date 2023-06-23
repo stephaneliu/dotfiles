@@ -34,7 +34,6 @@ brew 'dust'                        # Better Unix: better du - https://github.com
 brew 'fzf'                         # Fuzzy finder
 brew 'git'
 brew 'git-delta'                   # Syntax highlighter for git, diff, & grep - https://github.com/dandavison/delta
-brew 'gitsh'
 brew 'gpg'
 brew 'gh'                          # Fast GitHub client released in 2022
 brew 'helix'
@@ -46,6 +45,7 @@ brew 'lsd'                         # Better Unix: better ls
 brew 'mas'                         # Mac appstore cli
 brew 'mdcat'                       # View markdown in kitty - `mdcat README.md`
 brew 'neovim'
+brew 'postgresql@14'
 brew 'pkg-config'                  # Ruby native extensions
 brew 'procs'                       # Better unix: better ps
 brew 'reattach-to-user-namespace'
@@ -91,6 +91,6 @@ cask 'ultimaker-cura'
 # CLI: mas search [app]
 # Returns app name and app id
 # mas install [app_id]
-mas 'Hand Mirror', id: 1502839586
-mas 'Magnet', id: 441258766
-mas 'Marked 2', id: 890031187
+mas 'Hand Mirror', id: 1_502_839_586
+mas 'Magnet', id: 441_258_766
+mas 'Marked 2', id: 890_031_187
