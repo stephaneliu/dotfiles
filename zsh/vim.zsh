@@ -1,3 +1,6 @@
+# Rails console vi mode
+bindkey -v
+
 # use jk/kj for command-mode
 bindkey -M viins 'jk' vi-cmd-mode
 bindkey -M viins 'kj' vi-cmd-mode
