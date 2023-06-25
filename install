@@ -60,16 +60,20 @@ else
   echo "+++ If changing shell (chsh) to zsh failed, sudo bash then 'chsh -s $(brew --prefix)/bin/zsh {user}'"
 
   test $HOME/.dotfiles/test/oh_my_zsh_test
+fi
 
-  echo "+++ Installing Powerlevel10k thems for Oh-my-zsh"
+if ! [ -d $HOME/.oh-my-zsh/custom/themes/powerlevel10k ]; then
+  echo "+++ Installing Powerlevel10k themes for Oh-my-zsh"
   git clone https://github.com/romkatv/powerlevel10k $HOME/.oh-my-zsh/custom/themes/powerlevel10k
+fi
 
-  test $HOME/.dotfiles/test/oh_my_zsh_customizations_test
-
+if ! [ -d $HOME/.oh-my-zsh/custom/plugins/rtx ]; then
   echo '+++ Installing rtx autocomplete'
   mkdir -p $HOME/.oh-my-zsh/custom/plugins/rtx
   rtx completion zsh > $HOME/.oh-my-zsh/custom/plugins/rtx/_rtx
 fi
+
+test $HOME/.dotfiles/test/oh_my_zsh_customizations_test
 
 
 
