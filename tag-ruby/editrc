@@ -1,5 +1,7 @@
 # Use vim for IRB, rails c and mysql
 bind -v
+bindkey -v
+
 # Tab complete
 bind \\t rl_complete
 # CTRL + l
