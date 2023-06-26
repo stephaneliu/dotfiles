@@ -64,6 +64,7 @@ brew 'wget'
 brew 'yarn'
 brew 'zsh'
 brew 'zsh-completions'
+brew 'zsh-vi-mode'                 # https://github.com/jeffreytse/zsh-vi-mode
 
 cask '1password'
 cask 'app-cleaner' unless system 'ls /Applications/AppCleaner*' # Version is free legacy
