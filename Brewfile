@@ -39,6 +39,7 @@ brew 'gh'                          # Fast GitHub client released in 2022
 brew 'helix'
 brew 'jq'                          # Lightweight and flexible command-line JSON processor
 brew 'imagemagick'                 # Dependency for Lolcommits
+brew 'libexif'                     # Depencency for CC API repo
 brew 'libpq'                       # pg client https://formulae.brew.sh/formula/libpq
 brew 'lnav'                        # Log file navigator - https://lnav.org/
 brew 'lsd'                         # Better Unix: better ls
@@ -47,7 +48,7 @@ brew 'mdcat'                       # View markdown in kitty - `mdcat README.md`
 brew 'neovim'
 brew 'postgresql@14'
 brew 'pkg-config'                  # Ruby native extensions
-brew 'procs'                       # Better unix: better ps
+brew 'procs'                       # Better unix: better ps - https://github.com/dalance/procs
 brew 'reattach-to-user-namespace'
 brew 'ripgrep'
 brew 'rtx'                         # asdf written in Rust. No shims
@@ -64,7 +65,7 @@ brew 'wget'
 brew 'yarn'
 brew 'zsh'
 brew 'zsh-completions'
-brew 'zsh-vi-mode'                 # https://github.com/jeffreytse/zsh-vi-mode
+brew 'zsh-vi-mode' # https://github.com/jeffreytse/zsh-vi-mode
 
 cask '1password'
 cask 'app-cleaner' unless system 'ls /Applications/AppCleaner*' # Version is free legacy
