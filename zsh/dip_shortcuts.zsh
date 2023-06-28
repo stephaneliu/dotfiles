@@ -1,3 +1,4 @@
+# `dip rails console - defaults to attaching to existing. Option to restart`
 function drc() {
   local restart=0 && [[ "$1" == "-r" ]] && restart=1
 
@@ -15,6 +16,7 @@ function drc() {
   fi
 }
 
+# `dip shell - defaults to attaching to existing. Option to restart`
 function dsh() {
   local restart=0 && [[ "$1" == "-r" ]] && restart=1
 
