@@ -38,9 +38,6 @@ alias gup='git up'
 alias gus='git unstage'
 alias gwip="git add . && SAFE_COMMIT=1 OVERCOMMIT_DISABLE=1 git commit -m \"***** Chore: WIP WIP WIP *****\""
 
-alias nocac='export _GIT_SSL_CERT=$GIT_SSL_CERT && unset GIT_SSL_CERT'
-alias yescac='export GIT_SSL_CERT=$_GIT_SSL_CERT && unset _GIT_SSL_CERT'
-
 grbi() {
   OVERCOMMIT_DISABLE=1 git rebase -i HEAD~$1
 }
