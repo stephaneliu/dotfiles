@@ -1,3 +1,4 @@
+Plug 'dense-analysis/ale'
 " Disable Language Server Protocol as it is being implemented by CoC
 let g:ale_disable_lsp = 1
 
