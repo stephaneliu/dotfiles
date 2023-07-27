@@ -34,7 +34,8 @@ function dsh() {
   fi
 }
 
-alias dg="dip guard"
+alias dip='dip CLEAN_LOGS=1 '
+alias dg="dip GUARD_GQL_SCHEMA=1 guard"
 alias dr="dip rails"
 alias drs="dip compose up -d sidekiq webpacker && dip rails s"
 alias ddown="dip compose down"
