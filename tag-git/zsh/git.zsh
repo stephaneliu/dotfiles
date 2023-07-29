@@ -31,8 +31,6 @@ alias grb='git rebase'
 alias grba='OVERCOMMIT_DISABLE=1 git rebase --abort'
 # alias grbi='OVERCOMMIT_DISABLE=1 git rebase -i'
 alias grbc='OVERCOMMIT_DISABLE=1 git rebase --continue'
-alias grs='git reset'
-alias grsh='git reset --hard'
 alias grm='git rm -rf'
 alias gup='git up'
 alias gus='git unstage'
@@ -40,6 +38,14 @@ alias gwip="git add . && SAFE_COMMIT=1 OVERCOMMIT_DISABLE=1 git commit -m \"****
 
 grbi() {
   OVERCOMMIT_DISABLE=1 git rebase -i HEAD~$1
+}
+
+grs() {
+  git reset --soft HEAD~$1
+}
+
+grsh() {
+  git reset --hard HEAD~$1
 }
 
 # [g]it [c]ommit [r]e[b]ase
