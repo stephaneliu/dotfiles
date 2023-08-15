@@ -89,6 +89,7 @@ cask 'karabiner-elements'
 cask 'keycastr' # dispaly keystrokes for screencasts
 cask 'numi'
 cask 'pushplaylabs-sidekick'
+cask 'send-to-kindle'
 cask 'ultimaker-cura'
 
 # CLI: mas search [app]
