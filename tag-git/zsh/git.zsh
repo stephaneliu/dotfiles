@@ -17,6 +17,7 @@ alias gco='git checkout'
 alias gci='git commit'
 alias gcln='git clean -fd'
 alias gcr='gh cr'
+alias gprc='gh prc'
 alias gdc='git diff --cached' # mneumonic git diff cached
 alias gds='git diff --cached' # mneumonic git diff staged
 alias gdf='git df'
