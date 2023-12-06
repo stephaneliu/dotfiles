@@ -1,3 +1,3 @@
-lua << EOF
-require('lspconfig').tailwindcss.setup{}
-EOF
+" lua << EOF
+" require('lspconfig').tailwindcss.setup{}
+" EOF
