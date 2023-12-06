@@ -40,7 +40,13 @@ alias grbc='OVERCOMMIT_DISABLE=1 git rebase --continue'
 alias grm='git rm -rf'
 alias gup='git up'
 alias gus='git unstage'
-alias gwip="git add . && SAFE_COMMIT=1 OVERCOMMIT_DISABLE=1 git commit -m \"***** Chore: WIP WIP WIP *****\""
+
+gwip() {
+  wips=("Crack that wip" "You must wip it" "Now wip it" "Wip it GOOD" "Unless you wip it" "I say wip it"  "To wip it")
+  optional_msg="$1 "
+  git add .
+  SAFE_COMMIT=1 OVERCOMMIT_DISABLE=1 git commit -m "*** $optional_msg'${wips[RANDOM % ${#wips[@]}]}' - Devo ***"
+}
 
 grbi() {
   OVERCOMMIT_DISABLE=1 git rebase -i HEAD~$1
@@ -58,6 +64,7 @@ grsh() {
 # Make a commit with the intent on rebasing & squashing it later
 # Needs a reference to the commit you are squashing with
 gcrb() {
+  git add .
   git commit -m "**** Squash with $1 ****"
 }
 
