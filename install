@@ -42,7 +42,7 @@ if [[ -z "$TEST" ]]; then
 else
   # Test Dependencies
   brew install -q neovim
-  brew install -q rtx
+  brew install -q mise
   brew install -q rcm
 fi
 
@@ -67,10 +67,10 @@ if ! [ -d $HOME/.oh-my-zsh/custom/themes/powerlevel10k ]; then
   git clone https://github.com/romkatv/powerlevel10k $HOME/.oh-my-zsh/custom/themes/powerlevel10k
 fi
 
-if ! [ -d $HOME/.oh-my-zsh/custom/plugins/rtx ]; then
-  echo '+++ Installing rtx autocomplete'
-  mkdir -p $HOME/.oh-my-zsh/custom/plugins/rtx
-  rtx completion zsh > $HOME/.oh-my-zsh/custom/plugins/rtx/_rtx
+if ! [ -d $HOME/.oh-my-zsh/custom/plugins/mise ]; then
+  echo '+++ Installing mise autocomplete'
+  mkdir -p $HOME/.oh-my-zsh/custom/plugins/mise
+  mise completion zsh > $HOME/.oh-my-zsh/custom/plugins/mise/_mise
 fi
 
 test $HOME/.dotfiles/test/oh_my_zsh_customizations_test

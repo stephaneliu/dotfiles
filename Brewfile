@@ -50,7 +50,7 @@ brew 'pkg-config'                  # Ruby native extensions
 brew 'procs'                       # Better unix: better ps - https://github.com/dalance/procs
 brew 'reattach-to-user-namespace'
 brew 'ripgrep'
-brew 'rtx'                         # asdf written in Rust. No shims
+brew 'mise'                         # asdf written in Rust. No shims
 brew 'ruby-install'
 brew 'tailspin'
 brew 'terminal-notifier'           # programatically send messages to notifications

@@ -9,13 +9,13 @@ else
   exit 1
 fi
 
-test_file="$HOME/.oh-my-zsh/custom/plugins/rtx/_rtx"
-test_reference="rtx autocomplete for ZSH"
+test_file="$HOME/.oh-my-zsh/custom/plugins/mise/_mise"
+test_reference="mise autocomplete for ZSH"
 
 if [ -f $test_file ]; then
   echo "+++ $test_reference installed correctly"
 else
   echo "*** $test_reference did not install correctly"
-  ls -alh $HOME/.oh-my-zsh/custom/plugins/rtx
+  ls -alh $HOME/.oh-my-zsh/custom/plugins/mise
   exit 1
 fi
