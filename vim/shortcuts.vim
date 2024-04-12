@@ -60,6 +60,6 @@ map <silent> <leader>bg :let &background = ( &background == "dark"? "light" : "d
 " toggle current line highlighting
 nmap <leader>hl :set cursorline!<CR>
 
-cmap fff f\(des\\|con\\|it\)
+cmap fff f\(des\\|con\\|it\)<CR>
 
 nnoremap gp `[v`]` " reselect pasted text: https://vimtricks.com/p/reselect-pasted-text/
