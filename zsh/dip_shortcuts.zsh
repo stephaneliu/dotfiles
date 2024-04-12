@@ -8,12 +8,12 @@ function drc() {
     if [ $restart -gt 0 ]; then
       echo "Restarting rails console container"
 
-      docker stop $rc_id > /dev/null && dip rails c
+      docker stop $rc_id > /dev/null && dip CLEAN_LOGS=1 rails c
     else
       docker exec -it $rc_id bin/rails c
     fi
   else
-    dip rails c
+    dip CLEAN_LOGS=1 rails c
   fi
 }
 
