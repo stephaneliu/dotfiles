@@ -15,9 +15,9 @@
   ds = diff --cached  # mneumonic git diff staged
   follow = log --follow -p --
   gr = grep --extended-regexp --break --heading --line-number
-  gone = ! "git fetch -p && git for-each-ref --format '%(refname:short) %(upstream:track)' | awk '$2 == \"[gone]\" {print $1}' | xargs -r git branch -D"
-  lsgone = ! "git fetch -p && git for-each-ref --format '%(refname:short) %(upstream:track)' | awk '$2 == \"[gone]\" {print $1}'"
-  home = config user.email \"sliu@sjliu.com\"
+  gone-ls = "!f() { git fetch --prune; git branch -vv | awk '/: gone]/{print $1}'; }; f"
+  gone-rm = "!f() { git fetch --prune; git branch -vv | awk '/: gone]/{print $1}' | xargs -r git branch -d; }; f"
+  home = config user.email \"sliu@sjliu.com\"h
   ignore = update-index --assume-unchanged
   ignored = !git ls-files -v | grep \"^[[:lower:]]\"
   l = log --show-linear-break --decorate --show-signature --stat
