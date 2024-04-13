@@ -111,9 +111,12 @@ nvim --headless -i NONE +PlugInstall +qa
 
 
 
-echo "+++ Install Github Copilot"
-echo "### Manually exit vim after Copilot is installed"
-nvim -i NONE +"Copilot setup" +qa
+# Don't install Copilot during test run until we can exit after install without installation which require user input
+if [[ -z "$TEST" ]]; then
+  echo "+++ Install Github Copilot"
+  echo "### Manually exit vim after Copilot is installed"
+  nvim -i NONE +"Copilot setup" +qa
+fi
 
 
 
