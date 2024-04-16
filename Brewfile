@@ -70,15 +70,14 @@ brew 'zsh-vi-mode' # https://github.com/jeffreytse/zsh-vi-mode
 cask '1password'
 cask '1password-cli' # 1password cli - https://developer.1password.com/docs/cli/get-started/
 cask 'app-cleaner' unless system 'ls /Applications/AppCleaner*' # Version is free legacy
+cask 'bruno'     # api explorer
 cask 'craft'
-cask 'cron'
 cask 'dash'
 cask 'divvy'
 cask 'docker'
 cask 'font-hack-nerd-font'
 cask 'font-jetbrains-mono-nerd-font'
 cask 'gpg-suite-no-mail'
-cask 'graphiql'
 cask 'insta360-studio'
 cask 'ngrok'
 cask 'kap'
@@ -98,5 +97,4 @@ cask 'ultimaker-cura'
 # Returns app name and app id
 # mas install [app_id]
 mas 'Hand Mirror', id: 1_502_839_586
-mas 'Magnet', id: 441_258_766
 mas 'Marked 2', id: 890_031_187
