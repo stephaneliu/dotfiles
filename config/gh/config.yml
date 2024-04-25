@@ -10,10 +10,26 @@ pager:
 aliases:
     co: pr checkout
     prme: pr list --author "stephaneliu" --state "all" --limit "10000"
-    cr: pr list --search "review:required draft:false author:allindow author:chadwilken author:charlieharris \
-            author:DustinFisher author:EdwardBarton author:florasaramago author:groovestation31785 author:jeffmcfadden \
-            author:johncocam author:mjmelnick author:PelagicDev author:pkccgh author:sdfreund10 author:slvdrog \
-            author:stephaneliu author:timross14 author:zaydion author:itstheraj" --json number,author,title,url,headRefName,updatedAt --template \
+    cr: pr list --search "state:open draft:false \
+                          author:allindow \
+                          author:chadwilken \
+                          author:charlieharris \
+                          author:DustinFisher \
+                          author:EdwardBarton \
+                          author:florasaramago \
+                          author:groovestation31785 \
+                          author:itstheraj \
+                          author:jeffmcfadden \
+                          author:johncocam \
+                          author:meanderfindings \
+                          author:mjmelnick \
+                          author:PelagicDev \
+                          author:pkccgh \
+                          author:sdfreund10 \
+                          author:slvdrog \
+                          author:timross14 \
+                          author:zaydion \
+                          " --json number,author,title,url,headRefName,updatedAt --template \
             '{{range .}}{{tablerow (printf "#%v" .number | autocolor "green") .author.login .title (.headRefName | autocolor "yellow") (timeago .updatedAt) .url}}{{end}}'
     prc: pr create -l "Group:\ Communication" --assignee stephaneliu --reviewer "CompanyCam/backend-engineers"
     prd: pr create -l "Group:\ Communication" --assignee stephaneliu --draft
