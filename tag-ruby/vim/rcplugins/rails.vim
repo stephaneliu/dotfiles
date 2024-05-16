@@ -77,6 +77,23 @@ let g:rails_projections = {
   \     "end"
   \   ]
   \ },
+  \ "app/controllers/v3/*_controller.rb": {
+  \   "command":   "vthree",
+  \   "test":      "spec/swagger/v3/{}_spec.rb"
+  \ },
+  \ "spec/swagger/v3/*_spec.rb": {
+  \   "command":   "swagger",
+  \   "alternate": "app/controllers/v3/{}_controller.rb",
+  \   "template":  [
+  \     "# frozen_string_literal: true",
+  \     "",
+  \     "require \"swagger_helper\"",
+  \     "",
+  \     "RSpec.describe {camelcase|capitalize|colons}Adapter, type: :request do",
+  \     "end"
+  \   ],
+  \   "rubyMacro": ["after", "before", "describe", "context", "fdescribe", "fcontext", "fit", "from", "fspecify", "let", "let!", "to"]
+  \ },
   \ "spec/channels/*channel_spec.rb": {
   \   "command":   "schannel",
   \   "template":  [
