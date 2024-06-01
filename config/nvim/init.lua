@@ -1,4 +1,5 @@
 require("options")
+require("quickfix")
 
 -- set runtimepath^=~/.vim runtimepath+=~/.vim/after
 -- let &packpath=&runtimepath
