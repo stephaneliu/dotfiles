@@ -20,8 +20,7 @@ n_keymap(';v', ':tabnew ~/.config/nvim/init.lua<CR>')
 n_keymap('<leader>rn', ':echo "use unimpared#yor"<CR>')
 
 -- convert hash rockets to json style
-n_keymap('<leader>hash', ':s/:\\([^ ]*\\)\\(\\s*\\)=>/\\1:/g<CR>')
-v_keymap('<leader>hash', ':s/:\\([^ ]*\\)\\(\\s*\\)=>/\\1:/g<CR>')
+nv_keymap('<leader>hash', ':s/:\\([^ ]*\\)\\(\\s*\\)=>/\\1:/g<CR>')
 
 -- simplify window navigation with ctrl
 n_keymap('<C-j>', '<C-w>j')
@@ -59,7 +58,8 @@ n_keymap('<Space>', ':nohlsearch<Bar>:echo<CR>')
 
 -- vim.api.nvim_set_keymap('c', 'fff', "f\\(des\\\\|con\\\\|it\\)<CR>", {noremap = true})
 -- vim.cmd[[cnoreabbrev fff f\(des\\|con\\|it\)<CR>]]
-vim.cmd[[cnoreabbrev fff finding]]
+-- vim.cmd[[cnoreabbrev fff finding]]
+-- vim.keymap.set("ca", "fff", "f\\(des\\\\|con\\\\|it\\)<CR>", {noremap = true})
 -- cmap fff f\(des\\|con\\|it\)<CR>
 
 -- nnoremap gp `[v`]` " reselect pasted text: https://vimtricks.com/p/reselect-pasted-text/

@@ -10,6 +10,10 @@ v_keymap = function(key, val, no_remap)
   custom_keymap('v', key, val, no_remap)
 end
 
+nv_keymap = function(key, val, no_remap)
+  custom_keymap({'n', 'v'}, key, val, no_remap)
+end
+
 custom_keymap = function(map_type, key, val, no_remap)
   no_remap = no_remap or true
   vim.keymap.set(map_type, key, val, {noremap = true})
