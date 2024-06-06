@@ -1,11 +1,12 @@
 -- remap ESC in insert mode to jk/kj
-vim.keymap.set('i', 'jk', '<ESC>', {noremap = true})
+i_keymap('jk', '<ESC>')
 
 -- Visual mode select then shift + d to paste selected text
-vim.keymap.set('v', 'D', 'y\'>p', {noremap = true})
+v_keymap('D', 'y\'>p')
 
 -- change working directory to that of file
-vim.keymap.set('c', 'cwd', 'lcd %:p:h', {noremap = true})
+-- 'c' bindings, abbreviations, currently doesn't work in Lua
+-- vim.keymap.set('c', 'cwd', 'lcd %:p:h', {noremap = true})
 
 -- close window with q
 n_keymap(';q', ':q<CR>')
@@ -20,7 +21,7 @@ n_keymap('<leader>rn', ':echo "use unimpared#yor"<CR>')
 
 -- convert hash rockets to json style
 n_keymap('<leader>hash', ':s/:\\([^ ]*\\)\\(\\s*\\)=>/\\1:/g<CR>')
-vim.api.nvim_set_keymap('v', '<leader>hash', ':s/:\\([^ ]*\\)\\(\\s*\\)=>/\\1:/g<CR>', {noremap = true})
+v_keymap('<leader>hash', ':s/:\\([^ ]*\\)\\(\\s*\\)=>/\\1:/g<CR>')
 
 -- simplify window navigation with ctrl
 n_keymap('<C-j>', '<C-w>j')

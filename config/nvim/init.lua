@@ -1,6 +1,18 @@
+i_keymap = function(key, val, no_remap)
+  custom_keymap('i', key, val, no_remap)
+end
+
 n_keymap = function(key, val, no_remap)
+  custom_keymap('n', key, val, no_remap)
+end
+
+v_keymap = function(key, val, no_remap)
+  custom_keymap('v', key, val, no_remap)
+end
+
+custom_keymap = function(map_type, key, val, no_remap)
   no_remap = no_remap or true
-  vim.keymap.set('n', key, val, {noremap = true})
+  vim.keymap.set(map_type, key, val, {noremap = true})
 end
 
 require("options")
