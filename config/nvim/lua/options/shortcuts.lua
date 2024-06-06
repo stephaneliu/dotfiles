@@ -49,12 +49,15 @@ vim.keymap.set('n', '<Space>', ':nohlsearch<Bar>:echo<CR>', {noremap = true})
 -- vice sudo !!
 -- cmap w!! %!sudo tee > /dev/null %
 
-vim.keymap.set('n', '<leader>bg', ':let &background = ( &background == "dark"? "light" : "dark" )<CR>', {noremap = true})
+-- toggle background color
+-- Use unimpaired - yob
 -- map <silent> <leader>bg :let &background = ( &background == "dark"? "light" : "dark" )<CR>
---
--- " toggle current line highlighting
+
+-- toggle current line highlighting
+-- Use unimpaired - yoc
 -- nmap <leader>hl :set cursorline!<CR>
---
+
+-- vim.api.nvim_set_keymap('c', 'fff', "f\\(des\\\\|con\\\\|it\\)<CR>", {noremap = true})
 -- cmap fff f\(des\\|con\\|it\)<CR>
---
+
 -- nnoremap gp `[v`]` " reselect pasted text: https://vimtricks.com/p/reselect-pasted-text/
