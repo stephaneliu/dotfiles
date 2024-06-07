@@ -472,6 +472,10 @@ let g:rails_projections = {
   \   "test":      "spec/workers/{singular}_spec.rb",
   \   "template":  "# frozen_string_literal: true\n\nclass {camelcase|capitalize|colons}Worker\n  def initialize\n  end\nend"
   \ },
+  \ "config/routes/*.rb": {
+  \   "command":   "route",
+  \   "affinity":  "resource",
+  \ },
   \ "lib/tasks/*.rake": {
   \   "command":   "task",
   \   "affinity":  "resource",
