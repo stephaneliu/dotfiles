@@ -25,9 +25,10 @@ end
 
 custom_map = function(map_type, key, val, no_remap)
   no_remap = no_remap or true
-  vim.keymap.set(map_type, key, val, {noremap = true})
+  vim.keymap.set(map_type, key, val, {noremap = no_remap})
 end
 
+require("plugins")
 require("options")
 
 -- set runtimepath^=~/.vim runtimepath+=~/.vim/after
