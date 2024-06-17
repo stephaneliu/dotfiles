@@ -17,7 +17,13 @@ Plug('mattn/gist-vim')
 --
 vim.call('plug#end')
 
+-- Plugin configs
 require("plugins.ag")
+
+-- Ruby
 require("plugins.rails")
 require("plugins.standardrb")
+
+-- Git
 require("plugins.conflicted")
+require("plugins.gist")
