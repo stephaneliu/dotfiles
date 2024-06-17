@@ -14,6 +14,8 @@ Plug('tpope/vim-rails')
 Plug('christoomey/vim-conflicted')
 Plug('tpope/vim-fugitive')
 Plug('mattn/gist-vim')
+Plug('tpope/vim-git')
+
 --
 vim.call('plug#end')
 
