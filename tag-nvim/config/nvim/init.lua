@@ -72,6 +72,7 @@ vim.o.mouse = ""
 
 require("plugins")
 require("options")
+require("ruby_abbreviations")
 
 -- set runtimepath^=~/.vim runtimepath+=~/.vim/after
 -- let &packpath=&runtimepath
