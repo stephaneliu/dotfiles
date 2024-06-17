@@ -10,10 +10,13 @@ Plug('rking/ag.vim')
 Plug('tpope/vim-rails')
 
 -- Git
+Plug('christoomey/vim-conflicted')
 Plug('tpope/vim-fugitive')
+Plug('mattn/gist-vim')
 --
 vim.call('plug#end')
 
 require("plugins.ag")
 require("plugins.rails")
 require("plugins.standardrb")
+require("plugins.conflicted")
