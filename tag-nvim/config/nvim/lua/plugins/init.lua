@@ -15,6 +15,7 @@ Plug('tpope/vim-rails')
 -- Git
 Plug('christoomey/vim-conflicted')
 Plug('tpope/vim-fugitive')
+Plug('ruanyl/vim-gh-line')         -- A Vim plugin that opens a link to the current line on GitHub
 Plug('mattn/gist-vim')
 Plug('tpope/vim-git')
 Plug('airblade/vim-gitgutter')
@@ -34,6 +35,7 @@ require("plugins.standardrb")
 
 -- Git
 require("plugins.conflicted")
+require("plugins.gh_line")
 require("plugins.gist")
 require("plugins.gitgutter")
 require("plugins.nvim_blame_line")
