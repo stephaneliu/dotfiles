@@ -18,6 +18,7 @@ Plug('tpope/vim-fugitive')
 Plug('mattn/gist-vim')
 Plug('tpope/vim-git')
 Plug('airblade/vim-gitgutter')
+Plug('tveskag/nvim-blame-line')
 
 --
 vim.call('plug#end')
@@ -35,3 +36,4 @@ require("plugins.standardrb")
 require("plugins.conflicted")
 require("plugins.gist")
 require("plugins.gitgutter")
+require("plugins.nvim_blame_line")
