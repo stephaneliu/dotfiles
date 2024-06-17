@@ -5,12 +5,12 @@ local Plug = vim.fn['plug#']
 -- Load plugins
 vim.call('plug#begin')
 --
-Plug('ecomba/vim-ruby-refactoring')
 Plug('rking/ag.vim')
 
 -- Ruby
 Plug('tpope/vim-endwise')          -- auto add endfunction in Ruby
 Plug('tpope/vim-rails')
+Plug('ecomba/vim-ruby-refactoring')
 
 -- Git
 Plug('christoomey/vim-conflicted')
