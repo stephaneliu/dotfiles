@@ -7,6 +7,7 @@ Plug('ecomba/vim-ruby-refactoring')
 Plug('rking/ag.vim')
 
 -- Ruby
+Plug('tpope/vim-endwise')          -- auto add endfunction in Ruby
 Plug('tpope/vim-rails')
 
 -- Git
