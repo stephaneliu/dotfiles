@@ -6,7 +6,7 @@ lua << EOF
     callback = function()
       vim.lsp.start {
         name = "standard",
-        cmd = { "/Users/stephane.liu/.local/share/mise/installs/rubylatest/bin/standardrb", "--lsp" },
+        cmd = { "/Users/stephane.liu/.local/share/mise/installs/ruby/latest/bin/standardrb", "--lsp" },
       }
     end,
   })
