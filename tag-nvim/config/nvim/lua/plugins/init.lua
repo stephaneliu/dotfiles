@@ -6,6 +6,7 @@ local Plug = vim.fn['plug#']
 vim.call('plug#begin')
 --
 Plug('rking/ag.vim')
+Plug('overcache/NeoSolarized')
 Plug( 'xolox/vim-session')         -- Manage sessions :SaveSession / OpenSession
   Plug('xolox/vim-misc')           -- Dependency of vim-session
 
@@ -31,6 +32,7 @@ vim.call('plug#end')
 -- Plugin configs
 require("plugins.ag")
 require("plugins.session")
+require("plugins.solarized")
 
 -- Ruby
 require("plugins.rails")
