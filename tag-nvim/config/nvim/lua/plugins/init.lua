@@ -5,6 +5,8 @@ local Plug = vim.fn['plug#']
 -- Load plugins
 vim.call('plug#begin')
 --
+Plug('mileszs/ack.vim')
+Plug('MarcWeber/vim-addon-mw-utils')
 Plug('rking/ag.vim')
 Plug('overcache/NeoSolarized')
 Plug( 'xolox/vim-session')         -- Manage sessions :SaveSession / OpenSession
