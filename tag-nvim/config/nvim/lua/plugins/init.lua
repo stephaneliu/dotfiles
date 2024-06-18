@@ -6,6 +6,8 @@ local Plug = vim.fn['plug#']
 vim.call('plug#begin')
 --
 Plug('rking/ag.vim')
+Plug( 'xolox/vim-session')         -- Manage sessions :SaveSession / OpenSession
+  Plug('xolox/vim-misc')           -- Dependency of vim-session
 
 -- Ruby
 Plug('tpope/vim-endwise')          -- auto add endfunction in Ruby
@@ -28,6 +30,7 @@ vim.call('plug#end')
 
 -- Plugin configs
 require("plugins.ag")
+require("plugins.session")
 
 -- Ruby
 require("plugins.rails")
