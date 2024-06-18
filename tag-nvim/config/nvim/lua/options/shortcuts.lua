@@ -27,3 +27,5 @@ n_map('<C-h>', '<C-w>h')
 -- simplify tabbed navigation with shift
 n_map('<S-H>', 'gT')
 n_map('<S-L>', 'gt')
+
+n_map('<leader>m', ":silent !open -a Marked\\ 2.app '%:p'<cr>")
