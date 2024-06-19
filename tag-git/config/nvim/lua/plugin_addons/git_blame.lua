@@ -1,7 +1,7 @@
 return {
   'f-person/git-blame.nvim',
-  priority = 1000, -- make sure to load this before all other plugins
+  event = "BufEnter",
   keys = {
-    { "<leader>b", "<CMD>GitBlameToggle<CR>", mode = { "n" } }
+    { "<leader>b", "<CMD>GitBlameToggle<CR>" }
   }
 }
