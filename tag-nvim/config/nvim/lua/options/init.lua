@@ -1,8 +1,0 @@
-require("options.quickfix")
-require("options.shortcuts")
-require("options.autocmd")
-require("options.clipboard")
-require("options.session")
-require("options.spell")
-require("options.tab")
-require("options.visual")

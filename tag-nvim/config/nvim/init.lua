@@ -1,7 +1,7 @@
 require("functions")
 require("core")
 require("lazy_nvim")
-require("options")
+require("functions.utils").glob_require("options")
 require("ruby_abbreviations")
 
 -- set runtimepath^=~/.vim runtimepath+=~/.vim/after
