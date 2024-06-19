@@ -1,8 +1,8 @@
 return {
   'airblade/vim-gitgutter',
   keys = {
-    { "<leader>ggh", ":GitGutterLineHighlightsToggle<CR>" },
-    { "<leader>ggf", ":GitGutterFold<CR>" },
+    { "<leader>ggh", "<CMD>GitGutterLineHighlightsToggle<CR>" },
+    { "<leader>ggf", "<CMD>GitGutterFold<CR>" },
     { "]h", "<Plug>(GitGutterNextHunk)" },
     { "[h", "<Plug>(GitGutterPrevHunk)" },
   },
