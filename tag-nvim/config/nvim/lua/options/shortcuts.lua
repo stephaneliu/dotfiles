@@ -1,4 +1,3 @@
-i_map('jk', '<ESC>') -- remap ESC in insert mode to jk/kj
 v_map('D', 'y\'>p') -- Visual mode select then shift + d to paste selected text
 c_map('cwd', 'lcd %:p:h') -- change working directory to that of file
 n_map(';v', ':tabnew ~/.config/nvim/init.lua<CR>') -- " Display ~/.vimrc in new tab
