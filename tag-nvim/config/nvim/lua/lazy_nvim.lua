@@ -13,10 +13,10 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- Glob plugins directory and load plugins
-require("lazy").setup({ { import = "plugins" } }, {
-  -- install = {
-  --   colorscheme = { "nightfly" },
-  -- },
+require("lazy").setup({ { import = "plugin_addons" } }, {
+  install = {
+    colorscheme = { "NeoSolarized" },
+  },
   checker = {
     enabled = true,
     notify = false,
