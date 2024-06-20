@@ -1,5 +1,6 @@
 vim.o.showcmd = false
 vim.o.number = true  -- forces ruler to be visible (vice toggle)
+vim.o.relativenumber = true
 vim.o.ruler = true
 vim.o.autoindent = true
 vim.o.scrolloff = "3"
