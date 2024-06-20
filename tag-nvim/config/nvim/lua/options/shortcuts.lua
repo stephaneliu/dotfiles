@@ -8,7 +8,7 @@ n_map('<C-->', ':resize -3<CR>') -- current window split smaller
 n_map('<Space>', ':nohlsearch<Bar>:echo<CR>') -- Press Space to turn off highlighting and clear any message already displayed
 c_map('w!!', '%!sudo tee > /dev/null') -- vice `sudo !!` from terminal
 __map('<leader>bg', ':echo "use unimpaired `yob` instead"<CR>')
-n_map('<leader>hl', ':echo "use unimpaired `yoc` instead"<CR>') -- toggle current line highlighting
+-- n_map('<leader>hl', ':echo "use unimpaired `yoc` instead"<CR>') -- toggle current line highlighting
 c_map('fff', "f\\(des\\|con\\|it\\)<CR>") -- Find focus `:fff`
 n_map('gp', "`[v`]`") -- reselect pasted text: https://vimtricks.com/p/reselect-pasted-text/
 
