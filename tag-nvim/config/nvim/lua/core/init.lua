@@ -1,4 +1,5 @@
 vim.g.mapleader = ","
+vim.g.maplocalleader = ","
 vim.o.nocompatible = true
 vim.o.swapfile = false
 vim.o.history = 10000
