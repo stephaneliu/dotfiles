@@ -28,3 +28,8 @@ n_map('<S-H>', 'gT')
 n_map('<S-L>', 'gt')
 
 n_map('<leader>m', ":silent !open -a Marked\\ 2.app '%:p'<cr>")
+
+n_map('<leader>dpair', ":let &background='dark' | :silent !kitty @ set-colors --all ~/.config/kitty/themes/solarized-dark.conf && kitty @ set-font-size 22 <CR> | <CR>")
+n_map('<leader>lpair', ":let &background='light' | :silent !kitty @ set-colors --all ~/.config/kitty/themes/solarized-light.conf && kitty @ set-font-size 22 <CR> | <CR>")
+n_map('<leader>dsolo', ":let &background='dark' | :silent !kitty @ set-colors --all ~/.config/kitty/themes/solarized-dark.conf && kitty @ set-font-size 14 <CR> | <CR>")
+n_map('<leader>lsolo', ":let &background='light' | :silent !kitty @ set-colors --all ~/.config/kitty/themes/solarized-light.conf && kitty @ set-font-size 14 <CR> | <CR>")
