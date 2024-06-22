@@ -15,6 +15,6 @@ return {
     trim_on_write = true,
     
     -- highlight trailing spaces
-    highlight = true,
+    highlight = false,
   }
 }
