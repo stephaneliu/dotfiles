@@ -13,13 +13,15 @@ vim.o.number = true -- show line numbers
 vim.o.ruler = true  -- show the cursor position all the time
 vim.o.scrolloff = 3 -- number of visible lines above and below cursor
 
+USER = os.getenv("USER")
+
 vim.o.backup = true
 vim.o.writebackup = true
-vim.o.backupdir = "~/.config/nvim/backups"
+vim.opt.backupdir = "/Users/" .. USER .. "/.config/nvim/backups"
 vim.o.backupskip = "/tmp/*,/private/tmp/*"   -- setting backupskip to allow crontab -e to use vim
 
 vim.o.undofile = true -- " Presistent undo
-vim.o.undodir = "~/.config/nvim/undodir"
+vim.opt.undodir = "/Users/" .. USER .. "/.config/nvim/undodir"
 
 vim.o.autoindent = true
 vim.o.copyindent = true
