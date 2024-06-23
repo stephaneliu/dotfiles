@@ -166,6 +166,8 @@ if [[ -z "$TEST" ]]; then
   # More - https://support.1password.com/docs/cli/get-started
   echo "+++ Creating npm token from 1Password"
   echo $(op read op://Private/NPM\ token/notesPlain) > $HOME/.zsh/npm.zsh
+  echo "+++ Copying .env.private file"
+  echo $(op read op://Private/.env.private/notesPlain) > $HOME/.env.private
 fi
 
 
