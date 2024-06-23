@@ -1,5 +1,5 @@
 EXCLUDES="system README.md install LICENSE-MIT.txt setup test utils Brewfile.lock.json"
 SYMLINK_DIRS="bundle backups undodir"
 UNDOTTED='bin Brewfile'
-TAGS="git ruby tmux nvim"
+TAGS="git kitty ruby tmux nvim"
 COPY_ALWAYS="zsh/npm.zsh"
