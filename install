@@ -91,23 +91,14 @@ test $HOME/.dotfiles/test/git_submodule_test
 
 echo "+++ Linking dotfiles"
 RCRC=$HOME/.dotfiles/rcrc rcup -fq
-# Create git ignored directory
-echo "+++ Creating git ignored directory, .vim/bundle"
-mkdir -p $HOME/.vim/bundle
 
 test $HOME/.dotfiles/test/rcm_test
 
 
 
-echo "+++ Installing vim-plug"
-sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs --silent \
-       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-
-
-
-echo "+++ Installing Vim packages"
+echo "+++ Installing lazy nvim and plugins"
 # shada file, .viminfo, is owned by root on GH CI. Set -i NONE does not read or write to shada file
-nvim --headless -i NONE +PlugInstall +qa
+nvim --headless -i NONE "+Lazy! sync" +qa
 
 
 
@@ -141,8 +132,6 @@ if [ ! -d $HOME/tmp ]; then
   echo "+++ Creating a tmp folder in $HOME"
   mkdir $HOME/tmp
 fi
-
-
 
 # Skip if running on CI
 if [[ -z "$TEST" ]]; then
