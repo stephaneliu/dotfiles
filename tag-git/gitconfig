@@ -1,13 +1,14 @@
 [alias]
-	ctags = !.git/hooks/ctags
-  ap = add --patch
-  ad = add
+  ctags = !.git/hooks/ctags
+  a = add
+  ad = add --patch
   amend = commit --amend
   br = branch -vv
   churn = ! "git-churn"
   ci = commit
   cia = commit --amend
   cic = commit --amend --no-edit
+  cln = clean -fd
   co = checkout
   commend = commit --amend --no-edit
   df = diff
@@ -20,7 +21,8 @@
   home = config user.email \"sliu@sjliu.com\"h
   ignore = update-index --assume-unchanged
   ignored = !git ls-files -v | grep \"^[[:lower:]]\"
-  l = log --show-linear-break --decorate --show-signature --stat
+  l = log --oneline --decorate
+  ll = log --show-linear-break --decorate --show-signature --stat
   lg = log -p --show-linear-break --show-signature
   lgg = log --oneline --show-linear-break --show-signature
   ln = log --name-only --show-linear-break --show-signature
@@ -30,8 +32,11 @@
   lolauth = log --graph --decorate --pretty=short --abbrev-commit
   mg = merge
   newauthor = commit --amend --reset-author -C HEAD
+  pf = push --force-with-lease
   pl = pull
   ps = push
+  rba = rebase --abort
+  rbc = rebase --continue
   recommit = commit --amend
   st = status --short --branch
   tags = tag --list
