@@ -1,6 +1,6 @@
 ZSH=$HOME/.oh-my-zsh
 
-POWERLEVEL9K_MODE='nerdfont-complete'
+POWERLEVEL10K_MODE='nerdfont-complete'
 ZSH_THEME="powerlevel10k/powerlevel10k"
 COMPLETION_WAITING_DOTS="true"
 
