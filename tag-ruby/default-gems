@@ -17,6 +17,7 @@ solargraph
 standardrb
 tty-command
 tty-config
+tty-font
 tty-progressbar
 tty-prompt
 tty-screen
