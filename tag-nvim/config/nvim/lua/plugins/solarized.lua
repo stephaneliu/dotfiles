@@ -1,15 +1,16 @@
 return {
   {
-    "overcache/NeoSolarized",
-    init = function()
-      vim.o.termguicolors = true
+    -- "overcache/NeoSolarized",
+    -- "shaunsingh/solarized.nvim",
+    "maxmx03/solarized.nvim",
+    config = function()
       vim.o.background = "dark"
     end,
   },
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "NeoSolarized",
+      colorscheme = "solarized",
     },
   },
 }
