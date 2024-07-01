@@ -17,11 +17,11 @@ USER = os.getenv("USER")
 
 vim.o.backup = true
 vim.o.writebackup = true
-vim.opt.backupdir = "/Users/" .. USER .. "/.config/nvim/backups"
+vim.opt.backupdir = "/Users/" .. USER .. "/.nvim-backup"
 vim.o.backupskip = "/tmp/*,/private/tmp/*"   -- setting backupskip to allow crontab -e to use vim
 
 vim.o.undofile = true -- " Presistent undo
-vim.opt.undodir = "/Users/" .. USER .. "/.config/nvim/undodir"
+vim.opt.undodir = "/Users/" .. USER .. "/.nvim-undo"
 
 vim.o.autoindent = true
 vim.o.copyindent = true
