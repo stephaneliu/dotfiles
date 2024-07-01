@@ -8,7 +8,7 @@ function g {
 }
 
 alias 'g-'='git co -'
-alias gad='git add --patch'
+alias gad='git add --patch .'
 alias gap='git add --patch'
 alias gbr='git br'
 alias gbrr='git for-each-ref --color=always --sort=-committerdate refs/heads/ --format="%(color:bold green)%(committerdate:relative)%09%(color:bold yellow)%(refname:short)%(color:normal)" | tac'
