@@ -1,6 +1,8 @@
 /vim/bundle/*
 /tag-nvim/config/nvim/undodir/*
 /tag-nvim/config/nvim/backups/*
+nvim-undo/*
+nvim-backup/*
 /vim/sessions/*
 .tmuxinator/*.yml
 !default.yml
