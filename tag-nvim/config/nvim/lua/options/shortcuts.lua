@@ -1,3 +1,4 @@
+i_map('jk', '<Esc>') -- jk to escape
 v_map('D', 'y\'>p') -- Visual mode select then shift + d to paste selected text
 c_map('cwd', 'lcd %:p:h') -- change working directory to that of file
 n_map(';v', ':tabnew ~/.config/nvim/init.lua<CR>') -- " Display ~/.vimrc in new tab
