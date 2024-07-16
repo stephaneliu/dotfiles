@@ -1,6 +1,7 @@
 -- Manage sessions :SaveSession / OpenSession
 return {
   'xolox/vim-session',
+  enabled = true,
   dependencies = { 'xolox/vim-misc' },
 
   init = function()

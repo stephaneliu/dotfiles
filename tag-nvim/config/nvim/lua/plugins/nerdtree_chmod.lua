@@ -1,2 +1,5 @@
 -- In nerdtree - mx<enter> to toggle executable bit
-return { 'EvanDotPro/nerdtree-chmod' }
+return {
+  'EvanDotPro/nerdtree-chmod',
+  enabled = true,
+}

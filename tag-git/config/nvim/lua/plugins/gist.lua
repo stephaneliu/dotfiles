@@ -1,5 +1,6 @@
 return {
   'mattn/gist-vim',
+  enabled = true,
   init = function()
     vim.g.gist_open_browser_after_post = 1
     vim.g.gist_clip_command = "pbcopy"  -- Copy the URL after gisting

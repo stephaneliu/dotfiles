@@ -1,5 +1,6 @@
 return {
   "nvim-telescope/telescope.nvim",
+  enabled = true,
   branch = "0.1.x",
   dependencies = {
     "nvim-lua/plenary.nvim",

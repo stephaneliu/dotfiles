@@ -1,5 +1,6 @@
 return {
   'justinmk/vim-sneak',
+  enabled = true,
   keys = {
     { 'f', '<Plug>Sneak_s' },
     { 'F', '<Plug>Sneak_S' },

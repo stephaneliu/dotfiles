@@ -1,1 +1,4 @@
-return { 'tpope/vim-git' }
+return {
+  'tpope/vim-git',
+  enabled = true,
+}

@@ -1,5 +1,6 @@
 return {
   'overcache/NeoSolarized',
+  enabled = true,
   lazy = false,
   priority = 1000, -- make sure to load this before all other plugins
   init = function()

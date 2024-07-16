@@ -1,5 +1,6 @@
 return {
   'scrooloose/nerdtree',
+  enabled = true,
   init = function()
     vim.g.NERDTreeShowHidden = 1
     vim.g.NERDTreeQuitOnOpen = 1

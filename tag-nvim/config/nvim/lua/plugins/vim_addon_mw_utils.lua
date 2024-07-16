@@ -1,1 +1,4 @@
-return { 'MarcWeber/vim-addon-mw-utils' }
+return {
+  'MarcWeber/vim-addon-mw-utils',
+  enabled = true,
+}

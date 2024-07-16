@@ -1,5 +1,6 @@
 return {
   'godlygeek/tabular',
+  enabled = true,
   keys = {
     { '<leader>a=', '<CMD>Tabularize /=<CR><ESC>', mode = {'v'} },
     { '<leader>ae', '<CMD>Tabularize /=<CR><ESC>', mode = {'v'} },

@@ -1,1 +1,4 @@
-return { 'ecomba/vim-ruby-refactoring' }
+return {
+  'ecomba/vim-ruby-refactoring',
+  enabled = true,
+}

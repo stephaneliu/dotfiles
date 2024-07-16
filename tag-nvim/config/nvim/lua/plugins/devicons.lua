@@ -1,1 +1,4 @@
-return { 'ryanoasis/vim-devicons' }
+return {
+  'ryanoasis/vim-devicons',
+  enabled = true,
+}

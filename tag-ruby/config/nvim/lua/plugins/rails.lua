@@ -15,6 +15,7 @@
 
 return {
   'tpope/vim-rails',
+  enabled = true,
   init = function()
     vim.cmd [[
       let g:rails_projections = {

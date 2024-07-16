@@ -1,2 +1,5 @@
 -- Comment lines
-return { 'tomtom/tcomment_vim' }
+return {
+  'tomtom/tcomment_vim',
+  enabled = true,
+}
