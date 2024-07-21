@@ -1,6 +1,6 @@
 vim.g.mapleader = ","
 vim.g.maplocalleader = ","
-vim.o.nocompatible = true
+-- vim.o.nocompatible = true -- Completely ignored by neovim
 vim.o.swapfile = false
 vim.o.history = 10000
 vim.o.incsearch = true
