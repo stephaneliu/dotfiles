@@ -13,6 +13,9 @@ neovim
 pastel
 pry
 pry-byebug
+pg
+rails
+ruby-lsp
 solargraph
 standardrb
 tty-command
@@ -23,3 +26,4 @@ tty-prompt
 tty-screen
 tty-spinner
 tty-which
+yard
