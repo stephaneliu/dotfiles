@@ -10,3 +10,7 @@ Host lish
   HostName lish-us-west.linode.com
   User stephaneliu
   IdentityFile ~/.ssh/linode_lish
+Host render-hcr
+  HostName ssh.oregon.render.com
+  User srv-cqkv94d6l47c73evu1m0
+  IdentityFile ~/.ssh/render
