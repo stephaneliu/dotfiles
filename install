@@ -157,6 +157,9 @@ if [[ -z "$TEST" ]]; then
   echo $(op read op://Private/NPM\ token/notesPlain) > $HOME/.zsh/npm.zsh
   echo "+++ Copying .env.private file"
   echo $(op read op://Private/.env.private/notesPlain) > $HOME/.env.private
+  echo "+++ Copying ssh files"
+  echo $(op read op://Private/render_ssh_private/notesPlain) > $HOME/.ssh/render
+  echo $(op read op://Private/render_ssh_public/notesPlain) > $HOME/.ssh/render.pub
 fi
 
 
