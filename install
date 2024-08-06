@@ -160,6 +160,8 @@ if [[ -z "$TEST" ]]; then
   echo "+++ Copying ssh files"
   echo $(op read op://Private/render_ssh_private/notesPlain) > $HOME/.ssh/render
   echo $(op read op://Private/render_ssh_public/notesPlain) > $HOME/.ssh/render.pub
+  echo $(op read op://Private/hicrane_ssh_2023_private/notesPlain) > $HOME/.ssh/id_hcr_rsa_2023
+  echo $(op read op://Private/hicrane_ssh_2023_public/notesPlain) > $HOME/.ssh/id_hcr_rsa_2023.pub
 fi
 
 

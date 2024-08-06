@@ -3,13 +3,17 @@
 Host hicrane
   HostName 173.255.254.99
   HostKeyAlgorithms +ssh-rsa
+  PubkeyAcceptedKeyTypes +ssh-rsa
   Port 8383
   User deployer
-  IdentityFile ~/.ssh/hicrane
+  IdentityFile ~/.ssh/id_hcr_rsa_2023
 Host lish
   HostName lish-us-west.linode.com
   User stephaneliu
   IdentityFile ~/.ssh/linode_lish
+  # ssh -t lish linode98118
+  #      |
+  #      --> force terminal forward
 Host render-hcr
   HostName ssh.oregon.render.com
   User srv-cqkv94d6l47c73evu1m0
