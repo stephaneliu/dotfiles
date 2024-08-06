@@ -3,7 +3,7 @@ return {
   enabled = true,
   config = function()
     require('spider').setup {
-      skipInsignificantPunctuation = true,
+      skipInsignificantPunctuation = false,
       consistentOperatorPending = true,
       subwordMovement = true,
     }
