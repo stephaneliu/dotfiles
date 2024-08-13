@@ -41,7 +41,7 @@ alias gup='git up'
 alias gus='git unstage'
 
 gwip() {
-  wips=("Crack that wip" "You must wip it" "Now wip it" "Wip it GOOD" "Unless you wip it" "I say wip it"  "To wip it")
+  wips=("Crack that wip" "You must WIP it" "Now WIP it" "WIP it GOOD" "Unless you WIP it" "I say WIP it"  "To WIP it")
   optional_msg="$1 "
   git add .
   LOLCOMMITS_CAPTURE_DISABLED=true SAFE_COMMIT=1 OVERCOMMIT_DISABLE=1 git commit -m "*** $optional_msg'${wips[RANDOM % ${#wips[@]}]}' - Devo ***"
