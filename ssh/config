@@ -18,3 +18,8 @@ Host render-hcr
   HostName ssh.oregon.render.com
   User srv-cqkv94d6l47c73evu1m0
   IdentityFile ~/.ssh/render
+# solid_queue
+Host render-hcr-job
+  HostName ssh.oregon.render.com
+  User srv-cr7cd4rqf0us73bcr0u0
+  IdentityFile ~/.ssh/render
