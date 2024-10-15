@@ -92,13 +92,14 @@ cask 'raycast'
 cask 'readdle-spark'
 cask 'reflect'
 cask 'tailscale'
+cask 'there'
 cask 'karabiner-elements'
 cask 'keycastr' # dispaly keystrokes for screencasts
 cask 'numi'
 cask 'pieces'
 cask 'pushplaylabs-sidekick'
 cask 'send-to-kindle'
-cask 'xnapper'
+cask 'xnapper' unless system 'ls /Applications/Xnapper*'
 # cask 'ultimaker-cura'
 
 # CLI: mas search [app]
