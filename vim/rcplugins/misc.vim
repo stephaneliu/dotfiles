@@ -1,1 +1,0 @@
-Plug 'xolox/vim-misc'

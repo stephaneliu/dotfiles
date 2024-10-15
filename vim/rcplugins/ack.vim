@@ -1,1 +1,0 @@
-Plug 'mileszs/ack.vim'
