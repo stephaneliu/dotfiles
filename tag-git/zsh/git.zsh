@@ -48,7 +48,23 @@ gwip() {
 }
 
 grbi() {
-  OVERCOMMIT_DISABLE=1 git rebase -i HEAD~$1
+  if [ $(echo -n $1 | wc -c) -gt 2 ]; then
+    # Rebase from the commit SHA to the last commit
+    OVERCOMMIT_DISABLE=1 git rebase -i $1~1
+  else
+    # Rebase n commits from HEAD to the last commit
+    OVERCOMMIT_DISABLE=1 git rebase -i HEAD~$1
+  fi
+}
+
+gtest() {
+  if [ $(echo -n $1 | wc -c) -gt 2 ]; then
+    echo "$1 is greater than 2 characters"
+  else
+    echo "$1 is less than 3 characters"
+  fi
+
+  return 0
 }
 
 grs() {
