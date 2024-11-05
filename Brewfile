@@ -10,12 +10,10 @@
 #     * --taps
 # Versioning is not a feature of brew bundle. Only the latest version is installed
 
-tap 'homebrew/cask'
 tap 'buo/cask-upgrade' # Fix cask upgrade when exists
 tap 'heroku/brew'
 tap 'homebrew/cask-fonts'
 tap 'homebrew/command-not-found'
-tap 'homebrew/core'
 tap 'homebrew/services' # `brew services restart postgres`, etc
 tap 'cooklang/tap'
 tap 'jdxcode/tap'
