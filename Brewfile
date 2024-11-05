@@ -59,7 +59,6 @@ brew 'the_silver_searcher'         # a better ack/grep
 brew 'rcm'
 brew 'sniffnet'                    # sniff network traffic - https://github.com/GyulyVGC/sniffnet
 brew 'tldr'                        # man pages implemented in rust - `tldr ssh`
-brew 'tmux'
 # brew 'universal-ctags'             # so :Rtags works
 brew 'shared-mime-info'
 brew 'viddy'                       # watch [process] https://github.com/sachaos/viddy
