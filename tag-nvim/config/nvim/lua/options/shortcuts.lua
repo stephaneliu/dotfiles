@@ -11,6 +11,7 @@ c_map('w!!', '%!sudo tee > /dev/null') -- vice `sudo !!` from terminal
 __map('<leader>bg', ':echo "use unimpaired `yob` instead"<CR>')
 -- n_map('<leader>hl', ':echo "use unimpaired `yoc` instead"<CR>') -- toggle current line highlighting
 c_map('fff', "f\\(des\\|con\\|it\\)<CR>") -- Find focus `:fff`
+c_map('xxx', "x\\(des\\|con\\|it\\)<CR>") -- Find focus `:fff`
 n_map('gp', "`[v`]`") -- reselect pasted text: https://vimtricks.com/p/reselect-pasted-text/
 
 -- close window with q
