@@ -93,7 +93,6 @@ cask 'keycastr' # dispaly keystrokes for screencasts
 cask 'numi'
 cask 'pieces'
 cask 'pushplaylabs-sidekick'
-cask 'send-to-kindle'
 cask 'xnapper' unless system 'ls /Applications/Xnapper*'
 # cask 'ultimaker-cura'
 
