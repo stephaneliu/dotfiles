@@ -12,7 +12,6 @@
 
 tap 'buo/cask-upgrade' # Fix cask upgrade when exists
 tap 'heroku/brew'
-tap 'homebrew/cask-fonts'
 tap 'homebrew/command-not-found'
 tap 'homebrew/services' # `brew services restart postgres`, etc
 tap 'cooklang/tap'
