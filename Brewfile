@@ -1,13 +1,14 @@
 # vim: syntax=ruby filetype=ruby
 
 # Usage:
-#   list:
+#   bundle list:
 #     * defaults --brews
 #     * --all
 #     * --mas
 #       Mac apps
 #     * --casks
 #     * --taps
+#   bundle dump: Inventory of installed brews
 # Versioning is not a feature of brew bundle. Only the latest version is installed
 
 tap 'buo/cask-upgrade' # Fix cask upgrade when exists
@@ -99,5 +100,9 @@ cask 'xnapper' unless system 'ls /Applications/Xnapper*'
 # CLI: mas search [app]
 # Returns app name and app id
 # mas install [app_id]
+mas "Fantastical", id: 975937182
+mas "Monodraw", id: 920404675
+mas "Tailscale", id: 1475387142
+mas "Things", id: 904280696
 mas 'Hand Mirror', id: 1_502_839_586
 mas 'Marked 2', id: 890_031_187
