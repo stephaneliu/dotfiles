@@ -65,7 +65,7 @@ brew 'zsh'
 brew 'zsh-completions'
 brew 'zsh-vi-mode' # https://github.com/jeffreytse/zsh-vi-mode
 
-cask '1password'
+cask '1password' unless system 'ls /Applications/1Password*'
 cask '1password-cli' # 1password cli - https://developer.1password.com/docs/cli/get-started/
 cask 'app-cleaner' unless system 'ls /Applications/AppCleaner*' # Version is free legacy
 cask 'bruno'     # api explorer
