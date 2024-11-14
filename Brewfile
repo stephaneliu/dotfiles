@@ -14,7 +14,6 @@ tap 'buo/cask-upgrade' # Fix cask upgrade when exists
 tap 'heroku/brew'
 tap 'homebrew/command-not-found'
 tap 'homebrew/services' # `brew services restart postgres`, etc
-tap 'cooklang/tap'
 tap 'jdxcode/tap'
 
 brew 'autojump'
