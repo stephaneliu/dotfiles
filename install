@@ -38,7 +38,7 @@ if [[ -z "$TEST" ]]; then
   echo "+++ Installing Homebrew packages"
   brew update
   brew tap homebrew/bundle
-  brew bundle --file=$HOME/.dotfiles/Brewfile
+  brew bundle --file=$PWD/Brewfile
 else
   # Test Dependencies
   brew install -q neovim
