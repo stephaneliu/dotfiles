@@ -23,7 +23,6 @@ brew 'cheat'                       # Terminal cheatsheets - https://github.com/c
 brew 'cmake'                       # Ruby native extensions
 brew 'cmatrix'
 brew 'colordiff'                   # colorful diffs (alias diff='colordiff -u')
-brew 'cooklang/tap/cook'
 brew 'coreutils'                   # used for gnu coreutils i.e - tac
 brew 'ctop'                        # Top-like interface for docker container metrics
 brew 'direnv'
