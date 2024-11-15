@@ -45,6 +45,7 @@ brew 'mas'                         # Mac appstore cli
 brew 'mdcat'                       # View markdown in kitty - `mdcat README.md`
 brew 'neovim'
 brew 'postgresql@14'
+brew 'pinentry-mac'                # pgp prompt for passphrase
 brew 'pkg-config'                  # Ruby native extensions
 brew 'procs'                       # Better unix: better ps - https://github.com/dalance/procs
 brew 'reattach-to-user-namespace'
