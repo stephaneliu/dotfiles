@@ -47,7 +47,7 @@
   vdf = difftool
 [commit]
 	template = ~/.git-template/commit_template.txt
-  # gpgsign = true
+  gpgsign = true
 [core]
   attributesfile = ~/.gitattributes # https://tekin.co.uk/2020/10/better-git-diff-output-for-ruby-python-elixir-and-more
   editor = nvim
@@ -114,4 +114,4 @@
 [user]
 	email = 64043+stephaneliu@users.noreply.github.com
   name = Stephane Liu
-	signingkey = BCFC0B72050561A7
+	signingkey = C7779B74D0E29CDC
