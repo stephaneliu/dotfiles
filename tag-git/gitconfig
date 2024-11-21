@@ -19,8 +19,9 @@
   gone-ls = "!f() { git fetch --prune; git branch -vv | awk '/: gone]/{print $1}'; }; f"
   gone-rm = "!f() { git fetch --prune; git branch -vv | awk '/: gone]/{print $1}' | xargs -r git branch -d; }; f"
   home = config user.email \"sliu@sjliu.com\"h
-  ignore = update-index --assume-unchanged
-  ignored = !git ls-files -v | grep \"^[[:lower:]]\"
+  hide = update-index --assume-unchanged
+  unhide = update-index --no-assume-unchanged
+  hidden = !git ls-files -v | grep \"^[[:lower:]]\"
   l = log --oneline --decorate
   ll = log --show-linear-break --decorate --show-signature --stat
   lg = log -p --show-linear-break --show-signature
