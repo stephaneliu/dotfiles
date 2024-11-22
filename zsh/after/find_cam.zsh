@@ -1,11 +1,21 @@
 function find_cam {
-  webcam=$(system_profiler SPCameraDataType 2> /dev/null | grep Logitech\ Webcam\ C930e | sed 's/://' | sed 's/    //')
+  availableCameras=$(system_profiler SPCameraDataType 2>/dev/null)
+  delay=1 # Profiler needs time to think about it
 
-  delay=1
+  webcam=$(echo $availableCameras | grep Logitech\ Webcam\ C930e | sed 's/://' | sed 's/    //')
+  if [ -z "$webcam" ]; then
+    # M4
+    webcam=$(echo $availableCameras | grep MacBook\ Pro\ Camera: | sed 's/://')
+  elif [ -z "$webcam" ]; then
+    # M1
+    webcam=$(echo $availableCameras | grep FaceTime HD Camera: | sed 's/://')
+  fi
 
   if [ -z "$webcam" ]; then
-    webcam="FaceTime HD Camera"
+    echo "Camera could not be found. Lolcommits will not work correctly"
   fi
+
+  webcam="MacBook Pro Camera"
   export WEBCAM=$webcam
   export LOL_DELAY=$delay
   export LOLCOMMITS_DEVICE=$webcam
