@@ -1,14 +1,17 @@
 function find_cam {
   availableCameras=$(system_profiler SPCameraDataType 2>/dev/null)
-  delay=1 # Profiler needs time to think about it
-
+  # Remove indentation----------------------------------------------------------------|
+  #        Remove trailing ':' -----------------------------------------|             |
+  #                                                                     |             |
   webcam=$(echo $availableCameras | grep Logitech\ Webcam\ C930e | sed 's/://' | sed 's/    //')
   if [ -z "$webcam" ]; then
     # M4
-    webcam=$(echo $availableCameras | grep MacBook\ Pro\ Camera: | sed 's/://')
-  elif [ -z "$webcam" ]; then
+    webcam=$(echo $availableCameras | grep MacBook\ Pro\ Camera: | sed 's/://' | sed 's/    //')
+  fi
+
+  if [ -z "$webcam" ]; then
     # M1
-    webcam=$(echo $availableCameras | grep FaceTime HD Camera: | sed 's/://')
+    webcam=$(echo $availableCameras | grep FaceTime HD Camera: | sed 's/://' | sed 's/    //')
   fi
 
   if [ -z "$webcam" ]; then
@@ -17,9 +20,10 @@ function find_cam {
 
   webcam="MacBook Pro Camera"
   export WEBCAM=$webcam
-  export LOL_DELAY=$delay
+  export LOL_DELAY=1
   export LOLCOMMITS_DEVICE=$webcam
 
+  # If invoking this without parameter, print what webcam is set to
   if [ $# -eq 0 ]; then
     echo "Webcam set to $WEBCAM"
   fi
