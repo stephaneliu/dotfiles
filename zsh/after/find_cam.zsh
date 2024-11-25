@@ -18,7 +18,6 @@ function find_cam {
     echo "Camera could not be found. Lolcommits will not work correctly"
   fi
 
-  webcam="MacBook Pro Camera"
   export WEBCAM=$webcam
   export LOL_DELAY=1
   export LOLCOMMITS_DEVICE=$webcam
