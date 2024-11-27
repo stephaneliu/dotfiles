@@ -159,10 +159,13 @@ if [[ -z "$TEST" ]]; then
   echo $(op read op://Private/.env.private/notesPlain) > $HOME/.env.private
   echo "+++ Copying ssh files"
   echo $(op read op://Private/render_ssh_private/notesPlain) > $HOME/.ssh/render
+  chmod 600 $HOME/.ssh/render
   echo $(op read op://Private/render_ssh_public/notesPlain) > $HOME/.ssh/render.pub
   echo $(op read op://Private/hicrane_ssh_2023_private/notesPlain) > $HOME/.ssh/id_hcr_rsa_2023
+  chmod 600 $HOME/.ssh/id_hcr_rsa_2023
   echo $(op read op://Private/hicrane_ssh_2023_public/notesPlain) > $HOME/.ssh/id_hcr_rsa_2023.pub
   echo $(op read op://Private/cc_github_private/notesPlain) > $HOME/.ssh/cc_github
+  chmod 600 $HOME/.ssh/cc_github
   echo $(op read op://Private/cc_github_public/notesPlain) > $HOME/.ssh/cc_github.pub
 fi
 
