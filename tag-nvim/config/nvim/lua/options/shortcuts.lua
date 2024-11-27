@@ -35,3 +35,6 @@ n_map('<leader>dpair', ":let &background='dark' | :silent !kitty @ set-colors --
 n_map('<leader>lpair', ":let &background='light' | :silent !kitty @ set-colors --all ~/.config/kitty/themes/solarized-light.conf && kitty @ set-font-size 22 <CR> | <CR>")
 n_map('<leader>dsolo', ":let &background='dark' | :silent !kitty @ set-colors --all ~/.config/kitty/themes/solarized-dark.conf && kitty @ set-font-size 14 <CR> | <CR>")
 n_map('<leader>lsolo', ":let &background='light' | :silent !kitty @ set-colors --all ~/.config/kitty/themes/solarized-light.conf && kitty @ set-font-size 14 <CR> | <CR>")
+
+-- Open notes for current project
+n_map('<leader>do', ":tab drop tmp/notes.md<CR>")
