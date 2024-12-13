@@ -128,10 +128,28 @@ echo '+++ symlink ~/code/rails-intellisence-in-solargraph-enhancement/rails.rb i
 
 
 
+# Safe to skip this on CI
+if [[ -z "$TEST" ]]; then
+  echo "Setup bundler options for jobs and retry see ~/.bundle/config"
+  bundle config set --global jobs 4
+  bundle config set --global retry 3
+
+  echo "Installing latest Ruby"
+  mise install ruby@latest
+
+  echo "Setting up solargraph for vim"
+  gem install solargraph
+
+  echo "Ruby setup completed"
+fi
+
+
+
 if [ ! -d $HOME/tmp ]; then
   echo "+++ Creating a tmp folder in $HOME"
   mkdir $HOME/tmp
 fi
+
 
 # Skip if running on CI
 if [[ -z "$TEST" ]]; then
