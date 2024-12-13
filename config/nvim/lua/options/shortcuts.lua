@@ -19,12 +19,6 @@ n_map(';q', ':q<CR>')
 n_map(';Q', ':q!<CR>')
 n_map('<leader>t', ':quit<CR>')
 
--- simplify window navigation with ctrl
-n_map('<C-j>', '<C-w>j')
-n_map('<C-k>', '<C-w>k')
-n_map('<C-l>', '<C-w>l')
-n_map('<C-h>', '<C-w>h')
-
 -- simplify tabbed navigation with shift
 n_map('<S-H>', 'gT')
 n_map('<S-L>', 'gt')
