@@ -1,0 +1,8 @@
+lolcommits_dir="$HOME/Documents/Resource/lolcommits"
+potentially_dirty_repo_dir="${PWD##*/}"
+repo_dir=${potentially_dirty_repo_dir/\./dot}
+repo_lolcommits_dir="$lolcommits_dir/`echo $repo_dir`"
+
+last_commit=`git log --pretty=format:"%H" HEAD^..HEAD | cut -c 1-11`
+last_commit_photo="$repo_lolcommits_dir/$last_commit.jpg"
+kitty @ set-background-image "$last_commit_photo"

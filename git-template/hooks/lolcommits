@@ -51,8 +51,5 @@ elif ! diff --brief "$custom_lol_config" "$repo_lolcommits_dir/config.yml" > /de
 fi
 
 LANG="en_US.UTF-8"
-git_merging=".git/rebase-merge"
 
-if [ ! -d $git_merging ] && [ "$LOLCOMMITS_CAPTURE_DISABLED" != "true" ]; then
-  LOLCOMMITS_DIR=$lolcommits_dir lolcommits --capture --fork --delay "$LOL_DELAY" --device "$WEBCAM";
-fi
+LOLCOMMITS_DIR=$lolcommits_dir lolcommits --capture --fork --delay "$LOL_DELAY" --device "$WEBCAM" 2> /dev/null;
