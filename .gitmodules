@@ -1,3 +1,6 @@
 [submodule "tag-cheat/config/cheat/community"]
 	path = config/cheat/community
 	url = https://github.com/cheat/cheatsheets.git
+[submodule "config/cheat/cheatsheets/community"]
+	path = config/cheat/cheatsheets/community
+	url = https://github.com/cheat/cheatsheets

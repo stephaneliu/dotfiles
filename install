@@ -82,6 +82,7 @@ export PATH=$(brew --prefix)/bin:$PATH
 # activate submodule before running rcup so submodules link correctly
 cd $HOME/.dotfiles
 echo "+++ Updating git submodules"
+git submodule init
 git submodule update
 cd $HOME
 
