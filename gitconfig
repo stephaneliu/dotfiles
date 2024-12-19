@@ -92,6 +92,7 @@
   lineNumber = true
 [init]
   templateDir = ~/.git-template
+  defaultBranch = main
 [interactive]
   diffFilter = delta --color-only
 [merge]
