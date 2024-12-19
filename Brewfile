@@ -17,6 +17,7 @@ tap 'homebrew/command-not-found'
 tap 'homebrew/services' # `brew services restart postgres`, etc
 tap 'jdxcode/tap'
 
+brew 'asciinema'
 brew 'autojump'
 brew 'bat'                         # cat with wings = bat (cat with syntax color) - https://github.com/sharkdp/bat
 brew 'cheat'                       # Terminal cheatsheets - https://github.com/cheat/cheat
