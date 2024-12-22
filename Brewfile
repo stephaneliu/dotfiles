@@ -66,6 +66,7 @@ brew 'wget'
 brew 'yarn'
 brew 'zsh'
 brew 'zsh-completions'
+brew 'zsh-syntax-highlighting'
 brew 'zsh-vi-mode' # https://github.com/jeffreytse/zsh-vi-mode
 
 cask '1password' unless system 'ls /Applications/1Password*'
