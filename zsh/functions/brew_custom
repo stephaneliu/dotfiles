@@ -15,7 +15,7 @@ bcp() {
 # using "brew search" as source input
 # mnemonic [B]rew [I]nstall [P]lugin
 bip() {
-  local inst=$(brew search | fzf -m)
+  local inst=$(brew search /\w+/ | fzf -m)
 
   if [[ $inst ]]; then
     for prog in $(echo $inst);
