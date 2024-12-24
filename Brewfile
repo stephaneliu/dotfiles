@@ -29,6 +29,7 @@ brew 'ctop'                        # Top-like interface for docker container met
 brew 'direnv'
 brew 'duf'                         # Better Unix: better duf - https://github.com/muesli/duf
 brew 'dust'                        # Better Unix: better du - https://github.com/bootandy/dust
+brew 'fd'                          # Better alternative to find
 brew 'fzf'                         # Fuzzy finder
 brew 'git'
 brew 'git-delta'                   # Syntax highlighter for git, diff, & grep - https://github.com/dandavison/delta

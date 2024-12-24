@@ -9,7 +9,7 @@ source "/opt/homebrew/opt/fzf/shell/key-bindings.zsh"
 
 export FZF_DEFAULT_OPTS=" \
     --no-mouse \
-    --height 50% -1 \
+    --height 80% -1 \
     --reverse \
     --multi \
     --inline-info \
@@ -24,26 +24,20 @@ export FZF_DEFAULT_OPTS=" \
         # ctrl-b:page-up,\
         # ctrl-y:execute-silent(*echo {+} | pbcopy)'
 
-# export FZF_DEFAULT_COMMAND="git ls-files --cached --others --exclude-standard | fd --type f --type l $FD_OPTIONS"
-# export FZF_CTRL_T_COMMAND="fd $FD_OPTIONS"
-# export FZF_ALT_C_COMMAND="fd --type d $FD_OPTIONS"
 
-function cd() {
-    if [[ "$#" != 0 ]]; then
-        builtin cd "$@";
-        return
-    fi
-    while true; do
-        local lsd=$(echo ".." && ls -p | grep '/$' | sed 's;/$;;')
-        local dir="$(printf '%s\n' "${lsd[@]}" |
-            fzf --reverse --preview '
-                __cd_nxt="$(echo {})";
-                __cd_path="$(echo $(pwd)/${__cd_nxt} | sed "s;//;/;")";
-                echo $__cd_path;
-                echo;
-                ls -p --color=always "${__cd_path}";
-        ')"
-        [[ ${#dir} != 0 ]] || return 0
-        builtin cd "$dir" &> /dev/null
-    done
+# -- Use fd instead of fzf --
+export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
+
+# Use fd (https://github.com/sharkdp/fd) for listing path candidates.
+# - The first argument to the function ($1) is the base path to start traversal
+# - See the source code (completion.{bash,zsh}) for the details.
+_fzf_compgen_path() {
+  fd --hidden --exclude .git . "$1"
+}
+
+# Use fd to generate the list for directory completion
+_fzf_compgen_dir() {
+  fd --type=d --hidden --exclude .git . "$1"
 }

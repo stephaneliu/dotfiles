@@ -8,21 +8,18 @@ function g {
 }
 
 alias 'g-'='git co -'
-alias gad='git ad'
 alias ga='git a'
+alias gad='git ad'
 alias gbr='git br'
 alias gbrr='git for-each-ref --color=always --sort=-committerdate refs/heads/ --format="%(color:bold green)%(committerdate:relative)%09%(color:bold yellow)%(refname:short)%(color:normal)" | tac'
-alias gcl='git clone'
-alias gco='git checkout'
 alias gci='git commit'
+alias gcl='git clone'
 alias gcln='git cln'
+alias gco="git checkout"
 alias gcr='gh cr'
-alias gprc='gh prc'
-alias gprd='gh prd'
-alias gprme='gh prme'
 alias gdc='git dc'
-alias gds='git ds'
 alias gdf='git df'
+alias gds='git ds'
 alias gl='git l'
 alias glg='git lg'
 alias gll='git ll'
@@ -30,15 +27,26 @@ alias glo='git lola'
 alias gmg='git mg'
 alias gmt='git mergetool'
 alias gmv='git mv'
-alias gpl='git pull'
-alias gps='git push'
 alias gpf='git pf'
+alias gpl='git pull'
+alias gprc='gh prc'
+alias gprd='gh prd'
+alias gprme='gh prme'
+alias gps='git push'
 alias grb='git rebase'
 alias grba='OVERCOMMIT_DISABLE=1 git rba'
 alias grbc='OVERCOMMIT_DISABLE=1 git rbc'
 alias grm='git rm -rf'
 alias gup='git up'
 alias gus='git unstage'
+
+__display_fzf_key_bindings() {
+  echo ""
+  echo "TAB or SHIFT-TAB to select multiple objects"
+  echo "CTRL-/ to toggle preview window"
+  echo "CTRL-O to open the object in the web browser (in GitHub URL scheme)"
+  echo ""
+}
 
 gwip() {
   wips=("Crack that wip" "You must WIP it" "Now WIP it" "WIP it GOOD" "Unless you WIP it" "I say WIP it"  "To WIP it")
@@ -48,23 +56,16 @@ gwip() {
 }
 
 grbi() {
-  if [ $(echo -n $1 | wc -c) -gt 2 ]; then
+  if [[ $# -eq 0 ]]; then
+    __display_fzf_key_bindings
+    _fzf_git_each_ref --no-multi | xargs git rebase -i
+  elif [ $(echo -n $1 | wc -c) -gt 2 ]; then
     # Rebase from the commit SHA to the last commit
     OVERCOMMIT_DISABLE=1 git rebase -i $1~1
   else
     # Rebase n commits from HEAD to the last commit
     OVERCOMMIT_DISABLE=1 git rebase -i HEAD~$1
   fi
-}
-
-gtest() {
-  if [ $(echo -n $1 | wc -c) -gt 2 ]; then
-    echo "$1 is greater than 2 characters"
-  else
-    echo "$1 is less than 3 characters"
-  fi
-
-  return 0
 }
 
 grs() {
@@ -81,6 +82,45 @@ grsh() {
 gcrb() {
   git add .
   git commit -m "**** Squash with $1 ****"
+}
+
+glbr() {
+  __display_fzf_key_bindings
+  _fzf_git_branches --no-multi
+}
+
+# git delete branch
+gbrd() {
+  if [[ $# -eq 0 ]]; then
+    __display_fzf_key_bindings
+    echo ""
+    echo "Selected branch will be deleted!"
+    echo ""
+    _fzf_git_branches --no-multi | xargs git br -d
+  else
+    # $@ - all arguments
+    git br -d $1
+  fi
+}
+
+# git list (show) reflog
+glref() {
+  __display_fzf_key_bindings
+
+  if [[ $# -eq 0 ]]; then
+    _fzf_git_lreflogs | xargs git reflog show -p
+  elif [ $(echo -n $1 | wc -c) -lt 4 ]; then
+    git reflog show -p HEAD@{@1}
+  else
+    echo "Provide the NUM from reflog HEAD@{NUM}"
+  fi
+}
+
+# git check out reflog
+gcoref() {
+  __display_fzf_key_bindings
+
+  _fzf_git_lreflogs --no-multi | xargs git checkout
 }
 
 # Complete g like git
