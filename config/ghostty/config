@@ -1,2 +1,36 @@
+# Use `ghostty +show-config --default --docs` to see the documentation for the default configuration.
 font-family = MonoLisa
+font-size = 13
 theme = Builtin Solarized Dark
+cursor-opacity = 0.8
+mouse-hide-while-typing = true
+background-opacity = 0.97
+background-blur-radius = 20
+unfocused-split-opacity = .75
+
+# ghostty +list-actions
+keybind = ctrl+a>z=toggle_split_zoom
+keybind = ctrl+a>n=new_window
+keybind = ctrl+a>shift+r=reload_config
+
+# tabs
+keybind = ctrl+a>ctrl+a=previous_tab
+keybind = ctrl+a>ctrl+n=next_tab
+
+# splits
+keybind = ctrl+a>s=new_split:down
+keybind = ctrl+a>v=new_split:right
+keybind = ctrl+a>h=goto_split:left
+keybind = ctrl+a>j=goto_split:bottom
+keybind = ctrl+a>k=goto_split:top
+keybind = ctrl+a>l=goto_split:right
+keybind = ctrl+opt+e=equalize_splits
+keybind = ctrl+opt+h=resize_split:left,20
+keybind = ctrl+opt+l=resize_split:right,20
+keybind = ctrl+opt+k=resize_split:up,20
+keybind = ctrl+opt+j=resize_split:down,20
+
+macos-titlebar-style=tabs
+# Quake
+keybind = global:cmd+`=toggle_quick_terminal
+quick-terminal-animation-duration = 0.1
