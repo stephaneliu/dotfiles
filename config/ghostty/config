@@ -30,7 +30,10 @@ keybind = ctrl+opt+l=resize_split:right,20
 keybind = ctrl+opt+k=resize_split:up,20
 keybind = ctrl+opt+j=resize_split:down,20
 
+# scrollback
+keybind = ctrl+a>[=write_scrollback_file:paste
+
 macos-titlebar-style=tabs
 # Quake
-keybind = global:cmd+`=toggle_quick_terminal
+keybind = global:cmd+shift+`=toggle_quick_terminal
 quick-terminal-animation-duration = 0.1
