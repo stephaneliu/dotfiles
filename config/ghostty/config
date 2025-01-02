@@ -22,6 +22,10 @@ keybind = ctrl+a>z=toggle_split_zoom
 keybind = ctrl+a>n=new_window
 keybind = ctrl+a>shift+r=reload_config
 
+# surface
+confirm-close-surface = false
+keybind = ctrl+a>x=close_surface
+
 # tabs
 keybind = ctrl+a>c=new_tab
 keybind = ctrl+a>ctrl+a=previous_tab
@@ -50,6 +54,7 @@ keybind = ctrl+shift+h=write_screen_file:paste
 keybind = "ctrl+shift+j=text:\x01nvim +1000000 \n"
 
 macos-titlebar-style = tabs
+quit-after-last-window-closed = true
 window-save-state = always
 auto-update = download
 
