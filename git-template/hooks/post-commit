@@ -4,6 +4,10 @@ git_merging=".git/rebase-merge"
 
 if [ ! -d $git_merging ] && [ "$LOLCOMMITS_CAPTURE_DISABLED" != "true" ]; then
   .git/hooks/lolcommits
-  for i in {1..5}; do .git/hooks/set_background && break || sleep 0.75; done 2> /dev/null
-  (&>/dev/null .git/hooks/set_no_background &)
+
+  # Set background if not using Ghostty terminal
+  if [[ -z "$GHOSTTY_BIN_DIR" ]]; then
+    for i in {1..5}; do .git/hooks/set_background && break || sleep 0.75; done 2> /dev/null
+    (&>/dev/null .git/hooks/set_no_background &)
+  fi
 fi
