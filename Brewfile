@@ -20,6 +20,7 @@ tap 'jdxcode/tap'
 brew 'asciinema'
 brew 'autojump'
 brew 'bat'                         # cat with wings = bat (cat with syntax color) - https://github.com/sharkdp/bat
+brew 'btop'
 brew 'cheat'                       # Terminal cheatsheets - https://github.com/cheat/cheat
 brew 'cmake'                       # Ruby native extensions
 brew 'cmatrix'
