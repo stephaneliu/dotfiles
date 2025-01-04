@@ -32,6 +32,8 @@ keybind = ctrl+a>x=close_surface
 keybind = ctrl+a>c=new_tab
 keybind = ctrl+a>ctrl+a=previous_tab
 keybind = ctrl+a>ctrl+n=next_tab
+keybind = ctrl+a>shift+h=move_tab:-1
+keybind = ctrl+a>shift+l=move_tab:+1
 keybind = ctrl+a>1=goto_tab:1
 keybind = ctrl+a>2=goto_tab:2
 keybind = ctrl+a>3=goto_tab:3
