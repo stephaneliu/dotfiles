@@ -17,7 +17,21 @@ return {
       end
     },
     {
+      "<leader>anilmatrix",
+      function()
+        local animatedbg = require("animatedbg-nvim")
+        animatedbg.play({ animation = "matrix", duration = 500 }) -- fireworks | matrix | demo
+      end
+    },
+    {
       "<leader>anifire",
+      function()
+        local animatedbg = require("animatedbg-nvim")
+        animatedbg.play({ animation = "fireworks", duration = 5, time_between_shots = 0.1 })
+      end
+    },
+    {
+      "<leader>anilfire",
       function()
         local animatedbg = require("animatedbg-nvim")
         animatedbg.play({ animation = "fireworks", duration = 5, time_between_shots = 0.1 })
