@@ -34,7 +34,7 @@ return {
       "<leader>anilfire",
       function()
         local animatedbg = require("animatedbg-nvim")
-        animatedbg.play({ animation = "fireworks", duration = 5, time_between_shots = 0.1 })
+        animatedbg.play({ animation = "fireworks", duration = 500, time_between_shots = 0.1 })
       end
     },
     {
