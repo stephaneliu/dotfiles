@@ -61,9 +61,11 @@ keybind = ctrl+opt+k=resize_split:up,20
 keybind = ctrl+opt+j=resize_split:down,20
 
 # scrollback
-keybind = ctrl+shift+h=write_screen_file:paste
+# keybind = ctrl+shift+h=write_screen_file:paste
 # control sequence x01 - move to beginning of line
-keybind = "ctrl+shift+j=text:\x01nvim +1000000 \n"
+# keybind = "ctrl+shift+j=text:\x01nvim +1000000 \n"
+keybind = ctrl+a>[=text:~/bin/ghostty_scrollback.sh\n
+keybind = shift+ctrl+;=write_screen_file:paste
 
 macos-titlebar-style = tabs
 quit-after-last-window-closed = true

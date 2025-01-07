@@ -22,6 +22,7 @@ brew 'autojump'
 brew 'bat'                         # cat with wings = bat (cat with syntax color) - https://github.com/sharkdp/bat
 brew 'btop'
 brew 'cheat'                       # Terminal cheatsheets - https://github.com/cheat/cheat
+brew 'cliclick'
 brew 'cmake'                       # Ruby native extensions
 brew 'cmatrix'
 brew 'colordiff'                   # colorful diffs (alias diff='colordiff -u')
