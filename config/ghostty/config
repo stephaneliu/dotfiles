@@ -3,6 +3,16 @@
 #
 # cmd+option+i -> toggles inspector
 
+auto-update-channel = tip
+macos-titlebar-style = tabs
+macos-titlebar-proxy-icon = visible
+# hide password entries with *****
+macos-auto-secure-input = true
+quit-after-last-window-closed = true
+window-save-state = always
+auto-update = download
+desktop-notifications = true
+
 # visual
 theme = "light:Builtin Solarized Light,dark:Builtin Solarized Dark"
 window-theme = dark
@@ -66,15 +76,6 @@ keybind = ctrl+opt+j=resize_split:down,20
 # keybind = "ctrl+shift+j=text:\x01nvim +1000000 \n"
 keybind = ctrl+a>[=text:~/bin/ghostty_scrollback.sh\n
 keybind = shift+ctrl+;=write_screen_file:paste
-
-macos-titlebar-style = tabs
-macos-titlebar-proxy-icon = visible
-# hide password entries with *****
-macos-auto-secure-input = true
-quit-after-last-window-closed = true
-window-save-state = always
-auto-update = download
-desktop-notifications = true
 
 # Quake
 keybind = global:ctrl+shift+`=toggle_quick_terminal
