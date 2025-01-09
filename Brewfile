@@ -16,6 +16,7 @@ tap 'heroku/brew'
 tap 'homebrew/command-not-found'
 tap 'homebrew/services' # `brew services restart postgres`, etc
 tap 'jdxcode/tap'
+tap 'knqyf263/pet'
 
 brew 'asciinema'
 brew 'autojump'
@@ -48,6 +49,7 @@ brew 'lsd'                         # Better Unix: better ls
 brew 'mas'                         # Mac appstore cli
 brew 'mdcat'                       # View markdown in kitty - `mdcat README.md`
 brew 'neovim'
+brew 'pet'                         # CLI snippet manager - https://github.com/knqyf263/pet
 brew 'postgresql@14'
 brew 'pinentry-mac'                # pgp prompt for passphrase
 brew 'pkg-config'                  # Ruby native extensions

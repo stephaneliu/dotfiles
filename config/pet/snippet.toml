@@ -1,0 +1,17 @@
+[[Snippets]]
+  Description = "Get my global IP address"
+  Output = ""
+  Tag = []
+  command = "curl ifconfig.co"
+
+[[Snippets]]
+  Description = "Previous bash command"
+  Output = ""
+  Tag = []
+  command = "!!"
+
+[[Snippets]]
+  Description = "Show expiration date of domain's SSL certificate"
+  Output = ""
+  Tag = []
+  command = "echo | openssl s_client -connect <domain>:<port=443> 2> /dev/null | openssl x509 -dates -noout"
