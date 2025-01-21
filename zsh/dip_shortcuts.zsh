@@ -10,9 +10,11 @@ function drc() {
 
       docker stop $rc_id > /dev/null && dip CLEAN_LOGS=1 rails c
     else
+      echo "### Reusing existing container ###"
       docker exec -it $rc_id bin/rails c
     fi
   else
+    echo "### Starting new container from image ###"
     dip CLEAN_LOGS=1 rails c
   fi
 }
@@ -28,9 +30,11 @@ function dsh() {
 
       docker stop $sh_id > /dev/null && dip sh
     else
+      echo "### Reusing existing container ###"
       docker exec -it $sh_id /bin/bash
     fi
   else
+    echo "### Starting new container from image ###"
     dip sh
   fi
 }
