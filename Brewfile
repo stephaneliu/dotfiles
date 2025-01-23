@@ -55,6 +55,7 @@ brew 'pinentry-mac'                # pgp prompt for passphrase
 brew 'pkg-config'                  # Ruby native extensions
 brew 'procs'                       # Better unix: better ps - https://github.com/dalance/procs
 brew 'reattach-to-user-namespace'
+brew 'render'
 brew 'ripgrep'
 brew 'mise'                         # asdf written in Rust. No shims
 # brew 'ruby-install'
