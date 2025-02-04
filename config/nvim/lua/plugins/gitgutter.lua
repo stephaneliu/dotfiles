@@ -4,8 +4,8 @@ return {
   keys = {
     { "<leader>ggh", "<CMD>GitGutterLineHighlightsToggle<CR>" },
     { "<leader>ggf", "<CMD>GitGutterFold<CR>" },
-    { "]h", "<Plug>(GitGutterNextHunk)" },
-    { "[h", "<Plug>(GitGutterPrevHunk)" },
+    { "<leader>ggn", "<Plug>(GitGutterNextHunk)" },
+    { "<leader>ggp", "<Plug>(GitGutterPrevHunk)" },
   },
   init = function()
     vim.g.gitgutter_highlight_lines = 1
