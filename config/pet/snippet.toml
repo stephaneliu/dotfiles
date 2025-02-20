@@ -15,3 +15,9 @@
   Output = ""
   Tag = []
   command = "echo | openssl s_client -connect <domain>:<port=443> 2> /dev/null | openssl x509 -dates -noout"
+
+[[Snippets]]
+  Description = "Search files with content matching string"
+  Output = ""
+  Tag = []
+  command = "rg <search-for> -g '<ignore-dirs-and-files=!>/' <search-dir=./>"
