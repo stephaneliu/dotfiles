@@ -7,7 +7,10 @@ do_not_commit_files = []
 # Use $GIT_DIR to get project specific blacklist files
 
 # Comment why file added to do not commit list
-do_not_commit_files << ""
+do_not_commit_files = [
+  "",
+]
+
 
 if run_check
   do_not_commit_files_hit = []
@@ -15,12 +18,13 @@ if run_check
   binding_hits            = []
   todo_hits               = []
 
-  # Find all filenames in spec directory that have been (A)dded (C)opied or (M)odified
+  # Find all filenames in spec directory that have been (A)dded (D)eleted (C)opied (M)odified
+  filenames_with_deletes = `git diff --cached --name-only --diff-filter=ACDM`.split("\n")
+  do_not_commit_files_hit = do_not_commit_files.intersection(filenames_with_deletes)
+
   filenames = `git diff --cached --name-only --diff-filter=ACM`.split("\n")
-
-  do_not_commit_files_hit = do_not_commit_files.intersection(filenames)
-
   filenames.each do |filename|
+
     if File.dirname(filename) =~ /spec/
       `git diff --cached #{filename} | grep \^+\[\^+\] | grep -E 'focus|fit\s|fspecify|fcontext|fdescribe'`
       focus_hits.push filename if $? == 0
