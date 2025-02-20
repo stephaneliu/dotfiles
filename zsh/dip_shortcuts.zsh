@@ -45,7 +45,10 @@ function _docker_id() {
 
 alias dip='dip CLEAN_LOGS=1 '
 alias dg="dip GUARD_GQL_SCHEMA=1 guard"
+# dip guard debug
+alias dgd="dip GUARD_GQL_SCHEMA=1 TEST_DEBUG=1 guard"
 alias dr="dip rails"
-alias drs="dip compose up -d sidekiq vite && dip rails s"
+alias drs="dip up -d sidekiq vite && dip rails s"
+alias drss="dip up -d vite && dip up rails sidekiq"
 alias ddown="dip compose down"
 alias dbe="dip bundle exec"
