@@ -46,8 +46,11 @@
   unstage = reset HEAD
   up = pull --rebase
   vdf = difftool
+[branch]
+  sort = -committerdate
 [commit]
 	template = ~/.git-template/commit_template.txt
+  verbose = true
 	gpgsign = true
 [core]
   attributesfile = ~/.gitattributes # https://tekin.co.uk/2020/10/better-git-diff-output-for-ruby-python-elixir-and-more
@@ -66,6 +69,7 @@
   # side-by-side = true
   syntax-theme= Solarized (dark)
 [diff]
+  algorithm = histogram
   colorMoved = default
   compactionHeuristic = true # experimental - easier diff reading
   mnemonicprefix = true
