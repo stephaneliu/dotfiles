@@ -72,11 +72,19 @@ grbi() {
 }
 
 grs() {
-  git reset --soft HEAD~$1
+  if [ $(echo -n $1 | wc -c) -gt 2 ]; then
+    git reset --soft $1
+  else
+    git reset --soft HEAD~$1
+  fi
 }
 
 grsh() {
-  git reset --hard HEAD~$1
+  if [ $(echo -n $1 | wc -c) -gt 2 ]; then
+    git reset --soft $1
+  else
+    git reset --soft HEAD~$1
+  fi
 }
 
 # [g]it [c]ommit [r]e[b]ase
