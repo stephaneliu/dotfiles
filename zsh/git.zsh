@@ -81,9 +81,9 @@ grs() {
 
 grsh() {
   if [ $(echo -n $1 | wc -c) -gt 2 ]; then
-    git reset --soft $1
+    git reset --hard $1
   else
-    git reset --soft HEAD~$1
+    git reset --hard HEAD~$1
   fi
 }
 
