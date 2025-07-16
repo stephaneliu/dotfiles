@@ -18,7 +18,6 @@ alias gcpc='git cherry-pick --continue'
 alias gcpa='git cherry-pick --abort'
 alias gcl='git clone'
 alias gcln='git cln'
-alias gco="git checkout"
 alias gcr='gh cr'
 alias gdc='git dc'
 alias gdf='git df'
@@ -49,6 +48,24 @@ __display_fzf_key_bindings() {
   echo "CTRL-/ to toggle preview window"
   echo "CTRL-O to open the object in the web browser (in GitHub URL scheme)"
   echo ""
+}
+
+gco() {
+  # checks if argument starts with C followed by up to 9 digits
+  # C1234 refers to a branch that starts with CONSUME-1234
+  if [[ $1 =~ ^C([0-9]{1,9})$ ]]; then
+    jira_number="${match[1]}"
+    transformed_arg="CONSUME-$jira_number"
+    branch_name=$(git for-each-ref --sort=-committerdate --format='%(refname:short)' refs/heads | grep -i "$transformed_arg-*" | head -n 1)
+
+    if [ ${#branch_name} -eq 0 ]; then
+      echo "No git branches exists for Jira ticket $transformed_arg."
+    else
+      git checkout "$branch_name"
+    fi
+  else
+    git checkout $1
+  fi
 }
 
 gwip() {
