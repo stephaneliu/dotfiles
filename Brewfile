@@ -14,11 +14,17 @@
 tap 'buo/cask-upgrade' # Fix cask upgrade when exists
 tap 'heroku/brew'
 tap 'homebrew/command-not-found'
-tap 'homebrew/services' # `brew services restart postgres`, etc
+tap 'homebrew/services'   # `brew services restart postgres`, etc
+# tap 'domt4/autoupdate' # Automatically update Homebrew and installed formulae
 tap 'jdxcode/tap'
 tap 'knqyf263/pet'
+tap 'sst/tap' # OpenCode AI Coding agent for the terminal - https://opencode.ai/
 
 brew 'asciinema'
+# brew 'autoupdate'                  # Automatically update Homebrew and installed formulae
+                                   # brew autoupdate start 84400 --upgrade --cleanup --immediate
+                                   # https://www.botzenhart.io/articles/brew-autoupdate-how-i-avoid-outdated-brew-formulas
+
 brew 'autojump'
 brew 'bat'                         # cat with wings = bat (cat with syntax color) - https://github.com/sharkdp/bat
 brew 'btop'
@@ -49,6 +55,7 @@ brew 'lsd'                         # Better Unix: better ls
 brew 'mas'                         # Mac appstore cli
 brew 'mdcat'                       # View markdown in kitty - `mdcat README.md`
 brew 'neovim'
+brew 'sst/tap/opencode'            # AI Coding agent for the terminal - https://opencode.ai/
 brew 'pet'                         # CLI snippet manager - https://github.com/knqyf263/pet
 brew 'postgresql@14'
 brew 'pinentry-mac'                # pgp prompt for passphrase
