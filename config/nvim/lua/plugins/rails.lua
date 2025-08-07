@@ -280,6 +280,10 @@ return {
         \     "end"
         \   ]
         \ },
+        \ "app/tasks/maintenance/*_task.rb": {
+        \   "command":   "maint",
+        \   "affinity":  "resource",
+        \ },
         \ "spec/helpers/*_helper_spec.rb": {
         \   "command":   "shelp",
         \   "alternate": "app/helpers/%s.rb",
