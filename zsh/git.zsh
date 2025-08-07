@@ -64,6 +64,12 @@ gco() {
     return
   fi
 
+  # Handle gco . to checkout all files
+  if [[ $1 == "." ]]; then
+    git checkout .
+    return
+  fi
+
   # checks if argument starts with C followed by up to 9 digits
   # C1234 refers to a branch that starts with CONSUME-1234
   if [[ $1 =~ ^C([0-9]{1,9})$ ]]; then
@@ -77,7 +83,7 @@ gco() {
       git checkout "$branch_name"
     fi
   else
-    git checkout
+    git checkout $1
   fi
 }
 
