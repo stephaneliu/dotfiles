@@ -51,6 +51,19 @@ __display_fzf_key_bindings() {
 }
 
 gco() {
+  # Handle -b flag for creating new branches
+  if [[ $1 == "-b" && $# -eq 2 ]]; then
+    branch_name="$2"
+    # If branch name starts with C followed by numbers, transform to CONSUME-[number]
+    if [[ $branch_name =~ ^C([0-9]{1,9})(.*)$ ]]; then
+      jira_number="${match[1]}"
+      rest_of_name="${match[2]}"
+      branch_name="CONSUME-$jira_number$rest_of_name"
+    fi
+    git checkout -b "$branch_name"
+    return
+  fi
+
   # checks if argument starts with C followed by up to 9 digits
   # C1234 refers to a branch that starts with CONSUME-1234
   if [[ $1 =~ ^C([0-9]{1,9})$ ]]; then
