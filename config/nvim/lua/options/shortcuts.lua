@@ -32,3 +32,6 @@ n_map('<leader>lsolo', ":let &background='light' | :silent !kitty @ set-colors -
 
 -- Open notes for current project
 n_map('<leader>do', ":tab drop tmp/notes.md<CR>")
+
+-- Surround puts then position cursor inside qutoes
+i_map('ppp', 'puts "*"*100<CR>puts ""<CR>puts "*"*100<CR><esc>kkwa')
