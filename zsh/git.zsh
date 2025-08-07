@@ -77,7 +77,7 @@ gco() {
       git checkout "$branch_name"
     fi
   else
-    git checkout $1
+    git checkout
   fi
 }
 
@@ -168,7 +168,24 @@ gcoref() {
 compdef g=git
 compdef _git gad=git-add
 compdef _git gap=git-add
-compdef _git gco=git-checkout
+# Custom completion for gco function
+_gco() {
+  local context state state_descr line
+  local -A opt_args
+
+  _arguments -C \
+    '-b[create and switch to new branch]:branch name:' \
+    '*::branch:_gco_branches'
+}
+
+# Helper function to complete with git branch names
+_gco_branches() {
+  local branches
+  branches=($(git branch --format='%(refname:short)' 2>/dev/null))
+  _describe 'branches' branches
+}
+
+compdef _gco gco
 compdef _git gbr=git-branch
 compdef _git gcl=git-clone
 compdef _git gci=git-commit
