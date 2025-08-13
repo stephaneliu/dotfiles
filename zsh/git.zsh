@@ -87,6 +87,18 @@ gco() {
   fi
 }
 
+ghist() {
+  if [[ $# -eq 0 ]]; then
+    echo "Usage: ghist <file_path> [search_term]"
+    echo "Example: ghist zshrc function"
+    return 1
+  elif [[ $# -eq 1 ]]; then
+    git lg --all --full-history -- "$1"
+  else
+    git lg --all --full-history -- "$1" | ag "$2" -A 20 -B 20 --smart-case | less
+  fi
+}
+
 gwip() {
   wips=("Crack that wip" "You must WIP it" "Now WIP it" "WIP it GOOD" "Unless you WIP it" "I say WIP it"  "To WIP it")
   optional_msg="$1 "
