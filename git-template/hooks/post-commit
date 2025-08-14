@@ -3,6 +3,6 @@
 git_merging=".git/rebase-merge"
 
 if [ ! -d $git_merging ] && [ "$LOLCOMMITS_CAPTURE_DISABLED" != "true" ]; then
-  nohup .git/hooks/lolcommits > /dev/null &
-  nohup .git/hooks/set_terminal_background > /dev/null &
+  nohup .git/hooks/lolcommits > /dev/null 2>&1 &
+  nohup .git/hooks/set_terminal_background > /dev/null 2>&1 &
 fi
