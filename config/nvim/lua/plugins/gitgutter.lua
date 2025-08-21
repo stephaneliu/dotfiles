@@ -1,6 +1,7 @@
 return {
   'airblade/vim-gitgutter',
   enabled = true,
+  event = "VeryLazy",
   keys = {
     { "<leader>ggh", "<CMD>GitGutterLineHighlightsToggle<CR>" },
     { "<leader>ggf", "<CMD>GitGutterFold<CR>" },
