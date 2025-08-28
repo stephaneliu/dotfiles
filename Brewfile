@@ -30,6 +30,7 @@ brew 'bat'                         # cat with wings = bat (cat with syntax color
 brew 'btop'
 brew 'cheat'                       # Terminal cheatsheets - https://github.com/cheat/cheat
 brew 'cliclick'
+brew 'codex'                       # ChatGPT's codex cli for terminal
 brew 'cmake'                       # Ruby native extensions
 brew 'cmatrix'
 brew 'colordiff'                   # colorful diffs (alias diff='colordiff -u')
