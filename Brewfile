@@ -25,6 +25,12 @@ brew 'asciinema'
                                    # brew autoupdate start 84400 --upgrade --cleanup --immediate
                                    # https://www.botzenhart.io/articles/brew-autoupdate-how-i-avoid-outdated-brew-formulas
 
+
+## Evaluating
+brew 'git-quick-stats'             # https://github.com/git-quick-stats/git-quick-stats
+## End Evaluating
+
+
 brew 'autojump'
 brew 'bat'                         # cat with wings = bat (cat with syntax color) - https://github.com/sharkdp/bat
 brew 'btop'
