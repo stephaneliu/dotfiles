@@ -1,2 +1,37 @@
 #!/bin/sh
 .git/hooks/ctags >/dev/null 2>&1 &
+
+# $1 = previous HEAD
+# $2 = new HEAD
+# $3 = 1 for branch checkout, 0 for file checkout
+
+# Check if this is a new worktree creation
+if [ "$1" = "0000000000000000000000000000000000000000" ]; then
+    echo "New worktree created! Copying credential keys..."
+
+    # Get the main worktree directory (the original repository)
+    MAIN_WORKTREE=$(git worktree list | head -n1 | awk '{print $1}')
+
+    # Get the current worktree directory
+    CURRENT_WORKTREE=$(pwd)
+
+    # Check if config/credentials directory exists in the new worktree
+    if [ ! -d "$CURRENT_WORKTREE/config/credentials" ]; then
+        mkdir -p "$CURRENT_WORKTREE/config/credentials"
+    fi
+
+    # Copy all .key files from main worktree to current worktree
+    if [ -d "$MAIN_WORKTREE/config/credentials" ]; then
+        for keyfile in "$MAIN_WORKTREE"/config/credentials/*.key; do
+            if [ -f "$keyfile" ]; then
+                filename=$(basename "$keyfile")
+                cp "$keyfile" "$CURRENT_WORKTREE/config/credentials/$filename"
+                echo "Copied $filename to new worktree"
+            fi
+        done
+    else
+        echo "Warning: No config/credentials directory found in main worktree"
+    fi
+
+    echo "Credential keys copy complete!"
+fi
