@@ -54,8 +54,16 @@ gco() {
   # Handle -b flag for creating new branches
   if [[ $1 == "-b" && $# -eq 2 ]]; then
     branch_name="$2"
+    # If branch name is just a number, transform to CONSUME-[number]
+    if [[ $branch_name =~ ^([0-9]+)$ ]]; then
+      branch_name="CONSUME-$branch_name"
+    # If branch name is a number followed by hyphenated string, transform to CONSUME-[number]-[string]
+    elif [[ $branch_name =~ ^C([0-9]+)(-.*)?$ ]]; then
+      jira_number="${match[1]}"
+      rest_of_name="${match[2]}"
+      branch_name="CONSUME-$jira_number$rest_of_name"
     # If branch name starts with C followed by numbers, transform to CONSUME-[number]
-    if [[ $branch_name =~ ^C([0-9]{1,9})(.*)$ ]]; then
+    elif [[ $branch_name =~ ^C([0-9]{1,9})(.*)$ ]]; then
       jira_number="${match[1]}"
       rest_of_name="${match[2]}"
       branch_name="CONSUME-$jira_number$rest_of_name"
