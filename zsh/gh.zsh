@@ -3,12 +3,12 @@
 # Bash function to fetch GitHub mentions
 # Add this to your .bashrc or .zshrc to use it as a command
 
-gh-mentions() {
+gment() {
   echo "Fetching your GitHub @mentions..."
   echo ""
 
   # Fetch notifications for mentions, sort, and process
-  gh api --paginate '/notifications' \
+  local mentions=$(gh api --paginate '/notifications' \
     --jq '.[] | select(.reason == "mention") | {
       title: .subject.title,
       repo: .repository.full_name,
@@ -16,8 +16,16 @@ gh-mentions() {
       url: .subject.url,
       type: .subject.type,
       thread_id: .id
-    }' | jq -s 'sort_by(.updated) | reverse | .[]' -c | \
-  while IFS= read -r line; do
+    }' | jq -s 'sort_by(.updated) | reverse | .[]' -c)
+
+  # Check if there are any mentions
+  if [[ -z "$mentions" ]]; then
+    echo "Cool - no new mentions. Go write some code! 🚀"
+    return
+  fi
+
+  # Process mentions
+  echo "$mentions" | while IFS= read -r line; do
     # Parse JSON object
     title=$(echo "$line" | jq -r '.title')
     repo=$(echo "$line" | jq -r '.repo')
@@ -44,13 +52,11 @@ gh-mentions() {
     echo "  Updated: $formatted_date"
     echo "  URL: $web_url"
     echo "  Thread ID: $thread_id"
-    # Normally, viewing the notification will mark it as read. However, GH notificatins can be spammed to unaccessible
-    # repos. This provides a way to mark it as read.
-    echo "  Mark read with: gh api -X PATCH /notifications/threads/$thread_id"
+    echo ""
   done
 }
 
 # If script is executed directly (not sourced), run the function
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
-  gh-mentions
+  gment
 fi
