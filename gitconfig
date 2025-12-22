@@ -26,10 +26,10 @@
   l = log --pretty=format:'%C(yellow)%h%C(reset)%C(auto)%d%C(reset) %C(blue)%an%C(reset) %s' --graph
   # Mnemonic: l (log) b (ranch) - show commits between origin/master and HEAD
   lb = log --oneline --decorate --no-merges origin/master..HEAD
-  ll = log --show-linear-break --decorate --show-signature --stat
-  lll = log -p --show-linear-break --show-signature
-  lgg = log --oneline --show-linear-break --show-signature
-  ln = log --name-only --show-linear-break --show-signature
+  ll = log --show-linear-break --decorate --stat
+  lll = log -p --show-linear-break
+  lgg = log --oneline --show-linear-break
+  ln = log --name-only --show-linear-break
   lol = log --graph --decorate --pretty=oneline --abbrev-commit
   lola = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
   lolaauth = log --graph --decorate --pretty=short --abbrev-commit --all
