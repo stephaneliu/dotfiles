@@ -18,13 +18,16 @@
   gr = grep --extended-regexp --break --heading --line-number
   gone-ls = "!f() { git fetch --prune; git branch -vv | awk '/: gone]/{print $1}'; }; f"
   gone-rm = "!f() { git fetch --prune; git branch -vv | awk '/: gone]/{print $1}' | xargs -r git branch -d; }; f"
+  gone-rm-force = "!f() { git fetch --prune; git branch -vv | awk '/: gone]/{print $1}' | xargs -r git branch -D; }; f"
   home = config user.email \"sliu@sjliu.com\"h
   hide = update-index --assume-unchanged
   unhide = update-index --no-assume-unchanged
   hidden = !git ls-files -v | grep \"^[[:lower:]]\"
-  l = log --oneline --decorate
+  l = log --pretty=format:'%C(yellow)%h%C(reset)%C(auto)%d%C(reset) %C(blue)%an%C(reset) %s' --graph
+  # Mnemonic: l (log) b (ranch) - show commits between origin/master and HEAD
+  lb = log --oneline --decorate --no-merges origin/master..HEAD
   ll = log --show-linear-break --decorate --show-signature --stat
-  lg = log -p --show-linear-break --show-signature
+  lll = log -p --show-linear-break --show-signature
   lgg = log --oneline --show-linear-break --show-signature
   ln = log --name-only --show-linear-break --show-signature
   lol = log --graph --decorate --pretty=oneline --abbrev-commit
