@@ -19,44 +19,23 @@ ga() {
 
 alias gad='git ad'
 alias gbr='git br'
-alias gbrr='git for-each-ref --color=always --sort=-committerdate refs/heads/ --format="%(color:bold green)%(committerdate:relative)%09%(color:bold yellow)%(refname:short)%(color:normal)" | tac'
-alias gci='git commit'
-alias gcp='git cherry-pick'
-alias gcpc='git cherry-pick --continue'
-alias gcpa='git cherry-pick --abort'
-alias gcl='git clone'
-alias gcln='git cln'
-alias gcr='gh cr'
-alias gdc='git dc'
-alias gdf='git df'
-alias gds='git ds'
-alias gl='git l'
-alias gll='git ll'
-alias glll='git lll'
-alias glo='git lola'
-alias gmg='git mg'
-alias gmt='git mergetool'
-alias gmv='git mv'
-alias gpf='git pf'
-alias gpl='git pull'
-alias gprc='gh prc'
-alias gprd='gh prd'
-alias gprme='gh prme'
-alias gps='git push'
-alias grb='git rebase'
-alias grba='OVERCOMMIT_DISABLE=1 git rba'
-alias grbc='OVERCOMMIT_DISABLE=1 git rbc'
-alias grm='git rm -rf'
-alias gup='git up'
-alias gus='git unstage'
 
-__display_fzf_key_bindings() {
-  echo ""
-  echo "TAB or SHIFT-TAB to select multiple objects"
-  echo "CTRL-/ to toggle preview window"
-  echo "CTRL-O to open the object in the web browser (in GitHub URL scheme)"
-  echo ""
+# git delete branch
+gbrd() {
+  if [[ $# -eq 0 ]]; then
+    __display_fzf_key_bindings
+    echo ""
+    echo "Selected branch will be deleted!"
+    echo ""
+    _fzf_git_branches --no-multi | xargs git br -d
+  else
+    # $@ - all arguments
+    git br -d $1
+  fi
 }
+
+alias gbrr='echo use glbr instead'
+alias gci='git commit'
 
 gco() {
   # Handle -b flag for creating new branches
@@ -103,6 +82,33 @@ gco() {
   fi
 }
 
+# git check out reflog
+gcoref() {
+  __display_fzf_key_bindings
+
+  _fzf_git_lreflogs --no-multi | xargs git checkout
+}
+
+alias gcp='git cherry-pick'
+alias gcpc='git cherry-pick --continue'
+alias gcpa='git cherry-pick --abort'
+alias gcl='git clone'
+alias gcln='git cln'
+# Get code reviews for repo
+alias gcr='gh cr'
+
+# [g]it [c]ommit [r]e[b]ase
+# Make a commit with the intent on rebasing & squashing it later
+# Needs a reference to the commit you are squashing with
+gcrb() {
+  git add -- ':!.claude' ':!.docs' .
+  git commit -m "**** Squash with $1 ****"
+}
+
+alias gdc='git dc'
+alias gdf='git df'
+alias gds='git ds'
+
 ghist() {
   if [[ $# -eq 0 ]]; then
     echo "Usage: ghist <file_path> [search_term]"
@@ -115,12 +121,41 @@ ghist() {
   fi
 }
 
-gwip() {
-  wips=("Crack that wip" "You must WIP it" "Now WIP it" "WIP it GOOD" "Unless you WIP it" "I say WIP it"  "To WIP it")
-  optional_msg="$1 "
-  git add -- ':!.claude' ':!.docs' .
-  LOLCOMMITS_CAPTURE_DISABLED=true SAFE_COMMIT=1 OVERCOMMIT_DISABLE=1 git commit -m "*** $optional_msg'${wips[RANDOM % ${#wips[@]}]}' - Devo ***"
+alias gl='git l'
+
+glbr() {
+  __display_fzf_key_bindings
+  _fzf_git_branches --no-multi
 }
+
+alias gll='git ll'
+alias glll='git lll'
+alias glo='git lola'
+
+# git list (show) reflog
+glref() {
+  __display_fzf_key_bindings
+
+  if [[ $# -eq 0 ]]; then
+    _fzf_git_lreflogs | xargs git reflog show -p
+  elif [ $(echo -n $1 | wc -c) -lt 4 ]; then
+    git reflog show -p HEAD@{@1}
+  else
+    echo "Provide the NUM from reflog HEAD@{NUM}"
+  fi
+}
+
+alias gmg='git mg'
+alias gmt='git mergetool'
+alias gmv='git mv'
+alias gpf='git pf'
+alias gpl='git pull'
+alias gprc='gh prc'
+alias gprd='gh prd'
+alias gprme='gh prme'
+alias gps='git push'
+alias grb='git rebase'
+alias grba='OVERCOMMIT_DISABLE=1 git rba'
 
 grbi() {
   if [[ $# -eq 0 ]]; then
@@ -134,6 +169,9 @@ grbi() {
     OVERCOMMIT_DISABLE=1 git rebase -i HEAD~$1
   fi
 }
+
+alias grbc='OVERCOMMIT_DISABLE=1 git rbc'
+alias grm='git rm -rf'
 
 grs() {
   if [ $(echo -n $1 | wc -c) -gt 2 ]; then
@@ -151,51 +189,22 @@ grsh() {
   fi
 }
 
-# [g]it [c]ommit [r]e[b]ase
-# Make a commit with the intent on rebasing & squashing it later
-# Needs a reference to the commit you are squashing with
-gcrb() {
+alias gup='git up'
+alias gus='git unstage'
+
+gwip() {
+  wips=("Crack that wip" "You must WIP it" "Now WIP it" "WIP it GOOD" "Unless you WIP it" "I say WIP it"  "To WIP it")
+  optional_msg="$1 "
   git add -- ':!.claude' ':!.docs' .
-  git commit -m "**** Squash with $1 ****"
+  LOLCOMMITS_CAPTURE_DISABLED=true SAFE_COMMIT=1 OVERCOMMIT_DISABLE=1 git commit -m "*** $optional_msg'${wips[RANDOM % ${#wips[@]}]}' - Devo ***"
 }
 
-glbr() {
-  __display_fzf_key_bindings
-  _fzf_git_branches --no-multi
-}
-
-# git delete branch
-gbrd() {
-  if [[ $# -eq 0 ]]; then
-    __display_fzf_key_bindings
-    echo ""
-    echo "Selected branch will be deleted!"
-    echo ""
-    _fzf_git_branches --no-multi | xargs git br -d
-  else
-    # $@ - all arguments
-    git br -d $1
-  fi
-}
-
-# git list (show) reflog
-glref() {
-  __display_fzf_key_bindings
-
-  if [[ $# -eq 0 ]]; then
-    _fzf_git_lreflogs | xargs git reflog show -p
-  elif [ $(echo -n $1 | wc -c) -lt 4 ]; then
-    git reflog show -p HEAD@{@1}
-  else
-    echo "Provide the NUM from reflog HEAD@{NUM}"
-  fi
-}
-
-# git check out reflog
-gcoref() {
-  __display_fzf_key_bindings
-
-  _fzf_git_lreflogs --no-multi | xargs git checkout
+__display_fzf_key_bindings() {
+  echo ""
+  echo "TAB or SHIFT-TAB to select multiple objects"
+  echo "CTRL-/ to toggle preview window"
+  echo "CTRL-O to open the object in the web browser (in GitHub URL scheme)"
+  echo ""
 }
 
 # Complete g like git
