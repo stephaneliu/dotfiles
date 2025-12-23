@@ -8,7 +8,15 @@ function g {
 }
 
 alias 'g-'='git co -'
-alias ga='git a'
+
+ga() {
+  if [[ $1 == "." ]]; then
+    git a -- ':!.claude' ':!.docs' .
+  else
+    git a "$@"
+  fi
+}
+
 alias gad='git ad'
 alias gbr='git br'
 alias gbrr='git for-each-ref --color=always --sort=-committerdate refs/heads/ --format="%(color:bold green)%(committerdate:relative)%09%(color:bold yellow)%(refname:short)%(color:normal)" | tac'
