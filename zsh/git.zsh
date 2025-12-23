@@ -118,7 +118,7 @@ ghist() {
 gwip() {
   wips=("Crack that wip" "You must WIP it" "Now WIP it" "WIP it GOOD" "Unless you WIP it" "I say WIP it"  "To WIP it")
   optional_msg="$1 "
-  git add .
+  git add -- ':!.claude' ':!.docs' .
   LOLCOMMITS_CAPTURE_DISABLED=true SAFE_COMMIT=1 OVERCOMMIT_DISABLE=1 git commit -m "*** $optional_msg'${wips[RANDOM % ${#wips[@]}]}' - Devo ***"
 }
 
@@ -155,7 +155,7 @@ grsh() {
 # Make a commit with the intent on rebasing & squashing it later
 # Needs a reference to the commit you are squashing with
 gcrb() {
-  git add .
+  git add -- ':!.claude' ':!.docs' .
   git commit -m "**** Squash with $1 ****"
 }
 
