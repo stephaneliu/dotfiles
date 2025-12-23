@@ -3,6 +3,12 @@ if [[ ! "$PATH" == */opt/homebrew/opt/fzf/bin* ]]; then
   PATH="${PATH:+${PATH}:}/opt/homebrew/opt/fzf/bin"
 fi
 # Auto-completion
+# Activate with **
+# vi ** TAB
+# cat ** TAB
+# cd ** TAB
+# kill ** TAB
+# ssh ** TAB
 [[ $- == *i* ]] && source "/opt/homebrew/opt/fzf/shell/completion.zsh" 2> /dev/null
 # Key bindings
 source "/opt/homebrew/opt/fzf/shell/key-bindings.zsh"
