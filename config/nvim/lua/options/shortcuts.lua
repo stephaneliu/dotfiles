@@ -35,3 +35,6 @@ n_map('<leader>do', ":tab drop tmp/notes.md<CR>")
 
 -- Surround puts then position cursor inside qutoes
 i_map('ppp', 'puts "*"*100<CR>puts ""<CR>puts "*"*100<CR><esc>kkwa')
+
+-- Copy current file path (from git root) to clipboard
+n_map('<leader>cfn', ':let @+ = substitute(expand("%:p"), fnamemodify(trim(system("git rev-parse --show-toplevel")), ":h") . "/", "", "")<CR>:echo "Copied: " . @+<CR>')
