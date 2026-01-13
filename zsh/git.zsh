@@ -35,6 +35,7 @@ gbrd() {
 }
 
 alias gbrr='echo use glbr instead'
+alias gbrr='git for-each-ref --color=always --sort=-committerdate refs/heads/ --format="%(color:bold green)%(committerdate:relative)%09%(color:bold yellow)%(refname:short)%(color:normal)" | tac'
 alias gci='git commit'
 
 gco() {
@@ -125,7 +126,7 @@ alias gl='git l'
 
 glbr() {
   __display_fzf_key_bindings
-  _fzf_git_branches --no-multi
+  _fzf_git_branches --no-multi | xargs git co
 }
 
 alias gll='git ll'
