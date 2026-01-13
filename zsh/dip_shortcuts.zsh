@@ -43,13 +43,21 @@ function _docker_id() {
   docker ps --no-trunc --format "{{.ID}}-{{.Command}}" | grep $1 | cut -d '-' -f 1
 }
 
-alias dip='dip CLEAN_LOGS=1 '
+alias dip='dip CLEAN_LOGS=1'
+alias ddip='dip CLEAN_LOGS=1 DEBUG_LOGS=true'
+
 alias dg="dip GUARD_GQL_SCHEMA=1 guard"
-# dip guard debug
-alias dgd="dip GUARD_GQL_SCHEMA=1 TEST_DEBUG=1 guard"
-alias did="dip down"
+alias dgd="ddip GUARD_GQL_SCHEMA=1 TEST_DEBUG=1 guard"
+
 alias dr="dip rails"
+alias ddr="ddip rails"
+
 alias drs="dip up -d sidekiq vite && dip rails s"
 alias drss="dip up -d vite && dip up rails sidekiq"
-alias ddown="dip compose down"
+alias ddrs="ddip up -d sidekiq vite && ddip rails s"
+alias ddrss="ddip up -d vite && ddip up rails sidekiq"
+
 alias dbe="dip bundle exec"
+alias ddbe="ddip bundle exec"
+
+alias did="dip down"
