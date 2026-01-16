@@ -17,7 +17,8 @@ function vv() {
   if [[ -f "$session_file" ]]; then
     nvim "+OpenSession $session_name"
   else
-    echo "Session $session_name not found. Use :SaveSession $session_name to create."
+    echo -n "$session_name" | pbcopy
+    echo "Session $session_name not found. Use :SS to create. Or use :SaveSession <Cmd-V> to create."
     read "?Press Enter to open nvim..."
     local first_file=$(ls -1p | grep -v '/' | head -1)
     nvim "$first_file"
