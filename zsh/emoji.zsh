@@ -29,12 +29,21 @@ emoji() {
   local search="${1%% }"
   search="${search%\\}"
   if [[ -n "$search" ]]; then
-    local matches=$(echo "$emojis" | grep -i "$search" | sort -t: -k2)
+    # Check for exact match first (e.g., :smile: not :smile_cat:)
+    local exact_match=$(echo "$emojis" | grep -i ":${search}:")
+    local matches
+    if [[ -n "$exact_match" ]]; then
+      # Put exact match first, then other matches
+      local other_matches=$(echo "$emojis" | grep -i "$search" | grep -iv ":${search}:" | sort -t: -k2)
+      matches="$exact_match"$'\n'"$other_matches"
+    else
+      matches=$(echo "$emojis" | grep -i "$search" | sort -t: -k2)
+    fi
     if [[ -n "$matches" ]]; then
       selected_emoji=$(echo "$matches" | head -1 | cut -d' ' -f1)
       echo -n "$selected_emoji" | pbcopy
       echo "Copied $selected_emoji to clipboard"
-      local alternatives=$(echo "$matches" | tail -n +2)
+      local alternatives=$(echo "$matches" | tail -n +2 | grep -v '^$')
       if [[ -n "$alternatives" ]]; then
         echo "Alternatives:"
         echo "$alternatives"
