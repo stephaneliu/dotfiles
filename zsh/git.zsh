@@ -94,7 +94,10 @@ alias gcp='git cherry-pick'
 alias gcpc='git cherry-pick --continue'
 alias gcpa='git cherry-pick --abort'
 alias gcl='git clone'
-alias gcln='git cln'
+
+gcln() {
+  git clean -e .claude -e .docs "$@"
+}
 # Get code reviews for repo
 alias gcr='gh cr'
 
