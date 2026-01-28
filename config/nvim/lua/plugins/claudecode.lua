@@ -10,23 +10,20 @@ return {
       auto_close = true, -- Close terminal when Claude session ends
       snacks_win_opts = {
         -- Bottom split
-        -- position = "bottom",
-        -- height = 0.4,
-        -- width = 1.0,
-        -- border = "rounded",
-        position = "float",
-        width = 120,  -- Fixed width in columns
-        height = 30,  -- Fixed height in rows
-        border = "double",
-        backdrop = 90,
+        position = "bottom",
+        height = 0.4,
+        width = 1.0,
+        border = "rounded",
+        -- Float window
+        -- position = "float",
+        -- width = 120,  -- Fixed width in columns
+        -- height = 30,  -- Fixed height in rows
+        -- border = "double",
+        -- backdrop = 90,
         wo = {
           -- Use Normal highlight to match NeoSolarized dark background (#002b36)
           winhighlight = "Normal:Normal,NormalFloat:Normal,FloatBorder:FloatBorder",
         },
-        on_open = function(self)
-          -- Disable list mode to hide tab indicators
-          vim.wo[self.win].list = false
-        end,
         keys = {
           claude_hide = { toggle_key, function(self) self:hide() end, mode = "t", desc = "Hide Claude terminal" },
           nav_h = { "<C-h>", function() vim.cmd("KittyNavigateLeft") end, mode = "t", desc = "Navigate left" },
