@@ -43,6 +43,7 @@ brew 'colordiff'                   # colorful diffs (alias diff='colordiff -u')
 brew 'coreutils'                   # used for gnu coreutils i.e - tac
 brew 'ctop'                        # Top-like interface for docker container metrics
 brew 'direnv'
+brew 'doctl'                       # DigitalOcean CLI
 brew 'duf'                         # Better Unix: better duf - https://github.com/muesli/duf
 brew 'dust'                        # Better Unix: better du - https://github.com/bootandy/dust
 brew 'fd'                          # Better alternative to find
@@ -71,7 +72,8 @@ brew 'procs'                       # Better unix: better ps - https://github.com
 brew 'reattach-to-user-namespace'
 brew 'render'
 brew 'ripgrep'
-brew 'mise'                         # asdf written in Rust. No shims
+brew 'spinel-coop/tap/rv'          # Ruby version manager with high ambitions https://github.com/spinel-coop/rv
+brew 'mise'                        # asdf written in Rust. No shims
 # brew 'ruby-install'
 brew 'tailspin'
 brew 'terminal-notifier'           # programatically send messages to notifications
@@ -97,7 +99,7 @@ cask 'craft'
 cask 'dash'
 cask 'devtoys'
 cask 'divvy'
-cask 'docker'
+cask 'docker' unless system 'ls /Applications/Docker*'
 cask 'font-hack-nerd-font'
 cask 'font-jetbrains-mono-nerd-font'
 cask 'ghostty'
@@ -110,7 +112,6 @@ cask 'polypane'
 cask 'raycast'
 cask 'readdle-spark'
 cask 'reflect'
-cask 'tailscale'
 cask 'there'
 cask 'karabiner-elements'
 cask 'keycastr' # dispaly keystrokes for screencasts
@@ -123,9 +124,9 @@ cask 'xnapper' unless system 'ls /Applications/Xnapper*'
 # CLI: mas search [app]
 # Returns app name and app id
 # mas install [app_id]
-mas "Fantastical", id: 975937182
+# mas "Fantastical", id: 975937182 # unless system 'ls /Applications/Fantastical*'
 mas "Monodraw", id: 920404675
-mas "Tailscale", id: 1475387142
-mas "Things", id: 904280696
+# mas "Tailscale", id: 1475387142
+# mas "Things", id: 904280696
 mas 'Hand Mirror', id: 1_502_839_586
 mas 'Marked 2', id: 890_031_187
