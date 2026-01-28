@@ -2,6 +2,6 @@ return {
   'guns/xterm-color-table.vim',
   enabled = true,
   keys = {
-    { '<leader>ct', '<CMD>XtermColorTable<CR>' }
+    { '<leader>color', '<CMD>XtermColorTable<CR>' }
   }
 }
