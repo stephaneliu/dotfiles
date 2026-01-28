@@ -8,7 +8,6 @@
   ci = commit
   cia = commit --amend
   cic = commit --amend --no-edit
-  cln = clean -fd
   co = checkout
   commend = commit --amend --no-edit
   df = diff
@@ -104,7 +103,7 @@
   diffFilter = delta --color-only
 [merge]
   commit = no # no commit for ff without any changes
-  conflictstyle = diff3
+  conflictstyle = zdiff3
   stat = true
 	tool = vim-conflicted
 [mergetool]
