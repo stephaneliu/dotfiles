@@ -32,7 +32,7 @@ end
 
 return {
   "neovim/nvim-lspconfig",
-  enabled = true,
+  enabled = false,
   config = function()
     -- Setup language servers.
     local lspconfig = require('lspconfig')
