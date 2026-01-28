@@ -6,14 +6,16 @@ return {
   opts = {
     focus_after_send = true,
     terminal = {
-      -- split_width_percentage = 0.40,
+      split_width_percentage = 0.40,
       auto_close = true, -- Close terminal when Claude session ends
       snacks_win_opts = {
+        -- Default to right split
         -- Bottom split
-        position = "bottom",
-        height = 0.4,
-        width = 1.0,
-        border = "rounded",
+        -- position = "bottom",
+        -- height = 0.4,
+        -- width = 1.0,
+        -- border = "rounded",
+
         -- Float window
         -- position = "float",
         -- width = 120,  -- Fixed width in columns
