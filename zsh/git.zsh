@@ -1,3 +1,6 @@
+# Directories to exclude from git add/clean operations
+GIT_EXCLUDE_DIRS=(.claude .docs docs)
+
 # g without arguments will run `git status`
 function g {
   if [[ $# > 0 ]]; then
@@ -11,7 +14,7 @@ alias 'g-'='git co -'
 
 ga() {
   if [[ $1 == "." ]]; then
-    git a -- ':!.claude' ':!.docs' .
+    git a -- ${GIT_EXCLUDE_DIRS[@]/#/:!} .
   else
     git a "$@"
   fi
@@ -96,7 +99,9 @@ alias gcpa='git cherry-pick --abort'
 alias gcl='git clone'
 
 gcln() {
-  git clean -e .claude -e .docs "$@"
+  local args=()
+  for dir in "${GIT_EXCLUDE_DIRS[@]}"; do args+=(-e "$dir"); done
+  git clean "${args[@]}" "$@"
 }
 # Get code reviews for repo
 alias gcr='gh cr'
@@ -105,7 +110,7 @@ alias gcr='gh cr'
 # Make a commit with the intent on rebasing & squashing it later
 # Needs a reference to the commit you are squashing with
 gcrb() {
-  git add -- ':!.claude' ':!.docs' .
+  git add -- ${GIT_EXCLUDE_DIRS[@]/#/:!} .
   git commit -m "**** Squash with $1 ****"
 }
 
@@ -199,7 +204,7 @@ alias gus='git unstage'
 gwip() {
   wips=("Crack that wip" "You must WIP it" "Now WIP it" "WIP it GOOD" "Unless you WIP it" "I say WIP it"  "To WIP it")
   optional_msg="$1 "
-  git add -- ':!.claude' ':!.docs' .
+  git add -- ${GIT_EXCLUDE_DIRS[@]/#/:!} .
   LOLCOMMITS_CAPTURE_DISABLED=true SAFE_COMMIT=1 OVERCOMMIT_DISABLE=1 git commit -m "*** $optional_msg'${wips[RANDOM % ${#wips[@]}]}' - Devo ***"
 }
 
