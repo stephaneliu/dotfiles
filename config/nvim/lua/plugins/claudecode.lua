@@ -22,12 +22,16 @@ return {
         -- height = 30,  -- Fixed height in rows
         -- border = "double",
         -- backdrop = 90,
+        bo = {
+          scrollback = 10000,
+        },
         wo = {
           -- Use Normal highlight to match NeoSolarized dark background (#002b36)
           winhighlight = "Normal:Normal,NormalFloat:Normal,FloatBorder:FloatBorder",
         },
         keys = {
           claude_hide = { toggle_key, function(self) self:hide() end, mode = "t", desc = "Hide Claude terminal" },
+          scrollback = { "<C-\\>", function() vim.cmd("stopinsert") end, mode = "t", desc = "Enter scrollback mode" },
           nav_h = { "<C-h>", function() vim.cmd("KittyNavigateLeft") end, mode = "t", desc = "Navigate left" },
           nav_j = { "<C-j>", function() vim.cmd("KittyNavigateDown") end, mode = "t", desc = "Navigate down" },
           nav_k = { "<C-k>", function() vim.cmd("KittyNavigateUp") end, mode = "t", desc = "Navigate up" },
