@@ -31,7 +31,7 @@ return {
         },
         keys = {
           claude_hide = { toggle_key, function(self) self:hide() end, mode = "t", desc = "Hide Claude terminal" },
-          scrollback = { "<C-\\>", function() vim.cmd("stopinsert") end, mode = "t", desc = "Enter scrollback mode" },
+          scrollback = { "<C-a><C-[>", function() vim.cmd("stopinsert") end, mode = "t", desc = "Enter scrollback mode" },
           nav_h = { "<C-h>", function() vim.cmd("KittyNavigateLeft") end, mode = "t", desc = "Navigate left" },
           nav_j = { "<C-j>", function() vim.cmd("KittyNavigateDown") end, mode = "t", desc = "Navigate down" },
           nav_k = { "<C-k>", function() vim.cmd("KittyNavigateUp") end, mode = "t", desc = "Navigate up" },
