@@ -1,0 +1,37 @@
+# prompt to continue after session completion
+# false = exit when done
+askToContinue: true
+
+asciiArt:
+  # use ASCII art for timer display
+  enabled: true
+
+  # available fonts: (mono12, rebel, ansi, ansiShadow)
+  # default: mono12
+  font: ansiShadow
+
+  # color of the ASCII art timer
+  # hex color or "none"
+  color: "#5A56E0"
+
+# pomo without arguments uses this default
+# or pomo 30m for custom duration
+# or pomo 45m 15m for work + break
+work:
+  duration: 45m
+  title: Heads Down Session
+
+  # cross-platform notifications
+  notification:
+    enabled: true
+    urgent: true # persistent notification with alert sound (platform-dependent)
+    title: Heads Down Finished 🎉
+    message: Go move around a bit!
+    # icon: ~/my/icon.png
+
+break:
+  duration: 5m
+
+  # will run after the session ends
+  then:
+    - [spd-say, "Back to work!"]
