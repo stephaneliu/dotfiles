@@ -7,42 +7,44 @@ return {
   end,
   keys = {
     {
-      "<leader>animatrix",
+      "<leader>Am",
       function()
         local animatedbg = require("animatedbg-nvim")
-        animatedbg.play({ animation = "matrix", duration = 5 }) -- fireworks | matrix | demo
-        -- animatedbg.play({ animation = "matrix", duration = 20 }) -- some support duration
-        -- animatedbg.play({ animation = "fireworks", duration = 500, time_between_shots = 0.1 })
-        -- animatedbg.stop_all() -- if you don't want to wait
-      end
+        animatedbg.play({ animation = "matrix", duration = 5 })
+      end,
+      desc = "Matrix (5s)"
     },
     {
-      "<leader>anilmatrix",
+      "<leader>AM",
       function()
         local animatedbg = require("animatedbg-nvim")
-        animatedbg.play({ animation = "matrix", duration = 500 }) -- fireworks | matrix | demo
-      end
+        animatedbg.play({ animation = "matrix", duration = 500 })
+      end,
+      desc = "Matrix (long)"
     },
     {
-      "<leader>anifire",
+      "<leader>Af",
       function()
         local animatedbg = require("animatedbg-nvim")
         animatedbg.play({ animation = "fireworks", duration = 5, time_between_shots = 0.1 })
-      end
+      end,
+      desc = "Fireworks (5s)"
     },
     {
-      "<leader>anilfire",
+      "<leader>AF",
       function()
         local animatedbg = require("animatedbg-nvim")
         animatedbg.play({ animation = "fireworks", duration = 500, time_between_shots = 0.1 })
-      end
+      end,
+      desc = "Fireworks (long)"
     },
     {
-      "<leader>anistop",
+      "<leader>As",
       function()
         local animatedbg = require("animatedbg-nvim")
         animatedbg.stop_all()
-      end
+      end,
+      desc = "Stop all"
     },
   },
 }

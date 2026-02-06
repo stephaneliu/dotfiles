@@ -3,6 +3,6 @@ return {
   enabled = true,
   event = "BufEnter",
   keys = {
-    { "<leader>b", "<CMD>GitBlameToggle<CR>" }
+    { "<leader>gib", "<CMD>GitBlameToggle<CR>", desc = "Toggle inline blame" }
   }
 }

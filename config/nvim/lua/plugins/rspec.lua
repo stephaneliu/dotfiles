@@ -5,7 +5,7 @@ return {
     vim.g.rspec_command = 'execute "!dip rspec " . substitute("{spec}", "^.*/spec/", "spec/", "")'
   end,
   keys = {
-    { "<leader>rfile", ":call RunCurrentSpecFile()<CR>" },
-    { "<leader>rnear", ":call RunNearestSpec()<CR>" },
+    { "<leader>rf", ":call RunCurrentSpecFile()<CR>", desc = "Run spec file" },
+    { "<leader>rn", ":call RunNearestSpec()<CR>", desc = "Run nearest spec" },
   }
 }

@@ -3,10 +3,10 @@ return {
   enabled = true,
   event = "VeryLazy",
   keys = {
-    { "<leader>ggh", "<CMD>GitGutterLineHighlightsToggle<CR>" },
-    { "<leader>ggf", "<CMD>GitGutterFold<CR>" },
-    { "<leader>ggn", "<Plug>(GitGutterNextHunk)" },
-    { "<leader>ggp", "<Plug>(GitGutterPrevHunk)" },
+    { "<leader>ggh", "<CMD>GitGutterLineHighlightsToggle<CR>", desc = "Toggle highlights" },
+    { "<leader>ggf", "<CMD>GitGutterFold<CR>", desc = "Fold hunks" },
+    { "<leader>ggn", "<Plug>(GitGutterNextHunk)", desc = "Next hunk" },
+    { "<leader>ggp", "<Plug>(GitGutterPrevHunk)", desc = "Prev hunk" },
   },
   init = function()
     vim.g.gitgutter_highlight_lines = 1
