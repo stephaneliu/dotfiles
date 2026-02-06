@@ -60,7 +60,38 @@ return {
   },
   keys = {
     { "<leader>c", nil, desc = "AI/Claude Code" },
-    { "<leader>ct", "<cmd>ClaudeCode<cr>", desc = "Toggle Claude" },
+    {
+      "<leader>ct",
+      function()
+        local current_tab = vim.api.nvim_get_current_tabpage()
+
+        -- Check if Claude is open in another tab
+        for _, tab in ipairs(vim.api.nvim_list_tabpages()) do
+          if tab ~= current_tab then
+            for _, win in ipairs(vim.api.nvim_tabpage_list_wins(tab)) do
+              local buf = vim.api.nvim_win_get_buf(win)
+              -- Only check terminal buffers
+              if vim.bo[buf].buftype == "terminal" then
+                local bufname = vim.api.nvim_buf_get_name(buf)
+                local term_title = vim.b[buf].term_title or ""
+                if term_title:match("claude") or bufname:match("claude") then
+                  -- Claude is in another tab, toggle twice: close then open in current
+                  vim.cmd("ClaudeCode")
+                  vim.cmd("ClaudeCode")
+                  return
+                end
+              end
+            end
+          end
+        end
+
+        -- Claude not in another tab, just toggle normally
+        vim.schedule(function()
+          vim.cmd("ClaudeCode")
+        end)
+      end,
+      desc = "Toggle Claude",
+    },
     { "<leader>cf", "<cmd>ClaudeCodeFocus<cr>", desc = "Focus Claude" },
     { "<leader>cr", "<cmd>ClaudeCode --resume<cr>", desc = "Resume Claude with picker" },
     { "<leader>cC", "<cmd>ClaudeCode --continue<cr>", desc = "Continue most recent Claude" },
