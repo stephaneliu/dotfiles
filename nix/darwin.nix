@@ -7,9 +7,17 @@
     pkgs.git
   ];
 
-  # Enable Nix daemon
-  services.nix-daemon.enable = true;
-  nix.settings.experimental-features = "nix-command flakes";
+  # Primary user for darwin-rebuild
+  system.primaryUser = "sliu";
+
+  # Define the user (required for home-manager)
+  users.users.sliu = {
+    name = "sliu";
+    home = "/Users/sliu";
+  };
+
+  # Let Determinate manage Nix daemon (since we used their installer)
+  nix.enable = false;
 
   # Shell - required for nix-darwin
   programs.zsh.enable = true;
