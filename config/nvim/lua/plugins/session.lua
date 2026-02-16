@@ -17,7 +17,7 @@ return {
       end
       local dir = vim.fn.fnamemodify(vim.fn.getcwd(), ':t'):gsub('^%.', '')
       local session_name = dir .. '-' .. branch
-      vim.cmd('SaveSession ' .. session_name)
+      vim.cmd('SaveSession! ' .. session_name)
     end, {})
 
     vim.api.nvim_create_user_command('SD', function()

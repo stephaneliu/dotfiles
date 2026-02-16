@@ -15,7 +15,7 @@ function vv() {
   echo "Opening session: $session_name"
   local session_file="$HOME/.config/nvim/sessions/${session_name}.vim"
   if [[ -f "$session_file" ]]; then
-    nvim "+OpenSession $session_name"
+    nvim "+OpenSession! $session_name"
   else
     echo -n "$session_name" | pbcopy
     echo "Session $session_name not found. Use :SS to create. Or use :SaveSession <Cmd-V> to create."
