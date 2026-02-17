@@ -1,0 +1,7 @@
+# @use ../../rts/helpers.rts
+
+### Index
+# @name Index
+GET {{base.url}}/v3/project_group_suggestions.json
+Content-Type: application/json
+Authorization: Bearer {{auth.token}}

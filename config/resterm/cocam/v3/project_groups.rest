@@ -1,0 +1,76 @@
+# @use ../../rts/helpers.rts
+
+### Index
+# @name Index
+GET {{base.url}}/v3/project_groups.json
+Content-Type: application/json
+Authorization: Bearer {{auth.token}}
+
+### Create
+# @name Create
+POST {{base.url}}/v3/project_groups.json
+Content-Type: application/json
+Authorization: Bearer {{auth.token}}
+
+{
+  "project_group": {
+    "name": "A new name",
+    "description": "A new description"
+  }
+}
+
+### Show
+# @name Show
+GET {{base.url}}/v3/project_groups/[id].json
+Content-Type: application/json
+Authorization: Bearer {{auth.token}}
+
+### Update
+# @name Update
+PUT {{base.url}}/v3/project_groups/[id].json
+Content-Type: application/json
+Authorization: Bearer {{auth.token}}
+
+{
+  "project_group": {
+    "name": "Awesome Deal"
+  }
+}
+
+### Post example
+# @name Echo
+POST {{base.url}}/post
+Content-Type: application/json
+Authorization: Bearer {{auth.token}}
+
+{
+  "hello": "resterm",
+  "time": "{{$timestampISO8601}}"
+}
+
+### Capture value from response
+# @name CaptureToken
+# @capture file-secret auth.token {{response.json.uuid}}
+GET {{base.url}}/uuid
+
+### Reuse captured value
+# @name UseToken
+GET {{base.url}}/anything
+Authorization: Bearer {{auth.token}}
+
+### Query params
+# @name Query
+# @var request hello resterm
+GET {{base.url}}/get?hello={{hello}}
+
+### Scripted header
+# @name ScriptedHeader
+GET {{base.url}}/anything
+Authorization: {{= helpers.authHeader(vars.get("auth.token"), env.get("auth.token")) }}
+
+### Use last response
+# @name UseLast
+# Uses last.* from the most recent request in this session.
+# Run CaptureToken first, otherwise last.json("uuid") is empty.
+GET {{base.url}}/anything
+X-Last-UUID: {{= last.json("uuid") ?? "" }}

@@ -71,6 +71,7 @@ brew 'pkg-config'                  # Ruby native extensions
 brew 'procs'                       # Better unix: better ps - https://github.com/dalance/procs
 brew 'reattach-to-user-namespace'
 brew 'render'
+brew 'resterm'                     # REST client for the terminal - https://github.com/unkn0wn-root/resterm
 brew 'ripgrep'
 brew 'spinel-coop/tap/rv'          # Ruby version manager with high ambitions https://github.com/spinel-coop/rv
 brew 'mise'                        # asdf written in Rust. No shims
