@@ -52,6 +52,8 @@ alias dgd="ddip GUARD_GQL_SCHEMA=1 TEST_DEBUG=1 guard"
 alias dr="dip rails"
 alias ddr="ddip rails"
 
+alias ddrc="CLEAN_LOGS=1 DEBUG_LOGS=true drc"
+
 alias drs="dip up -d sidekiq vite && dip rails s"
 alias drss="dip up -d vite && dip up rails sidekiq"
 alias ddrs="ddip up -d sidekiq vite && ddip rails s"
