@@ -10,6 +10,8 @@ return {
       auto_close = true, -- Close terminal when Claude session ends
       snacks_win_opts = {
         -- Default to right split
+        position = "left",
+        width = 0.40,
         -- Bottom split
         -- position = "bottom",
         -- height = 0.4,
@@ -30,8 +32,9 @@ return {
           winhighlight = "Normal:Normal,NormalFloat:Normal,FloatBorder:FloatBorder",
         },
         keys = {
+          q = false, -- Disable 'q' closing window in scrollback mode
           claude_hide = { toggle_key, function(self) self:hide() end, mode = "t", desc = "Hide Claude terminal" },
-          scrollback = { "<C-a><C-[>", function() vim.cmd("stopinsert") end, mode = "t", desc = "Enter scrollback mode" },
+          scrollback = { "<C-[>", function() vim.cmd("stopinsert") end, mode = "t", desc = "Enter scrollback mode" },
           nav_h = { "<C-h>", function() vim.cmd("KittyNavigateLeft") end, mode = "t", desc = "Navigate left" },
           nav_j = { "<C-j>", function() vim.cmd("KittyNavigateDown") end, mode = "t", desc = "Navigate down" },
           nav_k = { "<C-k>", function() vim.cmd("KittyNavigateUp") end, mode = "t", desc = "Navigate up" },
@@ -98,6 +101,7 @@ return {
     { "<leader>cm", "<cmd>ClaudeCodeSelectModel<cr>", desc = "Select Claude model" },
     { "<leader>cb", "<cmd>ClaudeCodeAdd %<cr>", desc = "Add current buffer" },
     { "<leader>cs", "<cmd>ClaudeCodeSend<cr>", mode = "v", desc = "Send to Claude" },
+    { "<leader>cs", "V<cmd>ClaudeCodeSend<cr>", mode = "n", desc = "Send line to Claude" },
     {
       "<leader>cs",
       "<cmd>ClaudeCodeTreeAdd<cr>",
