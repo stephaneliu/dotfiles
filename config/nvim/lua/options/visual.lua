@@ -18,7 +18,7 @@ vim.o.colorcolumn = "120" -- set a highlighted column at the 120th character on 
 vim.o.textwidth = 120   -- wrap text at 120 characters
 vim.o.wrapmargin = 2    -- command to actually wrap on the display
 
-vim.o.conceallevel = 1
+vim.o.conceallevel = 2
 
 n_map("<leader>ql", ":resize 40<CR>") -- (q)uickfix (l)arge
 n_map("<leader>qs", ":resize 90<CR>") -- (q)uickfix (s)mall
