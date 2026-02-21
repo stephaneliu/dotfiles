@@ -51,7 +51,15 @@ return {
     "nvim-telescope/telescope.nvim",
   },
   config = function()
-    -- Expose goto_tag for keymap binding (task 2.2.1)
+    -- Expose goto_tag for keymap binding
     _G.class_navigation_goto_tag = goto_tag
+
+    -- FileType autocmd for gd mapping (ruby, tsx, jsx)
+    vim.api.nvim_create_autocmd("FileType", {
+      pattern = { "ruby", "typescriptreact", "javascriptreact" },
+      callback = function()
+        vim.keymap.set("n", "gd", goto_tag, { buffer = true, desc = "Go to class definition" })
+      end,
+    })
   end,
 }
