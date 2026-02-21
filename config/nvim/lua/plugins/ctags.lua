@@ -9,7 +9,7 @@ exit 0
 
 return {
   "ctags-config",
-  virtual = true,
+  lazy = false,
   config = function()
     -- Look for .tags in current directory and parents, fallback to home directory
     vim.opt.tags = "./.tags;,~/.tags"

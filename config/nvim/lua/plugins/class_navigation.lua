@@ -116,7 +116,7 @@ end
 -- Extract word under cursor and prepare it for tag lookup
 -- Handles Ruby namespace syntax: Admin::UserService -> Admin.UserService (ctags format)
 local function goto_tag()
-  local word = vim.fn.expand("<cword>")
+  local word = vim.fn.expand("<cWORD>")
 
   if word == "" then
     vim.notify("No word under cursor", vim.log.levels.WARN)
@@ -147,7 +147,7 @@ end
 
 return {
   "class-navigation",
-  virtual = true,
+  lazy = false,
   dependencies = {
     "nvim-telescope/telescope.nvim",
   },
@@ -155,12 +155,6 @@ return {
     { "<leader>gc", telescope_tags_picker, desc = "Search classes/components" },
   },
   config = function()
-    -- Expose goto_tag for keymap binding
-    _G.class_navigation_goto_tag = goto_tag
-
-    -- Expose telescope_tags_picker for keymap binding (task 3.1.2)
-    _G.class_navigation_telescope_tags_picker = telescope_tags_picker
-
     -- FileType autocmd for gd mapping (ruby, tsx, jsx)
     vim.api.nvim_create_autocmd("FileType", {
       pattern = { "ruby", "typescriptreact", "javascriptreact" },
