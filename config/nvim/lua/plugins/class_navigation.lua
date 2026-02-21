@@ -92,7 +92,7 @@ local function telescope_tags_picker()
           actions.close(prompt_bufnr)
           local selection = action_state.get_selected_entry()
           if selection then
-            vim.cmd("edit " .. selection.filename)
+            vim.cmd.edit(vim.fn.fnameescape(selection.filename))
             vim.api.nvim_win_set_cursor(0, { selection.lnum, 0 })
           end
         end)
@@ -137,7 +137,7 @@ local function goto_tag()
 
   if #matches == 1 then
     -- Single match: jump directly to the tag
-    vim.cmd("tag " .. tag_name)
+    vim.cmd("tag " .. vim.fn.escape(tag_name, "\\| "))
     return
   end
 
