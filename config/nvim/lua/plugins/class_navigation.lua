@@ -146,7 +146,8 @@ local function goto_tag()
 end
 
 return {
-  "class-navigation",
+  dir = vim.fn.stdpath("config") .. "/lua/plugins",
+  name = "class-navigation",
   lazy = false,
   dependencies = {
     "nvim-telescope/telescope.nvim",

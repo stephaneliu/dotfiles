@@ -8,7 +8,8 @@ exit 0
 ]]
 
 return {
-  "ctags-config",
+  dir = vim.fn.stdpath("config") .. "/lua/plugins",
+  name = "ctags-config",
   lazy = false,
   config = function()
     -- Look for .tags in current directory and parents, fallback to home directory
