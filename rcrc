@@ -1,5 +1,5 @@
 EXCLUDES="system README.md install LICENSE-MIT.txt setup test utils Brewfile.lock.json tmp"
-SYMLINK_DIRS="bundle nvim-backup nvim-undo"
+SYMLINK_DIRS="bundle nvim-backup nvim-undo ctags.d"
 UNDOTTED='bin Brewfile'
 TAGS="cheat gitui karabiner kitty ruby tmux tmuxinator nvim"
 COPY_ALWAYS="zsh/npm.zsh"

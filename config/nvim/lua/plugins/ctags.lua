@@ -33,6 +33,7 @@ return {
       local cmd = { "ctags", "-R", "-f", tags_file, "--options=" .. ctags_config, root }
 
       vim.fn.jobstart(cmd, {
+        stderr_buffered = true,
         on_exit = function(_, exit_code)
           vim.schedule(function()
             if exit_code == 0 then
@@ -42,13 +43,7 @@ return {
             end
           end)
         end,
-        on_stderr = function(_, data)
-          if data and data[1] ~= "" then
-            vim.schedule(function()
-              vim.notify("ctags error: " .. table.concat(data, "\n"), vim.log.levels.ERROR)
-            end)
-          end
-        end,
+        -- Suppress stderr (ctags outputs non-critical warnings/notices)
       })
 
       vim.notify("Regenerating tags...", vim.log.levels.INFO)
