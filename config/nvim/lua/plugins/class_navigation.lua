@@ -151,6 +151,9 @@ return {
   dependencies = {
     "nvim-telescope/telescope.nvim",
   },
+  keys = {
+    { "<leader>gc", telescope_tags_picker, desc = "Search classes/components" },
+  },
   config = function()
     -- Expose goto_tag for keymap binding
     _G.class_navigation_goto_tag = goto_tag
