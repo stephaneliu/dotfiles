@@ -1,0 +1,13 @@
+--recurse=yes
+
+--exclude=.git
+--exclude=node_modules
+--exclude=vendor
+--exclude=tmp
+--exclude=log
+
+--languages=Ruby,TypeScript,JavaScript
+
+--kinds-Ruby=cfm
+--kinds-TypeScript=cfm
+--kinds-JavaScript=cfm
