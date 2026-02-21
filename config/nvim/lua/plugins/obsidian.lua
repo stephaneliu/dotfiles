@@ -52,6 +52,18 @@ return {
     wiki_link_func = function(opts)
       return string.format('[[%s]]', opts.path)
     end,
+    ui = {
+      enable = false,
+      update_debounce = 200,
+      checkboxes = {},
+      bullets = {},
+      external_link_icon = {},
+      reference_text = {},
+      highlight_text = {},
+      tags = {},
+      block_ids = {},
+      hl_groups = {},
+    },
   },
   keys = {
     { '<leader>on', '<CMD>ObsidianNew<CR>', desc = 'New note' },
