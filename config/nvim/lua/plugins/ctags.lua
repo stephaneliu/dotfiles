@@ -1,3 +1,12 @@
+-- Pre-commit hook script for automatic ctags regeneration
+-- Used by :CtagsInstallHook command (task 4.1.1)
+local HOOK_SCRIPT = [[#!/bin/sh
+# Regenerate ctags on commit
+# Runs in background to avoid blocking commits
+ctags -R -f .tags --options=$HOME/.ctags.d/project.ctags 2>/dev/null &
+exit 0
+]]
+
 return {
   "ctags-config",
   virtual = true,
