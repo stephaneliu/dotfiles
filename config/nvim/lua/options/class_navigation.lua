@@ -8,7 +8,7 @@ local CLASS_TAG_KINDS = { c = true, m = true }
 -- Open telescope picker for fuzzy class/component search
 -- Filters tags to only show classes and modules (not methods)
 -- Uses custom picker with entry filtering for performance
-local function telescope_tags_picker()
+local function telescope_tags_picker(default_text)
   local pickers = require("telescope.pickers")
   local finders = require("telescope.finders")
   local conf = require("telescope.config").values
@@ -73,6 +73,7 @@ local function telescope_tags_picker()
   pickers
     .new({}, {
       prompt_title = "Classes & Modules",
+      default_text = default_text or "",
       finder = finders.new_table({
         results = entries,
         entry_maker = function(entry)
@@ -102,15 +103,63 @@ local function telescope_tags_picker()
     :find()
 end
 
--- Open telescope picker filtered to specific tag name
--- Shows file path, line number, and preview pane with definition context
-local function open_tag_picker(tag_name)
-  local builtin = require("telescope.builtin")
-  builtin.tags({
-    default_text = tag_name,
-    prompt_title = "Tag: " .. tag_name,
-    show_line = true,
+-- Open telescope picker with pre-fetched tag matches
+-- Shows file path and preview pane with definition context
+local function open_tag_picker(tag_name, matches)
+  local pickers = require("telescope.pickers")
+  local finders = require("telescope.finders")
+  local conf = require("telescope.config").values
+  local actions = require("telescope.actions")
+  local action_state = require("telescope.actions.state")
+  local entry_display = require("telescope.pickers.entry_display")
+
+  local displayer = entry_display.create({
+    separator = " ",
+    items = {
+      { width = 40 },
+      { remaining = true },
+    },
   })
+
+  local make_display = function(entry)
+    return displayer({
+      entry.value.name,
+      { entry.value.filename, "Comment" },
+    })
+  end
+
+  pickers
+    .new({}, {
+      prompt_title = "Tag: " .. tag_name,
+      finder = finders.new_table({
+        results = matches,
+        entry_maker = function(match)
+          return {
+            value = match,
+            display = make_display,
+            ordinal = match.name .. " " .. match.filename,
+            filename = match.filename,
+            lnum = match.cmd and tonumber(match.cmd:match("^(%d+)")) or 1,
+          }
+        end,
+      }),
+      sorter = conf.generic_sorter({}),
+      previewer = conf.file_previewer({}),
+      attach_mappings = function(prompt_bufnr, map)
+        actions.select_default:replace(function()
+          actions.close(prompt_bufnr)
+          local selection = action_state.get_selected_entry()
+          if selection then
+            vim.cmd.edit(vim.fn.fnameescape(selection.filename))
+            if selection.lnum then
+              vim.api.nvim_win_set_cursor(0, { selection.lnum, 0 })
+            end
+          end
+        end)
+        return true
+      end,
+    })
+    :find()
 end
 
 -- Extract word under cursor and prepare it for tag lookup
@@ -131,7 +180,8 @@ local function goto_tag()
   local matches = vim.fn.taglist("^" .. tag_name .. "$")
 
   if #matches == 0 then
-    vim.notify("Tag not found: " .. tag_name, vim.log.levels.WARN)
+    -- Fallback to class picker with search pre-filled
+    telescope_tags_picker(tag_name)
     return
   end
 
@@ -142,26 +192,16 @@ local function goto_tag()
   end
 
   -- Multiple matches: open telescope picker to choose
-  open_tag_picker(tag_name)
+  open_tag_picker(tag_name, matches)
 end
 
-return {
-  dir = vim.fn.stdpath("config") .. "/lua/plugins",
-  name = "class-navigation",
-  lazy = false,
-  dependencies = {
-    "nvim-telescope/telescope.nvim",
-  },
-  keys = {
-    { "<leader>gc", telescope_tags_picker, desc = "Search classes/components" },
-  },
-  config = function()
-    -- FileType autocmd for gd mapping (ruby, tsx, jsx)
-    vim.api.nvim_create_autocmd("FileType", {
-      pattern = { "ruby", "typescriptreact", "javascriptreact" },
-      callback = function()
-        vim.keymap.set("n", "gd", goto_tag, { buffer = true, desc = "Go to class definition" })
-      end,
-    })
+-- Global keymap for class picker
+vim.keymap.set("n", "<leader>gc", telescope_tags_picker, { desc = "Search classes/components" })
+
+-- FileType autocmd for gd mapping (ruby, tsx, jsx)
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "ruby", "typescriptreact", "javascriptreact" },
+  callback = function()
+    vim.keymap.set("n", "gd", goto_tag, { buffer = true, desc = "Go to class definition" })
   end,
-}
+})
