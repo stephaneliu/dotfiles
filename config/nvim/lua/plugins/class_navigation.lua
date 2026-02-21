@@ -1,6 +1,107 @@
 -- Class navigation via ctags for Ruby and React filetypes
 -- Provides gd keymap for jump-to-class and <leader>gc for fuzzy class search
 
+-- Tag kinds to include in class picker (from --kinds-Ruby=cfm)
+-- c = class, m = module (excluding f = function/method)
+local CLASS_TAG_KINDS = { c = true, m = true }
+
+-- Open telescope picker for fuzzy class/component search
+-- Filters tags to only show classes and modules (not methods)
+-- Uses custom picker with entry filtering for performance
+local function telescope_tags_picker()
+  local pickers = require("telescope.pickers")
+  local finders = require("telescope.finders")
+  local conf = require("telescope.config").values
+  local actions = require("telescope.actions")
+  local action_state = require("telescope.actions.state")
+  local entry_display = require("telescope.pickers.entry_display")
+
+  -- Read all tags and filter to class/module kinds
+  local tags_files = vim.fn.tagfiles()
+  if #tags_files == 0 then
+    vim.notify("No tags file found. Run :CtagsRegen first.", vim.log.levels.WARN)
+    return
+  end
+
+  local entries = {}
+  for _, tags_file in ipairs(tags_files) do
+    local file = io.open(tags_file, "r")
+    if file then
+      for line in file:lines() do
+        -- Skip comment lines (start with !)
+        if not line:match("^!") then
+          -- Parse ctags format: tagname<TAB>filename<TAB>pattern;"<TAB>kind<TAB>...
+          local tag_name, filename, pattern, kind = line:match("^([^\t]+)\t([^\t]+)\t([^\t]+)\t(%a)")
+          if tag_name and filename and kind and CLASS_TAG_KINDS[kind] then
+            -- Extract line number from pattern if available (e.g., /^class Foo$/;" or 42;")
+            local line_num = pattern:match("^(%d+);") or "1"
+            table.insert(entries, {
+              name = tag_name,
+              filename = filename,
+              line = tonumber(line_num) or 1,
+              kind = kind,
+              pattern = pattern,
+            })
+          end
+        end
+      end
+      file:close()
+    end
+  end
+
+  if #entries == 0 then
+    vim.notify("No class/module tags found", vim.log.levels.WARN)
+    return
+  end
+
+  -- Create display formatter
+  local displayer = entry_display.create({
+    separator = " ",
+    items = {
+      { width = 40 },
+      { remaining = true },
+    },
+  })
+
+  local make_display = function(entry)
+    return displayer({
+      entry.value.name,
+      { entry.value.filename, "Comment" },
+    })
+  end
+
+  pickers
+    .new({}, {
+      prompt_title = "Classes & Modules",
+      finder = finders.new_table({
+        results = entries,
+        entry_maker = function(entry)
+          return {
+            value = entry,
+            display = make_display,
+            ordinal = entry.name .. " " .. entry.filename,
+            filename = entry.filename,
+            lnum = entry.line,
+          }
+        end,
+      }),
+      sorter = conf.generic_sorter({}),
+      previewer = conf.file_previewer({}),
+      attach_mappings = function(prompt_bufnr, map)
+        actions.select_default:replace(function()
+          actions.close(prompt_bufnr)
+          local selection = action_state.get_selected_entry()
+          if selection then
+            vim.cmd("edit " .. selection.filename)
+            vim.api.nvim_win_set_cursor(0, { selection.lnum, 0 })
+          end
+        end)
+        return true
+      end,
+    })
+    :find()
+end
+
 -- Open telescope picker filtered to specific tag name
 -- Shows file path, line number, and preview pane with definition context
 local function open_tag_picker(tag_name)
@@ -53,6 +154,9 @@ return {
   config = function()
     -- Expose goto_tag for keymap binding
     _G.class_navigation_goto_tag = goto_tag
+
+    -- Expose telescope_tags_picker for keymap binding (task 3.1.2)
+    _G.class_navigation_telescope_tags_picker = telescope_tags_picker
 
     -- FileType autocmd for gd mapping (ruby, tsx, jsx)
     vim.api.nvim_create_autocmd("FileType", {
