@@ -15,9 +15,22 @@ local function goto_tag()
   -- ctags uses dot notation for nested classes/modules
   local tag_name = word:gsub("::", ".")
 
-  -- TODO: Task 2.1.2 - Implement single-match jump logic using vim.fn.taglist()
+  -- Find all matching tags
+  local matches = vim.fn.taglist("^" .. tag_name .. "$")
+
+  if #matches == 0 then
+    vim.notify("Tag not found: " .. tag_name, vim.log.levels.WARN)
+    return
+  end
+
+  if #matches == 1 then
+    -- Single match: jump directly to the tag
+    vim.cmd("tag " .. tag_name)
+    return
+  end
+
   -- TODO: Task 2.1.3 - Implement multi-match telescope picker
-  vim.notify("goto_tag: " .. tag_name .. " (jump logic pending)", vim.log.levels.DEBUG)
+  vim.notify("Multiple matches found for: " .. tag_name .. " (picker pending)", vim.log.levels.INFO)
 end
 
 return {
