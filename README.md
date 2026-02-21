@@ -28,7 +28,8 @@ Jump to Ruby class and React component definitions using ctags (no LSP required)
 
 2. Generate tags in your project:
    ```
-   :CtagsRegen
+   :CtagsRegen      " project only
+   :CtagsRegen!     " include bundled gems (requires bundle install on host)
    ```
 
 3. (Optional) Install pre-commit hook for automatic tag regeneration:

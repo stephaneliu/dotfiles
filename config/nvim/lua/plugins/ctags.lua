@@ -25,12 +25,28 @@ return {
     end
 
     -- Regenerate ctags for the current project
-    vim.api.nvim_create_user_command("CtagsRegen", function()
+    -- Use :CtagsRegen! to include bundled gems
+    vim.api.nvim_create_user_command("CtagsRegen", function(opts)
       local root = get_project_root()
       local tags_file = root .. "/.tags"
       local ctags_config = vim.fn.expand("~/.ctags.d/project.ctags")
 
       local cmd = { "ctags", "-R", "-f", tags_file, "--options=" .. ctags_config, root }
+
+      -- If bang, include bundled gems
+      if opts.bang then
+        local gem_paths = vim.fn.system("cd " .. root .. " && bundle show --paths 2>/dev/null")
+        if vim.v.shell_error == 0 and gem_paths ~= "" then
+          for path in gem_paths:gmatch("[^\n]+") do
+            table.insert(cmd, path)
+          end
+          vim.notify("Regenerating tags (with gems)...", vim.log.levels.INFO)
+        else
+          vim.notify("No bundled gems found, regenerating project tags only...", vim.log.levels.WARN)
+        end
+      else
+        vim.notify("Regenerating tags...", vim.log.levels.INFO)
+      end
 
       vim.fn.jobstart(cmd, {
         stderr_buffered = true,
@@ -45,9 +61,7 @@ return {
         end,
         -- Suppress stderr (ctags outputs non-critical warnings/notices)
       })
-
-      vim.notify("Regenerating tags...", vim.log.levels.INFO)
-    end, { desc = "Regenerate ctags for current project" })
+    end, { bang = true, desc = "Regenerate ctags (use ! to include gems)" })
 
     -- Install pre-commit hook for automatic tag regeneration
     vim.api.nvim_create_user_command("CtagsInstallHook", function()
