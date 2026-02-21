@@ -1,6 +1,17 @@
 -- Class navigation via ctags for Ruby and React filetypes
 -- Provides gd keymap for jump-to-class and <leader>gc for fuzzy class search
 
+-- Open telescope picker filtered to specific tag name
+-- Shows file path, line number, and preview pane with definition context
+local function open_tag_picker(tag_name)
+  local builtin = require("telescope.builtin")
+  builtin.tags({
+    default_text = tag_name,
+    prompt_title = "Tag: " .. tag_name,
+    show_line = true,
+  })
+end
+
 -- Extract word under cursor and prepare it for tag lookup
 -- Handles Ruby namespace syntax: Admin::UserService -> Admin.UserService (ctags format)
 local function goto_tag()
@@ -29,8 +40,8 @@ local function goto_tag()
     return
   end
 
-  -- TODO: Task 2.1.3 - Implement multi-match telescope picker
-  vim.notify("Multiple matches found for: " .. tag_name .. " (picker pending)", vim.log.levels.INFO)
+  -- Multiple matches: open telescope picker to choose
+  open_tag_picker(tag_name)
 end
 
 return {
