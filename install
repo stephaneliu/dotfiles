@@ -22,11 +22,11 @@ test $HOME/.dotfiles/test/xcode_test
 
 
 
-if brew --version >/dev/null 2>&1; then
-  echo "+++ Homebrew already installed"
+if zb --version >/dev/null 2>&1; then
+  echo "+++ Zerobrew already installed"
 else
-  echo "+++ Installing Homebrew"
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  echo "+++ Installing Zerobrew"
+  /bin/bash -c "$(curl -fsSL https://zerobrew.rs/install | bash)"
 fi
 
 test $HOME/.dotfiles/test/homebrew_test
@@ -36,14 +36,14 @@ test $HOME/.dotfiles/test/homebrew_test
 # Don't install anything if this is a test run
 if [[ -z "$TEST" ]]; then
   echo "+++ Installing Homebrew packages"
-  brew update
-  brew tap homebrew/bundle
-  brew bundle --file=$HOME/.dotfiles/Brewfile
+  zb update
+  zb tap homebrew/bundle
+  zb bundle --file=$HOME/.dotfiles/Brewfile
 else
   # Test Dependencies
-  brew install -q neovim
-  brew install -q mise
-  brew install -q rcm
+  zb install -q neovim
+  zb install -q mise
+  zb install -q rcm
 fi
 
 test $HOME/.dotfiles/test/rcup_test
@@ -57,7 +57,7 @@ else
   touch $HOME/.zshrc
   echo "+++ Installing oh-my-zsh"
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-  echo "+++ If changing shell (chsh) to zsh failed, sudo bash then 'chsh -s $(brew --prefix)/bin/zsh {user}'"
+  echo "+++ If changing shell (chsh) to zsh failed, sudo bash then 'chsh -s $(zb --prefix)/bin/zsh {user}'"
 
   test $HOME/.dotfiles/test/oh_my_zsh_test
 fi
@@ -77,7 +77,7 @@ test $HOME/.dotfiles/test/oh_my_zsh_customizations_test
 
 
 
-export PATH=$(brew --prefix)/bin:$PATH
+export PATH=$(zb --prefix)/bin:$PATH
 
 # activate submodule before running rcup so submodules link correctly
 cd $HOME/.dotfiles

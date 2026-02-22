@@ -1,6 +1,6 @@
-test_reference="Homebrew"
+test_reference="Zerobrew"
 
-if brew --version >/dev/null 2>&1; then
+if zb --version >/dev/null 2>&1; then
   echo "+++ $test_reference installed correctly"
 else
   echo "*** $test_reference did not install correctly"
