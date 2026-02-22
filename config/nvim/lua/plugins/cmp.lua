@@ -7,7 +7,12 @@ return {
   },
   config = function()
     local cmp = require('cmp')
+    local timer = nil
+
     cmp.setup({
+      completion = {
+        autocomplete = false, -- Disable auto-popup, we trigger manually after delay
+      },
       mapping = cmp.mapping.preset.insert({
         ['<C-n>'] = cmp.mapping.select_next_item(),
         ['<C-p>'] = cmp.mapping.select_prev_item(),
@@ -20,6 +25,29 @@ return {
         { name = 'buffer' },
         { name = 'path' },
       }),
+    })
+
+    -- Trigger completion after 2 seconds of no typing
+    vim.api.nvim_create_autocmd('TextChangedI', {
+      callback = function()
+        if timer then
+          timer:stop()
+        end
+        timer = vim.defer_fn(function()
+          if vim.fn.mode() == 'i' then
+            cmp.complete()
+          end
+        end, 1000)
+      end,
+    })
+
+    vim.api.nvim_create_autocmd('InsertLeave', {
+      callback = function()
+        if timer then
+          timer:stop()
+          timer = nil
+        end
+      end,
     })
   end,
 }
