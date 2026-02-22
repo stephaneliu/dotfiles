@@ -60,6 +60,32 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt_local.foldenable = true
     vim.opt_local.foldlevel = 99
     vim.keymap.set("n", "za", _G.MarkdownToggleFold, { buffer = true, silent = true })
+    -- Defer loadview to run after all other autocommands (like JumpCursorOnEdit)
+    vim.defer_fn(function()
+      vim.cmd("silent! loadview")
+    end, 10)
+  end,
+})
+
+-- Persist fold states for markdown files
+vim.opt.viewoptions = { "folds", "cursor" }
+
+vim.api.nvim_create_autocmd({ "BufLeave", "BufWinLeave" }, {
+  pattern = "*.md",
+  callback = function()
+    vim.cmd("silent! mkview")
+  end,
+})
+
+vim.api.nvim_create_autocmd("VimLeavePre", {
+  callback = function()
+    for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+      local name = vim.api.nvim_buf_get_name(buf)
+      if name:match("%.md$") and vim.api.nvim_buf_is_loaded(buf) then
+        vim.api.nvim_set_current_buf(buf)
+        vim.cmd("silent! mkview")
+      end
+    end
   end,
 })
 
