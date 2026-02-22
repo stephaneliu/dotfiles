@@ -48,19 +48,13 @@ return {
     end,
     ui = {
       enable = false,
-      update_debounce = 200,
-      checkboxes = {},
-      bullets = {},
-      external_link_icon = {},
-      reference_text = {},
-      highlight_text = {},
-      tags = {},
-      block_ids = {},
-      hl_groups = {},
+      checkboxes = {
+        [" "] = { char = "󰄱", hl_group = "ObsidianTodo" },
+        ["x"] = { char = "", hl_group = "ObsidianDone" },
+      },
     },
   },
   keys = {
-    { '<CR>', '<CMD>ObsidianToggleCheckbox<CR>', ft = 'markdown', desc = 'Toggle checkbox' },
     { '<leader>on', '<CMD>ObsidianNew<CR>', desc = 'New note' },
     { '<leader>oo', '<CMD>ObsidianOpen<CR>', desc = 'Open in Obsidian' },
     { '<leader>os', '<CMD>ObsidianSearch<CR>', desc = 'Search notes' },

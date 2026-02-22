@@ -1,3 +1,11 @@
+-- Markdown: disable fancy indent rules
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "markdown",
+  callback = function()
+    vim.opt_local.indentexpr = ""
+  end,
+})
+
 -- Markdown folding by headings and indented list children
 function _G.MarkdownFoldLevel()
   local line = vim.fn.getline(vim.v.lnum)
