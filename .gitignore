@@ -12,3 +12,5 @@ Brewfile.lock.json
 tags
 .ruby-version
 tmp
+docs
+.claude
