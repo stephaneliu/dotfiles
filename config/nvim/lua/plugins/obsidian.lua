@@ -33,21 +33,15 @@ return {
     new_notes_location = 'current_dir',
     open_notes_in = 'vsplit',
     note_id_func = function(title)
-      -- Create note IDs in a Zettelkasten format with a timestamp and a suffix.
-      -- In this case a note with the title 'My new note' will be given an ID that looks
-      -- like '1657296016-my-new-note', and therefore the file name '1657296016-my-new-note.md'
-      local suffix = ""
       if title ~= nil then
-        -- If title is given, transform it into valid file name.
-        suffix = title:gsub(" ", "-"):gsub("[^A-Za-z0-9-]", ""):lower()
+        return title
       else
-        -- If title is nil, just add 4 random uppercase letters to the suffix.
+        local suffix = ""
         for _ = 1, 4 do
           suffix = suffix .. string.char(math.random(65, 90))
         end
+        return suffix
       end
-      -- Human readable timestamp in the format to the second
-      return os.date('%Y%m%d%H%M%S') .. "-" .. suffix
     end,
     wiki_link_func = function(opts)
       return string.format('[[%s]]', opts.path)
@@ -66,6 +60,7 @@ return {
     },
   },
   keys = {
+    { '<CR>', '<CMD>ObsidianToggleCheckbox<CR>', ft = 'markdown', desc = 'Toggle checkbox' },
     { '<leader>on', '<CMD>ObsidianNew<CR>', desc = 'New note' },
     { '<leader>oo', '<CMD>ObsidianOpen<CR>', desc = 'Open in Obsidian' },
     { '<leader>os', '<CMD>ObsidianSearch<CR>', desc = 'Search notes' },
