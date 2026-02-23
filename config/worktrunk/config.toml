@@ -1,0 +1,13 @@
+[projects]
+
+[projects."github.com/CompanyCam/Company-Cam-API"]
+approved-commands = [
+    "cp {{ worktree_path_of_branch('master') }}/.env {{ worktree_path }}/.env",
+    "cocam worktree init-env {{ worktree_path }}",
+    "cocam worktree init-creds {{ worktree_path }}",
+    "{% if from_scratch != 'true' %}cocam worktree init-volumes {{ worktree_path }}{% endif %}",
+    "cocam worktree init_env {{ worktree_path }}",
+    "cocam worktree init_creds {{ worktree_path }}",
+    "{% if from_scratch != 'true' %}cocam worktree init_volumes {{ worktree_path }}{% endif %}",
+]
+

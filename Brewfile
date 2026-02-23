@@ -84,6 +84,7 @@ brew 'tldr'                        # man pages implemented in rust - `tldr ssh`
 brew 'universal-ctags'             # so :Rtags works
 brew 'shared-mime-info'
 brew 'viddy'                       # watch [process] https://github.com/sachaos/viddy
+brew 'worktrunk'
 brew 'wget'
 brew 'yarn'
 brew 'zsh'
