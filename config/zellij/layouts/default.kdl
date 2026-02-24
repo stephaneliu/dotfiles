@@ -1,0 +1,58 @@
+// Default layout with zjstatus status bar
+// Status bar format: [MODE] session-name | 1:nvim  2:server  3:shell | git:main | Mon, 24 Feb 2026 14:30
+
+layout {
+    default_tab_template {
+        children
+        pane size=1 borderless=true {
+            plugin location="file:~/.config/zellij/plugins/zjstatus.wasm" {
+                // Format sections
+                format_left   "{mode} #[fg=#268bd2,bold]{session}"
+                format_center "{tabs}"
+                format_right  "{command_git_branch} {datetime}"
+                format_space  "#[bg=#002b36] "
+
+                // Hide frame for cleaner look
+                hide_frame_for_single_pane "true"
+
+                // Mode indicator - shows current zellij mode
+                mode_normal        "#[bg=#859900,fg=#002b36,bold] NORMAL "
+                mode_tmux          "#[bg=#b58900,fg=#002b36,bold] TMUX "
+                mode_locked        "#[bg=#dc322f,fg=#002b36,bold] LOCKED "
+                mode_scroll        "#[bg=#268bd2,fg=#002b36,bold] SCROLL "
+                mode_enter_search  "#[bg=#d33682,fg=#002b36,bold] SEARCH "
+                mode_search        "#[bg=#d33682,fg=#002b36,bold] SEARCH "
+                mode_rename_tab    "#[bg=#cb4b16,fg=#002b36,bold] RENAME "
+                mode_resize        "#[bg=#2aa198,fg=#002b36,bold] RESIZE "
+                mode_pane          "#[bg=#2aa198,fg=#002b36,bold] PANE "
+                mode_tab           "#[bg=#2aa198,fg=#002b36,bold] TAB "
+                mode_session       "#[bg=#2aa198,fg=#002b36,bold] SESSION "
+
+                // Tab formatting - Solarized colors
+                tab_normal              "#[fg=#839496,bg=#073642] {index}:{name} "
+                tab_normal_fullscreen   "#[fg=#839496,bg=#073642] {index}:{name}[] "
+                tab_normal_sync         "#[fg=#839496,bg=#073642] {index}:{name}<> "
+                tab_active              "#[fg=#002b36,bg=#eee8d5,bold] {index}:{name} "
+                tab_active_fullscreen   "#[fg=#002b36,bg=#eee8d5,bold] {index}:{name}[] "
+                tab_active_sync         "#[fg=#002b36,bg=#eee8d5,bold] {index}:{name}<> "
+                tab_separator           "#[bg=#002b36] "
+
+                // Git branch command
+                command_git_branch_command     "git rev-parse --abbrev-ref HEAD 2>/dev/null"
+                command_git_branch_format      "#[fg=#859900]git:{stdout}"
+                command_git_branch_interval    "5"
+                command_git_branch_rendermode  "static"
+
+                // Datetime - format: Mon, 24 Feb 2026 14:30
+                datetime          "#[fg=#839496]{format}"
+                datetime_format   "%a, %d %b %Y %H:%M"
+                datetime_timezone "local"
+            }
+        }
+    }
+
+    // Initial tab
+    tab name="main" focus=true {
+        pane
+    }
+}
