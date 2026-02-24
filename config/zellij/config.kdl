@@ -1,0 +1,21 @@
+// Zellij configuration
+// Core options - keybinds and plugins configured separately
+
+// UI options
+pane_frames false  // zjstatus manages UI chrome
+
+// Session persistence
+session_serialization true
+pane_viewport_serialization true
+
+// macOS clipboard integration
+copy_command "pbcopy"
+
+// Default layout loads zjstatus status bar
+default_layout "default"
+
+// Default shell
+default_shell "zsh"
+
+// Theme - Solarized Dark (see themes/ directory)
+theme "solarized-dark"
