@@ -72,6 +72,30 @@ keybinds clear-defaults=true {
 
         // Enter triggers autolock check
         bind "Enter" { Write 13; MessagePlugin "autolock" {}; }
+
+        // Plugin keybinds
+        // Room - fuzzy tab search
+        bind "Ctrl Space" {
+            LaunchOrFocusPlugin "file:~/.config/zellij/plugins/room.wasm" {
+                floating true
+                ignore_case true
+            };
+        }
+
+        // Harpoon - quick pane navigation
+        bind "Ctrl y" {
+            LaunchOrFocusPlugin "file:~/.config/zellij/plugins/harpoon.wasm" {
+                floating true
+            };
+        }
+
+        // Zellij-forgot - keybind reference
+        bind "Ctrl ?" {
+            LaunchOrFocusPlugin "file:~/.config/zellij/plugins/zellij_forgot.wasm" {
+                floating true
+                "LOAD_ZELLIJ_BINDINGS" "true"
+            };
+        }
     }
 
     // Tmux mode: ctrl+a prefix commands
