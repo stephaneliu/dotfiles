@@ -57,25 +57,9 @@ window-width = 220
 window-height = 99
 resize-overlay = always
 
-# splits
-keybind = ctrl+a>s=new_split:down
-keybind = ctrl+a>v=new_split:left
-keybind = ctrl+a>h=goto_split:left
-keybind = ctrl+a>j=goto_split:bottom
-keybind = ctrl+a>k=goto_split:top
-keybind = ctrl+a>l=goto_split:right
-keybind = ctrl+opt+e=equalize_splits
-keybind = ctrl+opt+h=resize_split:left,20
-keybind = ctrl+opt+l=resize_split:right,20
-keybind = ctrl+opt+k=resize_split:up,20
-keybind = ctrl+opt+j=resize_split:down,20
-
-# scrollback
-# keybind = ctrl+shift+h=write_screen_file:paste
-# control sequence x01 - move to beginning of line
-# keybind = "ctrl+shift+j=text:\x01nvim +1000000 \n"
-keybind = ctrl+a>[=text:~/bin/ghostty_scrollback.sh\n
-keybind = shift+ctrl+;=write_screen_file:paste
+# zellij handles splits, navigation, and scrollback
+# Forward Option key for Alt keybinds in zellij
+macos-option-as-alt = left
 
 # Quake
 keybind = global:ctrl+shift+`=toggle_quick_terminal
