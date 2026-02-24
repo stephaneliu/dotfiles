@@ -1,0 +1,19 @@
+// Solarized Light theme for Zellij
+// Author: Ethan Schoonover (colors), adapted for Zellij
+// Mirrors: config/kitty/themes/solarized-light.conf
+
+themes {
+    solarized-light {
+        fg "#657b83"        // base00 - primary content
+        bg "#fdf6e3"        // base3 - background
+        black "#002b36"     // base03 - darkest
+        white "#eee8d5"     // base2 - lighter background
+        red "#dc322f"       // solarized red
+        green "#859900"     // solarized green
+        yellow "#b58900"    // solarized yellow
+        blue "#268bd2"      // solarized blue
+        magenta "#d33682"   // solarized magenta
+        orange "#cb4b16"    // solarized orange
+        cyan "#2aa198"      // solarized cyan
+    }
+}
