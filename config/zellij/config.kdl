@@ -19,3 +19,157 @@ default_shell "zsh"
 
 // Theme - Solarized Dark (see themes/ directory)
 theme "solarized-dark"
+
+// Plugin declarations
+plugins {
+    // Autolock: auto-lock when in vim/neovim/fzf
+    autolock location="https://github.com/fresh2dev/zellij-autolock/releases/download/0.2.2/zellij-autolock.wasm" {
+        triggers "nvim|vim|git|fzf"
+        watch_triggers "fzf"
+        reaction_seconds "0.3"
+    }
+}
+
+// Keybinds - tmux-style with ctrl+a prefix
+keybinds clear-defaults=true {
+    // Normal mode: seamless vim-zellij-navigator + tmux prefix
+    normal {
+        // Switch to tmux mode with ctrl+a prefix
+        bind "Ctrl a" { SwitchToMode "Tmux"; }
+
+        // Seamless navigation between zellij panes and neovim
+        bind "Ctrl h" {
+            MessagePlugin "https://github.com/hiasr/vim-zellij-navigator/releases/download/0.3.0/vim-zellij-navigator.wasm" {
+                name "move_focus";
+                payload "left";
+                move_mod "ctrl";
+            };
+        }
+        bind "Ctrl j" {
+            MessagePlugin "https://github.com/hiasr/vim-zellij-navigator/releases/download/0.3.0/vim-zellij-navigator.wasm" {
+                name "move_focus";
+                payload "down";
+                move_mod "ctrl";
+            };
+        }
+        bind "Ctrl k" {
+            MessagePlugin "https://github.com/hiasr/vim-zellij-navigator/releases/download/0.3.0/vim-zellij-navigator.wasm" {
+                name "move_focus";
+                payload "up";
+                move_mod "ctrl";
+            };
+        }
+        bind "Ctrl l" {
+            MessagePlugin "https://github.com/hiasr/vim-zellij-navigator/releases/download/0.3.0/vim-zellij-navigator.wasm" {
+                name "move_focus";
+                payload "right";
+                move_mod "ctrl";
+            };
+        }
+
+        // Toggle lock mode
+        bind "Alt z" { SwitchToMode "Locked"; }
+
+        // Enter triggers autolock check
+        bind "Enter" { Write 13; MessagePlugin "autolock" {}; }
+    }
+
+    // Tmux mode: ctrl+a prefix commands
+    tmux {
+        // Back to normal mode
+        bind "Esc" { SwitchToMode "Normal"; }
+
+        // Splits
+        bind "|" { NewPane "Right"; SwitchToMode "Normal"; }
+        bind "-" { NewPane "Down"; SwitchToMode "Normal"; }
+
+        // Pane navigation
+        bind "h" { MoveFocus "Left"; SwitchToMode "Normal"; }
+        bind "j" { MoveFocus "Down"; SwitchToMode "Normal"; }
+        bind "k" { MoveFocus "Up"; SwitchToMode "Normal"; }
+        bind "l" { MoveFocus "Right"; SwitchToMode "Normal"; }
+
+        // Zoom pane
+        bind "z" { ToggleFocusFullscreen; SwitchToMode "Normal"; }
+
+        // Close pane
+        bind "x" { CloseFocus; SwitchToMode "Normal"; }
+
+        // Tabs
+        bind "c" { NewTab; SwitchToMode "Normal"; }
+        bind "n" { GoToNextTab; SwitchToMode "Normal"; }
+        bind "p" { GoToPreviousTab; SwitchToMode "Normal"; }
+        bind "1" { GoToTab 1; SwitchToMode "Normal"; }
+        bind "2" { GoToTab 2; SwitchToMode "Normal"; }
+        bind "3" { GoToTab 3; SwitchToMode "Normal"; }
+        bind "4" { GoToTab 4; SwitchToMode "Normal"; }
+        bind "5" { GoToTab 5; SwitchToMode "Normal"; }
+        bind "6" { GoToTab 6; SwitchToMode "Normal"; }
+        bind "7" { GoToTab 7; SwitchToMode "Normal"; }
+        bind "8" { GoToTab 8; SwitchToMode "Normal"; }
+        bind "9" { GoToTab 9; SwitchToMode "Normal"; }
+
+        // Rename tab
+        bind "," { SwitchToMode "RenameTab"; TabNameInput 0; }
+
+        // Move tab
+        bind "H" { MoveTab "Left"; SwitchToMode "Normal"; }
+        bind "L" { MoveTab "Right"; SwitchToMode "Normal"; }
+
+        // Scroll mode
+        bind "[" { SwitchToMode "Scroll"; }
+
+        // Detach
+        bind "d" { Detach; }
+
+        // Session picker
+        bind "w" {
+            LaunchOrFocusPlugin "session-manager" {
+                floating true
+                move_to_focused_tab true
+            };
+            SwitchToMode "Normal";
+        }
+
+        // Quick ctrl+a ctrl+a to last tab
+        bind "Ctrl a" { GoToPreviousTab; SwitchToMode "Normal"; }
+    }
+
+    // Scroll mode for scrollback
+    scroll {
+        bind "Esc" { SwitchToMode "Normal"; }
+        bind "q" { SwitchToMode "Normal"; }
+        bind "j" { ScrollDown; }
+        bind "k" { ScrollUp; }
+        bind "Ctrl d" { HalfPageScrollDown; }
+        bind "Ctrl u" { HalfPageScrollUp; }
+        bind "g" { ScrollToTop; }
+        bind "G" { ScrollToBottom; }
+        bind "/" { SwitchToMode "EnterSearch"; SearchInput 0; }
+    }
+
+    // Search mode in scroll
+    search {
+        bind "Esc" { SwitchToMode "Scroll"; }
+        bind "n" { Search "down"; }
+        bind "N" { Search "up"; }
+        bind "j" { ScrollDown; }
+        bind "k" { ScrollUp; }
+    }
+
+    entersearch {
+        bind "Esc" { SwitchToMode "Scroll"; }
+        bind "Enter" { SwitchToMode "Search"; }
+    }
+
+    // Rename tab mode
+    renametab {
+        bind "Esc" { UndoRenameTab; SwitchToMode "Normal"; }
+        bind "Enter" { SwitchToMode "Normal"; }
+    }
+
+    // Locked mode - only Alt z exits
+    locked {
+        bind "Alt z" { SwitchToMode "Normal"; }
+    }
+}
