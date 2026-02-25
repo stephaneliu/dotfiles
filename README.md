@@ -84,6 +84,9 @@ Uses `Ctrl+a` as the prefix (tmux-style).
 | `Ctrl+a [` | Scroll mode (`/` search, `e` edit in $EDITOR) |
 | `Ctrl+a d` | Detach |
 | `Ctrl+a w` | Session picker |
+| `Ctrl+a f` | Toggle floating panes |
+| `Ctrl+a F` | New floating pane |
+| `Ctrl+a m` | Move mode (`hjkl` to reposition) |
 | `Ctrl+a Ctrl+a` | Toggle last tab |
 | `Ctrl+Space` | Room (fuzzy tab search) |
 | `Ctrl+y` | Harpoon (quick pane navigation) |

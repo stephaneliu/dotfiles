@@ -125,6 +125,13 @@ keybinds clear-defaults=true {
         // Detach
         bind "d" { Detach; }
 
+        // Floating panes
+        bind "f" { ToggleFloatingPanes; SwitchToMode "Normal"; }
+        bind "F" { Run "zsh" { floating true; }; SwitchToMode "Normal"; }
+
+        // Move mode
+        bind "m" { SwitchToMode "Move"; }
+
         // Resize mode
         bind "r" { SwitchToMode "Resize"; }
 
@@ -189,6 +196,15 @@ keybinds clear-defaults=true {
         bind "L" { Resize "Decrease Right"; }
         bind "=" { Resize "Increase"; }
         bind "-" { Resize "Decrease"; }
+    }
+
+    // Move mode - reposition panes (especially useful for floating)
+    move {
+        bind "Esc" "q" { SwitchToMode "Normal"; }
+        bind "h" { MovePane "Left"; }
+        bind "j" { MovePane "Down"; }
+        bind "k" { MovePane "Up"; }
+        bind "l" { MovePane "Right"; }
     }
 
     // Locked mode - Alt z unlocks, Ctrl a still works for zellij commands
