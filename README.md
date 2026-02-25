@@ -54,6 +54,77 @@ Jump to Ruby class and React component definitions using ctags (no LSP required)
 - Works with Docker volume-mounted code (no LSP dependency)
 - Multiple matches open a Telescope picker to choose
 
+## Zellij
+
+Terminal multiplexer with tmux-style keybindings.
+
+### Install
+
+```bash
+brew install zellij
+~/.dotfiles/bin/install-zellij-plugins.sh
+```
+
+### Keybindings
+
+Uses `Ctrl+a` as the prefix (tmux-style).
+
+| Key | Action |
+|-----|--------|
+| `Ctrl+h/j/k/l` | Navigate panes (auto-locks in neovim) |
+| `Ctrl+a \|` | Split right |
+| `Ctrl+a -` | Split down |
+| `Ctrl+a z` | Zoom pane |
+| `Ctrl+a x` | Close pane |
+| `Ctrl+a r` | Resize mode (`hjkl` grow, `HJKL` shrink) |
+| `Ctrl+a c` | New tab |
+| `Ctrl+a n/p` | Next/previous tab |
+| `Ctrl+a 1-9` | Go to tab |
+| `Ctrl+a ,` | Rename tab |
+| `Ctrl+a [` | Scroll mode (`/` search, `e` edit in $EDITOR) |
+| `Ctrl+a d` | Detach |
+| `Ctrl+a w` | Session picker |
+| `Ctrl+a Ctrl+a` | Toggle last tab |
+| `Ctrl+Space` | Room (fuzzy tab search) |
+| `Ctrl+y` | Harpoon (quick pane navigation) |
+| `Alt+/` | Keybind reference |
+| `Alt+z` | Toggle lock mode |
+
+### Plugins
+
+Installed by `bin/install-zellij-plugins.sh`:
+- **zjstatus** - configurable status bar
+- **room** - fuzzy tab search
+- **zellij-autolock** - auto-lock when in vim/neovim/fzf
+- **zellij-forgot** - keybind reference popup
+
+**Note:** Harpoon requires building from source with Rust:
+```bash
+git clone https://github.com/Nacho114/harpoon.git /tmp/harpoon
+cd /tmp/harpoon
+rustup target add wasm32-wasip1
+cargo build --release --target wasm32-wasip1
+cp target/wasm32-wasip1/release/harpoon.wasm ~/.config/zellij/plugins/
+```
+
+## Ghostty
+
+Terminal emulator configured to work with Zellij.
+
+### Install
+
+```bash
+brew install --cask ghostty
+```
+
+### Configuration
+
+Ghostty unbinds `Ctrl+a` so Zellij receives it as the prefix key. Use:
+- `Ctrl+Shift+,` - Open config
+- `Ctrl+Shift+r` - Reload config
+
+Tabs and splits are managed by Zellij, not Ghostty.
+
 ## Plugins installation
 
 Prettier

@@ -1,6 +1,6 @@
 # Auto-start zellij in Ghostty (must be before p10k instant prompt)
 if [[ "$TERM" == "xterm-ghostty" ]] && [[ -z "$ZELLIJ" ]]; then
-  exec zellij attach -c
+  zellij attach -c
 fi
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.

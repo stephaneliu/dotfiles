@@ -12,13 +12,12 @@
 # Versioning is not a feature of brew bundle. Only the latest version is installed
 
 tap 'buo/cask-upgrade' # Fix cask upgrade when exists
-tap 'heroku/brew'
+# tap 'heroku/brew'
 tap 'homebrew/command-not-found'
 tap 'homebrew/services'   # `brew services restart postgres`, etc
 # tap 'domt4/autoupdate' # Automatically update Homebrew and installed formulae
 tap 'jdxcode/tap'
 tap 'knqyf263/pet'
-tap 'sst/tap' # OpenCode AI Coding agent for the terminal - https://opencode.ai/
 
 brew 'asciinema'
 # brew 'autoupdate'                  # Automatically update Homebrew and installed formulae
@@ -42,7 +41,6 @@ brew 'colordiff'                   # colorful diffs (alias diff='colordiff -u')
 brew 'coreutils'                   # used for gnu coreutils i.e - tac
 brew 'ctop'                        # Top-like interface for docker container metrics
 brew 'direnv'
-brew 'doctl'                       # DigitalOcean CLI
 brew 'duf'                         # Better Unix: better duf - https://github.com/muesli/duf
 brew 'dust'                        # Better Unix: better du - https://github.com/bootandy/dust
 brew 'fd'                          # Better alternative to find
@@ -51,18 +49,17 @@ brew 'git'
 brew 'git-delta'                   # Syntax highlighter for git, diff, & grep - https://github.com/dandavison/delta
 brew 'gpg'
 brew 'gh'                          # Fast GitHub client released in 2022
-brew 'helix'
-brew 'heroku'
+# brew 'heroku'
 brew 'jq'                          # Lightweight and flexible command-line JSON processor
 brew 'imagemagick'                 # Dependency for Lolcommits
 brew 'libexif'                     # Depencency for CC API repo
 brew 'libpq'                       # pg client https://formulae.brew.sh/formula/libpq
 brew 'lnav'                        # Log file navigator - https://lnav.org/
 brew 'lsd'                         # Better Unix: better ls
+brew 'mactop'                      # Top-like interface for macOS system metrics - https://github.com/metaspartan/mactop
 brew 'mas'                         # Mac appstore cli
 brew 'mdcat'                       # View markdown in kitty - `mdcat README.md`
 brew 'neovim'
-brew 'sst/tap/opencode'            # AI Coding agent for the terminal - https://opencode.ai/
 brew 'pet'                         # CLI snippet manager - https://github.com/knqyf263/pet
 brew 'postgresql@14'
 brew 'pinentry-mac'                # pgp prompt for passphrase
@@ -87,6 +84,7 @@ brew 'viddy'                       # watch [process] https://github.com/sachaos/
 brew 'worktrunk'
 brew 'wget'
 brew 'yarn'
+brew 'zellij'
 brew 'zsh'
 brew 'zsh-completions'
 brew 'zsh-syntax-highlighting'
