@@ -2,7 +2,6 @@ i_map('jk', '<Esc>') -- jk to escape
 v_map('D', 'y\'>p') -- Visual mode select then shift + d to paste selected text
 c_map('cwd', 'lcd %:p:h') -- change working directory to that of file
 n_map(';v', ':tabnew ~/.config/nvim/init.lua<CR>') -- " Display ~/.vimrc in new tab
-n_map('<leader>rn', ':echo "use unimpared `yor` instead"<CR>') -- " relative and absolute rulers
 nv_map('<leader>hash', ':s/:\\([^ ]*\\)\\(\\s*\\)=>/\\1:/g<CR>') -- convert hash rockets to json style
 n_map('<C-=>', ':resize +3<CR>') -- current window split bigger
 n_map('<C-->', ':resize -3<CR>') -- current window split smaller
