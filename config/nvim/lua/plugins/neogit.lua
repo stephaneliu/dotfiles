@@ -33,7 +33,7 @@ return {
     require('neogit').setup({
       verbose = true,
       kind = 'split',
-      auto_close_console = false,
+      auto_close_console = true,
       integrations = {
         diffview = true,
         telescope = true,
