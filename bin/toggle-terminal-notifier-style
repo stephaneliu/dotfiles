@@ -1,0 +1,92 @@
+#!/bin/bash
+#
+# Toggle terminal-notifier notification style between Banner and Alert
+#
+# Uses AppleScript to automate System Settings UI.
+# Requires Accessibility permissions for Terminal/Raycast.
+#
+# Raycast metadata:
+# @raycast.schemaVersion 1
+# @raycast.title Toggle terminal-notifier Style
+# @raycast.mode fullOutput
+# @raycast.packageName System
+
+osascript <<'EOF'
+-- Save the current frontmost app to return to it later
+tell application "System Events"
+    set frontApp to name of first process whose frontmost is true
+end tell
+
+tell application "System Settings"
+    activate
+    reveal pane id "com.apple.Notifications-Settings.extension"
+end tell
+
+delay 1.5
+
+tell application "System Events"
+    tell process "System Settings"
+        set frontmost to true
+
+        -- Wait for window to be ready
+        repeat 20 times
+            try
+                if exists window 1 then exit repeat
+            end try
+            delay 0.1
+        end repeat
+        delay 0.3
+
+        -- Click "Notifications" in sidebar to ensure we're on main notifications page
+        tell outline 1 of scroll area 1 of group 1 of splitter group 1 of group 1 of window 1
+            repeat with r in rows
+                try
+                    if value of static text 1 of UI element 1 of r is "Notifications" then
+                        select r
+                        exit repeat
+                    end if
+                end try
+            end repeat
+        end tell
+        delay 0.8
+
+        -- Now the app list should be in group 3
+        -- Wait for buttons to load
+        repeat 20 times
+            try
+                tell group 3 of scroll area 1 of group 1 of group 3 of splitter group 1 of group 1 of window 1
+                    if (count of buttons) > 40 then exit repeat
+                end tell
+            end try
+            delay 0.2
+        end repeat
+
+        -- Click terminal-notifier in the app list
+        tell group 3 of scroll area 1 of group 1 of group 3 of splitter group 1 of group 1 of window 1
+            click button 50
+        end tell
+        delay 0.5
+
+        -- Find the Alert Style radio group
+        tell radio group 1 of group 2 of scroll area 1 of group 1 of group 3 of splitter group 1 of group 1 of window 1
+            set bannerVal to value of radio button 1
+
+            if bannerVal is 1 then
+                tell radio button 2 to click at {0, 0}
+                set newStyle to "terminal-notifier: Alerts (persistent)"
+            else
+                tell radio button 1 to click at {0, 0}
+                set newStyle to "terminal-notifier: Banners (temporary)"
+            end if
+        end tell
+        delay 0.2
+    end tell
+end tell
+
+-- Close System Settings and return to previous app
+tell application "System Settings" to quit
+delay 0.1
+tell application frontApp to activate
+
+return newStyle
+EOF

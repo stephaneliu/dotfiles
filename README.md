@@ -125,6 +125,27 @@ Ghostty unbinds `Ctrl+a` so Zellij receives it as the prefix key. Use:
 
 Tabs and splits are managed by Zellij, not Ghostty.
 
+## Raycast
+
+Script commands for Raycast.
+
+### Install
+
+Add the script commands directory to Raycast:
+
+1. Open Raycast Settings (`⌘,`)
+2. Go to **Extensions → Script Commands**
+3. Click **Add Directories**
+4. Select `~/.dotfiles/config/raycast/script-commands`
+
+### Commands
+
+| Command | Description |
+|---------|-------------|
+| Toggle terminal-notifier Style | Switch notification style between Banners (temporary) and Alerts (persistent) |
+
+**Note:** The toggle command requires Accessibility permissions for Raycast (System Settings → Privacy & Security → Accessibility).
+
 ## Plugins installation
 
 Prettier
