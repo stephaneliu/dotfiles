@@ -9,7 +9,7 @@ layout {
                 // Format sections
                 format_left   "{mode} #[fg=#268bd2,bold]{session}"
                 format_center "{tabs}"
-                format_right  "{command_git_branch} {datetime}"
+                format_right  "{command_git_branch} {pipe_status} {notifications} {datetime}"
                 format_space  "#[bg=#002b36] "
 
                 // Mode indicator - shows current zellij mode
@@ -44,6 +44,15 @@ layout {
                 datetime          "#[fg=#839496]{format}"
                 datetime_format   "%a, %d %b %Y %H:%M"
                 datetime_timezone "local"
+
+                // Claude status via pipe (cc-zjstatus plugin)
+                pipe_status_format "#[fg=#839496]│ {output}"
+                pipe_status_rendermode "dynamic"
+
+                // Notifications for Claude events
+                notifications_format_unread "#[fg=#268bd2,bg=#073642] {message} "
+                notifications_format_no_notifications ""
+                notifications_show_interval "10"
             }
         }
     }

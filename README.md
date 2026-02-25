@@ -110,6 +110,25 @@ cargo build --release --target wasm32-wasip1
 cp target/wasm32-wasip1/release/harpoon.wasm ~/.config/zellij/plugins/
 ```
 
+### Claude Code Status
+
+Displays Claude Code activity in the zjstatus bar across multiple panes/tabs.
+
+```bash
+claude plugin marketplace add https://github.com/thoo/claude-code-zellij-status.git
+claude plugin install cc-zjstatus
+```
+
+**Symbols:**
+| Symbol | Meaning |
+|--------|---------|
+| `●` | Working |
+| `◐` | Thinking |
+| `✎` | Writing file |
+| `⚡` | Bash execution |
+| `?` | Awaiting input |
+| `⚠` | Permission request |
+
 ## Ghostty
 
 Terminal emulator configured to work with Zellij.
