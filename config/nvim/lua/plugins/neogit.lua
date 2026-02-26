@@ -34,7 +34,7 @@ return {
       verbose = true,
       kind = 'split',
       auto_close_console = true,
-      popupps = {
+      popup = {
         kind = 'floating',
       },
       integrations = {
