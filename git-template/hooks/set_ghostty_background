@@ -1,0 +1,24 @@
+#!/bin/bash
+
+lolcommits_dir="$HOME/Documents/Resource/lolcommits"
+potentially_dirty_repo_dir="${PWD##*/}"
+repo_dir=${potentially_dirty_repo_dir/\./dot}
+repo_lolcommits_dir="$lolcommits_dir/$repo_dir"
+
+last_commit=$(git log --pretty=format:"%H" HEAD^..HEAD | cut -c 1-11)
+last_commit_photo="$repo_lolcommits_dir/$last_commit.jpg"
+
+# Exit with error if photo doesn't exist yet (will trigger retry)
+[[ -f "$last_commit_photo" ]] || exit 1
+
+# Wait for post-processing to complete
+sleep 3
+
+ghostty_config="$HOME/.dotfiles/config/ghostty/config"
+
+# Remove existing background-image line, add new one
+sed -i '' '/^background-image[[:space:]]*=/d' "$ghostty_config"
+echo "background-image = $last_commit_photo" >> "$ghostty_config"
+
+# Reload Ghostty config
+osascript -e 'tell application "System Events" to tell process "ghostty" to keystroke "r" using {control down, shift down}'

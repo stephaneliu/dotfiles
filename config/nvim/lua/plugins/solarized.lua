@@ -10,5 +10,10 @@ return {
     -- read here when applying the background
     vim.o.background = 'dark'
     vim.cmd([[colorscheme NeoSolarized]])
+
+    -- Transparent background to show terminal background image
+    vim.api.nvim_set_hl(0, "Normal", { bg = "NONE" })
+    vim.api.nvim_set_hl(0, "NormalNC", { bg = "NONE" })
+    vim.api.nvim_set_hl(0, "NormalFloat", { bg = "NONE" })
   end
 }

@@ -1,5 +1,9 @@
-# Set background if not using Ghostty terminal
-if [[ -z "$GHOSTTY_BIN_DIR" ]]; then
-  for i in {1..5}; do .git/hooks/set_background && break || sleep 0.75; done
-  .git/hooks/set_no_background
+#!/bin/bash
+
+if [[ -n "$GHOSTTY_BIN_DIR" ]] || pgrep -q ghostty; then
+  for i in {1..15}; do .git/hooks/set_ghostty_background && break || sleep 1; done
+  nohup .git/hooks/set_ghostty_no_background > /dev/null 2>&1 &
+elif [[ -n "$KITTY_LISTEN_ON" ]] || pgrep -q kitty; then
+  for i in {1..15}; do .git/hooks/set_background && break || sleep 1; done
+  nohup .git/hooks/set_no_background > /dev/null 2>&1 &
 fi

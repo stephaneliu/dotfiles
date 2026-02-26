@@ -14,7 +14,7 @@ auto-update = download
 desktop-notifications = true
 
 # visual
-theme = light:iTerm2 Solarized Light,dark:Solarized Dark Patched
+theme = light:iTerm2 Solarized Light,dark:iTerm2 Solarized Dark
 window-theme = dark
 # Cyan - cursor-color = #2aa198
 cursor-color = #269bd2
@@ -25,6 +25,9 @@ window-padding-x = 5
 cursor-opacity = 0.8
 background-opacity = 0.97
 background-blur-radius = 20
+background-image-opacity = 0.25
+background-image-fit = contain
+background-image-position = center
 custom-shader = shaders/cursor_blaze.glsl
 unfocused-split-opacity = .75
 mouse-hide-while-typing = true

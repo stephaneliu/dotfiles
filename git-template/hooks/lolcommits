@@ -52,4 +52,5 @@ fi
 
 LANG="en_US.UTF-8"
 
-LOLCOMMITS_DIR=$lolcommits_dir lolcommits --capture --fork --delay "$LOL_DELAY" --device "$WEBCAM" 2> /dev/null;
+# Workaround for ruby-git bug with color.ui=always
+GIT_CONFIG_PARAMETERS="'color.ui=auto'" LOLCOMMITS_DIR=$lolcommits_dir lolcommits --capture --fork --delay "$LOL_DELAY" --device "$WEBCAM" 2> /dev/null;

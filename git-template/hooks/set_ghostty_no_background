@@ -1,0 +1,8 @@
+#!/bin/bash
+
+sleep 20
+
+ghostty_config="$HOME/.dotfiles/config/ghostty/config"
+sed -i '' '/^background-image[[:space:]]*=/d' "$ghostty_config"
+
+osascript -e 'tell application "System Events" to tell process "ghostty" to keystroke "r" using {control down, shift down}'

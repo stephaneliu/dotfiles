@@ -49,7 +49,7 @@ brew 'git'
 brew 'git-delta'                   # Syntax highlighter for git, diff, & grep - https://github.com/dandavison/delta
 brew 'gpg'
 brew 'gh'                          # Fast GitHub client released in 2022
-# brew 'heroku'
+brew 'ghostscript'                 # Dependency for Lolcommits brew 'heroku'
 brew 'jq'                          # Lightweight and flexible command-line JSON processor
 brew 'imagemagick'                 # Dependency for Lolcommits
 brew 'libexif'                     # Depencency for CC API repo
