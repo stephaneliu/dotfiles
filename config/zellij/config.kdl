@@ -11,6 +11,9 @@ pane_viewport_serialization true
 // macOS clipboard integration
 copy_command "pbcopy"
 
+// Editor for EditScrollback
+scrollback_editor "nvim"
+
 // Default layout loads zjstatus status bar
 default_layout "default"
 
