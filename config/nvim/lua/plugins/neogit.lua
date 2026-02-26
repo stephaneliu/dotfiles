@@ -34,6 +34,9 @@ return {
       verbose = true,
       kind = 'split',
       auto_close_console = true,
+      popupps = {
+        kind = 'floating',
+      },
       integrations = {
         diffview = true,
         telescope = true,
