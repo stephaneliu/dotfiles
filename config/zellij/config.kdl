@@ -2,7 +2,7 @@
 // Core options - keybinds and plugins configured separately
 
 // UI options
-pane_frames false  // zjstatus manages UI chrome
+pane_frames true
 
 // Session persistence
 session_serialization true
@@ -128,6 +128,11 @@ keybinds clear-defaults=true {
         // Detach
         bind "d" { Detach; }
 
+        // Break pane
+        bind "b" { BreakPane; SwitchToMode "Normal"; }
+        bind "B" { BreakPaneRight; SwitchToMode "Normal"; }
+        bind "Ctrl b" { BreakPaneLeft; SwitchToMode "Normal"; }
+
         // Floating panes
         bind "f" { ToggleFloatingPanes; SwitchToMode "Normal"; }
         bind "F" { Run "zsh" { floating true; }; SwitchToMode "Normal"; }
@@ -155,6 +160,7 @@ keybinds clear-defaults=true {
     scroll {
         bind "Esc" { SwitchToMode "Normal"; }
         bind "q" { SwitchToMode "Normal"; }
+        bind "Ctrl a" { SwitchToMode "Tmux"; }
         bind "j" { ScrollDown; }
         bind "k" { ScrollUp; }
         bind "Ctrl d" { HalfPageScrollDown; }

@@ -9,11 +9,11 @@ themes {
         black "#073642"     // base02 - darker background
         white "#eee8d5"     // base2 - emphasized content
         red "#dc322f"       // solarized red
-        green "#859900"     // solarized green
+        green "#cb4b16"     // solarized orange (used for active pane frame)
         yellow "#b58900"    // solarized yellow
         blue "#268bd2"      // solarized blue
         magenta "#d33682"   // solarized magenta
-        orange "#cb4b16"    // solarized orange
+        orange "#859900"    // solarized green (swapped)
         cyan "#2aa198"      // solarized cyan
     }
 }
