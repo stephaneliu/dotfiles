@@ -2,6 +2,9 @@
 
 layout {
     default_tab_template {
+        pane size=1 borderless=true {
+            plugin location="file:~/.config/zellij/plugins/zellaude.wasm"
+        }
         children
         pane size=1 borderless=true {
             plugin location="file:~/.config/zellij/plugins/zjstatus.wasm" {
@@ -30,7 +33,7 @@ layout {
                 tab_active_sync         "#[fg=#002b36,bg=#eee8d5,bold] {index}:{name}<> "
                 tab_separator           "#[bg=#002b36] "
 
-                command_git_branch_command     "git rev-parse --abbrev-ref HEAD 2>/dev/null"
+                command_git_branch_command     "bash -c \"git rev-parse --abbrev-ref HEAD 2>/dev/null\""
                 command_git_branch_format      "#[fg=#859900]git:{stdout}"
                 command_git_branch_interval    "5"
                 command_git_branch_rendermode  "static"
