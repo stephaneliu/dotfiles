@@ -55,22 +55,22 @@ layout {
     tab name="ai" focus=true {
         pane split_direction="vertical" {
             pane split_direction="horizontal" {
-                pane
-                pane
-                pane
-                pane
+                pane name="ai-1"  command="bash" { args "-c" "exec $HOME/.config/zellij/scripts/ai-pane-restore.sh ai-1"; }
+                pane name="ai-2"  command="bash" { args "-c" "exec $HOME/.config/zellij/scripts/ai-pane-restore.sh ai-2"; }
+                pane name="ai-3"  command="bash" { args "-c" "exec $HOME/.config/zellij/scripts/ai-pane-restore.sh ai-3"; }
+                pane name="ai-4"  command="bash" { args "-c" "exec $HOME/.config/zellij/scripts/ai-pane-restore.sh ai-4"; }
             }
             pane split_direction="horizontal" {
-                pane
-                pane
-                pane
-                pane
+                pane name="ai-5"  command="bash" { args "-c" "exec $HOME/.config/zellij/scripts/ai-pane-restore.sh ai-5"; }
+                pane name="ai-6"  command="bash" { args "-c" "exec $HOME/.config/zellij/scripts/ai-pane-restore.sh ai-6"; }
+                pane name="ai-7"  command="bash" { args "-c" "exec $HOME/.config/zellij/scripts/ai-pane-restore.sh ai-7"; }
+                pane name="ai-8"  command="bash" { args "-c" "exec $HOME/.config/zellij/scripts/ai-pane-restore.sh ai-8"; }
             }
             pane split_direction="horizontal" {
-                pane
-                pane
-                pane
-                pane
+                pane name="ai-9"  command="bash" { args "-c" "exec $HOME/.config/zellij/scripts/ai-pane-restore.sh ai-9"; }
+                pane name="ai-10" command="bash" { args "-c" "exec $HOME/.config/zellij/scripts/ai-pane-restore.sh ai-10"; }
+                pane name="ai-11" command="bash" { args "-c" "exec $HOME/.config/zellij/scripts/ai-pane-restore.sh ai-11"; }
+                pane name="ai-12" command="bash" { args "-c" "exec $HOME/.config/zellij/scripts/ai-pane-restore.sh ai-12"; }
             }
         }
     }

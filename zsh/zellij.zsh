@@ -1,6 +1,19 @@
 alias zj="zellij"
 alias zjl="zellij list-sessions"
 
+# Persist cwd per pane in the AI layout. Paired with
+# config/zellij/layouts/ai.kdl + scripts/ai-pane-restore.sh, which export
+# $ZELLIJ_AI_PANE and cd to the cached dir when the pane starts.
+_zellij_ai_persist_cwd() {
+  [[ -n "${ZELLIJ_AI_PANE:-}" ]] || return 0
+  local session="${ZELLIJ_SESSION_NAME:-default}"
+  local cache_dir="${XDG_CACHE_HOME:-$HOME/.cache}/zellij-ai/$session"
+  [[ -d "$cache_dir" ]] || mkdir -p "$cache_dir" 2>/dev/null || return 0
+  print -r -- "$PWD" >| "$cache_dir/$ZELLIJ_AI_PANE"
+}
+typeset -ga chpwd_functions
+chpwd_functions+=(_zellij_ai_persist_cwd)
+
 # Completion for zja - list active session names
 _zja() {
   local sessions=(${(f)"$(zellij list-sessions -ns 2>/dev/null | grep -v EXITED)"})
