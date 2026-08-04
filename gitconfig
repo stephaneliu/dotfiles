@@ -105,12 +105,12 @@
   commit = no # no commit for ff without any changes
   conflictstyle = zdiff3
   stat = true
-	tool = vim-conflicted
+	tool = diffview
 [mergetool]
   keepBackup = false # false - delete .orig files
   path = nvim
-[mergetool "vim-conflicted"]
-	cmd = nvim +Conflicted
+[mergetool "diffview"]
+	cmd = nvim -c "DiffviewOpen"
 [path]
 	include = /Users/sliu/.gitconfig.private
 [rebase]
