@@ -155,8 +155,22 @@ keybinds clear-defaults=true {
         bind "8" { GoToTab 8; SwitchToMode "Normal"; }
         bind "9" { GoToTab 9; SwitchToMode "Normal"; }
 
+        // Pane navigation by number: floating prompt; type a 1-2 digit
+        // pane number + Enter to focus that pane (AI layout, 3x4 grid).
+        bind "q" {
+            Run "bash" "-c" "$HOME/.config/zellij/scripts/select-pane.sh" {
+                floating true
+                close_on_exit true
+            }
+            SwitchToMode "Normal"
+        }
+
         // Rename tab
         bind "," { SwitchToMode "RenameTab"; TabNameInput 0; }
+
+        // Rename pane
+        bind "A" { SwitchToMode "RenamePane"; PaneNameInput 0; }
+        bind "<" { SwitchToMode "RenamePane"; PaneNameInput 0; }
 
         // Move tab
         bind "H" { MoveTab "Left"; SwitchToMode "Normal"; }
@@ -229,6 +243,12 @@ keybinds clear-defaults=true {
     // Rename tab mode
     renametab {
         bind "Esc" { UndoRenameTab; SwitchToMode "Normal"; }
+        bind "Enter" { SwitchToMode "Normal"; }
+    }
+
+    // Rename pane mode
+    renamepane {
+        bind "Esc" { UndoRenamePane; SwitchToMode "Normal"; }
         bind "Enter" { SwitchToMode "Normal"; }
     }
 
