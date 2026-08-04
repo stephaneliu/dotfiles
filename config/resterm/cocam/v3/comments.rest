@@ -1,0 +1,92 @@
+# @use ../../rts/helpers.rts
+#
+# Requires COCAM_BASE_URL (scheme + host + port) and COCAM_AUTH_TOKEN in the
+# environment. See project_groups.rest for details.
+
+### Index — Project comments
+# @name ProjectIndex
+GET {{COCAM_BASE_URL}}/v3/projects/[project_id]/comments.json
+Content-Type: application/json
+Authorization: Bearer {{COCAM_AUTH_TOKEN}}
+
+### Create — Project comment
+# @name ProjectCreate
+POST {{COCAM_BASE_URL}}/v3/projects/[project_id]/comments.json
+Content-Type: application/json
+Authorization: Bearer {{COCAM_AUTH_TOKEN}}
+
+{
+  "comment": {
+    "comment": "Looks great!"
+  }
+}
+
+### Create with mentions (GraphQL-style metadata)
+# @name ProjectCreateWithMentions
+POST {{COCAM_BASE_URL}}/v3/projects/[project_id]/comments.json
+Content-Type: application/json
+Authorization: Bearer {{COCAM_AUTH_TOKEN}}
+
+{
+  "comment": {
+    "comment": "Hey @Bob, take a look at this",
+    "metadata": {
+      "mentions": [
+        { "start": 4, "len": 4, "type": "User", "value": "@Bob" }
+      ]
+    }
+  }
+}
+
+### Create with mentions (v2-style users)
+# @name ProjectCreateWithUsers
+POST {{COCAM_BASE_URL}}/v3/projects/[project_id]/comments.json
+Content-Type: application/json
+Authorization: Bearer {{COCAM_AUTH_TOKEN}}
+
+{
+  "comment": {
+    "comment": "Hey @Bob, take a look at this",
+    "metadata": {
+      "users": [
+        { "start": 4, "len": 4, "type": "User", "value": "@Bob" }
+      ]
+    }
+  }
+}
+
+### Index — Image (Photo) comments
+# @name ImageIndex
+GET {{COCAM_BASE_URL}}/v3/images/[image_id]/comments.json
+Content-Type: application/json
+Authorization: Bearer {{COCAM_AUTH_TOKEN}}
+
+### Create — Image (Photo) comment
+# @name ImageCreate
+POST {{COCAM_BASE_URL}}/v3/images/[image_id]/comments.json
+Content-Type: application/json
+Authorization: Bearer {{COCAM_AUTH_TOKEN}}
+
+{
+  "comment": {
+    "comment": "Looks great!"
+  }
+}
+
+### Index — Video comments
+# @name VideoIndex
+GET {{COCAM_BASE_URL}}/v3/videos/[video_id]/comments.json
+Content-Type: application/json
+Authorization: Bearer {{COCAM_AUTH_TOKEN}}
+
+### Create — Video comment
+# @name VideoCreate
+POST {{COCAM_BASE_URL}}/v3/videos/[video_id]/comments.json
+Content-Type: application/json
+Authorization: Bearer {{COCAM_AUTH_TOKEN}}
+
+{
+  "comment": {
+    "comment": "Looks great!"
+  }
+}
