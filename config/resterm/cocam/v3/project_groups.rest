@@ -1,16 +1,24 @@
 # @use ../../rts/helpers.rts
+#
+# Requires COCAM_BASE_URL (scheme + host + port) and COCAM_AUTH_TOKEN in the
+# environment. resterm resolves {{VAR}} against the OS environment but does
+# not interpolate inside resterm.env.json, so the port has to travel with the
+# host rather than being appended per request.
+#
+#   export COCAM_BASE_URL="http://lvhost.me:$COCAM_RAILS_PORT"   # dev
+#   export COCAM_BASE_URL="https://app-PR.qa-v2.companycam.com"  # qa
 
 ### Index
 # @name Index
-GET {{base.url}}/v3/project_groups.json
+GET {{COCAM_BASE_URL}}/v3/project_groups.json
 Content-Type: application/json
-Authorization: Bearer {{auth.token}}
+Authorization: Bearer {{COCAM_AUTH_TOKEN}}
 
 ### Create
 # @name Create
-POST {{base.url}}/v3/project_groups.json
+POST {{COCAM_BASE_URL}}/v3/project_groups.json
 Content-Type: application/json
-Authorization: Bearer {{auth.token}}
+Authorization: Bearer {{COCAM_AUTH_TOKEN}}
 
 {
   "project_group": {
@@ -21,15 +29,15 @@ Authorization: Bearer {{auth.token}}
 
 ### Show
 # @name Show
-GET {{base.url}}/v3/project_groups/[id].json
+GET {{COCAM_BASE_URL}}/v3/project_groups/[id].json
 Content-Type: application/json
-Authorization: Bearer {{auth.token}}
+Authorization: Bearer {{COCAM_AUTH_TOKEN}}
 
 ### Update
 # @name Update
-PUT {{base.url}}/v3/project_groups/[id].json
+PUT {{COCAM_BASE_URL}}/v3/project_groups/[id].json
 Content-Type: application/json
-Authorization: Bearer {{auth.token}}
+Authorization: Bearer {{COCAM_AUTH_TOKEN}}
 
 {
   "project_group": {
@@ -39,9 +47,9 @@ Authorization: Bearer {{auth.token}}
 
 ### Post example
 # @name Echo
-POST {{base.url}}/post
+POST {{COCAM_BASE_URL}}/post
 Content-Type: application/json
-Authorization: Bearer {{auth.token}}
+Authorization: Bearer {{COCAM_AUTH_TOKEN}}
 
 {
   "hello": "resterm",
@@ -51,26 +59,26 @@ Authorization: Bearer {{auth.token}}
 ### Capture value from response
 # @name CaptureToken
 # @capture file-secret auth.token {{response.json.uuid}}
-GET {{base.url}}/uuid
+GET {{COCAM_BASE_URL}}/uuid
 
 ### Reuse captured value
 # @name UseToken
-GET {{base.url}}/anything
-Authorization: Bearer {{auth.token}}
+GET {{COCAM_BASE_URL}}/anything
+Authorization: Bearer {{COCAM_AUTH_TOKEN}}
 
 ### Query params
 # @name Query
 # @var request hello resterm
-GET {{base.url}}/get?hello={{hello}}
+GET {{COCAM_BASE_URL}}/get?hello={{hello}}
 
 ### Scripted header
 # @name ScriptedHeader
-GET {{base.url}}/anything
-Authorization: {{= helpers.authHeader(vars.get("auth.token"), env.get("auth.token")) }}
+GET {{COCAM_BASE_URL}}/anything
+Authorization: {{= helpers.authHeader(vars.get("auth.token"), env.get("COCAM_AUTH_TOKEN")) }}
 
 ### Use last response
 # @name UseLast
 # Uses last.* from the most recent request in this session.
 # Run CaptureToken first, otherwise last.json("uuid") is empty.
-GET {{base.url}}/anything
+GET {{COCAM_BASE_URL}}/anything
 X-Last-UUID: {{= last.json("uuid") ?? "" }}

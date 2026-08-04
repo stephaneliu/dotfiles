@@ -1,7 +1,32 @@
 # @use ../../rts/helpers.rts
+#
+# Requires COCAM_BASE_URL (scheme + host + port) and COCAM_AUTH_TOKEN in the
+# environment. See project_groups.rest for details.
 
 ### Index
 # @name Index
-GET {{base.url}}/v3/project_group_suggestions.json
+GET {{COCAM_BASE_URL}}/v3/project_group_suggestions.json
 Content-Type: application/json
-Authorization: Bearer {{auth.token}}
+Authorization: Bearer {{COCAM_AUTH_TOKEN}}
+
+### Show
+# @name Show
+GET {{COCAM_BASE_URL}}/v3/project_group_suggestions/[id].json
+Content-Type: application/json
+Authorization: Bearer {{COCAM_AUTH_TOKEN}}
+
+### Suggested Project Groups for Project
+# @name SuggestedProjectGroups
+# Returns project groups that a project could join
+# Optional params: strategy (h3|gis|h3_with_gis_verification), limit (default: 5)
+GET {{COCAM_BASE_URL}}/v3/projects/189/suggested_project_groups.json?strategy=h3&limit=10
+Content-Type: application/json
+Authorization: Bearer {{COCAM_AUTH_TOKEN}}
+
+### Suggested Projects for Project Group
+# @name SuggestedProjects
+# Returns projects that could join a project group
+# Optional params: strategy (h3|gis|h3_with_gis_verification), limit (default: 10)
+GET {{COCAM_BASE_URL}}/v3/project_groups/[project_group_id]/suggested_projects.json?strategy=h3&limit=10
+Content-Type: application/json
+Authorization: Bearer {{COCAM_AUTH_TOKEN}}
