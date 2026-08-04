@@ -125,3 +125,10 @@
 	email = 64043+stephaneliu@users.noreply.github.com
   name = Stephane Liu
 	signingkey = C7779B74D0E29CDC
+[credential "https://dev.azure.com"]
+	useHttpPath = true
+	# Empty value resets the inherited helper list, so GCM is the only
+	# helper consulted for Azure DevOps. osxkeychain still serves every
+	# other host.
+	helper =
+	helper = /usr/local/share/gcm-core/git-credential-manager
