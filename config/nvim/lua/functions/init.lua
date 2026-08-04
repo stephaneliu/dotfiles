@@ -28,3 +28,20 @@ custom_map = function(map_type, key, val, no_remap)
   vim.keymap.set(map_type, key, val, {noremap = no_remap})
 end
 
+-- `<C-w>=` ignores snacks.nvim splits (claudecode) because snacks sets
+-- winfixwidth=true on left/right splits. Clear it across the tab, equalize,
+-- then restore.
+equalize_windows = function()
+  local fixed = {}
+  for _, win in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
+    fixed[win] = vim.wo[win].winfixwidth
+    vim.wo[win].winfixwidth = false
+  end
+  vim.cmd("wincmd =")
+  for win, val in pairs(fixed) do
+    if vim.api.nvim_win_is_valid(win) then
+      vim.wo[win].winfixwidth = val
+    end
+  end
+end
+

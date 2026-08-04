@@ -5,6 +5,15 @@ n_map(';v', ':tabnew ~/.config/nvim/init.lua<CR>') -- " Display ~/.vimrc in new 
 nv_map('<leader>hash', ':s/:\\([^ ]*\\)\\(\\s*\\)=>/\\1:/g<CR>') -- convert hash rockets to json style
 n_map('<C-=>', ':resize +3<CR>') -- current window split bigger
 n_map('<C-->', ':resize -3<CR>') -- current window split smaller
+n_map('<C-w>\\', ':vertical resize 1<CR>') -- minimize current window width (complement to <C-w>|)
+n_map('<C-w><', ':vertical resize -5<CR>') -- shrink width by 5 (override default 1)
+n_map('<C-w>>', ':vertical resize +5<CR>') -- grow width by 5 (override default 1)
+vim.keymap.set('n', '<C-w>=', equalize_windows, { desc = "Equalize windows (works with snacks splits)" })
+-- Terminal-mode counterparts (claudecode pane etc). Registered globally
+-- rather than via snacks' keys table because snacks' buffer-local maps
+-- swallow OS key-repeat for multi-key sequences like <C-w>>.
+vim.keymap.set('t', '<C-w><', '<Cmd>vertical resize -5<CR>', { desc = "Shrink width by 5 (terminal)" })
+vim.keymap.set('t', '<C-w>>', '<Cmd>vertical resize +5<CR>', { desc = "Grow width by 5 (terminal)" })
 n_map('<Space>', ':nohlsearch<Bar>:echo<CR>') -- Press Space to turn off highlighting and clear any message already displayed
 c_map('w!!', '%!sudo tee > /dev/null') -- vice `sudo !!` from terminal
 __map('<leader>bg', ':echo "use unimpaired `yob` instead"<CR>')

@@ -58,6 +58,28 @@ return {
             mode = "t",
             desc = "Decrease width",
           },
+          width_max = {
+            "<C-w>|",
+            function() vim.cmd("wincmd |") end,
+            mode = "t",
+            desc = "Maximize width",
+          },
+          width_min = {
+            "<C-w>\\",
+            function() vim.cmd("vertical resize 1") end,
+            mode = "t",
+            desc = "Minimize width",
+          },
+          width_equal = {
+            "<C-w>=",
+            function() equalize_windows() end,
+            mode = "t",
+            desc = "Equalize windows",
+          },
+          -- width_grow / width_shrink (<C-w>> / <C-w><) intentionally NOT
+          -- defined here. Snacks' buffer-local keymaps break OS key-repeat
+          -- for multi-key sequences in terminal mode. They're registered as
+          -- global t-mode mappings in shortcuts.lua so press-and-hold works.
         },
       },
     },
