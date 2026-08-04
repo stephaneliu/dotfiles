@@ -33,8 +33,11 @@ _zellij_ai_persist_pane_name() {
   local pane_id="$ZELLIJ_PANE_ID" default_name="$ZELLIJ_AI_PANE"
   (
     local title
+    # Filter out plugin panes: terminal and plugin pane ids live in separate
+    # namespaces and can collide, so matching on id alone may return the
+    # zellaude/zjstatus plugin's title (e.g. "file:.../zellaude.wasm").
     title="$(zellij action list-panes --json 2>/dev/null \
-      | jq -r --argjson id "$pane_id" '.[] | select(.id == $id) | .title' \
+      | jq -r --argjson id "$pane_id" '.[] | select(.id == $id and (.is_plugin | not)) | .title' \
       | head -1)"
     [[ -n "$title" ]] || exit 0
     if [[ "$title" == "$default_name" && -r "$cache_file" ]]; then
@@ -48,6 +51,37 @@ _zellij_ai_persist_pane_name() {
 }
 typeset -ga precmd_functions
 precmd_functions+=(_zellij_ai_persist_pane_name)
+
+# Synchronous title save on shell exit. Fires when zellij sends SIGHUP to
+# an individual pane (Ctrl+a x close-pane, closing the terminal window,
+# `zellij kill-session` from outside). Tab-close (Ctrl+a X) doesn't rely on
+# this — config.kdl's "X" binding runs ai-save-tab.sh first, which captures
+# every pane's title via IPC while all panes are still alive.
+_zellij_ai_persist_pane_name_sync() {
+  [[ -n "${ZELLIJ_AI_PANE:-}" ]] || return 0
+  [[ -n "${ZELLIJ_PANE_ID:-}" ]] || return 0
+  local session="${ZELLIJ_SESSION_NAME:-default}"
+  local cache_dir="${XDG_CACHE_HOME:-$HOME/.cache}/zellij-ai/$session"
+  local cache_file="$cache_dir/$ZELLIJ_AI_PANE.name"
+  local title default_name="$ZELLIJ_AI_PANE"
+  title="$(zellij action list-panes --json 2>/dev/null \
+    | jq -r --argjson id "$ZELLIJ_PANE_ID" '.[] | select(.id == $id and (.is_plugin | not)) | .title' \
+    | head -1)"
+  [[ -n "$title" ]] || return 0
+  # Defense in depth: never persist a plugin URL as a pane name.
+  case "$title" in
+    file:*|http:*|https:*|zellij:*) return 0 ;;
+  esac
+  if [[ "$title" == "$default_name" && -r "$cache_file" ]]; then
+    local cached
+    cached="$(<"$cache_file")"
+    [[ "$cached" != "$default_name" ]] && return 0
+  fi
+  mkdir -p "$cache_dir" 2>/dev/null || return 0
+  print -r -- "$title" >| "$cache_file"
+}
+typeset -ga zshexit_functions
+zshexit_functions+=(_zellij_ai_persist_pane_name_sync)
 
 # Completion for zja - list active session names
 _zja() {

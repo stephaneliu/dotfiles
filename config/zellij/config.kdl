@@ -101,6 +101,46 @@ keybinds clear-defaults=true {
         // Close pane
         bind "x" { CloseFocus; SwitchToMode "Normal"; }
 
+        // Close all panes on current tab (closes the tab). Runs
+        // ai-save-tab.sh in a floating pane first so AI pane titles are
+        // captured into ~/.cache/zellij-ai/<session>/ BEFORE close-tab
+        // sends SIGHUP — the script issues close-tab itself once it's done.
+        bind "X" {
+            Run "bash" "-c" "$HOME/.config/zellij/scripts/ai-save-tab.sh" {
+                close_on_exit true
+                floating true
+            }
+            SwitchToMode "Normal"
+        }
+
+        // Reset pane sizes to the AI grid layout. Non-destructive: rearranges
+        // the existing panes back into the 3x4 equal grid defined as a
+        // swap_tiled_layout in ai.kdl. Requires the current tab to have 12 panes.
+        bind "R" { NextSwapLayout; SwitchToMode "Normal"; }
+
+        // Reset pane titles on the current tab back to their canonical AI
+        // layout slot names (ai-1 .. ai-12). Naming counterpart to R. Runs
+        // ai-reset-names.sh in a floating pane so the renames land against
+        // the underlying tab's panes.
+        bind "S" {
+            Run "bash" "-c" "$HOME/.config/zellij/scripts/ai-reset-names.sh" {
+                close_on_exit true
+                floating true
+            }
+            SwitchToMode "Normal"
+        }
+
+        // Delete the entire AI layout cache so the next zellij start comes up
+        // fresh — no restored cwd or pane titles. Wipes all sessions' caches
+        // (see ai-clear-cache.sh for why per-session isn't enough).
+        bind "D" {
+            Run "bash" "-c" "$HOME/.config/zellij/scripts/ai-clear-cache.sh" {
+                close_on_exit true
+                floating true
+            }
+            SwitchToMode "Normal"
+        }
+
         // Tabs
         bind "c" { NewTab; SwitchToMode "Normal"; }
         bind "n" { GoToNextTab; SwitchToMode "Normal"; }

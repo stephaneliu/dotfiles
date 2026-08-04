@@ -43,5 +43,12 @@ if [[ -n "$cached_name" && "$cached_name" != "$pane_name" && -n "${ZELLIJ_PANE_I
   zellij action rename-pane --pane-id "terminal_$ZELLIJ_PANE_ID" "$cached_name" >/dev/null 2>&1 || true
 fi
 
+# Drop a pane-id -> layout-name marker so ai-save-tab.sh (bound to Ctrl+a X)
+# can map list-panes IDs back to the layout slot when it captures titles
+# before close-tab fires SIGHUP.
+if [[ -n "${ZELLIJ_PANE_ID:-}" ]]; then
+  printf '%s\n' "$pane_name" >| "$cache_dir/.id_$ZELLIJ_PANE_ID" 2>/dev/null || true
+fi
+
 export ZELLIJ_AI_PANE="$pane_name"
 exec zsh -i

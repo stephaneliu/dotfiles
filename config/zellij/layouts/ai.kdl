@@ -56,21 +56,62 @@ layout {
         pane split_direction="vertical" {
             pane split_direction="horizontal" {
                 pane name="ai-1"  command="bash" { args "-c" "exec $HOME/.config/zellij/scripts/ai-pane-restore.sh ai-1"; }
-                pane name="ai-2"  command="bash" { args "-c" "exec $HOME/.config/zellij/scripts/ai-pane-restore.sh ai-2"; }
-                pane name="ai-3"  command="bash" { args "-c" "exec $HOME/.config/zellij/scripts/ai-pane-restore.sh ai-3"; }
                 pane name="ai-4"  command="bash" { args "-c" "exec $HOME/.config/zellij/scripts/ai-pane-restore.sh ai-4"; }
-            }
-            pane split_direction="horizontal" {
-                pane name="ai-5"  command="bash" { args "-c" "exec $HOME/.config/zellij/scripts/ai-pane-restore.sh ai-5"; }
-                pane name="ai-6"  command="bash" { args "-c" "exec $HOME/.config/zellij/scripts/ai-pane-restore.sh ai-6"; }
                 pane name="ai-7"  command="bash" { args "-c" "exec $HOME/.config/zellij/scripts/ai-pane-restore.sh ai-7"; }
-                pane name="ai-8"  command="bash" { args "-c" "exec $HOME/.config/zellij/scripts/ai-pane-restore.sh ai-8"; }
+                pane name="ai-10" command="bash" { args "-c" "exec $HOME/.config/zellij/scripts/ai-pane-restore.sh ai-10"; }
             }
             pane split_direction="horizontal" {
-                pane name="ai-9"  command="bash" { args "-c" "exec $HOME/.config/zellij/scripts/ai-pane-restore.sh ai-9"; }
-                pane name="ai-10" command="bash" { args "-c" "exec $HOME/.config/zellij/scripts/ai-pane-restore.sh ai-10"; }
+                pane name="ai-2"  command="bash" { args "-c" "exec $HOME/.config/zellij/scripts/ai-pane-restore.sh ai-2"; }
+                pane name="ai-5"  command="bash" { args "-c" "exec $HOME/.config/zellij/scripts/ai-pane-restore.sh ai-5"; }
+                pane name="ai-8"  command="bash" { args "-c" "exec $HOME/.config/zellij/scripts/ai-pane-restore.sh ai-8"; }
                 pane name="ai-11" command="bash" { args "-c" "exec $HOME/.config/zellij/scripts/ai-pane-restore.sh ai-11"; }
+            }
+            pane split_direction="horizontal" {
+                pane name="ai-3"  command="bash" { args "-c" "exec $HOME/.config/zellij/scripts/ai-pane-restore.sh ai-3"; }
+                pane name="ai-6"  command="bash" { args "-c" "exec $HOME/.config/zellij/scripts/ai-pane-restore.sh ai-6"; }
+                pane name="ai-9"  command="bash" { args "-c" "exec $HOME/.config/zellij/scripts/ai-pane-restore.sh ai-9"; }
                 pane name="ai-12" command="bash" { args "-c" "exec $HOME/.config/zellij/scripts/ai-pane-restore.sh ai-12"; }
+            }
+        }
+    }
+
+    // Swap layout target for NextSwapLayout. Mirrors the main ai tab's
+    // 3-column x 4-row structure plus the top zellaude bar and bottom
+    // zjstatus bar from default_tab_template. default_tab_template is NOT
+    // applied to tabs inside swap_tiled_layout, so the borderless plugin
+    // panes must be re-declared here or they'll get squeezed out.
+    // exact_panes=14 = 12 content + 2 plugin bars.
+    // Plugins already running aren't re-spawned (existing panes are
+    // repositioned), so the zjstatus formatting config doesn't need to be
+    // duplicated — just the plugin location.
+    // Bound to Ctrl+a R in tmux mode (see config.kdl).
+    swap_tiled_layout name="ai-grid-3x4" {
+        tab exact_panes=14 {
+            pane size=1 borderless=true {
+                plugin location="file:~/.config/zellij/plugins/zellaude.wasm"
+            }
+            pane split_direction="vertical" {
+                pane split_direction="horizontal" {
+                    pane
+                    pane
+                    pane
+                    pane
+                }
+                pane split_direction="horizontal" {
+                    pane
+                    pane
+                    pane
+                    pane
+                }
+                pane split_direction="horizontal" {
+                    pane
+                    pane
+                    pane
+                    pane
+                }
+            }
+            pane size=1 borderless=true {
+                plugin location="file:~/.config/zellij/plugins/zjstatus.wasm"
             }
         }
     }
