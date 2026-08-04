@@ -9,6 +9,7 @@ return {
       { "<leader>co", group = "CopilotChat" },
       { "<leader>f", group = "Find" },
       { "<leader>g", group = "Git" },
+      { "<leader>G", group = "GitHub" },
       { "<leader>gg", group = "GitGutter" },
       { "<leader>gi", group = "Git Inline" },
       { "<leader>h", group = "Harpoon/Marks" },
