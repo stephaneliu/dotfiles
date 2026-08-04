@@ -116,6 +116,7 @@ cask 'there'
 cask 'karabiner-elements'
 cask 'keycastr' # dispaly keystrokes for screencasts
 cask 'numi'
+cask 'orbstack'                    # Docker replacement for macOS - https://orbstack.dev/
 cask 'pieces'
 cask 'pushplaylabs-sidekick'
 cask 'xnapper' unless system 'ls /Applications/Xnapper*'

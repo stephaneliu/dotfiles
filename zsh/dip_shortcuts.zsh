@@ -39,6 +39,31 @@ function dsh() {
   fi
 }
 
+# The OrbStack HTTP proxy is injected into every container as http_proxy / NO_PROXY env vars; the default NO_PROXY list
+# only covers OrbStack's own *.orb.internal/*.orb.local patterns and not docker-compose service names. As a result,
+# Rails proxying /vite-dev/* requests to http://vite:3037 routes through OrbStack's proxy and 502s, which blanks the
+# sign-in page. Adding docker service names to NO_PROXY lets container-to-container traffic bypass the proxy.
+function drs() {
+  local rails_port="3000"
+  if [[ -f .env ]]; then
+    local port_value
+    port_value=$(grep -E '^COCAM_RAILS_PORT=' .env | tail -n1 | cut -d'=' -f2- | tr -d '"'\''[:space:]')
+    [[ -n "$port_value" ]] && rails_port="$port_value"
+  fi
+  [[ -n "$ZELLIJ" ]] && zellij action rename-pane ":$rails_port"
+
+  # Both spellings: Ruby's net/http reads no_proxy, other clients read NO_PROXY.
+  local no_proxy_list="vite,anycable,ws,sidekiq,redis,memcached,postgis,mongo,opensearch,elasticsearch,imgproxy,mailpit,localhost,127.0.0.1,*.orb.internal,*.orb.local"
+
+  # CLEAN_LOGS=1 is passed explicitly rather than inherited from the dip
+  # alias: this function is defined above that alias, and zsh expands
+  # aliases at parse time, so the body would otherwise call bare dip.
+  dip CLEAN_LOGS=1 compose run --rm vite yarn install
+  dip CLEAN_LOGS=1 up -d vite
+  dip CLEAN_LOGS=1 up -d sidekiq
+  dip CLEAN_LOGS=1 NO_PROXY="$no_proxy_list" no_proxy="$no_proxy_list" rails s
+}
+
 function _docker_id() {
   docker ps --no-trunc --format "{{.ID}}-{{.Command}}" | grep $1 | cut -d '-' -f 1
 }
@@ -54,7 +79,6 @@ alias ddr="ddip rails"
 
 alias ddrc="CLEAN_LOGS=1 DEBUG_LOGS=true drc"
 
-alias drs="dip up -d sidekiq vite && dip rails s"
 alias drss="dip up -d vite && dip up rails sidekiq"
 alias ddrs="ddip up -d sidekiq vite && ddip rails s"
 alias ddrss="ddip up -d vite && ddip up rails sidekiq"
