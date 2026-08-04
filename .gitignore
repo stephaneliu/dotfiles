@@ -14,5 +14,5 @@ tags
 tmp
 docs
 .claude
-config/raccoon/
 config/zellij/plugins/*.wasm
+.tags

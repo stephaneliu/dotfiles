@@ -4,16 +4,5 @@ git_merging=".git/rebase-merge"
 
 if [ ! -d $git_merging ] && [ "$LOLCOMMITS_CAPTURE_DISABLED" != "true" ]; then
   nohup .git/hooks/lolcommits > /dev/null 2>&1 &
-  nohup .git/hooks/set_terminal_background > /dev/null 2>&1 &
-fi
-
-# Generate ctags in the background
-if command -v ctags > /dev/null 2>&1; then
-  # If a Gemfile exists and bundler is available, include gem paths in ctags generation
-  if [ -f Gemfile ] && command -v bundle > /dev/null 2>&1; then
-    gem_paths=$(bundle show --paths 2>/dev/null | tr '\n' ' ')
-    nohup ctags -R -f .tags --exclude=.git --exclude=node_modules --exclude=vendor $gem_paths . > /dev/null 2>&1 &
-  else
-    nohup ctags -R -f .tags --exclude=.git --exclude=node_modules --exclude=vendor > /dev/null 2>&1 &
-  fi
+  # nohup .git/hooks/set_terminal_background > /dev/null 2>&1 &
 fi
