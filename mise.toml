@@ -1,0 +1,6 @@
+[tools]
+python = "latest"
+rust = "latest"
+
+[hooks]
+enter = "corepack enable >/dev/null 2>&1 || true"
