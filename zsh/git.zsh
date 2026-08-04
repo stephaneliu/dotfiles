@@ -21,7 +21,7 @@ ga() {
 }
 
 alias gad='git ad'
-alias gbr='git br'
+gbr() { git br "$@" }
 
 # git delete branch
 gbrd() {
