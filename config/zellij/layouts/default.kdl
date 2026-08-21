@@ -46,7 +46,9 @@ layout {
                 // Datetime - format: Mon, 24 Feb 2026 14:30
                 datetime          "#[fg=#839496]{format}"
                 datetime_format   "%a, %d %b %Y %H:%M"
-                datetime_timezone "local"
+                // "local" is not resolved inside the wasm sandbox - zjstatus falls
+                // back to UTC - so name the zone explicitly.
+                datetime_timezone "Pacific/Honolulu"
 
                 // Claude status via pipe (cc-zjstatus plugin)
                 pipe_status_format "#[fg=#839496]│ {output}"

@@ -40,7 +40,9 @@ layout {
 
                 datetime          "#[fg=#839496]{format}"
                 datetime_format   "%a, %d %b %Y %H:%M"
-                datetime_timezone "local"
+                // "local" is not resolved inside the wasm sandbox - zjstatus falls
+                // back to UTC - so name the zone explicitly.
+                datetime_timezone "Pacific/Honolulu"
 
                 pipe_status_format "#[fg=#839496]│ {output}"
                 pipe_status_rendermode "dynamic"
