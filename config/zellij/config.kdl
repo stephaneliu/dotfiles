@@ -98,6 +98,31 @@ keybinds clear-defaults=true {
         // Zoom pane
         bind "z" { ToggleFocusFullscreen; SwitchToMode "Normal"; }
 
+        // Zoom the focused pane within its own column: it grows to fill the
+        // column while its neighbours shrink to zellij's minimum height, and
+        // the other columns keep their sizes. Press again to even that column
+        // back out. Zellij has no action for this, so column-sizes.sh plans the
+        // border moves from the tab's real geometry and walks them with Resize.
+        // Floating so the script can read the layout from outside the tiled
+        // pane it is resizing.
+        bind "Z" {
+            Run "bash" "-c" "$HOME/.config/zellij/scripts/column-sizes.sh zoom" {
+                close_on_exit true
+                floating true
+            }
+            SwitchToMode "Normal"
+        }
+
+        // Give every pane in every column the same height; column widths and
+        // pane order stay as they are. Counterpart to Z.
+        bind "=" {
+            Run "bash" "-c" "$HOME/.config/zellij/scripts/column-sizes.sh even" {
+                close_on_exit true
+                floating true
+            }
+            SwitchToMode "Normal"
+        }
+
         // Close pane
         bind "x" { CloseFocus; SwitchToMode "Normal"; }
 
