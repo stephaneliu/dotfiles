@@ -36,6 +36,13 @@ mouse-hide-while-typing = true
 keybind = ctrl+shift+,=open_config
 keybind = ctrl+shift+r=reload_config
 
+# Bring back zellij's bottom status bar: when a window ends up taller than the
+# screen's visible frame, the last terminal row - where zellij draws zjstatus -
+# falls off the bottom edge while Ghostty still reports it to the pty. Zooming
+# re-fits the window and the resize makes zellij repaint from scratch. New
+# windows avoid this via `maximize = true` below.
+keybind = ctrl+shift+m=toggle_maximize
+
 # Unbind ctrl+a - let zellij handle it
 keybind = ctrl+a=unbind
 
@@ -44,8 +51,11 @@ confirm-close-surface = false
 
 # tabs (use cmd for ghostty-native tabs if needed)
 window-new-tab-position = end
-window-width = 220
-window-height = 99
+# Fit new windows to the screen's visible frame. An explicit window-width /
+# window-height that overshoots the display gets clamped to the whole screen
+# instead, which pushes the last terminal row (zellij's zjstatus gutter) off
+# the bottom edge - see the ctrl+shift+m binding above.
+maximize = true
 resize-overlay = always
 
 # zellij handles splits, navigation, and scrollback
