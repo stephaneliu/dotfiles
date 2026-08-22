@@ -94,6 +94,7 @@ cask '1password-cli' # 1password cli - https://developer.1password.com/docs/cli/
 cask 'app-cleaner' unless system 'ls /Applications/App\ Cleaner*' # Version is free legacy
 cask 'bruno'     # api explorer
 cask 'bahaaio/pomo/pomo' # pomodoro timer https://github.com/Bahaaio/pomo?tab=readme-ov-file
+cask 'cmux'
 cask 'craft'
 cask 'dash'
 cask 'devtoys'
