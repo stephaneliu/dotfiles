@@ -30,6 +30,12 @@
     }
   },
 
+  // Workspace tabs live in the sidebar (vertical panel); hide the redundant
+  // per-pane workspace title bar and move its controls into the sidebar.
+  "app": {
+    "minimalMode": true
+  },
+
   // Claude Code hook wrapper: Settings-toggle equivalent, enabled immediately.
   "automation": {
     "claudeCodeIntegration": true
