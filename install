@@ -97,6 +97,16 @@ test $HOME/.dotfiles/test/rcm_test
 
 
 
+# After rcup so ~/.claude config is linked before plugins and MCP servers are
+# registered against it. Set CLAUDE_PRIVATE_CONFIG to also pull in the private
+# work overlay (this repo is public, so it holds only generic config).
+if [[ -z "$TEST" ]]; then
+  echo "+++ Setting up Claude Code"
+  $HOME/.dotfiles/bin/claude-setup
+fi
+
+
+
 echo "+++ Installing lazy nvim and plugins"
 # shada file, .viminfo, is owned by root on GH CI. Set -i NONE does not read or write to shada file
 nvim --headless -i NONE "+Lazy! sync" +qa

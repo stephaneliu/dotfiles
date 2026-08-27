@@ -1,0 +1,40 @@
+{
+  "marketplaces": {
+    "claude-plugins-official": {
+      "source": "github",
+      "repo": "anthropics/claude-plugins-official"
+    },
+    "spectre": {
+      "source": "github",
+      "repo": "Codename-Inc/spectre"
+    },
+    "claude-code-zellij-status": {
+      "source": "git",
+      "url": "https://github.com/thoo/claude-code-zellij-status.git"
+    },
+    "claude-code-plugins": {
+      "source": "github",
+      "repo": "anthropics/claude-code"
+    },
+    "agentmemory": {
+      "source": "github",
+      "repo": "rohitg00/agentmemory"
+    },
+    "i-have-adhd": {
+      "source": "github",
+      "repo": "ayghri/i-have-adhd"
+    }
+  },
+  "plugins": {
+    "code-simplifier@claude-plugins-official": false,
+    "spectre@spectre": true,
+    "cc-zjstatus@claude-code-zellij-status": true,
+    "ruby-lsp@claude-plugins-official": true,
+    "frontend-design@claude-plugins-official": true,
+    "commit-commands@claude-plugins-official": false,
+    "agentmemory@agentmemory": true,
+    "neon@claude-plugins-official": false,
+    "datadog@claude-plugins-official": true,
+    "i-have-adhd@i-have-adhd": true
+  }
+}

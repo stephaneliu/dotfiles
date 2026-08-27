@@ -1,5 +1,7 @@
-EXCLUDES="system README.md install LICENSE-MIT.txt setup test utils Brewfile.lock.json tmp"
+EXCLUDES="system README.md install LICENSE-MIT.txt setup test utils Brewfile.lock.json tmp claude/bootstrap claude/README.md"
 SYMLINK_DIRS="bundle nvim-backup nvim-undo ctags.d"
 UNDOTTED='bin Brewfile'
 TAGS="cheat gitui karabiner kitty ruby tmux tmuxinator nvim zellij"
-COPY_ALWAYS="zsh/npm.zsh"
+# settings.local.json is copied, not linked: Claude rewrites it in place and a
+# symlink would dirty the repo on every local permission change.
+COPY_ALWAYS="zsh/npm.zsh claude/settings.local.json"

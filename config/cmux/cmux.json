@@ -14,6 +14,9 @@
   // stays at cmux's shipped default.
   "shortcuts": {
     "bindings": {
+      // "newTab" is cmux's legacy action id for "New Workspace" (default cmd+n),
+      // not a surface/tab. A cmux workspace is the zellij-tab analog, so c fits.
+      // The in-workspace tab is "newSurface" (default cmd+t), left unbound here.
       "newTab": ["ctrl+a", "c"],
       "closeTab": ["ctrl+a", "x"],
       "closeWorkspace": ["ctrl+a", "shift+x"],
@@ -26,7 +29,8 @@
       "goToWorkspace": ["ctrl+a", "w"],
       "commandPalette": ["ctrl+a", "shift+p"],
       "toggleSidebar": ["ctrl+a", "b"],
-      "toggleSplitZoom": ["ctrl+a", "z"]
+      "toggleSplitZoom": ["ctrl+a", "z"],
+      "toggleTerminalCopyMode": ["ctrl+a", "["]
     }
   },
 

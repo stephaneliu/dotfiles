@@ -1,0 +1,133 @@
+#!/usr/bin/env bash
+# Bootstrap Claude Code on a new machine.
+#
+# Config files (settings.json, skills, statusline) are symlinked into
+# ~/.claude by rcm. This script handles the parts rcm cannot: registering
+# marketplaces, installing plugins, and adding MCP servers, all of which live
+# in Claude's own state files rather than on disk as config.
+#
+# Idempotent — safe to re-run. Existing marketplaces, plugins, and servers are
+# left alone.
+#
+# Work-specific config (CLAUDE.md, employer skills) lives in a separate private
+# repo because this one is public. Point CLAUDE_PRIVATE_CONFIG at it to have
+# that overlay applied too:
+#
+#   CLAUDE_PRIVATE_CONFIG=git@github.com:you/claude-private.git claude-setup
+
+set -euo pipefail
+
+DOTFILES="${DOTFILES:-$HOME/.dotfiles}"
+BOOTSTRAP="$DOTFILES/claude/bootstrap"
+PRIVATE_DIR="${CLAUDE_PRIVATE_CONFIG_DIR:-$HOME/.claude-private}"
+
+log() { printf '+++ %s\n' "$*"; }
+warn() { printf '!!! %s\n' "$*" >&2; }
+
+# Claude Code ships via its own installer rather than Homebrew, so it is not
+# covered by the Brewfile.
+if ! command -v claude >/dev/null 2>&1; then
+  log "Installing Claude Code"
+  curl -fsSL https://claude.ai/install.sh | bash
+  export PATH="$HOME/.local/bin:$PATH"
+fi
+
+if ! command -v claude >/dev/null 2>&1; then
+  warn "claude CLI still not on PATH; skipping Claude Code setup"
+  exit 0
+fi
+
+if ! command -v jq >/dev/null 2>&1; then
+  warn "jq not found; skipping Claude Code setup"
+  exit 0
+fi
+
+# --- Marketplaces -----------------------------------------------------------
+# claude-plugins-official is built in, so adding it again is a no-op error.
+if [ -f "$BOOTSTRAP/plugins.json" ]; then
+  log "Registering Claude plugin marketplaces"
+  existing_markets="$(claude plugin marketplace list 2>/dev/null || true)"
+
+  jq -r '.marketplaces | to_entries[] | "\(.key)\t\(.value.repo // .value.url)"' \
+    "$BOOTSTRAP/plugins.json" \
+  | while IFS=$'\t' read -r name source; do
+      [ -n "$source" ] || continue
+      if printf '%s' "$existing_markets" | grep -qF "$name"; then
+        continue
+      fi
+      claude plugin marketplace add "$source" >/dev/null 2>&1 \
+        && log "  added marketplace $name" \
+        || warn "  could not add marketplace $name ($source)"
+    done
+
+  # --- Plugins --------------------------------------------------------------
+  log "Installing Claude plugins"
+  existing_plugins="$(claude plugin list 2>/dev/null || true)"
+
+  # Only install plugins marked enabled. Disabled entries are recorded in
+  # settings.json so the UI still shows them as known-but-off.
+  jq -r '.plugins | to_entries[] | select(.value == true) | .key' \
+    "$BOOTSTRAP/plugins.json" \
+  | while IFS= read -r plugin; do
+      [ -n "$plugin" ] || continue
+      if printf '%s' "$existing_plugins" | grep -qF "${plugin%%@*}"; then
+        continue
+      fi
+      claude plugin install "$plugin" >/dev/null 2>&1 \
+        && log "  installed $plugin" \
+        || warn "  could not install $plugin"
+    done
+fi
+
+# --- MCP servers ------------------------------------------------------------
+if [ -f "$BOOTSTRAP/mcp-servers.json" ]; then
+  log "Adding MCP servers"
+  existing_mcp="$(claude mcp list 2>/dev/null || true)"
+
+  jq -r '.mcpServers | to_entries[] | "\(.key)\t\(.value.type // "http")\t\(.value.url)"' \
+    "$BOOTSTRAP/mcp-servers.json" \
+  | while IFS=$'\t' read -r name transport url; do
+      [ -n "$url" ] || continue
+      if printf '%s' "$existing_mcp" | grep -qF "$name"; then
+        continue
+      fi
+      claude mcp add --transport "$transport" "$name" "$url" >/dev/null 2>&1 \
+        && log "  added $name ($transport)" \
+        || warn "  could not add MCP server $name"
+    done
+
+  log "MCP servers authenticate on first use — run /mcp in Claude to sign in"
+fi
+
+# --- Private overlay --------------------------------------------------------
+# This repo is public, so employer-specific instructions and skills live
+# elsewhere. Clone (or refresh) that repo and link its contents into ~/.claude.
+if [ -n "${CLAUDE_PRIVATE_CONFIG:-}" ]; then
+  if [ -d "$PRIVATE_DIR/.git" ]; then
+    log "Updating private Claude config"
+    git -C "$PRIVATE_DIR" pull --ff-only >/dev/null 2>&1 \
+      || warn "  could not update $PRIVATE_DIR"
+  else
+    log "Cloning private Claude config"
+    git clone "$CLAUDE_PRIVATE_CONFIG" "$PRIVATE_DIR" >/dev/null 2>&1 \
+      || warn "  could not clone $CLAUDE_PRIVATE_CONFIG"
+  fi
+
+  if [ -f "$PRIVATE_DIR/CLAUDE.md" ]; then
+    ln -sfn "$PRIVATE_DIR/CLAUDE.md" "$HOME/.claude/CLAUDE.md"
+    log "  linked CLAUDE.md"
+  fi
+
+  if [ -d "$PRIVATE_DIR/skills" ]; then
+    mkdir -p "$HOME/.claude/skills"
+    for skill in "$PRIVATE_DIR"/skills/*/; do
+      [ -d "$skill" ] || continue
+      ln -sfn "${skill%/}" "$HOME/.claude/skills/$(basename "$skill")"
+    done
+    log "  linked private skills"
+  fi
+else
+  log "CLAUDE_PRIVATE_CONFIG unset — skipping private overlay"
+fi
+
+log "Claude Code setup complete"
