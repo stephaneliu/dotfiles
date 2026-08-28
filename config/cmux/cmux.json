@@ -30,7 +30,11 @@
       "commandPalette": ["ctrl+a", "shift+p"],
       "toggleSidebar": ["ctrl+a", "b"],
       "toggleSplitZoom": ["ctrl+a", "z"],
-      "toggleTerminalCopyMode": ["ctrl+a", "["]
+      "toggleTerminalCopyMode": ["ctrl+a", "["],
+      // Shift+j/k mirrors focusDown/focusUp above: move the workspace
+      // instead of just focus.
+      "moveWorkspaceUp": ["ctrl+a", "shift+k"],
+      "moveWorkspaceDown": ["ctrl+a", "shift+j"]
     }
   },
 
