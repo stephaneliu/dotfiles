@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+# Back up agentmemory's real data (not just curated memories) to a git repo.
+#
+# Stops the server for a consistent snapshot (state_store.db/stream_store are
+# per-key .bin files that could be caught mid-write otherwise), copies the
+# substantive data directories, restarts the server, then commits and pushes.
+#
+# Excludes .env (secrets hygiene — currently just a template, but don't want
+# a real LLM key ending up in git history later), iii.pid and *.log (runtime
+# noise, no backup value), and .claude/ (unrelated local Claude Code config
+# that ended up nested in ~/.agentmemory, not memory data).
+
+set -euo pipefail
+
+SRC="$HOME/.agentmemory"
+DEST="$HOME/.agentmemory-backup"
+
+if [ ! -d "$DEST/.git" ]; then
+  echo "agentmemory-backup: $DEST is not a git clone — set it up first" >&2
+  exit 1
+fi
+
+log() { printf '+++ %s\n' "$*"; }
+
+log "Stopping agentmemory for a consistent snapshot"
+(cd "$SRC" && agentmemory stop) || log "agentmemory was already stopped"
+
+log "Copying data"
+rsync -a --delete \
+  --exclude '.env' \
+  --exclude 'iii.pid' \
+  --exclude '*.log' \
+  --exclude '.claude/' \
+  "$SRC/data" "$SRC/standalone.json" "$SRC/exports" \
+  "$DEST/"
+
+log "Restarting agentmemory"
+(cd "$SRC" && nohup agentmemory >"$SRC/agentmemory.log" 2>&1 & disown)
+
+cd "$DEST"
+if [ -z "$(git status --porcelain)" ]; then
+  log "No changes since last backup — nothing to commit"
+  exit 0
+fi
+
+log "Committing and pushing"
+git add -A
+git commit -m "Backup $(date -u +%Y-%m-%dT%H:%M:%SZ)" >/dev/null
+git push origin main
+
+log "Done"
