@@ -34,7 +34,13 @@
       // Shift+j/k mirrors focusDown/focusUp above: move the workspace
       // instead of just focus.
       "moveWorkspaceUp": ["ctrl+a", "shift+k"],
-      "moveWorkspaceDown": ["ctrl+a", "shift+j"]
+      "moveWorkspaceDown": ["ctrl+a", "shift+j"],
+      // Despite the action ids, these focus the next/previous WORKSPACE in
+      // sidebar order (legacy naming from before workspaces had their own
+      // sidebar) — not sidebar panel tabs. n/p matches tmux's classic
+      // next-window/previous-window prefix bindings.
+      "nextSidebarTab": ["ctrl+a", "n"],
+      "prevSidebarTab": ["ctrl+a", "p"]
     }
   },
 
