@@ -1,0 +1,71 @@
+onboarding = false
+# herdr configuration
+# https://herdr.dev/docs/configuration/
+# Regenerate the full commented default with `herdr --default-config` if
+# herdr ships new keys; merge new sections in rather than starting over.
+
+[keys]
+# Same Ctrl+A prefix zellij's tmux-mode and cmux (config/cmux/cmux.json) use,
+# so the muscle memory carries across all three terminal tools.
+prefix = "ctrl+a"
+
+# --- Pane focus: hjkl, unchanged from herdr's own defaults but restated here
+# so the vi mapping is explicit rather than implied by an unread default.
+# Matches zellij's Ctrl+hjkl / tmux-mode hjkl and cmux's focusLeft/Down/Up/Right.
+focus_pane_left = "prefix+h"
+focus_pane_down = "prefix+j"
+focus_pane_up = "prefix+k"
+focus_pane_right = "prefix+l"
+
+# Navigate-mode movement (local-only while navigate mode is open; independent
+# of focus_pane_* above). Same hjkl, kept at the shipped default.
+navigate_pane_left = "h"
+navigate_pane_down = "j"
+navigate_pane_up = "k"
+navigate_pane_right = "l"
+
+# --- Splits: vim's own :split / :vsplit mnemonic (v = vertical dividing line,
+# side-by-side panes), and "-" for a horizontal split, matching zellij/cmux.
+split_vertical = "prefix+v"
+split_horizontal = "prefix+minus"
+
+# --- Tabs (within a workspace) and workspaces (the top-level container,
+# analogous to a zellij tab / cmux workspace): n/p cycle tabs, matching
+# zellij's GoToNextTab/GoToPreviousTab and cmux's nextSidebarTab/prevSidebarTab.
+new_tab = "prefix+c"
+next_tab = "prefix+n"
+previous_tab = "prefix+p"
+close_tab = "prefix+shift+x"
+close_pane = "prefix+x"
+
+new_workspace = "prefix+shift+n"
+close_workspace = "prefix+shift+d"
+workspace_picker = "prefix+w"
+
+# --- Everything else below matches herdr's shipped defaults; restated
+# explicitly (rather than left commented) so this file is the single source
+# of truth for the bindings actually in effect.
+zoom = "prefix+z"
+toggle_sidebar = "prefix+b"
+edit_scrollback = "prefix+e"
+detach = "prefix+q"
+resize_mode = "prefix+r"
+help = "prefix+?"
+settings = "prefix+s"
+reload_config = "prefix+shift+r"
+
+[ui]
+# Mouseless, keyboard-only: stop herdr from capturing mouse input for its own
+# UI (pane focus/menus/selection). Clicks pass through to the outer terminal
+# instead (e.g. cmd-click a URL); pane apps that want mouse (lazygit, btop)
+# still get it. Use edit_scrollback (prefix+e) for keyboard-driven copy
+# instead of mouse drag-select.
+mouse_capture = false
+
+status_indicators = "symbols"
+[ui.toast]
+delivery = "terminal"
+
+[theme]
+name = "solarized"
+auto_switch = false

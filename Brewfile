@@ -48,6 +48,7 @@ brew 'fzf'                         # Fuzzy finder
 brew 'git'
 brew 'git-delta'                   # Syntax highlighter for git, diff, & grep - https://github.com/dandavison/delta
 brew 'gpg'
+brew 'herdr'                       # Agent-aware terminal multiplexer for coding agents - https://herdr.dev/
 brew 'gh'                          # Fast GitHub client released in 2022
 brew 'ghostscript'                 # Dependency for Lolcommits brew 'heroku'
 brew 'jq'                          # Lightweight and flexible command-line JSON processor
