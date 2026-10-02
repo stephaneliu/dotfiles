@@ -114,6 +114,8 @@ if [[ -z "$TEST" ]]; then
   echo "+++ Installing Spectre for Codex"
   codex plugin marketplace add joenandez/spectre
   codex plugin add spectre@spectre
+  codex plugin marketplace add rohitg00/agentmemory
+  codex plugin add agentmemory@agentmemory
 
   echo "+++ Setting up Claude Code"
   $HOME/.dotfiles/bin/claude-setup
