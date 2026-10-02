@@ -33,14 +33,25 @@ split_horizontal = "prefix+minus"
 # analogous to a zellij tab / cmux workspace): n/p cycle tabs, matching
 # zellij's GoToNextTab/GoToPreviousTab and cmux's nextSidebarTab/prevSidebarTab.
 new_tab = "prefix+c"
+rename_tab = "prefix+shift+t"
 next_tab = "prefix+n"
-previous_tab = "prefix+p"
+# "prefix+a" (Ctrl+A to enter prefix mode, then bare 'a') as a second way to
+# go back a tab. Not the same gesture as pressing the actual prefix chord
+# (Ctrl+A) twice in a row — herdr reserves that specific double-tap to send
+# a literal Ctrl+A through to the pane and disables any custom binding on it.
+previous_tab = ["prefix+p", "prefix+a"]
 close_tab = "prefix+shift+x"
 close_pane = "prefix+x"
 
 new_workspace = "prefix+shift+n"
+rename_workspace = "prefix+shift+w"
 close_workspace = "prefix+shift+d"
 workspace_picker = "prefix+w"
+# n/p are already next_tab/previous_tab (within a workspace). Plain [ and ]
+# are out too (prefix+[ is vim-style scrollback nav), so workspace cycling
+# gets the shifted bracket chords instead.
+next_workspace = "prefix+}"
+previous_workspace = "prefix+{"
 
 # --- Everything else below matches herdr's shipped defaults; restated
 # explicitly (rather than left commented) so this file is the single source
@@ -48,19 +59,17 @@ workspace_picker = "prefix+w"
 zoom = "prefix+z"
 toggle_sidebar = "prefix+b"
 edit_scrollback = "prefix+e"
-detach = "prefix+q"
+detach = "prefix+d"
 resize_mode = "prefix+r"
 help = "prefix+?"
 settings = "prefix+s"
 reload_config = "prefix+shift+r"
 
 [ui]
-# Mouseless, keyboard-only: stop herdr from capturing mouse input for its own
-# UI (pane focus/menus/selection). Clicks pass through to the outer terminal
-# instead (e.g. cmd-click a URL); pane apps that want mouse (lazygit, btop)
-# still get it. Use edit_scrollback (prefix+e) for keyboard-driven copy
-# instead of mouse drag-select.
-mouse_capture = false
+# Enable Herdr's mouse UI (pane focus/menus/selection).
+# Ctrl-click opens pane links; on macOS, Shift+Cmd-click uses the outer
+# terminal's link handling. Plain Cmd-click requires mouse_capture = false.
+mouse_capture = true
 
 status_indicators = "symbols"
 [ui.toast]
