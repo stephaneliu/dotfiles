@@ -1,0 +1,13 @@
+# Public, portable preferences only. Applied by bin/codex-setup; never symlinked.
+model = "gpt-6-astra"
+model_reasoning_effort = "low"
+personality = "pragmatic"
+
+[tui]
+vim_mode_default = true
+fullscreen_transcript = false
+alternate_screen = "never"
+
+[memories]
+generate_memories = true
+use_memories = true

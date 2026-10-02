@@ -96,6 +96,7 @@ cask 'app-cleaner' unless system 'ls /Applications/App\ Cleaner*' # Version is f
 cask 'bruno'     # api explorer
 cask 'bahaaio/pomo/pomo' # pomodoro timer https://github.com/Bahaaio/pomo?tab=readme-ov-file
 cask 'cmux'
+cask 'codex'
 cask 'craft'
 cask 'dash'
 cask 'devtoys'

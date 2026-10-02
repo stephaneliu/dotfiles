@@ -1,4 +1,4 @@
-EXCLUDES="system README.md install LICENSE-MIT.txt setup test utils Brewfile.lock.json tmp claude/bootstrap claude/README.md"
+EXCLUDES="codex system README.md install LICENSE-MIT.txt setup test utils Brewfile.lock.json tmp claude/bootstrap claude/README.md"
 SYMLINK_DIRS="bundle nvim-backup nvim-undo ctags.d"
 UNDOTTED='bin Brewfile'
 TAGS="cheat gitui karabiner kitty ruby tmux tmuxinator nvim zellij"

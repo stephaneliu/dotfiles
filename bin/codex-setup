@@ -1,0 +1,108 @@
+#!/usr/bin/env python3
+"""Merge public preferences into local Codex config without exporting local state."""
+import argparse
+import copy
+import os
+from pathlib import Path
+import re
+import tempfile
+import tomllib
+
+
+def merge(source, template):
+    """Edit simple scalar preferences; reject any unverified semantic change."""
+    original = tomllib.loads(source)
+    expected = copy.deepcopy(original)
+    preferences = tomllib.loads(template)
+    assignments = []
+    for section, value in preferences.items():
+        if isinstance(value, dict):
+            if section not in expected:
+                expected[section] = {}
+            for key, item in value.items():
+                expected[section][key] = item
+                assignments.append((section, key, item))
+        else:
+            expected[section] = value
+            assignments.append((None, section, value))
+
+    lines = source.splitlines(keepends=True)
+    if lines and not lines[-1].endswith('\n'):
+        lines[-1] += '\n'
+    for section, key, value in assignments:
+        if not re.fullmatch(r'[A-Za-z0-9_-]+', key):
+            raise ValueError('Preference keys must use simple TOML names')
+        if type(value) is bool:
+            encoded = str(value).lower()
+        elif isinstance(value, str):
+            import json
+            encoded = json.dumps(value, ensure_ascii=False)
+        else:
+            raise ValueError('Only string and boolean preferences are supported')
+        headers = [i for i, line in enumerate(lines) if line.lstrip().startswith('[')]
+        if section is None:
+            start, end = 0, headers[0] if headers else len(lines)
+        else:
+            matches = [i for i in headers if re.fullmatch(
+                r'\s*\[' + re.escape(section) + r'\]\s*(?:#.*)?', lines[i].rstrip('\n'))]
+            if not matches:
+                lines.extend(['\n', f'[{section}]\n'])
+                start, end = len(lines), len(lines)
+            else:
+                start = matches[0] + 1
+                end = next((i for i in headers if i >= start), len(lines))
+        matches = [i for i in range(start, end)
+                   if re.match(r'\s*' + re.escape(key) + r'\s*=', lines[i])]
+        replacement = f'{key} = {encoded}\n'
+        if matches:
+            lines[matches[0]] = replacement
+        else:
+            lines.insert(end, replacement)
+    result = ''.join(lines)
+    if tomllib.loads(result) != expected:
+        raise ValueError('Cannot safely merge this TOML layout; config was not changed')
+    return result
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--check', action='store_true', help='validate without writing')
+    parser.add_argument('--config', type=Path, default=Path(
+        os.environ.get('CODEX_HOME', str(Path.home() / '.codex'))) / 'config.toml')
+    args = parser.parse_args()
+    template = Path(__file__).resolve().parent.parent / 'codex' / 'config.toml'
+    target = args.config.expanduser()
+    if target.is_symlink():
+        raise ValueError('Refusing a symlinked config; keep the live config separate')
+    before = target.read_bytes() if target.exists() else None
+    result = merge((before or b'').decode(), template.read_text()).encode()
+    if args.check:
+        print('Validated: only template preferences would change; no files written.')
+        return
+    if result == before:
+        print('Codex preferences already match; no changes.')
+        return
+    target.parent.mkdir(parents=True, exist_ok=True, mode=0o700)
+    if target.is_symlink() or (target.read_bytes() if target.exists() else None) != before:
+        raise ValueError('Config changed during merge; retry after closing Codex settings')
+    if before is not None:
+        fd, backup = tempfile.mkstemp(prefix='config.toml.backup-', dir=target.parent)
+        with os.fdopen(fd, 'wb') as stream:
+            stream.write(before)
+        print(f'Private backup: {backup}')
+    fd, temporary = tempfile.mkstemp(prefix='.config-merge-', dir=target.parent)
+    try:
+        with os.fdopen(fd, 'wb') as stream:
+            stream.write(result)
+        os.replace(temporary, target)
+    finally:
+        if os.path.exists(temporary):
+            os.unlink(temporary)
+    print(f'Applied public preferences to {target}; local settings preserved.')
+
+
+if __name__ == '__main__':
+    try:
+        main()
+    except (OSError, ValueError, TypeError) as error:
+        raise SystemExit(f'codex-setup: {error}')

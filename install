@@ -102,6 +102,19 @@ test $HOME/.dotfiles/test/rcm_test
 # registered against it. Set CLAUDE_PRIVATE_CONFIG to also pull in the private
 # work overlay (this repo is public, so it holds only generic config).
 if [[ -z "$TEST" ]]; then
+  # Homebrew bundle installs Codex before this setup step.
+  if ! codex --version >/dev/null 2>&1; then
+    echo "Codex setup failed: Codex CLI is unavailable after brew bundle. Check Homebrew output and PATH." >&2
+    exit 1
+  fi
+
+  echo "+++ Applying Codex preferences"
+  "$HOME/.dotfiles/bin/codex-setup"
+
+  echo "+++ Installing Spectre for Codex"
+  codex plugin marketplace add joenandez/spectre
+  codex plugin add spectre@spectre
+
   echo "+++ Setting up Claude Code"
   $HOME/.dotfiles/bin/claude-setup
 fi

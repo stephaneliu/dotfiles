@@ -16,3 +16,8 @@ docs
 .claude
 config/zellij/plugins/*.wasm
 .tags
+
+# Codex: only reviewed public preferences belong in this repository.
+/codex/*
+!/codex/config.toml
+!/codex/README.md
