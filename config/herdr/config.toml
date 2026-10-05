@@ -26,13 +26,14 @@ navigate_pane_right = "l"
 
 # --- Splits: vim's own :split / :vsplit mnemonic (v = vertical dividing line,
 # side-by-side panes), and "-" for a horizontal split, matching zellij/cmux.
-split_vertical = "prefix+v"
+split_vertical = ["prefix+v", "prefix+|"]
 split_horizontal = "prefix+minus"
 
 # --- Tabs (within a workspace) and workspaces (the top-level container,
 # analogous to a zellij tab / cmux workspace): n/p cycle tabs, matching
 # zellij's GoToNextTab/GoToPreviousTab and cmux's nextSidebarTab/prevSidebarTab.
 new_tab = "prefix+c"
+switch_tab = "prefix+1..9"
 rename_tab = "prefix+shift+t"
 next_tab = "prefix+n"
 # "prefix+a" (Ctrl+A to enter prefix mode, then bare 'a') as a second way to
