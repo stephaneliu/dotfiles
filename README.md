@@ -31,6 +31,12 @@ other configuration files in place. Caps Lock types backtick, and Shift + Caps
 Lock types tilde, using a US keyboard layout. rcm prompts before replacing
 existing files; keep a backup of any local changes before replacing them.
 
+The profile also loads Bash Git shortcuts from `bash/git.sh`: `gci` commits,
+`ga` adds, `gco` checks out, `gps` pushes, `gpl` pulls, and `g` shows status
+when called without arguments. `ga .` and `gcln` preserve the exclusions from
+the macOS shortcuts. Git subcommand aliases (such as `git st`) must already
+be configured. Start a new shell or run `source ~/.bashrc` after installing.
+
 To add an override, place it under `tag-omarchy` using its home-relative path
 without the leading dot (for example, `config/hypr/bindings.lua`). Use the
 explicit `RCRC` command above when updating Omarchy; the macOS `rcup` shell
