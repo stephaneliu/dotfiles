@@ -16,3 +16,8 @@ source "$OMARCHY_PATH/default/bash/rc"
 
 # Git shortcuts from the Omarchy dotfiles profile.
 [[ -r "$HOME/.bash/git.sh" ]] && source "$HOME/.bash/git.sh"
+
+# Apply vi editing after Omarchy loads its Readline defaults.
+set -o vi
+[[ -r "$HOME/.inputrc" ]] && bind -f "$HOME/.inputrc"
+[[ -r "$HOME/.bash/history.sh" ]] && source "$HOME/.bash/history.sh"

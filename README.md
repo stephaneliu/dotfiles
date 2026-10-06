@@ -37,6 +37,13 @@ when called without arguments. `ga .` and `gcln` preserve the exclusions from
 the macOS shortcuts. Git subcommand aliases (such as `git st`) must already
 be configured. Start a new shell or run `source ~/.bashrc` after installing.
 
+Bash uses vi command-line editing (`Esc`, `jk`, or `kj` enters command mode).
+In command mode, `k`/`j` searches older/newer history matches for the typed text
+anywhere in a command, matching the macOS history substring search. Up/Down
+also searches matches. With an empty line, `k`/`j` cycles through all history.
+History syncs between panes after each command. Ctrl+R keeps Omarchy's fzf
+history picker.
+
 To add an override, place it under `tag-omarchy` using its home-relative path
 without the leading dot (for example, `config/hypr/bindings.lua`). Use the
 explicit `RCRC` command above when updating Omarchy; the macOS `rcup` shell
