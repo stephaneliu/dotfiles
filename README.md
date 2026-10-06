@@ -13,6 +13,29 @@ git clone https://github.com/stephaneliu/dotfiles.git ~/.dofiles
 
 > RCRC=~/.dotfiles/rcrc rcup -v
 
+The default `rcrc` and `install` script are for macOS.
+
+### Omarchy profile
+
+Install rcm (the `rcm` AUR package on Arch), then preview and apply:
+
+```sh
+RCRC="$HOME/.dotfiles/rcrc.omarchy" lsrc
+RCRC="$HOME/.dotfiles/rcrc.omarchy" rcup -v
+hyprctl reload
+hyprctl configerrors
+```
+
+This profile installs only the overrides in `tag-omarchy`, leaving Omarchy's
+other configuration files in place. Caps Lock types backtick, and Shift + Caps
+Lock types tilde, using a US keyboard layout. rcm prompts before replacing
+existing files; keep a backup of any local changes before replacing them.
+
+To add an override, place it under `tag-omarchy` using its home-relative path
+without the leading dot (for example, `config/hypr/bindings.lua`). Use the
+explicit `RCRC` command above when updating Omarchy; the macOS `rcup` shell
+alias selects the default profile.
+
 [1]:https://github.com/thoughtbot/rcm
 
 ## Neovim Class Navigation

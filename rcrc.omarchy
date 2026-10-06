@@ -1,0 +1,7 @@
+# Omarchy profile: install only personal overrides, alongside Omarchy's files.
+DOTFILES_DIRS="$HOME/.dotfiles/tag-omarchy"
+TAGS=""
+EXCLUDES=""
+SYMLINK_DIRS=""
+UNDOTTED=""
+COPY_ALWAYS=""

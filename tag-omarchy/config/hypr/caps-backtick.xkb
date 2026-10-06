@@ -1,0 +1,10 @@
+xkb_keymap {
+    xkb_keycodes { include "evdev+aliases(qwerty)" };
+    xkb_types { include "complete" };
+    xkb_compatibility { include "complete" };
+    xkb_symbols {
+        include "pc+us+inet(evdev)+shift(both_capslock_cancel)"
+        replace key <CAPS> { type[Group1] = "TWO_LEVEL", symbols[Group1] = [ grave, asciitilde ] };
+        modifier_map None { <CAPS> };
+    };
+};
