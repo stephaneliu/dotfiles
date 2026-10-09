@@ -16,6 +16,7 @@ source "$OMARCHY_PATH/default/bash/rc"
 
 # Git shortcuts from the Omarchy dotfiles profile.
 [[ -r "$HOME/.bash/git.sh" ]] && source "$HOME/.bash/git.sh"
+[[ -r "$HOME/.bash/shortcuts.sh" ]] && source "$HOME/.bash/shortcuts.sh"
 
 # Apply vi editing after Omarchy loads its Readline defaults.
 set -o vi

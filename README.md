@@ -41,6 +41,14 @@ when called without arguments. `ga .` and `gcln` preserve the exclusions from
 the macOS shortcuts. Git subcommand aliases (such as `git st`) must already
 be configured. Start a new shell or run `source ~/.bashrc` after installing.
 
+Common Bash shortcuts in `bash/shortcuts.sh` match the existing Zsh shortcuts
+where applicable: `l`/`ll` list file details including hidden files, `la`
+lists names including hidden files, `q`/`:q` exit the shell, and `gg` clears
+the screen. `..`, `...`, and `....` move up one, two, or three directories;
+`md` creates directories with `mkdir -p`. Listings use `eza` when installed
+and standard `ls` otherwise. Omarchy's existing `ls` and tool aliases remain
+available.
+
 Bash uses vi command-line editing (`Esc`, `jk`, or `kj` enters command mode).
 In command mode, `k`/`j` searches older/newer history matches for the typed text
 anywhere in a command, matching the macOS history substring search. Up/Down
