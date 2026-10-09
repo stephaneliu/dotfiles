@@ -31,6 +31,10 @@ other configuration files in place. Caps Lock types backtick, and Shift + Caps
 Lock types tilde, using a US keyboard layout. rcm prompts before replacing
 existing files; keep a backup of any local changes before replacing them.
 
+The Omarchy shell clock uses 12-hour time with AM/PM, keeping the weekday
+visible. Its configuration is tracked in `tag-omarchy/config/omarchy/shell.json`
+and hot-reloads when changed.
+
 The profile also loads Bash Git shortcuts from `bash/git.sh`: `gci` commits,
 `ga` adds, `gco` checks out, `gps` pushes, `gpl` pulls, and `g` shows status
 when called without arguments. `ga .` and `gcln` preserve the exclusions from
@@ -48,6 +52,52 @@ To add an override, place it under `tag-omarchy` using its home-relative path
 without the leading dot (for example, `config/hypr/bindings.lua`). Use the
 explicit `RCRC` command above when updating Omarchy; the macOS `rcup` shell
 alias selects the default profile.
+
+#### Capturing Omarchy customizations
+
+Keep Omarchy's defaults upstream and version personal overrides with the
+existing rcm profile. Files under `/usr/share/omarchy` belong to Omarchy;
+customizations belong in the user configuration. See the
+[official dotfiles guide](https://github.com/omacom/omarchy/blob/quattro/manual/31-dotfiles.md).
+
+- Track individual customized files under `tag-omarchy`, keeping the live
+  directories available for Omarchy's other files. Add `bindings.lua`,
+  `looknfeel.lua`, and `autostart.lua` under `config/hypr/` as needed.
+- Preserve imports of Omarchy's defaults, then apply personal settings.
+  Follow the existing `config/hypr/input.lua` override and `bashrc`, which
+  loads Omarchy's shell defaults before personal additions.
+- Keep monitor names, scaling, device settings, and host-specific paths in
+  an explicitly selected machine profile or an ignored local file. Ensure
+  any local file is loaded by the relevant configuration.
+- Track authored custom themes under `config/omarchy/themes/<name>/` and
+  executable hooks under `config/omarchy/hooks/<event>.d/`. Leave generated
+  current-theme output out of Git. See the
+  [theme guide](https://omarchy.org/manual/making-your-own-theme/).
+- Document extra packages, fonts, services, and manual setup steps. Keep any
+  Omarchy bootstrap separate from the macOS `install` script.
+- Exclude backup files such as `*.bak.*`, caches, logs, histories,
+  credentials, and downloaded artifacts from commits.
+
+Before capturing a customization, compare the live file with its shipped
+template under `/usr/share/omarchy/config/` to identify intentional changes.
+Back up the live file before replacing it with an rcm link. Preview and apply
+using the explicit Omarchy profile, validate Hyprland changes, and review
+the diff before committing:
+
+```sh
+RCRC="$HOME/.dotfiles/rcrc.omarchy" lsrc
+RCRC="$HOME/.dotfiles/rcrc.omarchy" rcup -v
+hyprctl reload
+hyprctl configerrors
+git -C "$HOME/.dotfiles" diff -- tag-omarchy
+```
+
+**Config resets can overwrite tracked files through symlinks.** The installed
+`omarchy-refresh-config` implementation uses `cp -f`, which can follow a
+config symlink and overwrite its target inside this repository. Commit
+customizations before resetting a tracked config, then inspect the Git diff
+afterward. Git provides the recovery record; a symlink does not protect the
+customization from being overwritten.
 
 [1]:https://github.com/thoughtbot/rcm
 
