@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# Install Railway CLI and configure detected coding agents.
+set -euo pipefail
+
+if [[ $(uname -s) != Linux ]]; then
+  printf 'This setup is for the Linux/Omarchy profile. On macOS: brew install railway\n' >&2
+  exit 1
+fi
+
+if ! command -v curl >/dev/null 2>&1; then
+  printf 'curl is required to download the Railway installer.\n' >&2
+  exit 1
+fi
+
+curl -fsSL https://agents.railway.com | sh

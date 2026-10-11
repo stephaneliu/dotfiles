@@ -61,6 +61,26 @@ without the leading dot (for example, `config/hypr/bindings.lua`). Use the
 explicit `RCRC` command above when updating Omarchy; the macOS `rcup` shell
 alias selects the default profile.
 
+#### Railway CLI
+
+Install the Railway CLI and configure detected coding agents on Omarchy:
+
+```sh
+bash "$HOME/.dotfiles/tag-omarchy/local/bin/railway-setup"
+railway --version
+railway login
+```
+
+After applying `rcrc.omarchy`, the same setup is available as `railway-setup`.
+It runs the official `curl -fsSL https://agents.railway.com | sh` installer,
+which installs the CLI under `~/.railway/bin` (or reuses an existing CLI) and configures Railway skills
+and MCP for detected agent tools. Follow any PATH instructions printed by
+the installer, then start a new shell. Rerun to refresh agent setup.
+Authentication stays local; do not commit Railway credentials.
+On macOS, the same official installer works, or use `brew install railway`
+for the CLI alone.
+See the [Railway CLI documentation](https://docs.railway.com/cli).
+
 #### Capturing Omarchy customizations
 
 Keep Omarchy's defaults upstream and version personal overrides with the
